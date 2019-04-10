@@ -1,21 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-09T19:29:31+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Kiwifruit</title><link href="http://localhost:4000/2018/08/22/kiwifruit.html" rel="alternate" type="text/html" title="Kiwifruit" /><published>2018-08-22T00:00:00+08:00</published><updated>2018-08-22T00:00:00+08:00</updated><id>http://localhost:4000/2018/08/22/kiwifruit</id><content type="html" xml:base="http://localhost:4000/2018/08/22/kiwifruit.html">&lt;p&gt;Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible
-berry of several species of woody vines in the genus Actinidia.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-10T20:56:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Arts第一周 A Leetcode941 Valid_mountain_array</title><link href="http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array.html" rel="alternate" type="text/html" title="Arts第一周 A Leetcode941 Valid_mountain_array" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array.html">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The most common cultivar group of kiwifruit is oval, about the size of a large
-hen’s egg (5–8 cm (2.0–3.1 in) in length and 4.5–5.5 cm (1.8–2.2 in) in
-diameter). It has a fibrous, dull greenish-brown skin and bright green or
-golden flesh with rows of tiny, black, edible seeds. The fruit has a soft
-texture, with a sweet and unique flavor.&lt;/p&gt;</content><author><name>ted</name></author><summary type="html">Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible berry of several species of woody vines in the genus Actinidia.</summary></entry><entry><title type="html">Apples</title><link href="http://localhost:4000/2018/08/21/apples.html" rel="alternate" type="text/html" title="Apples" /><published>2018-08-21T00:00:00+08:00</published><updated>2018-08-21T00:00:00+08:00</updated><id>http://localhost:4000/2018/08/21/apples</id><content type="html" xml:base="http://localhost:4000/2018/08/21/apples.html">&lt;p&gt;An apple is a sweet, edible fruit produced by an apple tree.&lt;/p&gt;
+&lt;p&gt;Recall that &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is a mountain array if and only if:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A.length&lt;/code&gt; &amp;gt;= 3&lt;/li&gt;
+  &lt;li&gt;There exists some &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;0 &amp;lt; i &amp;lt; A.length - 1&lt;/code&gt; such that:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i]&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Apple trees are cultivated worldwide, and are the most widely grown species in
-the genus Malus. The tree originated in Central Asia, where its wild ancestor,
-Malus sieversii, is still found today. Apples have been grown for thousands of
-years in Asia and Europe, and were brought to North America by European
-colonists.&lt;/p&gt;</content><author><name>jill</name></author><summary type="html">An apple is a sweet, edible fruit produced by an apple tree.</summary></entry><entry><title type="html">Bananas</title><link href="http://localhost:4000/2018/08/20/bananas.html" rel="alternate" type="text/html" title="Bananas" /><published>2018-08-20T00:00:00+08:00</published><updated>2018-08-20T00:00:00+08:00</updated><id>http://localhost:4000/2018/08/20/bananas</id><content type="html" xml:base="http://localhost:4000/2018/08/20/bananas.html">&lt;p&gt;A banana is an edible fruit – botanically a berry – produced by several kinds
-of large herbaceous flowering plants in the genus Musa.&lt;/p&gt;
-
-&lt;p&gt;In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size, color,
-and firmness, but is usually elongated and curved, with soft flesh rich in
-starch covered with a rind, which may be green, yellow, red, purple, or brown
-when ripe.&lt;/p&gt;</content><author><name>jill</name></author><summary type="html">A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.</summary></entry></feed>
+&lt;hr /&gt;
+&lt;p&gt;这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。&lt;br /&gt;
+思路很直白，设置一个变量&lt;code class=&quot;highlighter-rouge&quot;&gt;mountain_top&lt;/code&gt;(需初始化为0)，遍历数组，当找到降序后将山顶位置赋值给它，然后继续遍历，若此后出现升序则直接返回false。最后，若遍历完成后该变量未被修改，说明不存在山顶(单纯升序则为0,单纯降序也为0)。最后，注意排除相等的情况。&lt;br /&gt;
+代码是用go语言写的，如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func validMountainArray(A []int) bool {
+    if len(A) &amp;lt; 3 {
+        return false
+    }
+    
+    mountain_top := 0
+    for i := 0; i &amp;lt; len(A) - 1; i++ {
+        if A[i] &amp;gt; A[i + 1] {
+            mountain_top = i
+            break
+        } else if A[i] == A[i + 1] {
+            return false;
+        }
+    }
+    for i := mountain_top; i &amp;lt; len(A) - 1; i++ {
+        if A[i] &amp;lt;= A[i + 1] {
+            return false
+        } 
+    }
+    
+    
+    return mountain_top != 0
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry></feed>
