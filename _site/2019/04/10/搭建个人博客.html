@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+ <head>
+
+    
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>搭建个人博客 | Tonfeiz’s blog</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="搭建个人博客" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。" />
+<meta property="og:description" content="关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。" />
+<link rel="canonical" href="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" />
+<meta property="og:url" content="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" />
+<meta property="og:site_name" content="Tonfeiz’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-10T00:00:00+08:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html"},"@type":"BlogPosting","url":"http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html","headline":"搭建个人博客","dateModified":"2019-04-10T00:00:00+08:00","datePublished":"2019-04-10T00:00:00+08:00","description":"关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">搭建个人博客</h1>
+      <h2 class="project-tagline">Share ideas!</h2>
+      
+      
+</header>
+    <main id="content" class="main-content" role="main">
+      <h1>搭建个人博客</h1>
+<p>10 Apr 2019</p>
+
+<p>关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</p>
+
+<p>搭建博客的教程网上有很多，随便找一个基本上就能搭建完成。我也是拼拼凑凑搭出来的，现在也还只是个雏形。这里还是做个记录，毕竟别人的经验始终是别人的，自己写出来的才是自己的。</p>
+
+<h2 id="一利用github-pages托管网站">一、利用github pages托管网站</h2>
+<p>搭建自己的博客首先得有自己的网站，要有自己的网站首先得有服务器主机来维护它，作为非土豪人士，自己买服务器托管网站这种事是干不出来的。因此，可以使用github pages来托管自己的网站。</p>
+
+<p>github pages是一个静态站点服务，主要就用来直接从github repo生成网站。因为之前一直也用github，因此一些基本操作也是轻车熟路了，使用它也是基于这个考虑。</p>
+
+<p>github pages也有一些缺陷，这里简单的列举几点：</p>
+<ul>
+  <li>它是静态站点服务，不支持服务端代码，例如PHP，Ruby或者Python</li>
+  <li>github pages所在的repo最好不要超过1GB</li>
+  <li>发布的github pages网站不能超过1GB</li>
+  <li>github pages站点的软带宽每个月不超过100GB</li>
+</ul>
+
+<p>对于一般的个人博客网站来说，这些限制应该问题不大。</p>
+
+<p>接下去说说具体的流程。</p>
+
+<ol>
+  <li>在github上创建一个repo，这个repo的名字必须是<em>username</em>.github.io,其中<em>username</em>就是你在github上的用户名</li>
+  <li>选择一个文件夹作为github repo的存放地，例如就在$HOME目录下，在终端下输入下面的命令：<br />
+<code class="highlighter-rouge">git clone https://github.com/username/username.github.io</code></li>
+  <li>进入上面的文件夹，创建一个index.html文件。命令如下：<br />
+<code class="highlighter-rouge">cd username.github.io</code><br />
+<code class="highlighter-rouge">echo "Hello World" &gt; index.html</code></li>
+  <li>将改变上传到github端。命令如下：<br />
+<code class="highlighter-rouge">git add -all</code><br />
+<code class="highlighter-rouge">git commit -m "Initial commit"</code><br />
+<code class="highlighter-rouge">git push -u origin master</code></li>
+</ol>
+
+<p>至此，网站就可以查看了。可以在浏览器中输入<br />
+<strong>https://<em>username</em>.github.io</strong><br />
+查看自己的网站</p>
+<h2 id="二利用jkeyll编辑自己的博客">二、利用jkeyll编辑自己的博客</h2>
+<p>有了github pages托管网站之后，接下去就是要将网站变成博客形式了。虽然之前稍微学过一点前端的知识，但要自己从头搭建还是有些困难。在github pages上发现大力推荐的一个静态网页和博客生成框架jekyll，可以直接把markdown格式的文件转化成网页，因此干脆就入坑jekyll了。</p>
+
+<p>目前我也只是过了两遍jekyll的教程，具体使用还需要摸索，这里就简单的讲一下基础的内容。如果想要详细了解，还是得去<a href="https://jekyllrb.com/">jekyll官网</a></p>
+
+<p>jekyll首先需要安装Ruby的运行环境，在Linux Ubuntu环境下是很简单的，输入下面的命令：
+<code class="highlighter-rouge">sudo apt-get install ruby-full build-essential zlib1g-dev</code>
+接着设置一下环境变量</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo '# Install Ruby Gems to ~/gems' &gt;&gt; ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' &gt;&gt; ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' &gt;&gt; ~/.bashrc
+source ~/.bashrc`
+</code></pre></div></div>
+<p>最后，安装jekyll以及bundler插件<br />
+<code class="highlighter-rouge">gem install jekyll bundler</code><br />
+至此，jekyll的安装就完成了。</p>
+
+<p>jekyll的使用也很简单，如果不使用github pages，直接
+<code class="highlighter-rouge">jekyll new [foldername]</code>
+其中<code class="highlighter-rouge">foldername</code>就是文件夹名字，jekyll就会在文件夹中生成一个网站的雏形。想要在本地浏览网页只需要<code class="highlighter-rouge">jekyll serve</code>就可以在浏览器中输入<a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a>浏览网页的样子了。(注意，这里<code class="highlighter-rouge">jekyll new</code>可能花费较长时间，其实不用该命令也可以，自己手动建立目录就行了)</p>
+
+<p>如果使用github pages，也很简单，在之前的第一步生成的github repo里面创建对应目录结构也一样可以浏览。一般的目录结构如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.  
++-- _site  
++-- _layouts  
+|   +--  default.html  
+|   +--  post.html  
++-- _posts  
+|   +-- 2019-11-11-new-post.md  
+|   +-- 2019-1-1-old-post.md  
++-- _data  
++-- _includes  
++-- assets  
+|   +-- css  
+|   +-- images  
+|   +-- js  
++-- _sass  
++-- _config.yml  
++-- index.html  
+</code></pre></div></div>
+<p>其中,_layouts目录放置的是网页文件的布局样式，_posts目录放置的是博客文章(注意，文件名字必须是yyyy-mm-dd-<em>article_title</em>样式的)，_includes目录放置的是导入文件，assets目录放置的是资源文件，包括css和js等。_config.yml是配置文件，index.html则是网页文件。</p>
+
+<p>在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。</p>
+
+
+
+      <footer class="site-footer">
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+</body>
+</html>
