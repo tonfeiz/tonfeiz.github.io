@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-11T10:51:01+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Arts第一周 A Leetcode941 Valid_mountain_array</title><link href="http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array.html" rel="alternate" type="text/html" title="Arts第一周 A Leetcode941 Valid_mountain_array" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS%E7%AC%AC%E4%B8%80%E5%91%A8-A-leetcode941-valid_Mountain_Array.html">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-12T21:40:17+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Arts Weekone Leetcode941</title><link href="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html" rel="alternate" type="text/html" title="Arts Weekone Leetcode941" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Recall that &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is a mountain array if and only if:&lt;/p&gt;
 &lt;ul&gt;
@@ -40,7 +40,54 @@
     
     return mountain_top != 0
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry><entry><title type="html">搭建个人博客</title><link href="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" rel="alternate" type="text/html" title="搭建个人博客" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html">&lt;p&gt;关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry><entry><title type="html">Arts Weekone Twelve Factor(一)</title><link href="http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html" rel="alternate" type="text/html" title="Arts Weekone Twelve Factor(一)" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html">&lt;p&gt;Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费&lt;/li&gt;
+  &lt;li&gt;与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性&lt;/li&gt;
+  &lt;li&gt;适合于部署在现代云平台上，避免了服务器和系统管理员的需要&lt;/li&gt;
+  &lt;li&gt;最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署&lt;/li&gt;
+  &lt;li&gt;能够在不显著改变工具、架构或者开发实践的基础上自由扩展&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上面有一些名词是我暂时还不太理解的，这里做个简单的解释。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见&lt;a href=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;declarative programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang)&lt;/li&gt;
+  &lt;li&gt;生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。&lt;/p&gt;
+
+&lt;h2 id=&quot;一基准代码codebase&quot;&gt;一、基准代码(codebase)&lt;/h2&gt;
+&lt;p&gt;这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)&lt;/p&gt;
+
+&lt;p&gt;在中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是单个的代码库。在去中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是共享一个根提交(root commit)的代码库&lt;/p&gt;
+
+&lt;p&gt;需要注意的是，在&lt;em&gt;codebase&lt;/em&gt;和app之间永远是一对一的关系，如果有多个&lt;em&gt;codebase&lt;/em&gt;，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。&lt;/p&gt;
+
+&lt;p&gt;然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。&lt;/p&gt;
+
+&lt;p&gt;不同部署的&lt;em&gt;codebase&lt;/em&gt;是相同的，但是每个活跃的部署可以是不同的版本。&lt;/p&gt;
+
+&lt;h2 id=&quot;二依赖&quot;&gt;二、依赖&lt;/h2&gt;
+&lt;p&gt;这一特性用一句话说就是，显示的声明依赖并隔离它们&lt;/p&gt;
+
+&lt;p&gt;这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。&lt;/p&gt;
+
+&lt;p&gt;一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏&lt;strong&gt;进来&lt;/strong&gt;(leak in)。对Ruby来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;。对Python来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;三配置&quot;&gt;三、配置&lt;/h2&gt;
+&lt;p&gt;将配置存在环境中&lt;/p&gt;
+
+&lt;p&gt;一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。&lt;/p&gt;
+
+&lt;p&gt;一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。&lt;/p&gt;</content><author><name></name></author><summary type="html">Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括： 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展</summary></entry><entry><title type="html">搭建个人博客</title><link href="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" rel="alternate" type="text/html" title="搭建个人博客" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html">&lt;p&gt;关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。&lt;/p&gt;
 
 &lt;p&gt;搭建博客的教程网上有很多，随便找一个基本上就能搭建完成。我也是拼拼凑凑搭出来的，现在也还只是个雏形。这里还是做个记录，毕竟别人的经验始终是别人的，自己写出来的才是自己的。&lt;/p&gt;
 
@@ -119,4 +166,7 @@ source ~/.bashrc`
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;其中,_layouts目录放置的是网页文件的布局样式，_posts目录放置的是博客文章(注意，文件名字必须是yyyy-mm-dd-&lt;em&gt;article_title&lt;/em&gt;样式的)，_includes目录放置的是导入文件，assets目录放置的是资源文件，包括css和js等。_config.yml是配置文件，index.html则是网页文件。&lt;/p&gt;
 
-&lt;p&gt;在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。&lt;/p&gt;</content><author><name></name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry></feed>
+&lt;p&gt;在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。&lt;/p&gt;
+
+&lt;h2 id=&quot;三总结&quot;&gt;三、总结&lt;/h2&gt;
+&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name></name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry></feed>
