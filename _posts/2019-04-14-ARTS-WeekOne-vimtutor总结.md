@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: posts
 ---
 虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。  
 

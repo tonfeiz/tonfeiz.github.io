@@ -1,23 +1,16 @@
-collections:
-    authors:
-     output: true
+theme: minimal-mistakes-jekyll
 
-defaults:
-    -scope:
-        path: ""
-        type: "authors"
-    values:
-        layout: "author"
-    -scope:
-        path: ""
-        type: "posts"
-    values:
-        layout: "post"
-    -scope:
-        path: ""
-    values:
-        layout: "default"
+locale: "zh-CN"
 
-theme: jekyll-theme-cayman
-title: Tonfeiz's blog
-description: Share ideas!
+
+title: "Tonfeiz's blog"
+name: "Tonfeiz"
+url: "https://tonfeiz.github.io"
+repository: "tonfeiz/tonfeiz.github.io"
+
+author:
+    name    : "tonfeiz"
+    avatar  : ""
+    bio     : ""
+    location: "China"
+

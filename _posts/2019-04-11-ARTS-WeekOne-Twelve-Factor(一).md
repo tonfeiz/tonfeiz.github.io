@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: posts
 ---
 Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括：  
 * 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费  
