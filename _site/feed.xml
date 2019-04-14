@@ -1,93 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-12T21:40:17+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Arts Weekone Leetcode941</title><link href="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html" rel="alternate" type="text/html" title="Arts Weekone Leetcode941" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-14T17:20:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s blog</title><subtitle>Share ideas!</subtitle><entry><title type="html">Arts Weekone Vimtutor总结</title><link href="http://localhost:4000/2019/04/14/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93.html" rel="alternate" type="text/html" title="Arts Weekone Vimtutor总结" /><published>2019-04-14T00:00:00+08:00</published><updated>2019-04-14T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/14/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/2019/04/14/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93.html">&lt;p&gt;虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。&lt;/p&gt;
 
-&lt;p&gt;Recall that &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is a mountain array if and only if:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A.length&lt;/code&gt; &amp;gt;= 3&lt;/li&gt;
-  &lt;li&gt;There exists some &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;0 &amp;lt; i &amp;lt; A.length - 1&lt;/code&gt; such that:
+&lt;h2 id=&quot;一&quot;&gt;一&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用h，j，k，l作为vim中光标的移动键(比上下左右要有效率的多)。&lt;/li&gt;
+  &lt;li&gt;使用:q!(&lt;code class=&quot;highlighter-rouge&quot;&gt;quit!&lt;/code&gt;)强制退出当前正在编辑的文件&lt;/li&gt;
+  &lt;li&gt;使用x删除当前光标停留处的文字&lt;/li&gt;
+  &lt;li&gt;使用i(&lt;code class=&quot;highlighter-rouge&quot;&gt;insert&lt;/code&gt;)在当前光标位置处插入内容&lt;/li&gt;
+  &lt;li&gt;使用A(&lt;code class=&quot;highlighter-rouge&quot;&gt;Append&lt;/code&gt;)在当前最后一行处添加内容&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;二&quot;&gt;二&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用dw(&lt;code class=&quot;highlighter-rouge&quot;&gt;delete word&lt;/code&gt;)来删除当前光标处的一个单词&lt;/li&gt;
+  &lt;li&gt;使用d$删除当前位置到行末的所有内容&lt;/li&gt;
+  &lt;li&gt;许多改变文本的命令都由一个&lt;code class=&quot;highlighter-rouge&quot;&gt;operator&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;组成，例如d代表删除&lt;code class=&quot;highlighter-rouge&quot;&gt;operator&lt;/code&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;可以有如下选择：
     &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i]&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;w：直到下一个单词的起始位置，不包括该起始位置&lt;/li&gt;
+      &lt;li&gt;e: 直到当前单词的结束位置，包括该结束位置&lt;/li&gt;
+      &lt;li&gt;$: 直到当前行的结尾，包括最后一个单词&lt;br /&gt;
+ 如果只按上述&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;则可以让光标按&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;移动&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
+  &lt;li&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;前面可以使用数字进行对多个&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;的操作&lt;/li&gt;
+  &lt;li&gt;使用0到一行的起始位置处&lt;/li&gt;
+  &lt;li&gt;使用dd删除一整行数据&lt;/li&gt;
+  &lt;li&gt;使用u来撤销上一个操作，U来修复一整行的操作，CTRL-R来撤销撤销操作&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。&lt;/p&gt;
+&lt;h2 id=&quot;三&quot;&gt;三&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用p(&lt;code class=&quot;highlighter-rouge&quot;&gt;put&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;)来放置vim寄存器中的文本数据(可通过dd，d，yy等操作得到)&lt;/li&gt;
+  &lt;li&gt;使用r(&lt;code class=&quot;highlighter-rouge&quot;&gt;replace&lt;/code&gt;)来替换当前光标处的文本&lt;/li&gt;
+  &lt;li&gt;使用c(&lt;code class=&quot;highlighter-rouge&quot;&gt;change&lt;/code&gt;)+&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;来改变文版，注意按c之后会进入插入模式&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;思路很直白，设置一个变量&lt;code class=&quot;highlighter-rouge&quot;&gt;mountain_top&lt;/code&gt;(需初始化为0)，遍历数组，当找到降序后将山顶位置赋值给它，然后继续遍历，若此后出现升序则直接返回false。最后，若遍历完成后该变量未被修改，说明不存在山顶(单纯升序则为0,单纯降序也为0)。最后，注意排除相等的情况。&lt;/p&gt;
+&lt;h2 id=&quot;四&quot;&gt;四&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用CTRL-G命令显示当前文件名以及总行数、当前行数&lt;/li&gt;
+  &lt;li&gt;使用G(&lt;code class=&quot;highlighter-rouge&quot;&gt;Go&lt;/code&gt;)到当前文件底端，gg到当前文件顶端,[number]G到[number]行&lt;/li&gt;
+  &lt;li&gt;使用/[text]搜索和[text]一样的文本，n是前进，N是后退&lt;/li&gt;
+  &lt;li&gt;使用%来匹配各种括号&lt;/li&gt;
+  &lt;li&gt;使用:s(&lt;code class=&quot;highlighter-rouge&quot;&gt;substitute&lt;/code&gt;)来替进行各种替换&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;代码是用go语言写的，如下所示&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func validMountainArray(A []int) bool {
-    if len(A) &amp;lt; 3 {
-        return false
-    }
-    
-    mountain_top := 0
-    for i := 0; i &amp;lt; len(A) - 1; i++ {
-        if A[i] &amp;gt; A[i + 1] {
-            mountain_top = i
-            break
-        } else if A[i] == A[i + 1] {
-            return false;
-        }
-    }
-    for i := mountain_top; i &amp;lt; len(A) - 1; i++ {
-        if A[i] &amp;lt;= A[i + 1] {
-            return false
-        } 
-    }
-    
-    
-    return mountain_top != 0
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry><entry><title type="html">Arts Weekone Twelve Factor(一)</title><link href="http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html" rel="alternate" type="text/html" title="Arts Weekone Twelve Factor(一)" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html">&lt;p&gt;Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费&lt;/li&gt;
-  &lt;li&gt;与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性&lt;/li&gt;
-  &lt;li&gt;适合于部署在现代云平台上，避免了服务器和系统管理员的需要&lt;/li&gt;
-  &lt;li&gt;最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署&lt;/li&gt;
-  &lt;li&gt;能够在不显著改变工具、架构或者开发实践的基础上自由扩展&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;五&quot;&gt;五&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用:!来执行外部的shell命令，例如:!ls就可以列举目录&lt;/li&gt;
+  &lt;li&gt;使用:w(&lt;code class=&quot;highlighter-rouge&quot;&gt;write&lt;/code&gt;) FILENAME来将当前已经写完的内容写入某个文件&lt;/li&gt;
+  &lt;li&gt;使用v(&lt;code class=&quot;highlighter-rouge&quot;&gt;visual&lt;/code&gt;)进入可视化模式，选择部分内容并利用:w来将这些内容写入某个文件&lt;/li&gt;
+  &lt;li&gt;使用:r(&lt;code class=&quot;highlighter-rouge&quot;&gt;read&lt;/code&gt;) FILENAME来将目标文件的内容读入当前正在编辑的文件中(不一定是文件内容，某个命令的输出也可以，感觉和管道或是重定向很像)&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;上面有一些名词是我暂时还不太理解的，这里做个简单的解释。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见&lt;a href=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;declarative programming&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang)&lt;/li&gt;
-  &lt;li&gt;生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;六&quot;&gt;六&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用o来在当前行下面插入一行，使用O来在当前行上面插入一行&lt;/li&gt;
+  &lt;li&gt;使用a来在当前光标的下一个位置插入文本&lt;/li&gt;
+  &lt;li&gt;使用R来批量替换文本&lt;/li&gt;
+  &lt;li&gt;使用y来复制，p来粘贴。&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。&lt;/p&gt;
-
-&lt;h2 id=&quot;一基准代码codebase&quot;&gt;一、基准代码(codebase)&lt;/h2&gt;
-&lt;p&gt;这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)&lt;/p&gt;
-
-&lt;p&gt;在中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是单个的代码库。在去中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是共享一个根提交(root commit)的代码库&lt;/p&gt;
-
-&lt;p&gt;需要注意的是，在&lt;em&gt;codebase&lt;/em&gt;和app之间永远是一对一的关系，如果有多个&lt;em&gt;codebase&lt;/em&gt;，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。&lt;/p&gt;
-
-&lt;p&gt;然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。&lt;/p&gt;
-
-&lt;p&gt;不同部署的&lt;em&gt;codebase&lt;/em&gt;是相同的，但是每个活跃的部署可以是不同的版本。&lt;/p&gt;
-
-&lt;h2 id=&quot;二依赖&quot;&gt;二、依赖&lt;/h2&gt;
-&lt;p&gt;这一特性用一句话说就是，显示的声明依赖并隔离它们&lt;/p&gt;
-
-&lt;p&gt;这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。&lt;/p&gt;
-
-&lt;p&gt;一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏&lt;strong&gt;进来&lt;/strong&gt;(leak in)。对Ruby来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;。对Python来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;三配置&quot;&gt;三、配置&lt;/h2&gt;
-&lt;p&gt;将配置存在环境中&lt;/p&gt;
-
-&lt;p&gt;一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。&lt;/p&gt;
-
-&lt;p&gt;一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。&lt;/p&gt;</content><author><name></name></author><summary type="html">Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括： 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展</summary></entry><entry><title type="html">搭建个人博客</title><link href="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" rel="alternate" type="text/html" title="搭建个人博客" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/2019/04/10/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html">&lt;p&gt;关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
+&lt;p&gt;对我来说，这个教程比较有用的是2.3,4.4和5.5。以后还要多多练习，对这些基本操作更加熟练&lt;/p&gt;</content><author><name></name></author><summary type="html">虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。</summary></entry><entry><title type="html">搭建个人博客</title><link href="http://localhost:4000/2019/04/12/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html" rel="alternate" type="text/html" title="搭建个人博客" /><published>2019-04-12T00:00:00+08:00</published><updated>2019-04-12T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/12/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/2019/04/12/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html">&lt;p&gt;关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。&lt;/p&gt;
 
 &lt;p&gt;搭建博客的教程网上有很多，随便找一个基本上就能搭建完成。我也是拼拼凑凑搭出来的，现在也还只是个雏形。这里还是做个记录，毕竟别人的经验始终是别人的，自己写出来的才是自己的。&lt;/p&gt;
 
@@ -169,4 +142,93 @@ source ~/.bashrc`
 &lt;p&gt;在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。&lt;/p&gt;
 
 &lt;h2 id=&quot;三总结&quot;&gt;三、总结&lt;/h2&gt;
-&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name></name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry></feed>
+&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name></name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry><entry><title type="html">Arts Weekone Twelve Factor(一)</title><link href="http://localhost:4000/2019/04/11/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html" rel="alternate" type="text/html" title="Arts Weekone Twelve Factor(一)" /><published>2019-04-11T00:00:00+08:00</published><updated>2019-04-11T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/11/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/2019/04/11/ARTS-WeekOne-Twelve-Factor(%E4%B8%80).html">&lt;p&gt;Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费&lt;/li&gt;
+  &lt;li&gt;与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性&lt;/li&gt;
+  &lt;li&gt;适合于部署在现代云平台上，避免了服务器和系统管理员的需要&lt;/li&gt;
+  &lt;li&gt;最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署&lt;/li&gt;
+  &lt;li&gt;能够在不显著改变工具、架构或者开发实践的基础上自由扩展&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上面有一些名词是我暂时还不太理解的，这里做个简单的解释。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见&lt;a href=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;declarative programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang)&lt;/li&gt;
+  &lt;li&gt;生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。&lt;/p&gt;
+
+&lt;h2 id=&quot;一基准代码codebase&quot;&gt;一、基准代码(codebase)&lt;/h2&gt;
+&lt;p&gt;这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)&lt;/p&gt;
+
+&lt;p&gt;在中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是单个的代码库。在去中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是共享一个根提交(root commit)的代码库&lt;/p&gt;
+
+&lt;p&gt;需要注意的是，在&lt;em&gt;codebase&lt;/em&gt;和app之间永远是一对一的关系，如果有多个&lt;em&gt;codebase&lt;/em&gt;，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。&lt;/p&gt;
+
+&lt;p&gt;然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。&lt;/p&gt;
+
+&lt;p&gt;不同部署的&lt;em&gt;codebase&lt;/em&gt;是相同的，但是每个活跃的部署可以是不同的版本。&lt;/p&gt;
+
+&lt;h2 id=&quot;二依赖&quot;&gt;二、依赖&lt;/h2&gt;
+&lt;p&gt;这一特性用一句话说就是，显示的声明依赖并隔离它们&lt;/p&gt;
+
+&lt;p&gt;这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。&lt;/p&gt;
+
+&lt;p&gt;一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏&lt;strong&gt;进来&lt;/strong&gt;(leak in)。对Ruby来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;。对Python来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;三配置&quot;&gt;三、配置&lt;/h2&gt;
+&lt;p&gt;将配置存在环境中&lt;/p&gt;
+
+&lt;p&gt;一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。&lt;/p&gt;
+
+&lt;p&gt;一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。&lt;/p&gt;</content><author><name></name></author><summary type="html">Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。这些应用程序具备的特点包括： 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展</summary></entry><entry><title type="html">Arts Weekone Leetcode941</title><link href="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html" rel="alternate" type="text/html" title="Arts Weekone Leetcode941" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941</id><content type="html" xml:base="http://localhost:4000/2019/04/10/ARTS-WeekOne-Leetcode941.html">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recall that &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is a mountain array if and only if:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A.length&lt;/code&gt; &amp;gt;= 3&lt;/li&gt;
+  &lt;li&gt;There exists some &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;0 &amp;lt; i &amp;lt; A.length - 1&lt;/code&gt; such that:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i]&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。&lt;/p&gt;
+
+&lt;p&gt;思路很直白，设置一个变量&lt;code class=&quot;highlighter-rouge&quot;&gt;mountain_top&lt;/code&gt;(需初始化为0)，遍历数组，当找到降序后将山顶位置赋值给它，然后继续遍历，若此后出现升序则直接返回false。最后，若遍历完成后该变量未被修改，说明不存在山顶(单纯升序则为0,单纯降序也为0)。最后，注意排除相等的情况。&lt;/p&gt;
+
+&lt;p&gt;代码是用go语言写的，如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func validMountainArray(A []int) bool {
+    if len(A) &amp;lt; 3 {
+        return false
+    }
+    
+    mountain_top := 0
+    for i := 0; i &amp;lt; len(A) - 1; i++ {
+        if A[i] &amp;gt; A[i + 1] {
+            mountain_top = i
+            break
+        } else if A[i] == A[i + 1] {
+            return false;
+        }
+    }
+    for i := mountain_top; i &amp;lt; len(A) - 1; i++ {
+        if A[i] &amp;lt;= A[i + 1] {
+            return false
+        } 
+    }
+    
+    
+    return mountain_top != 0
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry></feed>
