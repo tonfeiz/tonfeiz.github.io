@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekone Vimtutor总结 - Tonfeiz’s Blog</title>
-<meta name="description" content="虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。">
+<!-- begin _includes/seo.html --><title>Arts Weektwo Twelve Factor(二) - Tonfeiz’s Blog</title>
+<meta name="description" content="Twelve Factor Part TwoBacking servicesBuild, release and runprocesses">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekone Vimtutor总结">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/">
+<meta property="og:title" content="Arts Weektwo Twelve Factor(二)">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">
 
 
-  <meta property="og:description" content="虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-14T00:00:00+08:00">
+  <meta property="og:description" content="Twelve Factor Part TwoBacking servicesBuild, release and runprocesses">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-04-15T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">
 
 
 
@@ -233,71 +233,46 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekone Vimtutor总结</h1>
+      <h1 id="page-title" class="page__title">Arts Weektwo Twelve Factor(二)</h1>
     
-    <p>虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。</p>
+    <p>Twelve Factor Part Two<br />
+Backing services<br />
+Build, release and run<br />
+processes<br />
+&lt;!–more&gt;</p>
 
-<h2 id="一">一</h2>
-<ol>
-  <li>使用h，j，k，l作为vim中光标的移动键(比上下左右要有效率的多)。</li>
-  <li>使用:q!(<code class="highlighter-rouge">quit!</code>)强制退出当前正在编辑的文件</li>
-  <li>使用x删除当前光标停留处的文字</li>
-  <li>使用i(<code class="highlighter-rouge">insert</code>)在当前光标位置处插入内容</li>
-  <li>使用A(<code class="highlighter-rouge">Append</code>)在当前最后一行处添加内容</li>
-</ol>
+<h2 id="四支持服务backing-services">四、支持服务(Backing services)</h2>
+<p><em>backing services</em>应当被视为附加资源</p>
 
-<h2 id="二">二</h2>
-<ol>
-  <li>使用dw(<code class="highlighter-rouge">delete word</code>)来删除当前光标处的一个单词</li>
-  <li>使用d$删除当前位置到行末的所有内容</li>
-  <li>许多改变文本的命令都由一个<code class="highlighter-rouge">operator</code>和<code class="highlighter-rouge">motion</code>组成，例如d代表删除<code class="highlighter-rouge">operator</code>，而<code class="highlighter-rouge">motion</code>可以有如下选择：
-    <ul>
-      <li>w：直到下一个单词的起始位置，不包括该起始位置</li>
-      <li>e: 直到当前单词的结束位置，包括该结束位置</li>
-      <li>$: 直到当前行的结尾，包括最后一个单词<br />
- 如果只按上述<code class="highlighter-rouge">motion</code>则可以让光标按<code class="highlighter-rouge">motion</code>移动</li>
-    </ul>
-  </li>
-  <li>在<code class="highlighter-rouge">motion</code>前面可以使用数字进行对多个<code class="highlighter-rouge">motion</code>的操作</li>
-  <li>使用0到一行的起始位置处</li>
-  <li>使用dd删除一整行数据</li>
-  <li>使用u来撤销上一个操作，U来修复一整行的操作，CTRL-R来撤销撤销操作</li>
-</ol>
+<p><em>backing services</em>是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。</p>
 
-<h2 id="三">三</h2>
-<ol>
-  <li>使用p(<code class="highlighter-rouge">put</code>或<code class="highlighter-rouge">paste</code>)来放置vim寄存器中的文本数据(可通过dd，d，yy等操作得到)</li>
-  <li>使用r(<code class="highlighter-rouge">replace</code>)来替换当前光标处的文本</li>
-  <li>使用c(<code class="highlighter-rouge">change</code>)+<code class="highlighter-rouge">motion</code>来改变文版，注意按c之后会进入插入模式</li>
-</ol>
+<p><em>backing services</em>包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。</p>
 
-<h2 id="四">四</h2>
-<ol>
-  <li>使用CTRL-G命令显示当前文件名以及总行数、当前行数</li>
-  <li>使用G(<code class="highlighter-rouge">Go</code>)到当前文件底端，gg到当前文件顶端,[number]G到[number]行</li>
-  <li>使用/[text]搜索和[text]一样的文本，n是前进，N是后退</li>
-  <li>使用%来匹配各种括号</li>
-  <li>使用:s(<code class="highlighter-rouge">substitute</code>)来替进行各种替换</li>
-</ol>
+<p>对于app来说，一个<em>backing services</em>应当和另一个同样功能的<em>backing services</em>完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处</p>
 
-<h2 id="五">五</h2>
-<ol>
-  <li>使用:!来执行外部的shell命令，例如:!ls就可以列举目录</li>
-  <li>使用:w(<code class="highlighter-rouge">write</code>) FILENAME来将当前已经写完的内容写入某个文件</li>
-  <li>使用v(<code class="highlighter-rouge">visual</code>)进入可视化模式，选择部分内容并利用:w来将这些内容写入某个文件</li>
-  <li>使用:r(<code class="highlighter-rouge">read</code>) FILENAME来将目标文件的内容读入当前正在编辑的文件中(不一定是文件内容，某个命令的输出也可以，感觉和管道或是重定向很像)</li>
-</ol>
+<h2 id="五构建发行和运行">五、构建、发行和运行</h2>
+<p>严格的区分构建和运行阶段</p>
 
-<h2 id="六">六</h2>
-<ol>
-  <li>使用o来在当前行下面插入一行，使用O来在当前行上面插入一行</li>
-  <li>使用a来在当前光标的下一个位置插入文本</li>
-  <li>使用R来批量替换文本</li>
-  <li>使用y来复制，p来粘贴。</li>
-</ol>
+<p>一个<em>codebase</em>通过下面三个阶段被转换为一个部署：</p>
+<ul>
+  <li>构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源</li>
+  <li>发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行</li>
+  <li>运行阶段在执行环境中运行，启动app的一些进程</li>
+</ul>
 
-<h2 id="总结">总结</h2>
-<p>对我来说，这个教程比较有用的是2.3,4.4和5.5。以后还要多多练习，对这些基本操作更加熟练</p>
+<p>twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本</p>
+
+<p>运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。</p>
+
+<h2 id="六进程">六、进程</h2>
+<p>将app作为一个或多个无状态进程执行</p>
+
+<p>进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的<em>backing service</em>中，通常是一个数据库</p>
+
+<p>进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。  、</p>
+
+<p>sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。</p>
+
 
 
 <ul class="taxonomy__index">

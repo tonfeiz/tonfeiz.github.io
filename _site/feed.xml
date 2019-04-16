@@ -1,4 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-14T21:13:29+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekone Vimtutor总结</title><link href="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="Arts Weekone Vimtutor总结" /><published>2019-04-14T00:00:00+08:00</published><updated>2019-04-14T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/">&lt;p&gt;虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-16T20:15:55+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Vim进阶</title><link href="http://localhost:4000/ARTS-vim%E8%BF%9B%E9%98%B6/" rel="alternate" type="text/html" title="Arts Vim进阶" /><published>2019-04-16T00:00:00+08:00</published><updated>2019-04-16T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-vim%E8%BF%9B%E9%98%B6</id><content type="html" xml:base="http://localhost:4000/ARTS-vim%E8%BF%9B%E9%98%B6/">&lt;p&gt;上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;^ -&amp;gt; 到本行第一个不是blank字符的位置&lt;/li&gt;
+  &lt;li&gt;g_ -&amp;gt; 到本行最后一个不是blank字符的位置&lt;/li&gt;
+  &lt;li&gt;:e &amp;lt;path/to/file&amp;gt; -&amp;gt; 打开一个文件&lt;/li&gt;
+  &lt;li&gt;:saveas &amp;lt;path/to/file&amp;gt; -&amp;gt; 另存为&amp;lt;path/to/file&amp;gt;&lt;/li&gt;
+  &lt;li&gt;:bn和:bp -&amp;gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; -&amp;gt; 可以重复上一次的命令&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;N&amp;lt;command&amp;gt;&lt;/code&gt; -&amp;gt; 重复某个命令N次&lt;/li&gt;
+  &lt;li&gt;*和# -&amp;gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词&lt;/li&gt;
+  &lt;li&gt;很多命令可以以下面的形式来干&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;start position&amp;gt;&amp;lt;command&amp;gt;&amp;lt;end position&amp;gt;&lt;/code&gt;&lt;br /&gt;
+例如&lt;code class=&quot;highlighter-rouge&quot;&gt;0y$&lt;/code&gt;意味着：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; -&amp;gt; 到行头&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; -&amp;gt; 拷贝&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; -&amp;gt; 到本行最后一个字符&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gU&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;gu&lt;/code&gt;后跟位置(例如w，e，$等)变换大小写&lt;/li&gt;
+  &lt;li&gt;在当前行上，&lt;code class=&quot;highlighter-rouge&quot;&gt;fa&lt;/code&gt;可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字&lt;/li&gt;
+  &lt;li&gt;区域选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;action&amp;gt;a&amp;lt;object&amp;gt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;action&amp;gt;i&amp;lt;object&amp;gt;&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;action&lt;/code&gt;可以是任何命令，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;v&lt;/code&gt;等&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt;可以是&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;(单词),&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;(句子),&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt;(段落)，或者是特别字符:&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;'&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;)&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;]&lt;/code&gt;&lt;br /&gt;
+举例来说，字符串&lt;code class=&quot;highlighter-rouge&quot;&gt;(haha (-) (&quot;tfz&quot;))&lt;/code&gt;.光标在f位置
+        &lt;blockquote&gt;
+          &lt;ul&gt;
+            &lt;li&gt;vi” -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;tfz&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;va” -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;tfz&quot;&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;vi) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;tfz&quot;&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;va) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;(&quot;tfz&quot;)&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;v2i) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;haha (-) (&quot;tfz&quot;)&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;v2a) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;(haha (-) (&quot;tfz&quot;))&lt;/code&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;块操作 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt; &amp;lt;move&amp;gt; &amp;lt;motion&amp;gt; [ESC]&lt;/code&gt;&lt;br /&gt;
+一般都用于插入，举例来说，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt; 向下移动 I-- [ESC]&lt;/code&gt;为在同一位置前方插入&lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt;字符&lt;/li&gt;
+  &lt;li&gt;Insert模式下按&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-p&amp;gt;&lt;/code&gt;或是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-n&amp;gt;&lt;/code&gt;可以自动补全&lt;/li&gt;
+  &lt;li&gt;宏录制
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;qa&lt;/code&gt;把操作记录在寄存器&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@a&lt;/code&gt;会replay被录制的宏&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@@&lt;/code&gt;会replay最新录制的宏&lt;br /&gt;
+例如：在一行只有”1”的文本中，键入下面的命令:&lt;/li&gt;
+      &lt;li&gt;qayyp&lt;C-a&gt;q -&amp;gt;&lt;/C-a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul&gt;
+      &lt;li&gt;qa开始录制&lt;/li&gt;
+      &lt;li&gt;yyp复制并粘贴当前行&lt;/li&gt;
+      &lt;li&gt;
+        &lt;C-a&gt;增加1  
+&lt;/C-a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;q停止录制&lt;br /&gt;
+      * @a -&amp;gt; 在1下面写下2&lt;br /&gt;
+      * @@ -&amp;gt; 在2下面写下3&lt;br /&gt;
+      * 100@@ -&amp;gt; 创建新的100行，并把数据增加到103&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;块操作，当目标块被选中后，可以有如下操作：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;J&lt;/code&gt; -&amp;gt; 把所有的行连接起来变成一行&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt; -&amp;gt; 左右缩进&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; -&amp;gt; 自动缩进&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;:split&lt;/code&gt;水平分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;vsplit&lt;/code&gt;垂直分屏, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-w&amp;gt;&amp;lt;direction(可以是hjkl)&amp;gt;&lt;/code&gt;切换分屏&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;资料来源&quot;&gt;资料来源&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://coolshell.cn/articles/5426.html&quot;&gt;简明vim练级攻略&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Tonfeiz</name></author><summary type="html">上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。</summary></entry><entry><title type="html">Arts Weektwo Leetcode704 Binarysearch</title><link href="http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch/" rel="alternate" type="text/html" title="Arts Weektwo Leetcode704 Binarysearch" /><published>2019-04-15T00:00:00+08:00</published><updated>2019-04-15T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch/">&lt;p&gt;Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.&lt;/p&gt;
+
+&lt;p&gt;You may assume that all elements in nums are unique.
+n will be in the range [1, 10000].
+The value of each element in nums will be in the range [-9999, 9999].&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题其实就是一个简单的二分搜索，数组中的元素都是唯一的，且数值也不大，难怪会被分到简单题里&lt;/p&gt;
+
+&lt;p&gt;二分搜索很有名，要实现一个完全正确的二分搜索是很困难的，但这题的要求并不高。基本思想就是每次寻找中间元素并根据中间元素与目标元素的大小判断下一个搜索范围应该在哪一侧&lt;/p&gt;
+
+&lt;p&gt;二分搜索时，左侧和右侧的范围应当界定明确。在下面的代码中，采用的范围是C++中的通用范围，即[left, right)。因此，循环的推出条件就是两者相等。当缩小范围时，要根据上面的关系选择是中间元素还是中间元素的两侧元素&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func search(nums []int, target int) int {
+    left := 0
+    right := len(nums)
+    
+    res := -1;
+    for left &amp;lt; right {
+        middle := left + (right - left) / 2;
+        if(nums[middle] &amp;gt; target) {
+            right = middle;
+        } else if(nums[middle] &amp;lt; target) {
+            left = middle + 1;
+        } else {
+            return middle;
+        }
+    }
+    
+    return res;   
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.</summary></entry><entry><title type="html">Arts Weektwo Twelve Factor(二)</title><link href="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weektwo Twelve Factor(二)" /><published>2019-04-15T00:00:00+08:00</published><updated>2019-04-15T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">&lt;p&gt;Twelve Factor Part Two&lt;br /&gt;
+Backing services&lt;br /&gt;
+Build, release and run&lt;br /&gt;
+processes&lt;br /&gt;
+&amp;lt;!–more&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;四支持服务backing-services&quot;&gt;四、支持服务(Backing services)&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;应当被视为附加资源&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。&lt;/p&gt;
+
+&lt;p&gt;对于app来说，一个&lt;em&gt;backing services&lt;/em&gt;应当和另一个同样功能的&lt;em&gt;backing services&lt;/em&gt;完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处&lt;/p&gt;
+
+&lt;h2 id=&quot;五构建发行和运行&quot;&gt;五、构建、发行和运行&lt;/h2&gt;
+&lt;p&gt;严格的区分构建和运行阶段&lt;/p&gt;
+
+&lt;p&gt;一个&lt;em&gt;codebase&lt;/em&gt;通过下面三个阶段被转换为一个部署：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源&lt;/li&gt;
+  &lt;li&gt;发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行&lt;/li&gt;
+  &lt;li&gt;运行阶段在执行环境中运行，启动app的一些进程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本&lt;/p&gt;
+
+&lt;p&gt;运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。&lt;/p&gt;
+
+&lt;h2 id=&quot;六进程&quot;&gt;六、进程&lt;/h2&gt;
+&lt;p&gt;将app作为一个或多个无状态进程执行&lt;/p&gt;
+
+&lt;p&gt;进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的&lt;em&gt;backing service&lt;/em&gt;中，通常是一个数据库&lt;/p&gt;
+
+&lt;p&gt;进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。  、&lt;/p&gt;
+
+&lt;p&gt;sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Twelve Factor Part Two Backing services Build, release and run processes</summary></entry><entry><title type="html">Arts Weekone Vimtutor总结</title><link href="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="Arts Weekone Vimtutor总结" /><published>2019-04-14T00:00:00+08:00</published><updated>2019-04-14T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/">&lt;p&gt;虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。&lt;/p&gt;
 
 &lt;h2 id=&quot;一&quot;&gt;一&lt;/h2&gt;
 &lt;ol&gt;
