@@ -9,13 +9,13 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>搭建个人博客 - Tonfeiz’s Blog</title>
+<!-- begin _includes/seo.html --><title>搭建个人博客 | Tonfeiz’s Blog</title>
 <meta name="description" content="关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。">
 
 
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
 <meta property="og:title" content="搭建个人博客">
 <meta property="og:url" content="http://localhost:4000/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
@@ -67,7 +67,7 @@
 <!-- end _includes/seo.html -->
 
 
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Tonfeiz's Blog Feed">
+<!--<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Tonfeiz's Blog Feed"> -->
 
 <!-- https://t.co/dKP3o1e -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,7 +118,16 @@
       <nav id="site-nav" class="greedy-nav">
         
         <a class="site-title" href="/">Tonfeiz's Blog</a>
-        <ul class="visible-links"></ul>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/index.html" >Home</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
         
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">切换菜单</span>
@@ -145,6 +154,14 @@
 <div itemscope itemtype="https://schema.org/Person">
 
   
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/bio_photo.jpeg" alt="Tonfeiz" itemprop="image">
+      
+    </div>
+  
 
   <div class="author__content">
     
@@ -152,13 +169,13 @@
     
     
       <p class="author__bio" itemprop="description">
-        
+        0 errors, 0 warnings
       </p>
     
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">关注</button>
+    <button class="btn btn--inverse">Follow</button>
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
@@ -320,7 +337,7 @@ source ~/.bashrc`
 <p>博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。</p>
 
 
-<ul class="taxonomy__index">
+<!--<ul class="taxonomy__index">
   
   
     <li>
@@ -329,9 +346,9 @@ source ~/.bashrc`
       </a>
     </li>
   
-</ul>
+</ul> -->
 
-
+<!--
 
   <section id="2019" class="taxonomy__section">
     <h2 class="archive__subtitle">2019</h2>
@@ -544,12 +561,19 @@ processes
     </div>
     <a href="#page-title" class="back-to-top">返回顶部 &uarr;</a>
   </section>
-
+  -->
 
   </div>
 </div>
+
     </div>
 
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="输入您要搜索的关键词..." class="search-input" tabindex="-1" placeholder="输入您要搜索的关键词..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
     
 
     <div class="page__footer">
@@ -560,12 +584,12 @@ processes
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>关注:</strong></li>
+      <li><strong></strong></li>
     
 
     
 
-    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <!--<li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
   </ul>
 </div>
 
@@ -580,6 +604,10 @@ processes
 
 
 
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
 
 
 
