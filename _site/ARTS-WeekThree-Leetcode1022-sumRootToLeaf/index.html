@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weektwo Twelve Factor(二) | Tonfeiz’s Blog</title>
-<meta name="description" content="Twelve Factor Part TwoBacking servicesBuild, release and runprocesses">
+<!-- begin _includes/seo.html --><title>Arts Weekthree Leetcode1022 Sumroottoleaf | Tonfeiz&#8217;s Blog</title>
+<meta name="description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weektwo Twelve Factor(二)">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">
+<meta property="og:title" content="Arts Weekthree Leetcode1022 Sumroottoleaf">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
 
 
-  <meta property="og:description" content="Twelve Factor Part TwoBacking servicesBuild, release and runprocesses">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-15T00:00:00+08:00">
+  <meta property="og:description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-04-23T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
 
 
 
@@ -250,45 +250,61 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weektwo Twelve Factor(二)</h1>
+      <h1 id="page-title" class="page__title">Arts Weekthree Leetcode1022 Sumroottoleaf</h1>
     
-    <p>Twelve Factor Part Two<br />
-Backing services<br />
-Build, release and run<br />
-processes</p>
+    <p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
 
-<h2 id="四支持服务backing-services">四、支持服务(Backing services)</h2>
-<p><em>backing services</em>应当被视为附加资源</p>
+<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
 
-<p><em>backing services</em>是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。</p>
+<p>Return the sum of these numbers.</p>
 
-<p><em>backing services</em>包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。</p>
+<p><strong>Note:</strong><br />
+    1. The number of nodes in the tree is between 1 and 1000.<br />
+    2. node.val is 0 or 1.<br />
+    3. The answer will not exceed 2^31 - 1.</p>
 
-<p>对于app来说，一个<em>backing services</em>应当和另一个同样功能的<em>backing services</em>完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处</p>
+<hr />
+<p>这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。</p>
 
-<h2 id="五构建发行和运行">五、构建、发行和运行</h2>
-<p>严格的区分构建和运行阶段</p>
+<p>二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。</p>
 
-<p>一个<em>codebase</em>通过下面三个阶段被转换为一个部署：</p>
-<ul>
-  <li>构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源</li>
-  <li>发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行</li>
-  <li>运行阶段在执行环境中运行，启动app的一些进程</li>
-</ul>
+<p>递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点<code class="highlighter-rouge">node</code>和一个数<code class="highlighter-rouge">num</code>(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：</p>
+<ol>
+  <li>假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入<code class="highlighter-rouge">num</code>中。接着，如果该节点是叶子节点，那么返回<code class="highlighter-rouge">num</code>即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和</li>
+  <li>若函数输入的节点是空节点，则无法形成数，返回0即可</li>
+</ol>
 
-<p>twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本</p>
+<p>代码如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func sumRootToLeaf(root *TreeNode) int {   
+    number := 0
+    
+    res := sumRootToLeafHelper(root, number)
+    return res
+}
 
-<p>运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。</p>
-
-<h2 id="六进程">六、进程</h2>
-<p>将app作为一个或多个无状态进程执行</p>
-
-<p>进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的<em>backing service</em>中，通常是一个数据库</p>
-
-<p>进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。  、</p>
-
-<p>sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。</p>
-
+func sumRootToLeafHelper(root *TreeNode, number int) int {
+    if root == nil {
+        return 0
+    }
+    
+    number = number * 2 + root.Val
+    
+    if root.Left == nil &amp;&amp; root.Right == nil {
+        return number
+    }
+    
+    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
+    
+}
+</code></pre></div></div>
 
 
 <!--<ul class="taxonomy__index">

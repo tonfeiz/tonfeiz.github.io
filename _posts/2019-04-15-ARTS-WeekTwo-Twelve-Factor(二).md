@@ -1,12 +1,10 @@
 ---
 layout: posts
-excerpt_separator: <!--more>
 ---
 Twelve Factor Part Two  
 Backing services  
 Build, release and run  
 processes  
-<!--more>
 
 ## 四、支持服务(Backing services)  
 *backing services*应当被视为附加资源  

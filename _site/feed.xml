@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-19T21:29:50+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">关于996工作制的一些思考</title><link href="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" rel="alternate" type="text/html" title="关于996工作制的一些思考" /><published>2019-04-19T00:00:00+08:00</published><updated>2019-04-19T00:00:00+08:00</updated><id>http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83</id><content type="html" xml:base="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">&lt;p&gt;本来“Share”应该是分享技术观点的文章，但最近的996工作制闹的沸沸扬扬的，我也想对这个东西讲一点自己的思考。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-23T21:16:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekthree Leetcode1022 Sumroottoleaf</title><link href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/" rel="alternate" type="text/html" title="Arts Weekthree Leetcode1022 Sumroottoleaf" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">&lt;p&gt;Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.&lt;/p&gt;
+
+&lt;p&gt;For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.&lt;/p&gt;
+
+&lt;p&gt;Return the sum of these numbers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br /&gt;
+    1. The number of nodes in the tree is between 1 and 1000.&lt;br /&gt;
+    2. node.val is 0 or 1.&lt;br /&gt;
+    3. The answer will not exceed 2^31 - 1.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。&lt;/p&gt;
+
+&lt;p&gt;二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。&lt;/p&gt;
+
+&lt;p&gt;递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点&lt;code class=&quot;highlighter-rouge&quot;&gt;node&lt;/code&gt;和一个数&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;中。接着，如果该节点是叶子节点，那么返回&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和&lt;/li&gt;
+  &lt;li&gt;若函数输入的节点是空节点，则无法形成数，返回0即可&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func sumRootToLeaf(root *TreeNode) int {   
+    number := 0
+    
+    res := sumRootToLeafHelper(root, number)
+    return res
+}
+
+func sumRootToLeafHelper(root *TreeNode, number int) int {
+    if root == nil {
+        return 0
+    }
+    
+    number = number * 2 + root.Val
+    
+    if root.Left == nil &amp;amp;&amp;amp; root.Right == nil {
+        return number
+    }
+    
+    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
+    
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a binary tree, each node has value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit. For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.</summary></entry><entry><title type="html">Arts Weekthree Twelve Factor(三)</title><link href="http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)/" rel="alternate" type="text/html" title="Arts Weekthree Twelve Factor(三)" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)/">&lt;p&gt;Twelve Factor Part Three&lt;br /&gt;
+Port binding&lt;br /&gt;
+Concurrency&lt;br /&gt;
+Disposability&lt;/p&gt;
+
+&lt;h2 id=&quot;七端口号绑定&quot;&gt;七、端口号绑定&lt;/h2&gt;
+&lt;p&gt;通过绑定端口号导出服务&lt;/p&gt;
+
+&lt;p&gt;应用程序应当是自包含(self-contained)的，并且它不应当依赖运行时服务器的注入。web app通过将HTTP绑定到一个端口号上来将其导出作为服务。&lt;/p&gt;
+
+&lt;p&gt;在本地的开发环境，开发者通过像&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:5000/&lt;/code&gt;这样的URL访问自己开发的服务。在部署环境中，则通过公共域名和端口访问。&lt;/p&gt;
+
+&lt;p&gt;通常这通过使用依赖声明将一个web服务器库添加到app中完成，例如Python的Tornado，Java的Jetty。&lt;/p&gt;
+
+&lt;p&gt;注意绑定端口的服务意味着它也可以成为其他app的&lt;code class=&quot;highlighter-rouge&quot;&gt;backing service&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;八并发&quot;&gt;八、并发&lt;/h2&gt;
+&lt;p&gt;通过进程模型达成横向扩展&lt;/p&gt;
+
+&lt;p&gt;任何计算机程序都表示为一个或多个计算机程序。Web应用使用了许多不同类型的进程执行形式，例如PHP进程作为Apache的子进程存在，Java由JVM提供一个维护大块系统资源的进程，而并发就由线程内在的管理。不管哪种形式，运行着的进程对于app的开发者来说都只具有最小的可见性。&lt;/p&gt;
+
+&lt;p&gt;在twelve-factor app中，进程是一等公民。twelve-factor中的进程从运行守护服务的UNIX进程模型获得强烈的启发。在这种模型下，开发者可通过将每种类型的工作分发一个进程类型来架构自己的app以使它们能处理形色各异的工作负载。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app无共享、水平可分的特性意味着增强并发是一个简单可信任的操作。进程类型和每种类型的进程数量组成的矩阵则是进程信息。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app不能被配置为守护进程也不能写PID文件，而应当依赖操作系统的进程管理器来管理输出流，对崩溃进程作出反应或是处理用户的重启和关闭&lt;/p&gt;
+
+&lt;h2 id=&quot;九可弃性disposability&quot;&gt;九、可弃性(Disposability)&lt;/h2&gt;
+&lt;p&gt;通过快速启动和优雅的关闭来最大化鲁棒性&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;disposability&lt;/code&gt;意味着app可以被一瞬间开启或关闭。这对于伸缩性、代码或配置改变时的快速部署以及生产环境部署的鲁棒性都很重要。&lt;/p&gt;
+
+&lt;p&gt;进程应当尽量最小化启动时间，最好只需几秒钟。短暂的启动时间意味着更灵活，更鲁棒(进程管理器可以更快的把进程移动到新的物理机上)&lt;/p&gt;
+
+&lt;p&gt;当进程从进程管理器处收到&lt;code class=&quot;highlighter-rouge&quot;&gt;SIGTERM&lt;/code&gt;信号时应当优雅的关闭。对于web进程来说，这意味着停止监听端口，让当前的请求结束然后退出。&lt;/p&gt;
+
+&lt;p&gt;对于工作进程来说，这意味着把当前的工作返回到工作队列中。&lt;/p&gt;
+
+&lt;p&gt;进程应当对由底层硬件导致的突然死亡也鲁棒。一个建议的方法是使用鲁棒的后端队列，例如Beanstalked&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Twelve Factor Part Three Port binding Concurrency Disposability</summary></entry><entry><title type="html">关于996工作制的一些思考</title><link href="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" rel="alternate" type="text/html" title="关于996工作制的一些思考" /><published>2019-04-19T00:00:00+08:00</published><updated>2019-04-19T00:00:00+08:00</updated><id>http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83</id><content type="html" xml:base="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">&lt;p&gt;本来“Share”应该是分享技术观点的文章，但最近的996工作制闹的沸沸扬扬的，我也想对这个东西讲一点自己的思考。&lt;/p&gt;
 
 &lt;p&gt;其实，作为一个学生，谈论996工作制似乎为时过早。另一方面，目前很快就毕业了，稍微等几个月说不定在实际工作中就能体会到，到时候再来发表观点也不晚。但转念一想，如果未来能打自己的脸，似乎也挺不错的，这样想到这件事就能提醒自己——没经历过的事情想的再合理也不一定符合实际。&lt;/p&gt;
 
@@ -134,8 +224,7 @@ The value of each element in nums will be in the range [-9999, 9999].&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.</summary></entry><entry><title type="html">Arts Weektwo Twelve Factor(二)</title><link href="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weektwo Twelve Factor(二)" /><published>2019-04-15T00:00:00+08:00</published><updated>2019-04-15T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">&lt;p&gt;Twelve Factor Part Two&lt;br /&gt;
 Backing services&lt;br /&gt;
 Build, release and run&lt;br /&gt;
-processes&lt;br /&gt;
-&amp;lt;!–more&amp;gt;&lt;/p&gt;
+processes&lt;/p&gt;
 
 &lt;h2 id=&quot;四支持服务backing-services&quot;&gt;四、支持服务(Backing services)&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;应当被视为附加资源&lt;/p&gt;
