@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-23T21:16:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekthree Leetcode1022 Sumroottoleaf</title><link href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/" rel="alternate" type="text/html" title="Arts Weekthree Leetcode1022 Sumroottoleaf" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">&lt;p&gt;Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-26T16:57:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">技术学习之路</title><link href="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" rel="alternate" type="text/html" title="技术学习之路" /><published>2019-04-26T00:00:00+08:00</published><updated>2019-04-26T00:00:00+08:00</updated><id>http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF</id><content type="html" xml:base="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">&lt;p&gt;这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。&lt;/p&gt;
+
+&lt;p&gt;说起来，Share好像变成了一个分享自己观点的东西。本意上Share应该是分享技术相关内容的。这样可能有点违规，但我觉得，分享自己的观点也不差，甚至非技术的内容也可以，因为这样促使人真正的去整理观点，审视自己，而人生除了技术之外还有很多东西能从这么做获益。&lt;/p&gt;
+
+&lt;p&gt;说回正题，计算机技术学习之路是一个很广泛的概念。目前计算机衍生出了这么多分支，肯定不可能每条都一样，因此这篇文章讲的是很宽泛的内容。此外，我是纯自学学的计算机，我想目前社会上像我这样的人不在少数，我的观点可能多多少少有点启发意义。&lt;/p&gt;
+
+&lt;h2 id=&quot;深度和广度&quot;&gt;深度和广度&lt;/h2&gt;
+&lt;p&gt;深度和广度是计算机技术中常常被人们谈及的领域，究竟是深度更重要还是广度更重要也常常被讨论。实际上，深度往往伴随着广度，深度到了一定地步，伴随着而来的就是涉及到的知识面更广。而广度——广度并不一定有深度，你可以从计算机工程到计算机理论各个领域全部涉及一遍。&lt;/p&gt;
+
+&lt;p&gt;然而，对于初学者而言，我认为还是广度更重要。求深度是一件好事，尤其现在社会分工日益精细了。但我认为，先求广度可以让初学者对计算机技术涉及的各个领域有一个基本的概念。在这之后寻求深度，往往花费时间更少。举例来说，我个人最喜欢的读书方式就是先快速读一遍，再精读一遍，最后再快速读一遍。第一遍是对书的主题、叙述方式有一个大概的了解，并且判断是否有必要再读第二遍。第二遍则是把第一遍留下的问题或者感兴趣的地方重点去看。第三编则类似于快速复习，查漏补缺。我喜欢的技术学习路线也和读书很像，先广后深再广，最后的广度就是复习自己学到的东西并看是否还有不会的。&lt;/p&gt;
+
+&lt;p&gt;另外，广度还有一个好处是能把知识点连起来。很多时候涉及的多了就会发现不同的问题都能有相同的方法解决，比如随处可见的缓存，算法里的分治等。对于这些东西有个初步的概念后，日后的学习就能知道重点——一般出现的越多说明它越重要，就能事半功倍。最重要的是，这些方法体现了计算机整个学科的精髓，而跨学科思考的思想也是很重要的。这些思想往往不局限于计算机，而是能解决各种问题。&lt;/p&gt;
+
+&lt;h2 id=&quot;内功招式和武器&quot;&gt;内功、招式和武器&lt;/h2&gt;
+&lt;p&gt;在提到计算机技术的基础时，有一个很常见的比喻，就是内功、招式和武器。内功就是基础，招式就是技术方法，武器就是工具。人们往往会强调基础的重要性，说如果没有内功，空有招式，打到敌人也不疼。如果没有招式，空有内功，至少浑厚的内功还能给你减伤。至于武器，则有锦上添花之效。&lt;/p&gt;
+
+&lt;p&gt;对于上面的比喻，我想说，说的太有道理了。基础的重要性是怎么强调也不为过的。随着时间的流逝，基础好的人其个人能力是先慢后块，而基础差的人则是先快后慢，最后还是得回来补。&lt;/p&gt;
+
+&lt;p&gt;但是对于基础怎么学，我有点想法。很多人一上来推荐书，推荐看视频。从编程语言到操作系统，各种基础类的资源推荐了个遍。然而这些东西学完恐怕要花个几年，而且又很枯燥，往往无法解决一些实际的问题。还是用上面那个比喻，学内功是很辛苦的，而且进度缓慢。而学招式还是挺好玩的，至少能摆个花架子唬人。&lt;/p&gt;
+
+&lt;p&gt;我认为，可以先学招式无妨。在学招式的过程中伴随着内功的修炼，或者学完招式之后再学内功，也是可以的。举例来说，在学习网络的时候，可以先学着实现一个简单的qq。在实现的过程中，有些细枝末节可以仅仅了解，而涉及到网络的部分则重点学习，并且尝试不同的方法。在实现过程中遇到的问题可以知其然而不知其所以然，但要记录在案。在实现了这个项目后，翻看《TCP/IP详解卷一》，往往看到某个知识点会和之前的问题对上。在这样的情况下，记忆更深刻，也更有效。&lt;/p&gt;
+
+&lt;h2 id=&quot;学习总结&quot;&gt;学习总结&lt;/h2&gt;
+&lt;p&gt;我这里稍微更具体的总结一下学习的方法。&lt;/p&gt;
+
+&lt;p&gt;对于任意一门科目，首先选取一种输入(视频、书甚至百度百科)，大概了解即可，不需要精通。这里所说的了解，是指知道它是什么，有什么用，怎么用。例如编程语言，知道类型是什么意思，怎么定义类型，函数是什么，几种循环结构即可。接下来去找一个实际的问题，去解决它。还是以C语言为例，你可以考虑怎么用C语言画画，用C语言写游戏等等。在解决的过程中你会发现各种问题，比如内存错误，编译错误等等。记下这些错误，并去搜解决它们的方法，但不一定要知道为什么这样可以解决它。最后，挑一本经典书籍或是其他类型的经典输入，仔细的读，并和问题对照。&lt;/p&gt;
+
+&lt;p&gt;想要学的好，就得记住，学习是伴随着枯燥的。刻意练习的核心就是踏出舒适区。如果你感觉到学习过程很轻松，那说明你还没有尽全力，或者还在换一种形式啃自己已经了解的东西。警惕心流，处于心流状态时，有可能也是处于钻牛角尖的状态。&lt;/p&gt;
+
+&lt;p&gt;最后，不要逼自己。实在学不下去的时候，let it go&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。</summary></entry><entry><title type="html">Arts Weekthree Vim配置</title><link href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="Arts Weekthree Vim配置" /><published>2019-04-24T00:00:00+08:00</published><updated>2019-04-24T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">&lt;p&gt;vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。&lt;/p&gt;
+
+&lt;h2 id=&quot;vimrc文件&quot;&gt;vimrc文件&lt;/h2&gt;
+&lt;p&gt;vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中&lt;/p&gt;
+
+&lt;p&gt;vimrc文件的名字叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set &amp;lt;options&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;想要查看有哪些配置可以输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:options&lt;/code&gt;查看或是在帮助中查看。&lt;/p&gt;
+
+&lt;p&gt;对于特定的配置，可以输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:help '&amp;lt;option name&amp;gt;'&lt;/code&gt;查看。另外，在设置某个选项时在后面加&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;即可恢复默认设置&lt;/p&gt;
+
+&lt;p&gt;为了使vimrc文件起作用需要退出vim再重新启动&lt;/p&gt;
+
+&lt;p&gt;下面列举一些设置作为例子说明&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set autoindent&lt;/code&gt;:自动缩进，使用前一行的缩进作为当前行缩进&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if has(&quot;vms&quot;)
+  set nobackup
+else
+  set backup
+endif
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set history=50&lt;/code&gt;:在历史记录中保持50个命令和50种搜索模式&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set ruler&lt;/code&gt;:允许在右下角显示当前游标的位置&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set showcmd&lt;/code&gt;:显示普通模式下输入的命令&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set incsearch&lt;/code&gt;:在输入搜索模式下显示和其匹配的内容&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;map Q gq&lt;/code&gt;:这是一个按键映射，将&lt;code class=&quot;highlighter-rouge&quot;&gt;Q&lt;/code&gt;键映射到&lt;code class=&quot;highlighter-rouge&quot;&gt;gq&lt;/code&gt;按键上&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;filetype plugin indent on
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途&lt;/li&gt;
+  &lt;li&gt;使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中&lt;/li&gt;
+  &lt;li&gt;使用缩进文件：不同类型的文件种类使用不同的缩进&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;简单的映射&quot;&gt;简单的映射&lt;/h2&gt;
+&lt;p&gt;按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:map &amp;lt;F5&amp;gt; i{&amp;lt;Esc&amp;gt;ea}&amp;lt;Esc&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上面的这个映射解析为&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&amp;lt;F5&amp;gt; 映射按键是F5键&lt;/li&gt;
+  &lt;li&gt;i{ 转换为插入模式并输入{&lt;/li&gt;
+  &lt;li&gt;&amp;lt;Esc&amp;gt; 退出为普通模式&lt;/li&gt;
+  &lt;li&gt;ea}到单词结尾并输入}&lt;/li&gt;
+  &lt;li&gt;&amp;lt;Esc&amp;gt;最后转化为普通模式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号&lt;/p&gt;
+
+&lt;h2 id=&quot;添加插件&quot;&gt;添加插件&lt;/h2&gt;
+&lt;p&gt;vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在&lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt;文件夹中添加对应文件就可添加插件&lt;/p&gt;
+
+&lt;p&gt;有两种插件：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;全局插件：对所有文件都有效&lt;/li&gt;
+  &lt;li&gt;文件类型插件：对特定文件类型才有效&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;全局插件&quot;&gt;全局插件&lt;/h3&gt;
+&lt;p&gt;全局插件在启动时自动加载，它们提供了大部分通用的功能。&lt;/p&gt;
+
+&lt;p&gt;添加全局插件只需要两步，获取全局插件，放入对应文件夹&lt;/p&gt;
+
+&lt;p&gt;获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vim/plugin&lt;/code&gt;。值得注意的是，不一定要直接放入&lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt;目录下，也可以在其中创建子目录并放入其中&lt;/p&gt;
+
+&lt;h3 id=&quot;文件类型插件&quot;&gt;文件类型插件&lt;/h3&gt;
+&lt;p&gt;在使用文件类型插件时，需要使用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;:filetype plugin on&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vim/ftplugin&lt;/code&gt;.对于文件类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;filetype&lt;/code&gt;的插件，该插件名字可以为&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;_&amp;lt;name&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;/&amp;lt;name&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;lt;name&amp;gt;可以是任意的&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</summary></entry><entry><title type="html">Arts Weekthree Leetcode1022 Sumroottoleaf</title><link href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/" rel="alternate" type="text/html" title="Arts Weekthree Leetcode1022 Sumroottoleaf" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">&lt;p&gt;Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.&lt;/p&gt;
 
 &lt;p&gt;For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.&lt;/p&gt;
 
@@ -400,95 +512,4 @@ source ~/.bashrc`
 &lt;p&gt;在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。&lt;/p&gt;
 
 &lt;h2 id=&quot;三总结&quot;&gt;三、总结&lt;/h2&gt;
-&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry><entry><title type="html">Arts Weekone Twelve Factor(一)</title><link href="http://localhost:4000/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weekone Twelve Factor(一)" /><published>2019-04-11T00:00:00+08:00</published><updated>2019-04-11T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekOne-Twelve-Factor(%E4%B8%80)/">&lt;p&gt;Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。&lt;/p&gt;
-
-&lt;p&gt;这些应用程序具备的特点包括：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费&lt;/li&gt;
-  &lt;li&gt;与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性&lt;/li&gt;
-  &lt;li&gt;适合于部署在现代云平台上，避免了服务器和系统管理员的需要&lt;/li&gt;
-  &lt;li&gt;最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署&lt;/li&gt;
-  &lt;li&gt;能够在不显著改变工具、架构或者开发实践的基础上自由扩展&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;上面有一些名词是我暂时还不太理解的，这里做个简单的解释。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见&lt;a href=&quot;https://en.wikipedia.org/wiki/Declarative_programming&quot;&gt;declarative programming&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang)&lt;/li&gt;
-  &lt;li&gt;生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。&lt;/p&gt;
-
-&lt;h2 id=&quot;一基准代码codebase&quot;&gt;一、基准代码(codebase)&lt;/h2&gt;
-&lt;p&gt;这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)&lt;/p&gt;
-
-&lt;p&gt;在中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是单个的代码库。在去中心化的版本管理系统中，一个&lt;em&gt;codebase&lt;/em&gt;就是共享一个根提交(root commit)的代码库&lt;/p&gt;
-
-&lt;p&gt;需要注意的是，在&lt;em&gt;codebase&lt;/em&gt;和app之间永远是一对一的关系，如果有多个&lt;em&gt;codebase&lt;/em&gt;，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。&lt;/p&gt;
-
-&lt;p&gt;然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。&lt;/p&gt;
-
-&lt;p&gt;不同部署的&lt;em&gt;codebase&lt;/em&gt;是相同的，但是每个活跃的部署可以是不同的版本。&lt;/p&gt;
-
-&lt;h2 id=&quot;二依赖&quot;&gt;二、依赖&lt;/h2&gt;
-&lt;p&gt;这一特性用一句话说就是，显示的声明依赖并隔离它们&lt;/p&gt;
-
-&lt;p&gt;这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。&lt;/p&gt;
-
-&lt;p&gt;一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏&lt;strong&gt;进来&lt;/strong&gt;(leak in)。对Ruby来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt;。对Python来说，依赖清单就是&lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;，依赖隔离工具就是&lt;code class=&quot;highlighter-rouge&quot;&gt;virtualenv&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;三配置&quot;&gt;三、配置&lt;/h2&gt;
-&lt;p&gt;将配置存在环境中&lt;/p&gt;
-
-&lt;p&gt;一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。&lt;/p&gt;
-
-&lt;p&gt;一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。</summary></entry><entry><title type="html">Arts Weekone Leetcode941</title><link href="http://localhost:4000/ARTS-WeekOne-Leetcode941/" rel="alternate" type="text/html" title="Arts Weekone Leetcode941" /><published>2019-04-10T00:00:00+08:00</published><updated>2019-04-10T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekOne-Leetcode941</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekOne-Leetcode941/">&lt;p&gt;Given an array &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; of integers, return &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Recall that &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; is a mountain array if and only if:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A.length&lt;/code&gt; &amp;gt;= 3&lt;/li&gt;
-  &lt;li&gt;There exists some &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;0 &amp;lt; i &amp;lt; A.length - 1&lt;/code&gt; such that:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i]&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。&lt;/p&gt;
-
-&lt;p&gt;思路很直白，设置一个变量&lt;code class=&quot;highlighter-rouge&quot;&gt;mountain_top&lt;/code&gt;(需初始化为0)，遍历数组，当找到降序后将山顶位置赋值给它，然后继续遍历，若此后出现升序则直接返回false。最后，若遍历完成后该变量未被修改，说明不存在山顶(单纯升序则为0,单纯降序也为0)。最后，注意排除相等的情况。&lt;/p&gt;
-
-&lt;p&gt;代码是用go语言写的，如下所示&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func validMountainArray(A []int) bool {
-    if len(A) &amp;lt; 3 {
-        return false
-    }
-    
-    mountain_top := 0
-    for i := 0; i &amp;lt; len(A) - 1; i++ {
-        if A[i] &amp;gt; A[i + 1] {
-            mountain_top = i
-            break
-        } else if A[i] == A[i + 1] {
-            return false;
-        }
-    }
-    for i := mountain_top; i &amp;lt; len(A) - 1; i++ {
-        if A[i] &amp;lt;= A[i + 1] {
-            return false
-        } 
-    }
-    
-    
-    return mountain_top != 0
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given an array A of integers, return true if and only if it is a valid mountain array.</summary></entry></feed>
+&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry></feed>
