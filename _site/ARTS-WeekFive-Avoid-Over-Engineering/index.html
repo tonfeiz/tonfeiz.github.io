@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Vim配置 | Tonfeiz’s Blog</title>
-<meta name="description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
+<!-- begin _includes/seo.html --><title>Arts Weekfive Avoid Over Engineering | Tonfeiz&#8217;s Blog</title>
+<meta name="description" content="商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Vim配置">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+<meta property="og:title" content="Arts Weekfive Avoid Over Engineering">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/">
 
 
-  <meta property="og:description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-24T00:00:00+08:00">
+  <meta property="og:description" content="商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-05-12T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/">
 
 
 
@@ -250,92 +250,93 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Vim配置</h1>
+      <h1 id="page-title" class="page__title">Arts Weekfive Avoid Over Engineering</h1>
     
-    <p>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</p>
+    <p>商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。</p>
 
-<h2 id="vimrc文件">vimrc文件</h2>
-<p>vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中</p>
+<p>以下是一些误解</p>
+<h2 id="1-工程比商业更聪明">1. 工程比商业更聪明</h2>
+<p>工程师们往往认为自己掌控一切，但事实上商业需求永远技高一筹。在第1000个问题被解决后，它们还能冒出第1001个需求来。</p>
 
-<p>vimrc文件的名字叫做<code class="highlighter-rouge">.vimrc</code>，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是<code class="highlighter-rouge">~/.vimrc</code>。</p>
+<p>商业需求是发散的，而不是收敛的</p>
 
-<p>vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是<br />
-<code class="highlighter-rouge">set &lt;options&gt;</code></p>
+<h2 id="2-重用商业功能模块">2. 重用商业功能模块</h2>
+<p>当商业抛出越来越多的功能，我们有时候会将逻辑组合起来，尽量泛化它们。然而商业需求只会发散而不会收敛，这就使得共享的逻辑变得庞大。反之，我们应该将每个动作和逻辑分离开来，只有很少的共享逻辑。</p>
 
-<p>想要查看有哪些配置可以输入<code class="highlighter-rouge">:options</code>查看或是在帮助中查看。</p>
+<p>在横向分离之前先尝试纵向分裂商业功能。多隔离动作而少组合动作。</p>
 
-<p>对于特定的配置，可以输入<code class="highlighter-rouge">:help '&lt;option name&gt;'</code>查看。另外，在设置某个选项时在后面加<code class="highlighter-rouge">&amp;</code>即可恢复默认设置</p>
+<h2 id="3-所有的事情都是关于泛型">3. 所有的事情都是关于泛型</h2>
+<p>有些时候工程师会执着于完美的抽象而忽略了真正的问题。其实答案非常简单。</p>
 
-<p>为了使vimrc文件起作用需要退出vim再重新启动</p>
+<p>今天最好的设计是它能怎么样被取消(undesigned)。写的代码要易于删除，而不是易于扩展。</p>
 
-<p>下面列举一些设置作为例子说明</p>
+<p>重复比错误的抽象要好。重复次数多了，抽象就显现出来了。</p>
 
-<p><code class="highlighter-rouge">set autoindent</code>:自动缩进，使用前一行的缩进作为当前行缩进</p>
+<h2 id="4-臃肿的包裹器">4. 臃肿的包裹器</h2>
+<p>在使用每个外部库之前都写一个包裹器是不对的。这会使得包裹器变得臃肿。另一方面，包裹器往往和底层的库紧密的耦合，底层库变了包裹器也变了。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if has("vms")
-  set nobackup
-else
-  set backup
-endif
-</code></pre></div></div>
-<p>使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。</p>
+<p>现在许多外部库的API已经足够优秀了，因此不要总想着写包裹器。包裹器是一个异常情况，而不是正常情况。</p>
 
-<p><code class="highlighter-rouge">set history=50</code>:在历史记录中保持50个命令和50种搜索模式<br />
-<code class="highlighter-rouge">set ruler</code>:允许在右下角显示当前游标的位置<br />
-<code class="highlighter-rouge">set showcmd</code>:显示普通模式下输入的命令<br />
-<code class="highlighter-rouge">set incsearch</code>:在输入搜索模式下显示和其匹配的内容<br />
-<code class="highlighter-rouge">map Q gq</code>:这是一个按键映射，将<code class="highlighter-rouge">Q</code>键映射到<code class="highlighter-rouge">gq</code>按键上</p>
+<h2 id="5-像使用工具一样使用质量">5. 像使用工具一样使用质量</h2>
+<p>盲目的应用质量概念（例如将所有变量改成”private final”,为所有的类写接口等）并不会使代码奇迹般的变好。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on
-</code></pre></div></div>
-<ol>
-  <li>文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途</li>
-  <li>使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中</li>
-  <li>使用缩进文件：不同类型的文件种类使用不同的缩进</li>
-</ol>
+<p>记住要总是往后退一步然后看看总体的风景。</p>
 
-<h2 id="简单的映射">简单的映射</h2>
-<p>按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;
-</code></pre></div></div>
-<p>上面的这个映射解析为</p>
-<ol>
-  <li>&lt;F5&gt; 映射按键是F5键</li>
-  <li>i{ 转换为插入模式并输入{</li>
-  <li>&lt;Esc&gt; 退出为普通模式</li>
-  <li>ea}到单词结尾并输入}</li>
-  <li>&lt;Esc&gt;最后转化为普通模式</li>
-</ol>
+<p>有些代码完全符合各种原则和概念，但是从整体来看却很糟糕。</p>
 
-<p>这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号</p>
+<h3 id="51-三明治层">5.1 三明治层</h3>
+<p>例如，将一个简洁的，紧密相连的动作划分层10或20层三明治层，每一层都与外界无关。在过去使用继承来完成，即A扩展出B扩展出C……。现在想要完成这件事并且符合SOLID原则，则需要对每个类构建接口，并且把一个类依次注入到下一个类中，明显变得更麻烦了。</p>
 
-<h2 id="添加插件">添加插件</h2>
-<p>vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在<code class="highlighter-rouge">plugin</code>文件夹中添加对应文件就可添加插件</p>
+<p>像SOLID这样的概念是由于继承和其他OOP概念的滥用才产生的。大多数工程师不知道这些东西为什么诞生，只是跟随着就用。</p>
 
-<p>有两种插件：</p>
+<p>脑海中的概念应当会转换，而不能被盲目的像工具一样使用。</p>
+
+<h2 id="6-过度使用综合征">6. 过度使用综合征</h2>
+<p>一些过度使用综合征的例子：</p>
 <ul>
-  <li>全局插件：对所有文件都有效</li>
-  <li>文件类型插件：对特定文件类型才有效</li>
+  <li>发现了泛型，于是一个简单的”HelloWorldPrinter”变成了”HelloWorldPrinter&lt;String, Writer&gt;”</li>
+  <li>发现了策略模式，于是每个”if”都是一个策略</li>
+  <li>发现了怎么写DSL，于是到处使用DSL</li>
+  <li>发现了Mocks，于是对每个测试的对象都使用mock</li>
+  <li>元编程太棒了，到处都使用元编程</li>
+  <li>枚举/扩展方法/Traits等等太棒了，到处都使用它…</li>
 </ul>
 
-<h3 id="全局插件">全局插件</h3>
-<p>全局插件在启动时自动加载，它们提供了大部分通用的功能。</p>
+<h2 id="7-x-ity">7. &lt;X&gt;-ity</h2>
+<p>…性。例如可配置性，安全性，扩展性，维护性，伸缩性等等。这些性质当然是好的，但不要对每个性能都担忧会发生意外。仔细的考虑使用场景，再对这些性能作优化。</p>
 
-<p>添加全局插件只需要两步，获取全局插件，放入对应文件夹</p>
+<h2 id="8-内部发明">8. 内部”发明”</h2>
+<p>内部的库、框架和工具最近很流行，但并不一定是好的。</p>
 
-<p>获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是<code class="highlighter-rouge">~/.vim/plugin</code>。值得注意的是，不一定要直接放入<code class="highlighter-rouge">plugin</code>目录下，也可以在其中创建子目录并放入其中</p>
-
-<h3 id="文件类型插件">文件类型插件</h3>
-<p>在使用文件类型插件时，需要使用命令<code class="highlighter-rouge">:filetype plugin on</code></p>
-
-<p>添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是<code class="highlighter-rouge">~/.vim/ftplugin</code>.对于文件类型为<code class="highlighter-rouge">filetype</code>的插件，该插件名字可以为</p>
+<p>一些被错过的事情：</p>
 <ul>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;_&lt;name&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;/&lt;name&gt;.vim</code></li>
+  <li>对于某个问题领域有很深的了解是很难的，需要很多的技能。</li>
+  <li>让“发明”持续运行需要很多努力。即使是很小的库的维护也需要诸多时间</li>
+  <li>和对现有框架作出贡献相比，创造一个”发明”往往需要更多的时间</li>
 </ul>
 
-<p>&lt;name&gt;可以是任意的</p>
+<p>重用，fork，贡献，重新考虑</p>
+
+<h2 id="9-维持现状">9. 维持现状</h2>
+<p>一旦一件事情被完成了，每个人都开始基于它构建东西。没人质疑现状。工作着的代码被认为是正确的。每个人都改变自己来适应这个库。</p>
+
+<p>这样是不对的。一个健康的系统是会搅动、翻腾的。很长时间不提交的代码一定是有问题的。</p>
+
+<p>重构是每个故事的一部分。没有代码是不可触碰的。</p>
+
+<h2 id="10-差的估计">10. 差的估计</h2>
+<p>我们经常发现非常优秀的团队或是程序员写出糟糕的代码。这是因为质量需要时间而不仅仅是技术。聪明的程序员往往会高估自己的实力于是只能匆忙写出较差的代码。因此，谨慎估计完成日期。</p>
+
+<p>差的估计在代码开始写之前就破坏了质量。</p>
+
+<h2 id="总结">总结</h2>
+<p>这篇文章主要是关于过度设计的。作者列举了10个过度设计的例子，其中有些由于我还没有接触实际的生产代码还不清楚，但大部分内容还是很有帮助的。</p>
+
+<p>第1点是文章的核心，我在很多其他地方也见到过类似的内容，即需求是一直变化的，不要妄想自己写出完美的代码。</p>
+
+<p>第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。</p>
+
+<p>第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。</p>
 
 
 <!--<ul class="taxonomy__index">
@@ -579,7 +580,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.

@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Vim配置 | Tonfeiz’s Blog</title>
-<meta name="description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
+<!-- begin _includes/seo.html --><title>Arts Weekfour Twelve Factor(四) | Tonfeiz’s Blog</title>
+<meta name="description" content="Dev/prod parityLogsAdmin processes">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Vim配置">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+<meta property="og:title" content="Arts Weekfour Twelve Factor(四)">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/">
 
 
-  <meta property="og:description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-24T00:00:00+08:00">
+  <meta property="og:description" content="Dev/prod parityLogsAdmin processes">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-04-30T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/">
 
 
 
@@ -250,92 +250,53 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Vim配置</h1>
+      <h1 id="page-title" class="page__title">Arts Weekfour Twelve Factor(四)</h1>
     
-    <p>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</p>
+    <p>Dev/prod parity<br />
+Logs<br />
+Admin processes</p>
 
-<h2 id="vimrc文件">vimrc文件</h2>
-<p>vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中</p>
+<h2 id="十开发环境生产环境相同">十、开发环境/生产环境相同</h2>
+<p>保持开发环境、模拟环境和生产环境尽可能相似</p>
 
-<p>vimrc文件的名字叫做<code class="highlighter-rouge">.vimrc</code>，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是<code class="highlighter-rouge">~/.vimrc</code>。</p>
-
-<p>vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是<br />
-<code class="highlighter-rouge">set &lt;options&gt;</code></p>
-
-<p>想要查看有哪些配置可以输入<code class="highlighter-rouge">:options</code>查看或是在帮助中查看。</p>
-
-<p>对于特定的配置，可以输入<code class="highlighter-rouge">:help '&lt;option name&gt;'</code>查看。另外，在设置某个选项时在后面加<code class="highlighter-rouge">&amp;</code>即可恢复默认设置</p>
-
-<p>为了使vimrc文件起作用需要退出vim再重新启动</p>
-
-<p>下面列举一些设置作为例子说明</p>
-
-<p><code class="highlighter-rouge">set autoindent</code>:自动缩进，使用前一行的缩进作为当前行缩进</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if has("vms")
-  set nobackup
-else
-  set backup
-endif
-</code></pre></div></div>
-<p>使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。</p>
-
-<p><code class="highlighter-rouge">set history=50</code>:在历史记录中保持50个命令和50种搜索模式<br />
-<code class="highlighter-rouge">set ruler</code>:允许在右下角显示当前游标的位置<br />
-<code class="highlighter-rouge">set showcmd</code>:显示普通模式下输入的命令<br />
-<code class="highlighter-rouge">set incsearch</code>:在输入搜索模式下显示和其匹配的内容<br />
-<code class="highlighter-rouge">map Q gq</code>:这是一个按键映射，将<code class="highlighter-rouge">Q</code>键映射到<code class="highlighter-rouge">gq</code>按键上</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on
-</code></pre></div></div>
-<ol>
-  <li>文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途</li>
-  <li>使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中</li>
-  <li>使用缩进文件：不同类型的文件种类使用不同的缩进</li>
-</ol>
-
-<h2 id="简单的映射">简单的映射</h2>
-<p>按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;
-</code></pre></div></div>
-<p>上面的这个映射解析为</p>
-<ol>
-  <li>&lt;F5&gt; 映射按键是F5键</li>
-  <li>i{ 转换为插入模式并输入{</li>
-  <li>&lt;Esc&gt; 退出为普通模式</li>
-  <li>ea}到单词结尾并输入}</li>
-  <li>&lt;Esc&gt;最后转化为普通模式</li>
-</ol>
-
-<p>这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号</p>
-
-<h2 id="添加插件">添加插件</h2>
-<p>vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在<code class="highlighter-rouge">plugin</code>文件夹中添加对应文件就可添加插件</p>
-
-<p>有两种插件：</p>
+<p>历史上，在开发环境和生产环境之间有三道鸿沟，分别位：</p>
 <ul>
-  <li>全局插件：对所有文件都有效</li>
-  <li>文件类型插件：对特定文件类型才有效</li>
+  <li>时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作</li>
+  <li>人事：开发者写代码，运维工程师部署它</li>
+  <li>工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux</li>
 </ul>
 
-<h3 id="全局插件">全局插件</h3>
-<p>全局插件在启动时自动加载，它们提供了大部分通用的功能。</p>
+<p>twelve-factor app需要使上面三者尽可能小来便于持续部署。</p>
 
-<p>添加全局插件只需要两步，获取全局插件，放入对应文件夹</p>
+<p>以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。</p>
 
-<p>获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是<code class="highlighter-rouge">~/.vim/plugin</code>。值得注意的是，不一定要直接放入<code class="highlighter-rouge">plugin</code>目录下，也可以在其中创建子目录并放入其中</p>
+<p>twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。</p>
 
-<h3 id="文件类型插件">文件类型插件</h3>
-<p>在使用文件类型插件时，需要使用命令<code class="highlighter-rouge">:filetype plugin on</code></p>
+<p>对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务</p>
 
-<p>添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是<code class="highlighter-rouge">~/.vim/ftplugin</code>.对于文件类型为<code class="highlighter-rouge">filetype</code>的插件，该插件名字可以为</p>
+<h2 id="十一日志">十一、日志</h2>
+<p>将日志当做事件流对待</p>
+
+<p>日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。</p>
+
+<p>一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入<code class="highlighter-rouge">stdout</code>中。</p>
+
+<p>在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。</p>
+
+<p>app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能</p>
+
+<h2 id="管理进程">管理进程</h2>
+<p>将管理进程作为一次性的、不是经常开关的进程</p>
+
+<p>开发者经常希望有一个一次性的管理进程，例如：</p>
 <ul>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;_&lt;name&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;/&lt;name&gt;.vim</code></li>
+  <li>运行数据库迁移</li>
+  <li>运行一个控制台</li>
+  <li>运行上传到app repo中的一次性脚本</li>
 </ul>
 
-<p>&lt;name&gt;可以是任意的</p>
+<p>一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。</p>
+
 
 
 <!--<ul class="taxonomy__index">
@@ -579,7 +540,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.

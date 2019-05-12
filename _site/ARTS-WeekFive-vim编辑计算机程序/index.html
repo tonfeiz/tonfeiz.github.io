@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Vim配置 | Tonfeiz’s Blog</title>
-<meta name="description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
+<!-- begin _includes/seo.html --><title>Arts Weekfive Vim编辑计算机程序 | Tonfeiz’s Blog</title>
+<meta name="description" content="vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Vim配置">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+<meta property="og:title" content="Arts Weekfive Vim编辑计算机程序">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/">
 
 
-  <meta property="og:description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-24T00:00:00+08:00">
+  <meta property="og:description" content="vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-05-12T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/">
 
 
 
@@ -250,92 +250,35 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Vim配置</h1>
+      <h1 id="page-title" class="page__title">Arts Weekfive Vim编辑计算机程序</h1>
     
-    <p>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</p>
+    <p>vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</p>
 
-<h2 id="vimrc文件">vimrc文件</h2>
-<p>vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中</p>
+<h2 id="一编译">一、编译</h2>
+<p>在vim内部可以编译程序并且跳转到出错的位置。</p>
 
-<p>vimrc文件的名字叫做<code class="highlighter-rouge">.vimrc</code>，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是<code class="highlighter-rouge">~/.vimrc</code>。</p>
+<p>在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。<br />
+<code class="highlighter-rouge">:make {arguments}</code>
+在vim中会显示出错信息。此时按下<code class="highlighter-rouge">&lt;Enter&gt;</code>键，vim会显示对应的文件并跳转到出错的位置。</p>
 
-<p>vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是<br />
-<code class="highlighter-rouge">set &lt;options&gt;</code></p>
-
-<p>想要查看有哪些配置可以输入<code class="highlighter-rouge">:options</code>查看或是在帮助中查看。</p>
-
-<p>对于特定的配置，可以输入<code class="highlighter-rouge">:help '&lt;option name&gt;'</code>查看。另外，在设置某个选项时在后面加<code class="highlighter-rouge">&amp;</code>即可恢复默认设置</p>
-
-<p>为了使vimrc文件起作用需要退出vim再重新启动</p>
-
-<p>下面列举一些设置作为例子说明</p>
-
-<p><code class="highlighter-rouge">set autoindent</code>:自动缩进，使用前一行的缩进作为当前行缩进</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if has("vms")
-  set nobackup
-else
-  set backup
-endif
-</code></pre></div></div>
-<p>使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。</p>
-
-<p><code class="highlighter-rouge">set history=50</code>:在历史记录中保持50个命令和50种搜索模式<br />
-<code class="highlighter-rouge">set ruler</code>:允许在右下角显示当前游标的位置<br />
-<code class="highlighter-rouge">set showcmd</code>:显示普通模式下输入的命令<br />
-<code class="highlighter-rouge">set incsearch</code>:在输入搜索模式下显示和其匹配的内容<br />
-<code class="highlighter-rouge">map Q gq</code>:这是一个按键映射，将<code class="highlighter-rouge">Q</code>键映射到<code class="highlighter-rouge">gq</code>按键上</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on
-</code></pre></div></div>
+<p>下面是一些常用命令：</p>
 <ol>
-  <li>文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途</li>
-  <li>使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中</li>
-  <li>使用缩进文件：不同类型的文件种类使用不同的缩进</li>
+  <li><code class="highlighter-rouge">:cnext</code>将跳转到下个出错位置，<code class="highlighter-rouge">:cprevious</code>将跳转到前个出错位置</li>
+  <li><code class="highlighter-rouge">:cc</code>将显示完整的出错信息</li>
+  <li><code class="highlighter-rouge">:clist</code>将显示完整的出错列表。</li>
+  <li><code class="highlighter-rouge">:clist!</code>将显示所有的出错列表，包含链接错误等等</li>
+  <li><code class="highlighter-rouge">:cfirst</code>将跳到第一个出错位置，<code class="highlighter-rouge">clast</code>将跳到最后一个出错位置</li>
+  <li><code class="highlighter-rouge">:cc 3</code>将跳到第3个出错位置</li>
 </ol>
 
-<h2 id="简单的映射">简单的映射</h2>
-<p>按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;
-</code></pre></div></div>
-<p>上面的这个映射解析为</p>
-<ol>
-  <li>&lt;F5&gt; 映射按键是F5键</li>
-  <li>i{ 转换为插入模式并输入{</li>
-  <li>&lt;Esc&gt; 退出为普通模式</li>
-  <li>ea}到单词结尾并输入}</li>
-  <li>&lt;Esc&gt;最后转化为普通模式</li>
-</ol>
+<p>可以通过设置<code class="highlighter-rouge">makeprg</code>选项指定要运行的编译器,通过斜杠指定传递的参数，例如<br />
+<code class="highlighter-rouge">:set makeprg=nmake\ -f\ project.mak</code></p>
 
-<p>这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号</p>
+<h2 id="二c风格的文本缩进">二、C风格的文本缩进</h2>
+<p>对于C或者C风格的程序例如Java或者C++，可以通过设置<code class="highlighter-rouge">cindent</code>选项来控制缩进。一般来说四个空格是合适的。<br />
+<code class="highlighter-rouge">set cindent shiftwidth=4</code></p>
 
-<h2 id="添加插件">添加插件</h2>
-<p>vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在<code class="highlighter-rouge">plugin</code>文件夹中添加对应文件就可添加插件</p>
-
-<p>有两种插件：</p>
-<ul>
-  <li>全局插件：对所有文件都有效</li>
-  <li>文件类型插件：对特定文件类型才有效</li>
-</ul>
-
-<h3 id="全局插件">全局插件</h3>
-<p>全局插件在启动时自动加载，它们提供了大部分通用的功能。</p>
-
-<p>添加全局插件只需要两步，获取全局插件，放入对应文件夹</p>
-
-<p>获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是<code class="highlighter-rouge">~/.vim/plugin</code>。值得注意的是，不一定要直接放入<code class="highlighter-rouge">plugin</code>目录下，也可以在其中创建子目录并放入其中</p>
-
-<h3 id="文件类型插件">文件类型插件</h3>
-<p>在使用文件类型插件时，需要使用命令<code class="highlighter-rouge">:filetype plugin on</code></p>
-
-<p>添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是<code class="highlighter-rouge">~/.vim/ftplugin</code>.对于文件类型为<code class="highlighter-rouge">filetype</code>的插件，该插件名字可以为</p>
-<ul>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;_&lt;name&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;/&lt;name&gt;.vim</code></li>
-</ul>
-
-<p>&lt;name&gt;可以是任意的</p>
+<p>可以通过<code class="highlighter-rouge">=</code>操作符来对齐缩进。最简单的命令是<code class="highlighter-rouge">==</code>，该命令会将当前行的缩进对齐。<code class="highlighter-rouge">=</code>操作符可以在可视化模式下使用。一个很有用的命令是<code class="highlighter-rouge">=a{</code>，这个命令会将当前<code class="highlighter-rouge">{}</code>所在的区域全部缩进对齐。</p>
 
 
 <!--<ul class="taxonomy__index">
@@ -579,7 +522,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.

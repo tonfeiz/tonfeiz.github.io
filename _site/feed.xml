@@ -1,4 +1,408 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-26T16:57:52+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">技术学习之路</title><link href="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" rel="alternate" type="text/html" title="技术学习之路" /><published>2019-04-26T00:00:00+08:00</published><updated>2019-04-26T00:00:00+08:00</updated><id>http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF</id><content type="html" xml:base="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">&lt;p&gt;这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-12T16:21:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekfive Avoid Over Engineering</title><link href="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/" rel="alternate" type="text/html" title="Arts Weekfive Avoid Over Engineering" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/">&lt;p&gt;商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。&lt;/p&gt;
+
+&lt;p&gt;以下是一些误解&lt;/p&gt;
+&lt;h2 id=&quot;1-工程比商业更聪明&quot;&gt;1. 工程比商业更聪明&lt;/h2&gt;
+&lt;p&gt;工程师们往往认为自己掌控一切，但事实上商业需求永远技高一筹。在第1000个问题被解决后，它们还能冒出第1001个需求来。&lt;/p&gt;
+
+&lt;p&gt;商业需求是发散的，而不是收敛的&lt;/p&gt;
+
+&lt;h2 id=&quot;2-重用商业功能模块&quot;&gt;2. 重用商业功能模块&lt;/h2&gt;
+&lt;p&gt;当商业抛出越来越多的功能，我们有时候会将逻辑组合起来，尽量泛化它们。然而商业需求只会发散而不会收敛，这就使得共享的逻辑变得庞大。反之，我们应该将每个动作和逻辑分离开来，只有很少的共享逻辑。&lt;/p&gt;
+
+&lt;p&gt;在横向分离之前先尝试纵向分裂商业功能。多隔离动作而少组合动作。&lt;/p&gt;
+
+&lt;h2 id=&quot;3-所有的事情都是关于泛型&quot;&gt;3. 所有的事情都是关于泛型&lt;/h2&gt;
+&lt;p&gt;有些时候工程师会执着于完美的抽象而忽略了真正的问题。其实答案非常简单。&lt;/p&gt;
+
+&lt;p&gt;今天最好的设计是它能怎么样被取消(undesigned)。写的代码要易于删除，而不是易于扩展。&lt;/p&gt;
+
+&lt;p&gt;重复比错误的抽象要好。重复次数多了，抽象就显现出来了。&lt;/p&gt;
+
+&lt;h2 id=&quot;4-臃肿的包裹器&quot;&gt;4. 臃肿的包裹器&lt;/h2&gt;
+&lt;p&gt;在使用每个外部库之前都写一个包裹器是不对的。这会使得包裹器变得臃肿。另一方面，包裹器往往和底层的库紧密的耦合，底层库变了包裹器也变了。&lt;/p&gt;
+
+&lt;p&gt;现在许多外部库的API已经足够优秀了，因此不要总想着写包裹器。包裹器是一个异常情况，而不是正常情况。&lt;/p&gt;
+
+&lt;h2 id=&quot;5-像使用工具一样使用质量&quot;&gt;5. 像使用工具一样使用质量&lt;/h2&gt;
+&lt;p&gt;盲目的应用质量概念（例如将所有变量改成”private final”,为所有的类写接口等）并不会使代码奇迹般的变好。&lt;/p&gt;
+
+&lt;p&gt;记住要总是往后退一步然后看看总体的风景。&lt;/p&gt;
+
+&lt;p&gt;有些代码完全符合各种原则和概念，但是从整体来看却很糟糕。&lt;/p&gt;
+
+&lt;h3 id=&quot;51-三明治层&quot;&gt;5.1 三明治层&lt;/h3&gt;
+&lt;p&gt;例如，将一个简洁的，紧密相连的动作划分层10或20层三明治层，每一层都与外界无关。在过去使用继承来完成，即A扩展出B扩展出C……。现在想要完成这件事并且符合SOLID原则，则需要对每个类构建接口，并且把一个类依次注入到下一个类中，明显变得更麻烦了。&lt;/p&gt;
+
+&lt;p&gt;像SOLID这样的概念是由于继承和其他OOP概念的滥用才产生的。大多数工程师不知道这些东西为什么诞生，只是跟随着就用。&lt;/p&gt;
+
+&lt;p&gt;脑海中的概念应当会转换，而不能被盲目的像工具一样使用。&lt;/p&gt;
+
+&lt;h2 id=&quot;6-过度使用综合征&quot;&gt;6. 过度使用综合征&lt;/h2&gt;
+&lt;p&gt;一些过度使用综合征的例子：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;发现了泛型，于是一个简单的”HelloWorldPrinter”变成了”HelloWorldPrinter&amp;lt;String, Writer&amp;gt;”&lt;/li&gt;
+  &lt;li&gt;发现了策略模式，于是每个”if”都是一个策略&lt;/li&gt;
+  &lt;li&gt;发现了怎么写DSL，于是到处使用DSL&lt;/li&gt;
+  &lt;li&gt;发现了Mocks，于是对每个测试的对象都使用mock&lt;/li&gt;
+  &lt;li&gt;元编程太棒了，到处都使用元编程&lt;/li&gt;
+  &lt;li&gt;枚举/扩展方法/Traits等等太棒了，到处都使用它…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;7-x-ity&quot;&gt;7. &amp;lt;X&amp;gt;-ity&lt;/h2&gt;
+&lt;p&gt;…性。例如可配置性，安全性，扩展性，维护性，伸缩性等等。这些性质当然是好的，但不要对每个性能都担忧会发生意外。仔细的考虑使用场景，再对这些性能作优化。&lt;/p&gt;
+
+&lt;h2 id=&quot;8-内部发明&quot;&gt;8. 内部”发明”&lt;/h2&gt;
+&lt;p&gt;内部的库、框架和工具最近很流行，但并不一定是好的。&lt;/p&gt;
+
+&lt;p&gt;一些被错过的事情：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;对于某个问题领域有很深的了解是很难的，需要很多的技能。&lt;/li&gt;
+  &lt;li&gt;让“发明”持续运行需要很多努力。即使是很小的库的维护也需要诸多时间&lt;/li&gt;
+  &lt;li&gt;和对现有框架作出贡献相比，创造一个”发明”往往需要更多的时间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;重用，fork，贡献，重新考虑&lt;/p&gt;
+
+&lt;h2 id=&quot;9-维持现状&quot;&gt;9. 维持现状&lt;/h2&gt;
+&lt;p&gt;一旦一件事情被完成了，每个人都开始基于它构建东西。没人质疑现状。工作着的代码被认为是正确的。每个人都改变自己来适应这个库。&lt;/p&gt;
+
+&lt;p&gt;这样是不对的。一个健康的系统是会搅动、翻腾的。很长时间不提交的代码一定是有问题的。&lt;/p&gt;
+
+&lt;p&gt;重构是每个故事的一部分。没有代码是不可触碰的。&lt;/p&gt;
+
+&lt;h2 id=&quot;10-差的估计&quot;&gt;10. 差的估计&lt;/h2&gt;
+&lt;p&gt;我们经常发现非常优秀的团队或是程序员写出糟糕的代码。这是因为质量需要时间而不仅仅是技术。聪明的程序员往往会高估自己的实力于是只能匆忙写出较差的代码。因此，谨慎估计完成日期。&lt;/p&gt;
+
+&lt;p&gt;差的估计在代码开始写之前就破坏了质量。&lt;/p&gt;
+
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
+&lt;p&gt;这篇文章主要是关于过度设计的。作者列举了10个过度设计的例子，其中有些由于我还没有接触实际的生产代码还不清楚，但大部分内容还是很有帮助的。&lt;/p&gt;
+
+&lt;p&gt;第1点是文章的核心，我在很多其他地方也见到过类似的内容，即需求是一直变化的，不要妄想自己写出完美的代码。&lt;/p&gt;
+
+&lt;p&gt;第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。&lt;/p&gt;
+
+&lt;p&gt;第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。</summary></entry><entry><title type="html">Arts Weekfive Vim编辑计算机程序</title><link href="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/" rel="alternate" type="text/html" title="Arts Weekfive Vim编辑计算机程序" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/">&lt;p&gt;vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。&lt;/p&gt;
+
+&lt;h2 id=&quot;一编译&quot;&gt;一、编译&lt;/h2&gt;
+&lt;p&gt;在vim内部可以编译程序并且跳转到出错的位置。&lt;/p&gt;
+
+&lt;p&gt;在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:make {arguments}&lt;/code&gt;
+在vim中会显示出错信息。此时按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Enter&amp;gt;&lt;/code&gt;键，vim会显示对应的文件并跳转到出错的位置。&lt;/p&gt;
+
+&lt;p&gt;下面是一些常用命令：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cnext&lt;/code&gt;将跳转到下个出错位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;:cprevious&lt;/code&gt;将跳转到前个出错位置&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cc&lt;/code&gt;将显示完整的出错信息&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:clist&lt;/code&gt;将显示完整的出错列表。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:clist!&lt;/code&gt;将显示所有的出错列表，包含链接错误等等&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cfirst&lt;/code&gt;将跳到第一个出错位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;clast&lt;/code&gt;将跳到最后一个出错位置&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cc 3&lt;/code&gt;将跳到第3个出错位置&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;makeprg&lt;/code&gt;选项指定要运行的编译器,通过斜杠指定传递的参数，例如&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:set makeprg=nmake\ -f\ project.mak&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;二c风格的文本缩进&quot;&gt;二、C风格的文本缩进&lt;/h2&gt;
+&lt;p&gt;对于C或者C风格的程序例如Java或者C++，可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;cindent&lt;/code&gt;选项来控制缩进。一般来说四个空格是合适的。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set cindent shiftwidth=4&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符来对齐缩进。最简单的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;，该命令会将当前行的缩进对齐。&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符可以在可视化模式下使用。一个很有用的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;=a{&lt;/code&gt;，这个命令会将当前&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;所在的区域全部缩进对齐。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</summary></entry><entry><title type="html">计算机技术历史 语言(二)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)/" rel="alternate" type="text/html" title="计算机技术历史 语言(二)" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)/">&lt;p&gt;在汇编语言之后，诞生了最早的程序设计语言，FORTRAN。&lt;/p&gt;
+
+&lt;h2 id=&quot;fortran语言&quot;&gt;FORTRAN语言&lt;/h2&gt;
+&lt;p&gt;FORTAN源自于英语：Formula Translation，即公式翻译。从这里就可以看出，FORTRAN语言的主要用处是科学和工程计算方面。&lt;/p&gt;
+
+&lt;p&gt;汇编语言的缺点在上次已经讲过，难以维护，入门门槛高，要维护各种寄存器等等。在1951年，IBM的John Backus针对这些缺点开始开发FORTRAN语言。&lt;/p&gt;
+
+&lt;p&gt;1954年，FORTRAN I发布。1957年，第一个FORTRAN编译器在IBM704计算机上实现，并首次成功运行了FORTRAN程序。&lt;/p&gt;
+
+&lt;p&gt;由于我也不会FORTRAN语言，因此我只能搜集一些资料，简单的介绍一下FORTRAN语言。&lt;/p&gt;
+
+&lt;p&gt;FORTRAN语言的最大特性是接近数学公式的自然描述，在计算机里具有很高的执行效率。另外，它可以直接对矩阵和复数进行运算，类似于MATLAB。很多大型的数值运算计算机针对Fortran做了优化。&lt;/p&gt;
+
+&lt;p&gt;相对于汇编语言，FORTRAN由于其语法的简洁性使得其入门门槛较低，可维护性也有所提高。然而，由于早期程序设计的局限性，FORTRAN的缺点也是有一大堆。FORTRAN中，某些字母开头的变量默认是某种类型，这就给命名增添了负担。早期的FORTRAN代码往往到处使用GOTO，使得程序的控制流混乱。FORTRAN的数值溢出等等也是坑。此外，虽然相比于汇编程序，FORTRAN的易读性和可维护性提高了，但相比于现代程序设计语言如C++、Java等，仍然有不少的差距。FORTRAN代码往往比较冗长，初看时会不知所以。&lt;/p&gt;
+
+&lt;p&gt;注：上文所说的主要是FORTRAN语言的早期版本，后来FORTRAN也加入了一些现代编程语言的特性，但和原始FORTRAN诞生原因关系不大，因此就不再详细叙述。&lt;/p&gt;
+
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://baike.baidu.com/item/FORTRAN&quot;&gt;百度百科&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/28683874&quot;&gt;和 C++ 相比，用 Fortran 编程是怎样的体验？&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Tonfeiz</name></author><summary type="html">在汇编语言之后，诞生了最早的程序设计语言，FORTRAN。</summary></entry><entry><title type="html">Arts Weekfive Leetcode856 Scoreofparentheses</title><link href="http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses/" rel="alternate" type="text/html" title="Arts Weekfive Leetcode856 Scoreofparentheses" /><published>2019-05-06T00:00:00+08:00</published><updated>2019-05-06T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses/">&lt;p&gt;Given a balanced parentheses string S, compute the score of the string based on the following rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;() has score 1
+AB has score A + B, where A and B are balanced parentheses strings.
+(A) has score 2 * A, where A is a balanced parentheses string.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: &quot;()&quot;
+Output: 1
+
+Input: &quot;(())&quot;
+Output: 2
+
+Input: &quot;()()&quot;
+Output: 2
+
+Input: &quot;(()(()))&quot;
+Output: 6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;这是一道mdeium题，题意是对于一个完全匹配的括号串，()表示1,AB表示A+B,(A)表示A*2，其中A、B都是某个括号表达式，求给定括号串的值。&lt;/p&gt;
+
+&lt;p&gt;这道题还是想了有一点时间，最开始是想用栈，但是感觉怎么用都不太对，后面才开始想用递归的方法。&lt;/p&gt;
+
+&lt;p&gt;递归的核心其实就是把问题的规模变小，并且要有一个最终的停止条件。对一个函数&lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;来说，假设其输入是字符串以及起始位置&lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;(范围为&lt;code class=&quot;highlighter-rouge&quot;&gt;[start, end)&lt;/code&gt;)，显然终止条件有:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;end - start &amp;lt; 2&lt;/code&gt;, 此时值为0&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s[start]s[end - 1] == &quot;()&quot;&lt;/code&gt;,此时值为1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果不是上面这两种情况，则需要找到当前左括号匹配的右括号，如果该右括号不在&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;处，那么说明后面还有字符串，则需要将两者代表的值相加。否则说明需要将内部的值扩大两倍并缩小范围。哪种情况都需要继续递归。&lt;/p&gt;
+
+&lt;p&gt;递归版的代码见下，用栈的方法留作练习&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func scoreOfParentheses(S string) int {
+    return eval(S, 0, len(S))
+}
+
+func eval(s string, start, end int) int {
+    if end - start &amp;lt; 2 {
+        return 0
+    }
+    
+    if end - start == 2 &amp;amp;&amp;amp;s[start] == '(' &amp;amp;&amp;amp; s[end - 1] == ')' {
+        return 1
+    }
+    
+    parenthes_num := 1
+    i := start + 1
+    for ; i &amp;lt; end; i++ {
+        if parenthes_num == 0 {
+            break;
+        }
+        if(s[i] == '(') {
+            parenthes_num++;
+        } else {
+            parenthes_num--;
+        }
+    }
+    
+    if i == end {
+        return 2 * eval(s, start + 1, end - 1)
+    }
+    return eval(s, start, i) + eval(s, i, end)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a balanced parentheses string S, compute the score of the string based on the following rule:</summary></entry><entry><title type="html">计算机技术历史 语言(一)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)/" rel="alternate" type="text/html" title="计算机技术历史 语言(一)" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)/">&lt;p&gt;前段时间想去了解一下计算机技术的发展历史，但是搜了一下没有发现很系统的讲述这方面内容的书或者博客，因此就想自己来调查了解一下，也挺有意思的。&lt;/p&gt;
+
+&lt;p&gt;为什么要关注计算机技术的历史呢？除了兴趣之外，还有一个重要原因是想从历史获取计算机技术发展的主脉络。现在计算机技术发展日新月异，新技术曾出不穷，但不是所有的技术都能留下来，也有些技术是不必要学。想要判断这些东西，就必须得到以往的技术有所了解，找出其中的规律。&lt;/p&gt;
+
+&lt;p&gt;由于计算机技术实在太多了，因此不可能全部涉及。此外，硬件方面的技术门槛较高，我可能也看不懂。基于此，主要还是关注软件技术。&lt;/p&gt;
+
+&lt;p&gt;首先，先从编程语言开始。&lt;/p&gt;
+
+&lt;h2 id=&quot;机器语言&quot;&gt;机器语言&lt;/h2&gt;
+&lt;p&gt;机器语言是最早的编程语言，也可以叫做机器码。大约在第一台计算机诞生时，即20世纪50年代左右，机器语言是主要编程语言。&lt;/p&gt;
+
+&lt;p&gt;我们普通人也常常听到计算机其实就是一连串0和1这样的话，0和1其实就是机器语言。计算机接收这些0和1，将0和1组成的串变成硬件上的高低电平，再由高低电平控制机器完成实际动作。由0和1组成的串的集合又叫做指令集，每个计算机厂家的硬件不同，其指令集也不同。&lt;/p&gt;
+
+&lt;p&gt;机器语言的优点就是快，缺点就是不是写给人看的。写机器语言的人必须对于硬件厂家给出的指令集有深厚的了解，才能较好的驾驭机器语言。可是不同的厂家，甚至相同厂家下面的不同型号计算机，只要硬件架构有了一定改动，机器语言也可能随之发生变化，这就造成了其可移植性和重用性都很差的后果。&lt;/p&gt;
+
+&lt;p&gt;如今，已经没有人再用机器语言进行实际编程了。&lt;/p&gt;
+
+&lt;h2 id=&quot;汇编语言&quot;&gt;汇编语言&lt;/h2&gt;
+&lt;p&gt;汇编语言在机器语言之后出现，但也是在20世界50年代。汇编语言直到今天还在被使用，主要被用于一些对速度要求高的场合，例如嵌入式系统、驱动程序等。&lt;/p&gt;
+
+&lt;p&gt;汇编语言的出现主要是为了解决机器语言看不懂的缺点。机器语言的一连串0和1简直就是天书，而汇编语言已经开始有自己的语法。汇编语言的使用者对于计算机的体系结构，各个寄存器的作用，程序计数器等要有基本的了解。由于引入了语法，汇编语言需要经过编译器转化为机器语言再交由计算机执行。从这里就可以看出，计算机中引入中间层的观点是很早就有了的。此外，汇编语言的诞生也表明了程序是写给程序员看的，而不是写给机器看的。&lt;/p&gt;
+
+&lt;p&gt;汇编语言的优点是目标代码简短，占用内存少，执行速度快，且比起机器语言来便于记忆。但汇编语言没有解决机器语言无法移植的特点。在不同的机器之间，汇编语言的语法也不相同。另一方面，由于汇编语言直接对寄存器等进行操作，程序的真实意图也被掩盖在细节之中，并且常常需要大量的代码完成简单的工作。最后，汇编语言也很容易产生bug并且难于调试。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">前段时间想去了解一下计算机技术的发展历史，但是搜了一下没有发现很系统的讲述这方面内容的书或者博客，因此就想自己来调查了解一下，也挺有意思的。</summary></entry><entry><title type="html">Arts Weekfour Vim插件管理 Vundle</title><link href="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/" rel="alternate" type="text/html" title="Arts Weekfour Vim插件管理 Vundle" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/">&lt;p&gt;vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。&lt;/p&gt;
+
+&lt;p&gt;Vundle是vim bundle的缩写。它能自动跟踪&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。&lt;/p&gt;
+
+&lt;h2 id=&quot;vundle的安装设置&quot;&gt;Vundle的安装设置：&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;首先输入&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;将下列内容保存到~/.vimrc中&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set nocompatible              &quot; be iMproved, required
+filetype off                  &quot; required
+
+&quot; set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+&quot; alternatively, pass a path where Vundle should install plugins
+&quot;call vundle#begin('~/some/path/here')
+
+&quot; let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+&quot; The following are examples of different formats supported.
+&quot; Keep Plugin commands between vundle#begin/end.
+&quot; plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+&quot; plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+&quot; Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+&quot; git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+&quot; The sparkup vim script is in a subdirectory of this repo called vim.
+&quot; Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+&quot; Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+
+&quot; All of your Plugins must be added before the following line
+call vundle#end()            &quot; required
+filetype plugin indent on    &quot; required
+&quot; To ignore plugin indent changes, instead use:
+&quot;filetype plugin on
+&quot;
+&quot; Brief help
+&quot; :PluginList          - list configured plugins
+&quot; :PluginInstall(!)    - install (update) plugins
+&quot; :PluginSearch(!) foo - search (or refresh cache first) for foo
+&quot; :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+&quot;
+&quot; see :h vundle for more details or wiki for FAQ
+&quot; Put your non-Plugin stuff after this line
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;安装配置好的bundle:打开vim并输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginInstall&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;插件&quot;&gt;插件&lt;/h2&gt;
+&lt;h3 id=&quot;配置插件&quot;&gt;配置插件&lt;/h3&gt;
+&lt;p&gt;Vundle跟踪&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令。每个&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令让Vundle使能脚本并将其加入|runtimepath|中。&lt;/p&gt;
+
+&lt;p&gt;每个&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令有一个指向脚本的URI。在URI后面可选择接受第二个参数。这个参数必须是一个目录。每个键值对都是一个配置选项。&lt;/p&gt;
+
+&lt;p&gt;下面是一些配置选项&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;‘rtp’:设置repo中的一个目录为vim插件所在目录。该目录将被加入|runtimepath|中&lt;/li&gt;
+  &lt;li&gt;‘name’:将放置配置脚本的本地拷贝的目录名字&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;支持的uri&quot;&gt;支持的URI&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Github:当user/repo被传递给&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;时Github被使用,例如&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'VundleVim/Vundle.vim' =&amp;gt; https://github.com/VundleVim/Vundle.vim&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Vim Scripts:没有’/’的单词都被认为从Vim Scripts中获取&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'ctrlp.vim' =&amp;gt; https://github.com/vim-scripts/ctrlp.vim&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;本地插件&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'file:///path/from/root/to/plugin'&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;基本使用方式&quot;&gt;基本使用方式&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginInstall&lt;/code&gt; 安装&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中配置的所有插件，也可以在后面跟上插件名特定安装&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginUpdate&lt;/code&gt; 更新插件&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginSearch&lt;/code&gt; 需要有&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;,搜索指定插件&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginList&lt;/code&gt; 列举已经安装的插件列表&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginClean&lt;/code&gt; 清除不在&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;而在安装目录下的插件&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。</summary></entry><entry><title type="html">Arts Weekfour Leetcode703 Kthinstream</title><link href="http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream/" rel="alternate" type="text/html" title="Arts Weekfour Leetcode703 Kthinstream" /><published>2019-04-30T00:00:00+08:00</published><updated>2019-04-30T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream/">&lt;p&gt;Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.&lt;/p&gt;
+
+&lt;p&gt;Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;这题其实的意思是在一段流里找第k大的数，也就是说对于连续的流，每次调用函数都能获取当前第k大的数。&lt;/p&gt;
+
+&lt;p&gt;这也是一道很经典的题了，但是最开始想着要保留所有的数，于是就超时了。实际上很容易想到，既然是求第k大的数，那么只需要保留前k个数即可。每新来一个数都将它与前k个数中最小的数比较，如果小于它就丢弃，如果大于它就将它插入合适位置。这里最开始我想的是排序，利用插入排序的方式。可是后来想到显然小顶堆是最合适的数据结构。另外，go语言很久没用了，这里编译错误好几次，还需要复习go语言的用法。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type KthLargest struct {
+    h *IntHeap
+    num int
+}
+
+// An IntHeap is a min-heap of ints.
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] &amp;lt; h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{}) {
+    // Push and Pop use pointer receivers because they modify the slice's length,
+    // not just its contents.
+    *h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+    old := *h
+    n := len(old)
+    x := old[n-1]
+    *h = old[0 : n-1]
+    return x
+}
+
+func Constructor(k int, nums []int) KthLargest {
+    h := IntHeap(nums)
+    heap.Init(&amp;amp;h)
+    return KthLargest{&amp;amp;h, k}
+}
+
+
+func (this *KthLargest) Add(val int) int {
+    heap.Push(this.h, val)
+    for len(*(this.h)) &amp;gt; this.num {
+        heap.Pop(this.h)
+    } 
+    res := (*this.h)[0]
+    return res
+}
+
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * obj := Constructor(k, nums);
+ * param_1 := obj.Add(val);
+ */
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.</summary></entry><entry><title type="html">Arts Weekfour Twelve Factor(四)</title><link href="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/" rel="alternate" type="text/html" title="Arts Weekfour Twelve Factor(四)" /><published>2019-04-30T00:00:00+08:00</published><updated>2019-04-30T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/">&lt;p&gt;Dev/prod parity&lt;br /&gt;
+Logs&lt;br /&gt;
+Admin processes&lt;/p&gt;
+
+&lt;h2 id=&quot;十开发环境生产环境相同&quot;&gt;十、开发环境/生产环境相同&lt;/h2&gt;
+&lt;p&gt;保持开发环境、模拟环境和生产环境尽可能相似&lt;/p&gt;
+
+&lt;p&gt;历史上，在开发环境和生产环境之间有三道鸿沟，分别位：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作&lt;/li&gt;
+  &lt;li&gt;人事：开发者写代码，运维工程师部署它&lt;/li&gt;
+  &lt;li&gt;工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;twelve-factor app需要使上面三者尽可能小来便于持续部署。&lt;/p&gt;
+
+&lt;p&gt;以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。&lt;/p&gt;
+
+&lt;p&gt;twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。&lt;/p&gt;
+
+&lt;p&gt;对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务&lt;/p&gt;
+
+&lt;h2 id=&quot;十一日志&quot;&gt;十一、日志&lt;/h2&gt;
+&lt;p&gt;将日志当做事件流对待&lt;/p&gt;
+
+&lt;p&gt;日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。&lt;/p&gt;
+
+&lt;p&gt;一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;中。&lt;/p&gt;
+
+&lt;p&gt;在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。&lt;/p&gt;
+
+&lt;p&gt;app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能&lt;/p&gt;
+
+&lt;h2 id=&quot;管理进程&quot;&gt;管理进程&lt;/h2&gt;
+&lt;p&gt;将管理进程作为一次性的、不是经常开关的进程&lt;/p&gt;
+
+&lt;p&gt;开发者经常希望有一个一次性的管理进程，例如：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;运行数据库迁移&lt;/li&gt;
+  &lt;li&gt;运行一个控制台&lt;/li&gt;
+  &lt;li&gt;运行上传到app repo中的一次性脚本&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Dev/prod parity Logs Admin processes</summary></entry><entry><title type="html">技术学习之路</title><link href="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" rel="alternate" type="text/html" title="技术学习之路" /><published>2019-04-26T00:00:00+08:00</published><updated>2019-04-26T00:00:00+08:00</updated><id>http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF</id><content type="html" xml:base="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">&lt;p&gt;这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。&lt;/p&gt;
 
 &lt;p&gt;说起来，Share好像变成了一个分享自己观点的东西。本意上Share应该是分享技术相关内容的。这样可能有点违规，但我觉得，分享自己的观点也不差，甚至非技术的内容也可以，因为这样促使人真正的去整理观点，审视自己，而人生除了技术之外还有很多东西能从这么做获益。&lt;/p&gt;
 
@@ -110,406 +514,4 @@ endif
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;/&amp;lt;name&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&amp;lt;name&amp;gt;可以是任意的&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</summary></entry><entry><title type="html">Arts Weekthree Leetcode1022 Sumroottoleaf</title><link href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/" rel="alternate" type="text/html" title="Arts Weekthree Leetcode1022 Sumroottoleaf" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">&lt;p&gt;Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.&lt;/p&gt;
-
-&lt;p&gt;For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.&lt;/p&gt;
-
-&lt;p&gt;Return the sum of these numbers.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br /&gt;
-    1. The number of nodes in the tree is between 1 and 1000.&lt;br /&gt;
-    2. node.val is 0 or 1.&lt;br /&gt;
-    3. The answer will not exceed 2^31 - 1.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。&lt;/p&gt;
-
-&lt;p&gt;二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。&lt;/p&gt;
-
-&lt;p&gt;递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点&lt;code class=&quot;highlighter-rouge&quot;&gt;node&lt;/code&gt;和一个数&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;中。接着，如果该节点是叶子节点，那么返回&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和&lt;/li&gt;
-  &lt;li&gt;若函数输入的节点是空节点，则无法形成数，返回0即可&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sumRootToLeaf(root *TreeNode) int {   
-    number := 0
-    
-    res := sumRootToLeafHelper(root, number)
-    return res
-}
-
-func sumRootToLeafHelper(root *TreeNode, number int) int {
-    if root == nil {
-        return 0
-    }
-    
-    number = number * 2 + root.Val
-    
-    if root.Left == nil &amp;amp;&amp;amp; root.Right == nil {
-        return number
-    }
-    
-    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
-    
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a binary tree, each node has value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit. For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.</summary></entry><entry><title type="html">Arts Weekthree Twelve Factor(三)</title><link href="http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)/" rel="alternate" type="text/html" title="Arts Weekthree Twelve Factor(三)" /><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-Twelve-Factor(%E4%B8%89)/">&lt;p&gt;Twelve Factor Part Three&lt;br /&gt;
-Port binding&lt;br /&gt;
-Concurrency&lt;br /&gt;
-Disposability&lt;/p&gt;
-
-&lt;h2 id=&quot;七端口号绑定&quot;&gt;七、端口号绑定&lt;/h2&gt;
-&lt;p&gt;通过绑定端口号导出服务&lt;/p&gt;
-
-&lt;p&gt;应用程序应当是自包含(self-contained)的，并且它不应当依赖运行时服务器的注入。web app通过将HTTP绑定到一个端口号上来将其导出作为服务。&lt;/p&gt;
-
-&lt;p&gt;在本地的开发环境，开发者通过像&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:5000/&lt;/code&gt;这样的URL访问自己开发的服务。在部署环境中，则通过公共域名和端口访问。&lt;/p&gt;
-
-&lt;p&gt;通常这通过使用依赖声明将一个web服务器库添加到app中完成，例如Python的Tornado，Java的Jetty。&lt;/p&gt;
-
-&lt;p&gt;注意绑定端口的服务意味着它也可以成为其他app的&lt;code class=&quot;highlighter-rouge&quot;&gt;backing service&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;八并发&quot;&gt;八、并发&lt;/h2&gt;
-&lt;p&gt;通过进程模型达成横向扩展&lt;/p&gt;
-
-&lt;p&gt;任何计算机程序都表示为一个或多个计算机程序。Web应用使用了许多不同类型的进程执行形式，例如PHP进程作为Apache的子进程存在，Java由JVM提供一个维护大块系统资源的进程，而并发就由线程内在的管理。不管哪种形式，运行着的进程对于app的开发者来说都只具有最小的可见性。&lt;/p&gt;
-
-&lt;p&gt;在twelve-factor app中，进程是一等公民。twelve-factor中的进程从运行守护服务的UNIX进程模型获得强烈的启发。在这种模型下，开发者可通过将每种类型的工作分发一个进程类型来架构自己的app以使它们能处理形色各异的工作负载。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app无共享、水平可分的特性意味着增强并发是一个简单可信任的操作。进程类型和每种类型的进程数量组成的矩阵则是进程信息。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app不能被配置为守护进程也不能写PID文件，而应当依赖操作系统的进程管理器来管理输出流，对崩溃进程作出反应或是处理用户的重启和关闭&lt;/p&gt;
-
-&lt;h2 id=&quot;九可弃性disposability&quot;&gt;九、可弃性(Disposability)&lt;/h2&gt;
-&lt;p&gt;通过快速启动和优雅的关闭来最大化鲁棒性&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;disposability&lt;/code&gt;意味着app可以被一瞬间开启或关闭。这对于伸缩性、代码或配置改变时的快速部署以及生产环境部署的鲁棒性都很重要。&lt;/p&gt;
-
-&lt;p&gt;进程应当尽量最小化启动时间，最好只需几秒钟。短暂的启动时间意味着更灵活，更鲁棒(进程管理器可以更快的把进程移动到新的物理机上)&lt;/p&gt;
-
-&lt;p&gt;当进程从进程管理器处收到&lt;code class=&quot;highlighter-rouge&quot;&gt;SIGTERM&lt;/code&gt;信号时应当优雅的关闭。对于web进程来说，这意味着停止监听端口，让当前的请求结束然后退出。&lt;/p&gt;
-
-&lt;p&gt;对于工作进程来说，这意味着把当前的工作返回到工作队列中。&lt;/p&gt;
-
-&lt;p&gt;进程应当对由底层硬件导致的突然死亡也鲁棒。一个建议的方法是使用鲁棒的后端队列，例如Beanstalked&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Twelve Factor Part Three Port binding Concurrency Disposability</summary></entry><entry><title type="html">关于996工作制的一些思考</title><link href="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" rel="alternate" type="text/html" title="关于996工作制的一些思考" /><published>2019-04-19T00:00:00+08:00</published><updated>2019-04-19T00:00:00+08:00</updated><id>http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83</id><content type="html" xml:base="http://localhost:4000/%E5%85%B3%E4%BA%8E996%E5%B7%A5%E4%BD%9C%E5%88%B6%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/">&lt;p&gt;本来“Share”应该是分享技术观点的文章，但最近的996工作制闹的沸沸扬扬的，我也想对这个东西讲一点自己的思考。&lt;/p&gt;
-
-&lt;p&gt;其实，作为一个学生，谈论996工作制似乎为时过早。另一方面，目前很快就毕业了，稍微等几个月说不定在实际工作中就能体会到，到时候再来发表观点也不晚。但转念一想，如果未来能打自己的脸，似乎也挺不错的，这样想到这件事就能提醒自己——没经历过的事情想的再合理也不一定符合实际。&lt;/p&gt;
-
-&lt;p&gt;996工作制最开始是在github上火起来的，由许多国内的程序员创建的&lt;a href=&quot;https://github.com/996icu/996.ICU&quot;&gt;996.icu&lt;/a&gt;在github上的star数一直飙升，很快就引起了注意。媒体、公司领导人和国外的一些知名程序员都关于996发表了自己的看法，甚至还有微博上的共青团中央加入。事情发展到后来，慢慢就好像变成了资本家和工人阶级的对抗。&lt;/p&gt;
-
-&lt;p&gt;这里姑且还是做个介绍，996指的是上班时间从早9点到晚9点，一周工作6天。ICU指的是重症加强护理病房。996.icu的意思是工作996,生病icu。&lt;/p&gt;
-
-&lt;p&gt;广大民众的基本角度是平常工作996实在过于辛苦，人和机器没什么两样了。隐形996也就算了，还有很多公司，像京东、有赞都开始强制996了，这样下去还得了？而领导层的基本角度就千奇百怪了，为了奋斗的，为了情怀的，为了理想的层出不穷。&lt;/p&gt;
-
-&lt;p&gt;然而，不管怎么说，首先有一件事是毋庸置疑的，大部分996的公司都违反了法律。既然《劳动法》规定了一周的最长规定时间，那么企业就不应该违反。要加班，就得拿工资，而且还得本人愿意，否则就是违反了法律。而在文明社会里，明目张胆的违反法律如果被允许，后果不堪设想。&lt;/p&gt;
-
-&lt;p&gt;接下去先反驳一下领导层的观点，996是为了理想或者为了社会或者奋斗者等等。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;996是为了理想&lt;/strong&gt; 这句话本身就不对，并不是每个人的理想都是赚大钱或者成为技术大牛，抑或是成为什么了不起的人。很多领导层的人往往会批判这样的人说没有理想，可是理想本来就是很私人的东西。假设A的理想是成为技术大牛，B的理想是娶老婆。然后大家就会觉得A了不起，B就是个笑话。But，假设A出生在一个技术大国，B出生在一个男女比例100：1的国家，那B的理想难道真那么可笑吗？显然不是&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;996是为了社会&lt;/strong&gt; 也有人说，996是为了创造更多的价值，造福我们的社会。这其实是本末倒置，996的一个问题在于引发了工作人员的不幸，还怎么造福社会？也许有人会说，996的是少部分人，造福了大部分社会群体。严重点来说，这就好比杀一人救百人的问题，我个人认为，还得看别人是否愿意。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;996是体现了奋斗者精神&lt;/strong&gt; 我不否认，如果一个人做到了996,他确实很拼。我也相信，很多领导层的人确实不只996,忙起来12127都有可能。然而，如果要说996体现了奋斗者精神，我觉得不对——奋斗者精神并不是看时间的，而是看品质的。有996的人可能其实在磨洋工，也有很多955的人工作时候全神贯注，重点还是工作时候的状态。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;996能加快工作进度&lt;/strong&gt; 996真的能使工作效率提升吗？短时确实可以，但我相信，长时间996根本就做不到——假设996的时候都是在全神贯注的思考问题，完成工作的话。人的精力毕竟有限，段时间内刺激一下，长时间的产出反而会降低工作效率，尤其是技术类的工作。确实有少部分人可能精力异乎常人，再抱持着对工作的热爱，也许几年都不成问题，但这其实是用健康在交换。即便一直做自己喜欢的事情，也需要休息，更何况现在又有多少人是在做着自己喜欢的工作？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;企业家知道上面这些吗？当然知道，连我都能想通，他们怎么可能不知道？但他们仍然找出一些真假混合的借口来试图使996合理化，这是为什么？我也想不明白，除非他们认为996真的能提升工作效率——那就是把人当成了机器，无论运行多长时间都能保持一致的效率。&lt;/p&gt;
-
-&lt;p&gt;另一方面，在广大群众之中，肯定存在着这么一种人——拿着够用的工资，干着996的活，不肯辞职却还要抱怨。确实有些人接受996是因为养家糊口——生活不易嘛。但是，也有部分人并不是——如果国内真的像媒体宣传的那么好的话，应该大部分都不是。很多人说，房价高啊，买房啊。然而房价真正高的地方主要是一线，这些地方聚集着的都是精英。他们的目的是为了以后的小孩和自己的前途，我认为，这种人就应该接受996——一方面，竞争者多，另一方面，一线城市的价值也在那放着。如果他们真的梦想过上安逸的生活，去一个差点的城市找个不用996的工作就可以，何必抱怨？既想要安逸、舒服的生活，又想要拿高工资，享受最好的教育和医疗，如果真实现了，指不定又会有更高要求，毕竟人的贪欲是无穷的。&lt;/p&gt;
-
-&lt;p&gt;综上，我认为，企业不应该强制实施996,可以鼓励短期996,但对于长期工作者反而应该劝告。而对于在一线享受资源还要抱怨的人——出于我的小人心理，希望他们还是应该受点罪的&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">本来“Share”应该是分享技术观点的文章，但最近的996工作制闹的沸沸扬扬的，我也想对这个东西讲一点自己的思考。</summary></entry><entry><title type="html">Arts Weektwo Vim进阶</title><link href="http://localhost:4000/ARTS-WeekTwo-vim%E8%BF%9B%E9%98%B6/" rel="alternate" type="text/html" title="Arts Weektwo Vim进阶" /><published>2019-04-16T00:00:00+08:00</published><updated>2019-04-16T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-vim%E8%BF%9B%E9%98%B6</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-vim%E8%BF%9B%E9%98%B6/">&lt;p&gt;上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;^ -&amp;gt; 到本行第一个不是blank字符的位置&lt;/li&gt;
-  &lt;li&gt;g_ -&amp;gt; 到本行最后一个不是blank字符的位置&lt;/li&gt;
-  &lt;li&gt;:e &amp;lt;path/to/file&amp;gt; -&amp;gt; 打开一个文件&lt;/li&gt;
-  &lt;li&gt;:saveas &amp;lt;path/to/file&amp;gt; -&amp;gt; 另存为&amp;lt;path/to/file&amp;gt;&lt;/li&gt;
-  &lt;li&gt;:bn和:bp -&amp;gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt; -&amp;gt; 可以重复上一次的命令&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;N&amp;lt;command&amp;gt;&lt;/code&gt; -&amp;gt; 重复某个命令N次&lt;/li&gt;
-  &lt;li&gt;*和# -&amp;gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词&lt;/li&gt;
-  &lt;li&gt;很多命令可以以下面的形式来干&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;start position&amp;gt;&amp;lt;command&amp;gt;&amp;lt;end position&amp;gt;&lt;/code&gt;&lt;br /&gt;
-例如&lt;code class=&quot;highlighter-rouge&quot;&gt;0y$&lt;/code&gt;意味着：
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; -&amp;gt; 到行头&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; -&amp;gt; 拷贝&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; -&amp;gt; 到本行最后一个字符&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gU&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;gu&lt;/code&gt;后跟位置(例如w，e，$等)变换大小写&lt;/li&gt;
-  &lt;li&gt;在当前行上，&lt;code class=&quot;highlighter-rouge&quot;&gt;fa&lt;/code&gt;可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字&lt;/li&gt;
-  &lt;li&gt;区域选择 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;action&amp;gt;a&amp;lt;object&amp;gt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;action&amp;gt;i&amp;lt;object&amp;gt;&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;action&lt;/code&gt;可以是任何命令，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;v&lt;/code&gt;等&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt;可以是&lt;code class=&quot;highlighter-rouge&quot;&gt;w&lt;/code&gt;(单词),&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;(句子),&lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt;(段落)，或者是特别字符:&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;'&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;)&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;]&lt;/code&gt;&lt;br /&gt;
-举例来说，字符串&lt;code class=&quot;highlighter-rouge&quot;&gt;(haha (-) (&quot;tfz&quot;))&lt;/code&gt;.光标在f位置
-        &lt;blockquote&gt;
-          &lt;ul&gt;
-            &lt;li&gt;vi” -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;tfz&lt;/code&gt;&lt;/li&gt;
-            &lt;li&gt;va” -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;tfz&quot;&lt;/code&gt;&lt;/li&gt;
-            &lt;li&gt;vi) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;tfz&quot;&lt;/code&gt;&lt;/li&gt;
-            &lt;li&gt;va) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;(&quot;tfz&quot;)&lt;/code&gt;&lt;/li&gt;
-            &lt;li&gt;v2i) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;haha (-) (&quot;tfz&quot;)&lt;/code&gt;&lt;/li&gt;
-            &lt;li&gt;v2a) -&amp;gt; 选择&lt;code class=&quot;highlighter-rouge&quot;&gt;(haha (-) (&quot;tfz&quot;))&lt;/code&gt;&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/blockquote&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;块操作 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt; &amp;lt;move&amp;gt; &amp;lt;motion&amp;gt; [ESC]&lt;/code&gt;&lt;br /&gt;
-一般都用于插入，举例来说，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-v&amp;gt; 向下移动 I-- [ESC]&lt;/code&gt;为在同一位置前方插入&lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt;字符&lt;/li&gt;
-  &lt;li&gt;Insert模式下按&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-p&amp;gt;&lt;/code&gt;或是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-n&amp;gt;&lt;/code&gt;可以自动补全&lt;/li&gt;
-  &lt;li&gt;宏录制
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;qa&lt;/code&gt;把操作记录在寄存器&lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@a&lt;/code&gt;会replay被录制的宏&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@@&lt;/code&gt;会replay最新录制的宏&lt;br /&gt;
-例如：在一行只有”1”的文本中，键入下面的命令:&lt;/li&gt;
-      &lt;li&gt;qayyp&lt;C-a&gt;q -&amp;gt;&lt;/C-a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul&gt;
-      &lt;li&gt;qa开始录制&lt;/li&gt;
-      &lt;li&gt;yyp复制并粘贴当前行&lt;/li&gt;
-      &lt;li&gt;
-        &lt;C-a&gt;增加1  
-&lt;/C-a&gt;
-      &lt;/li&gt;
-      &lt;li&gt;q停止录制&lt;br /&gt;
-      * @a -&amp;gt; 在1下面写下2&lt;br /&gt;
-      * @@ -&amp;gt; 在2下面写下3&lt;br /&gt;
-      * 100@@ -&amp;gt; 创建新的100行，并把数据增加到103&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;块操作，当目标块被选中后，可以有如下操作：
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;J&lt;/code&gt; -&amp;gt; 把所有的行连接起来变成一行&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt; -&amp;gt; 左右缩进&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; -&amp;gt; 自动缩进&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;:split&lt;/code&gt;水平分屏，&lt;code class=&quot;highlighter-rouge&quot;&gt;vsplit&lt;/code&gt;垂直分屏, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;C-w&amp;gt;&amp;lt;direction(可以是hjkl)&amp;gt;&lt;/code&gt;切换分屏&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;资料来源&quot;&gt;资料来源&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://coolshell.cn/articles/5426.html&quot;&gt;简明vim练级攻略&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Tonfeiz</name></author><summary type="html">上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。</summary></entry><entry><title type="html">Arts Weektwo Leetcode704 Binarysearch</title><link href="http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch/" rel="alternate" type="text/html" title="Arts Weektwo Leetcode704 Binarysearch" /><published>2019-04-15T00:00:00+08:00</published><updated>2019-04-15T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-Leetcode704-BinarySearch/">&lt;p&gt;Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.&lt;/p&gt;
-
-&lt;p&gt;You may assume that all elements in nums are unique.
-n will be in the range [1, 10000].
-The value of each element in nums will be in the range [-9999, 9999].&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;这题其实就是一个简单的二分搜索，数组中的元素都是唯一的，且数值也不大，难怪会被分到简单题里&lt;/p&gt;
-
-&lt;p&gt;二分搜索很有名，要实现一个完全正确的二分搜索是很困难的，但这题的要求并不高。基本思想就是每次寻找中间元素并根据中间元素与目标元素的大小判断下一个搜索范围应该在哪一侧&lt;/p&gt;
-
-&lt;p&gt;二分搜索时，左侧和右侧的范围应当界定明确。在下面的代码中，采用的范围是C++中的通用范围，即[left, right)。因此，循环的推出条件就是两者相等。当缩小范围时，要根据上面的关系选择是中间元素还是中间元素的两侧元素&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func search(nums []int, target int) int {
-    left := 0
-    right := len(nums)
-    
-    res := -1;
-    for left &amp;lt; right {
-        middle := left + (right - left) / 2;
-        if(nums[middle] &amp;gt; target) {
-            right = middle;
-        } else if(nums[middle] &amp;lt; target) {
-            left = middle + 1;
-        } else {
-            return middle;
-        }
-    }
-    
-    return res;   
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.</summary></entry><entry><title type="html">Arts Weektwo Twelve Factor(二)</title><link href="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weektwo Twelve Factor(二)" /><published>2019-04-15T00:00:00+08:00</published><updated>2019-04-15T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTwo-Twelve-Factor(%E4%BA%8C)/">&lt;p&gt;Twelve Factor Part Two&lt;br /&gt;
-Backing services&lt;br /&gt;
-Build, release and run&lt;br /&gt;
-processes&lt;/p&gt;
-
-&lt;h2 id=&quot;四支持服务backing-services&quot;&gt;四、支持服务(Backing services)&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;应当被视为附加资源&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;backing services&lt;/em&gt;包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。&lt;/p&gt;
-
-&lt;p&gt;对于app来说，一个&lt;em&gt;backing services&lt;/em&gt;应当和另一个同样功能的&lt;em&gt;backing services&lt;/em&gt;完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处&lt;/p&gt;
-
-&lt;h2 id=&quot;五构建发行和运行&quot;&gt;五、构建、发行和运行&lt;/h2&gt;
-&lt;p&gt;严格的区分构建和运行阶段&lt;/p&gt;
-
-&lt;p&gt;一个&lt;em&gt;codebase&lt;/em&gt;通过下面三个阶段被转换为一个部署：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源&lt;/li&gt;
-  &lt;li&gt;发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行&lt;/li&gt;
-  &lt;li&gt;运行阶段在执行环境中运行，启动app的一些进程&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本&lt;/p&gt;
-
-&lt;p&gt;运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。&lt;/p&gt;
-
-&lt;h2 id=&quot;六进程&quot;&gt;六、进程&lt;/h2&gt;
-&lt;p&gt;将app作为一个或多个无状态进程执行&lt;/p&gt;
-
-&lt;p&gt;进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的&lt;em&gt;backing service&lt;/em&gt;中，通常是一个数据库&lt;/p&gt;
-
-&lt;p&gt;进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。  、&lt;/p&gt;
-
-&lt;p&gt;sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Twelve Factor Part Two Backing services Build, release and run processes</summary></entry><entry><title type="html">Arts Weekone Vimtutor总结</title><link href="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/" rel="alternate" type="text/html" title="Arts Weekone Vimtutor总结" /><published>2019-04-14T00:00:00+08:00</published><updated>2019-04-14T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekOne-vimtutor%E6%80%BB%E7%BB%93/">&lt;p&gt;虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。&lt;/p&gt;
-
-&lt;h2 id=&quot;一&quot;&gt;一&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用h，j，k，l作为vim中光标的移动键(比上下左右要有效率的多)。&lt;/li&gt;
-  &lt;li&gt;使用:q!(&lt;code class=&quot;highlighter-rouge&quot;&gt;quit!&lt;/code&gt;)强制退出当前正在编辑的文件&lt;/li&gt;
-  &lt;li&gt;使用x删除当前光标停留处的文字&lt;/li&gt;
-  &lt;li&gt;使用i(&lt;code class=&quot;highlighter-rouge&quot;&gt;insert&lt;/code&gt;)在当前光标位置处插入内容&lt;/li&gt;
-  &lt;li&gt;使用A(&lt;code class=&quot;highlighter-rouge&quot;&gt;Append&lt;/code&gt;)在当前最后一行处添加内容&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;二&quot;&gt;二&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用dw(&lt;code class=&quot;highlighter-rouge&quot;&gt;delete word&lt;/code&gt;)来删除当前光标处的一个单词&lt;/li&gt;
-  &lt;li&gt;使用d$删除当前位置到行末的所有内容&lt;/li&gt;
-  &lt;li&gt;许多改变文本的命令都由一个&lt;code class=&quot;highlighter-rouge&quot;&gt;operator&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;组成，例如d代表删除&lt;code class=&quot;highlighter-rouge&quot;&gt;operator&lt;/code&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;可以有如下选择：
-    &lt;ul&gt;
-      &lt;li&gt;w：直到下一个单词的起始位置，不包括该起始位置&lt;/li&gt;
-      &lt;li&gt;e: 直到当前单词的结束位置，包括该结束位置&lt;/li&gt;
-      &lt;li&gt;$: 直到当前行的结尾，包括最后一个单词&lt;br /&gt;
- 如果只按上述&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;则可以让光标按&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;移动&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;前面可以使用数字进行对多个&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;的操作&lt;/li&gt;
-  &lt;li&gt;使用0到一行的起始位置处&lt;/li&gt;
-  &lt;li&gt;使用dd删除一整行数据&lt;/li&gt;
-  &lt;li&gt;使用u来撤销上一个操作，U来修复一整行的操作，CTRL-R来撤销撤销操作&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;三&quot;&gt;三&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用p(&lt;code class=&quot;highlighter-rouge&quot;&gt;put&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;)来放置vim寄存器中的文本数据(可通过dd，d，yy等操作得到)&lt;/li&gt;
-  &lt;li&gt;使用r(&lt;code class=&quot;highlighter-rouge&quot;&gt;replace&lt;/code&gt;)来替换当前光标处的文本&lt;/li&gt;
-  &lt;li&gt;使用c(&lt;code class=&quot;highlighter-rouge&quot;&gt;change&lt;/code&gt;)+&lt;code class=&quot;highlighter-rouge&quot;&gt;motion&lt;/code&gt;来改变文版，注意按c之后会进入插入模式&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;四&quot;&gt;四&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用CTRL-G命令显示当前文件名以及总行数、当前行数&lt;/li&gt;
-  &lt;li&gt;使用G(&lt;code class=&quot;highlighter-rouge&quot;&gt;Go&lt;/code&gt;)到当前文件底端，gg到当前文件顶端,[number]G到[number]行&lt;/li&gt;
-  &lt;li&gt;使用/[text]搜索和[text]一样的文本，n是前进，N是后退&lt;/li&gt;
-  &lt;li&gt;使用%来匹配各种括号&lt;/li&gt;
-  &lt;li&gt;使用:s(&lt;code class=&quot;highlighter-rouge&quot;&gt;substitute&lt;/code&gt;)来替进行各种替换&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;五&quot;&gt;五&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用:!来执行外部的shell命令，例如:!ls就可以列举目录&lt;/li&gt;
-  &lt;li&gt;使用:w(&lt;code class=&quot;highlighter-rouge&quot;&gt;write&lt;/code&gt;) FILENAME来将当前已经写完的内容写入某个文件&lt;/li&gt;
-  &lt;li&gt;使用v(&lt;code class=&quot;highlighter-rouge&quot;&gt;visual&lt;/code&gt;)进入可视化模式，选择部分内容并利用:w来将这些内容写入某个文件&lt;/li&gt;
-  &lt;li&gt;使用:r(&lt;code class=&quot;highlighter-rouge&quot;&gt;read&lt;/code&gt;) FILENAME来将目标文件的内容读入当前正在编辑的文件中(不一定是文件内容，某个命令的输出也可以，感觉和管道或是重定向很像)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;六&quot;&gt;六&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用o来在当前行下面插入一行，使用O来在当前行上面插入一行&lt;/li&gt;
-  &lt;li&gt;使用a来在当前光标的下一个位置插入文本&lt;/li&gt;
-  &lt;li&gt;使用R来批量替换文本&lt;/li&gt;
-  &lt;li&gt;使用y来复制，p来粘贴。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
-&lt;p&gt;对我来说，这个教程比较有用的是2.3,4.4和5.5。以后还要多多练习，对这些基本操作更加熟练&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。</summary></entry><entry><title type="html">搭建个人博客</title><link href="http://localhost:4000/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="alternate" type="text/html" title="搭建个人博客" /><published>2019-04-12T00:00:00+08:00</published><updated>2019-04-12T00:00:00+08:00</updated><id>http://localhost:4000/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="http://localhost:4000/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">&lt;p&gt;关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。&lt;/p&gt;
-
-&lt;p&gt;搭建博客的教程网上有很多，随便找一个基本上就能搭建完成。我也是拼拼凑凑搭出来的，现在也还只是个雏形。这里还是做个记录，毕竟别人的经验始终是别人的，自己写出来的才是自己的。&lt;/p&gt;
-
-&lt;h2 id=&quot;一利用github-pages托管网站&quot;&gt;一、利用github pages托管网站&lt;/h2&gt;
-&lt;p&gt;搭建自己的博客首先得有自己的网站，要有自己的网站首先得有服务器主机来维护它，作为非土豪人士，自己买服务器托管网站这种事是干不出来的。因此，可以使用github pages来托管自己的网站。&lt;/p&gt;
-
-&lt;p&gt;github pages是一个静态站点服务，主要就用来直接从github repo生成网站。因为之前一直也用github，因此一些基本操作也是轻车熟路了，使用它也是基于这个考虑。&lt;/p&gt;
-
-&lt;p&gt;github pages也有一些缺陷，这里简单的列举几点：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;它是静态站点服务，不支持服务端代码，例如PHP，Ruby或者Python&lt;/li&gt;
-  &lt;li&gt;github pages所在的repo最好不要超过1GB&lt;/li&gt;
-  &lt;li&gt;发布的github pages网站不能超过1GB&lt;/li&gt;
-  &lt;li&gt;github pages站点的软带宽每个月不超过100GB&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;对于一般的个人博客网站来说，这些限制应该问题不大。&lt;/p&gt;
-
-&lt;p&gt;接下去说说具体的流程。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在github上创建一个repo，这个repo的名字必须是&lt;em&gt;username&lt;/em&gt;.github.io,其中&lt;em&gt;username&lt;/em&gt;就是你在github上的用户名&lt;/li&gt;
-  &lt;li&gt;选择一个文件夹作为github repo的存放地，例如就在$HOME目录下，在终端下输入下面的命令：&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/username/username.github.io&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;进入上面的文件夹，创建一个index.html文件。命令如下：&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;cd username.github.io&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;echo &quot;Hello World&quot; &amp;gt; index.html&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;将改变上传到github端。命令如下：&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git add -all&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &quot;Initial commit&quot;&lt;/code&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git push -u origin master&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;至此，网站就可以查看了。可以在浏览器中输入&lt;br /&gt;
-&lt;strong&gt;https://&lt;em&gt;username&lt;/em&gt;.github.io&lt;/strong&gt;&lt;br /&gt;
-查看自己的网站&lt;/p&gt;
-&lt;h2 id=&quot;二利用jkeyll编辑自己的博客&quot;&gt;二、利用jkeyll编辑自己的博客&lt;/h2&gt;
-&lt;p&gt;有了github pages托管网站之后，接下去就是要将网站变成博客形式了。虽然之前稍微学过一点前端的知识，但要自己从头搭建还是有些困难。在github pages上发现大力推荐的一个静态网页和博客生成框架jekyll，可以直接把markdown格式的文件转化成网页，因此干脆就入坑jekyll了。&lt;/p&gt;
-
-&lt;p&gt;目前我也只是过了两遍jekyll的教程，具体使用还需要摸索，这里就简单的讲一下基础的内容。如果想要详细了解，还是得去&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll官网&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;jekyll首先需要安装Ruby的运行环境，在Linux Ubuntu环境下是很简单的，输入下面的命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install ruby-full build-essential zlib1g-dev&lt;/code&gt;
-接着设置一下环境变量&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo '# Install Ruby Gems to ~/gems' &amp;gt;&amp;gt; ~/.bashrc
-echo 'export GEM_HOME=&quot;$HOME/gems&quot;' &amp;gt;&amp;gt; ~/.bashrc
-echo 'export PATH=&quot;$HOME/gems/bin:$PATH&quot;' &amp;gt;&amp;gt; ~/.bashrc
-source ~/.bashrc`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;最后，安装jekyll以及bundler插件&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install jekyll bundler&lt;/code&gt;&lt;br /&gt;
-至此，jekyll的安装就完成了。&lt;/p&gt;
-
-&lt;p&gt;jekyll的使用也很简单，如果不使用github pages，直接
-&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new [foldername]&lt;/code&gt;
-其中&lt;code class=&quot;highlighter-rouge&quot;&gt;foldername&lt;/code&gt;就是文件夹名字，jekyll就会在文件夹中生成一个网站的雏形。想要在本地浏览网页只需要&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;就可以在浏览器中输入&lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;http://127.0.0.1:4000&lt;/a&gt;浏览网页的样子了。(注意，这里&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new&lt;/code&gt;可能花费较长时间，其实不用该命令也可以，自己手动建立目录就行了)&lt;/p&gt;
-
-&lt;p&gt;如果使用github pages，也很简单，在之前的第一步生成的github repo里面创建对应目录结构也一样可以浏览。一般的目录结构如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.  
-+-- _site  
-+-- _layouts  
-|   +--  default.html  
-|   +--  post.html  
-+-- _posts  
-|   +-- 2019-11-11-new-post.md  
-|   +-- 2019-1-1-old-post.md  
-+-- _data  
-+-- _includes  
-+-- assets  
-|   +-- css  
-|   +-- images  
-|   +-- js  
-+-- _sass  
-+-- _config.yml  
-+-- index.html  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;其中,_layouts目录放置的是网页文件的布局样式，_posts目录放置的是博客文章(注意，文件名字必须是yyyy-mm-dd-&lt;em&gt;article_title&lt;/em&gt;样式的)，_includes目录放置的是导入文件，assets目录放置的是资源文件，包括css和js等。_config.yml是配置文件，index.html则是网页文件。&lt;/p&gt;
-
-&lt;p&gt;在github pages上还可以直接使用jekyll的主题，虽然主题不多，但暂时可以将就着用，后期再自己改进。&lt;/p&gt;
-
-&lt;h2 id=&quot;三总结&quot;&gt;三、总结&lt;/h2&gt;
-&lt;p&gt;博客搭建的过程到这里算是暂时结束了，后期还需要对jekyll作进一步的深入了解以调整自己的博客。目前暂时就先这样吧。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。</summary></entry></feed>
+&lt;p&gt;&amp;lt;name&amp;gt;可以是任意的&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</summary></entry></feed>

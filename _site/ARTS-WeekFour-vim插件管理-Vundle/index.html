@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Vim配置 | Tonfeiz’s Blog</title>
-<meta name="description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
+<!-- begin _includes/seo.html --><title>Arts Weekfour Vim插件管理 Vundle | Tonfeiz’s Blog</title>
+<meta name="description" content="vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Vim配置">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+<meta property="og:title" content="Arts Weekfour Vim插件管理 Vundle">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/">
 
 
-  <meta property="og:description" content="vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-24T00:00:00+08:00">
+  <meta property="og:description" content="vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-05-01T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/">
 
 
 
@@ -250,92 +250,94 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Vim配置</h1>
+      <h1 id="page-title" class="page__title">Arts Weekfour Vim插件管理 Vundle</h1>
     
-    <p>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</p>
+    <p>vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。</p>
 
-<h2 id="vimrc文件">vimrc文件</h2>
-<p>vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中</p>
+<p>Vundle是vim bundle的缩写。它能自动跟踪<code class="highlighter-rouge">.vimrc</code>中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。</p>
 
-<p>vimrc文件的名字叫做<code class="highlighter-rouge">.vimrc</code>，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是<code class="highlighter-rouge">~/.vimrc</code>。</p>
-
-<p>vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是<br />
-<code class="highlighter-rouge">set &lt;options&gt;</code></p>
-
-<p>想要查看有哪些配置可以输入<code class="highlighter-rouge">:options</code>查看或是在帮助中查看。</p>
-
-<p>对于特定的配置，可以输入<code class="highlighter-rouge">:help '&lt;option name&gt;'</code>查看。另外，在设置某个选项时在后面加<code class="highlighter-rouge">&amp;</code>即可恢复默认设置</p>
-
-<p>为了使vimrc文件起作用需要退出vim再重新启动</p>
-
-<p>下面列举一些设置作为例子说明</p>
-
-<p><code class="highlighter-rouge">set autoindent</code>:自动缩进，使用前一行的缩进作为当前行缩进</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if has("vms")
-  set nobackup
-else
-  set backup
-endif
-</code></pre></div></div>
-<p>使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。</p>
-
-<p><code class="highlighter-rouge">set history=50</code>:在历史记录中保持50个命令和50种搜索模式<br />
-<code class="highlighter-rouge">set ruler</code>:允许在右下角显示当前游标的位置<br />
-<code class="highlighter-rouge">set showcmd</code>:显示普通模式下输入的命令<br />
-<code class="highlighter-rouge">set incsearch</code>:在输入搜索模式下显示和其匹配的内容<br />
-<code class="highlighter-rouge">map Q gq</code>:这是一个按键映射，将<code class="highlighter-rouge">Q</code>键映射到<code class="highlighter-rouge">gq</code>按键上</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filetype plugin indent on
-</code></pre></div></div>
+<h2 id="vundle的安装设置">Vundle的安装设置：</h2>
 <ol>
-  <li>文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途</li>
-  <li>使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中</li>
-  <li>使用缩进文件：不同类型的文件种类使用不同的缩进</li>
+  <li>首先输入<code class="highlighter-rouge">git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim</code></li>
+  <li>将下列内容保存到~/.vimrc中</li>
 </ol>
 
-<h2 id="简单的映射">简单的映射</h2>
-<p>按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 </code></pre></div></div>
-<p>上面的这个映射解析为</p>
 <ol>
-  <li>&lt;F5&gt; 映射按键是F5键</li>
-  <li>i{ 转换为插入模式并输入{</li>
-  <li>&lt;Esc&gt; 退出为普通模式</li>
-  <li>ea}到单词结尾并输入}</li>
-  <li>&lt;Esc&gt;最后转化为普通模式</li>
+  <li>安装配置好的bundle:打开vim并输入<code class="highlighter-rouge">:PluginInstall</code></li>
 </ol>
 
-<p>这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号</p>
+<h2 id="插件">插件</h2>
+<h3 id="配置插件">配置插件</h3>
+<p>Vundle跟踪<code class="highlighter-rouge">.vimrc</code>中的<code class="highlighter-rouge">Plugin</code>命令。每个<code class="highlighter-rouge">Plugin</code>命令让Vundle使能脚本并将其加入|runtimepath|中。</p>
 
-<h2 id="添加插件">添加插件</h2>
-<p>vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在<code class="highlighter-rouge">plugin</code>文件夹中添加对应文件就可添加插件</p>
+<p>每个<code class="highlighter-rouge">Plugin</code>命令有一个指向脚本的URI。在URI后面可选择接受第二个参数。这个参数必须是一个目录。每个键值对都是一个配置选项。</p>
 
-<p>有两种插件：</p>
-<ul>
-  <li>全局插件：对所有文件都有效</li>
-  <li>文件类型插件：对特定文件类型才有效</li>
-</ul>
+<p>下面是一些配置选项</p>
+<ol>
+  <li>‘rtp’:设置repo中的一个目录为vim插件所在目录。该目录将被加入|runtimepath|中</li>
+  <li>‘name’:将放置配置脚本的本地拷贝的目录名字</li>
+</ol>
 
-<h3 id="全局插件">全局插件</h3>
-<p>全局插件在启动时自动加载，它们提供了大部分通用的功能。</p>
+<h3 id="支持的uri">支持的URI</h3>
+<ol>
+  <li>Github:当user/repo被传递给<code class="highlighter-rouge">Plugin</code>时Github被使用,例如<br />
+<code class="highlighter-rouge">Plugin 'VundleVim/Vundle.vim' =&gt; https://github.com/VundleVim/Vundle.vim</code></li>
+  <li>Vim Scripts:没有’/’的单词都被认为从Vim Scripts中获取<br />
+<code class="highlighter-rouge">Plugin 'ctrlp.vim' =&gt; https://github.com/vim-scripts/ctrlp.vim</code></li>
+  <li>本地插件<br />
+<code class="highlighter-rouge">Plugin 'file:///path/from/root/to/plugin'</code></li>
+</ol>
 
-<p>添加全局插件只需要两步，获取全局插件，放入对应文件夹</p>
+<h3 id="基本使用方式">基本使用方式</h3>
+<p><code class="highlighter-rouge">:PluginInstall</code> 安装<code class="highlighter-rouge">.vimrc</code>中配置的所有插件，也可以在后面跟上插件名特定安装<br />
+<code class="highlighter-rouge">:PluginUpdate</code> 更新插件<br />
+<code class="highlighter-rouge">:PluginSearch</code> 需要有<code class="highlighter-rouge">curl</code>,搜索指定插件<br />
+<code class="highlighter-rouge">:PluginList</code> 列举已经安装的插件列表<br />
+<code class="highlighter-rouge">:PluginClean</code> 清除不在<code class="highlighter-rouge">.vimrc</code>而在安装目录下的插件</p>
 
-<p>获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是<code class="highlighter-rouge">~/.vim/plugin</code>。值得注意的是，不一定要直接放入<code class="highlighter-rouge">plugin</code>目录下，也可以在其中创建子目录并放入其中</p>
-
-<h3 id="文件类型插件">文件类型插件</h3>
-<p>在使用文件类型插件时，需要使用命令<code class="highlighter-rouge">:filetype plugin on</code></p>
-
-<p>添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是<code class="highlighter-rouge">~/.vim/ftplugin</code>.对于文件类型为<code class="highlighter-rouge">filetype</code>的插件，该插件名字可以为</p>
-<ul>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;_&lt;name&gt;.vim</code></li>
-  <li><code class="highlighter-rouge">&lt;filetype&gt;/&lt;name&gt;.vim</code></li>
-</ul>
-
-<p>&lt;name&gt;可以是任意的</p>
 
 
 <!--<ul class="taxonomy__index">
@@ -579,7 +581,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
