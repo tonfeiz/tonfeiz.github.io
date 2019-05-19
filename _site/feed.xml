@@ -1,4 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-12T16:21:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekfive Avoid Over Engineering</title><link href="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/" rel="alternate" type="text/html" title="Arts Weekfive Avoid Over Engineering" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/">&lt;p&gt;商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-19T18:16:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">计算机技术历史 语言(语言)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/" rel="alternate" type="text/html" title="计算机技术历史 语言(语言)" /><published>2019-05-19T00:00:00+08:00</published><updated>2019-05-19T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/">&lt;p&gt;本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。&lt;/p&gt;
+
+&lt;p&gt;ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。&lt;/p&gt;
+
+&lt;p&gt;Algol引入了代码块的概念和&lt;code class=&quot;highlighter-rouge&quot;&gt;begin...end&lt;/code&gt;对。它也是第一个支持嵌套函数定义的编程语言。此外，它是第一个详细关注(?)正式语言定义的编程语言。并且也是它引入了BNF范式。&lt;/p&gt;
+
+&lt;p&gt;ALGOL 60有两种参数传递方式：按值传递和按名字传递。按名字传递对引用传递有深远的影响。按名字传递指的是当参数传递给函数时，它是在函数内部出现该参数的地方直接替换。这样的话，如果函数内部没有用到该参数，它就不会被求值。如果函数内部出现了多次，每次它都会被重新求值。&lt;/p&gt;
+
+&lt;p&gt;然而，ALGOL 60没有定义I/O设施。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。</summary></entry><entry><title type="html">Arts Weeksix Leetcode674 Lcis</title><link href="http://localhost:4000/ARTS-WeekSix-Leetcode674-LCIS/" rel="alternate" type="text/html" title="Arts Weeksix Leetcode674 Lcis" /><published>2019-05-17T00:00:00+08:00</published><updated>2019-05-17T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSix-Leetcode674-LCIS</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSix-Leetcode674-LCIS/">&lt;p&gt;Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题其实就是找数组中的最长连续递增子序列。想法也很简单，设置一个startIndex，当发现序列不是递增时，则子序列的长度是当前的Index减去startIndex，同时将startIndex设置为当前位置(这里注意可能有off-by-one)。遍历整个序列，找到最长的序列即可。&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func findLengthOfLCIS(nums []int) int {
+    if len(nums) == 0 {
+        return 0
+    }
+    lengthMax := 1
+    startIndex := 0
+    
+    arrayLength := len(nums)
+    for i := 0; i &amp;lt; arrayLength - 1; i++ {
+        if nums[i + 1] &amp;lt;= nums[i] {
+            if i +  1 - startIndex &amp;gt; lengthMax {
+                lengthMax = i + 1 - startIndex
+            }
+            startIndex = i + 1
+        }
+    }
+    
+    if startIndex != arrayLength - 1 &amp;amp;&amp;amp; arrayLength - startIndex &amp;gt; lengthMax {
+        lengthMax = arrayLength - startIndex
+    }
+    
+    return lengthMax
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).</summary></entry><entry><title type="html">Arts Weeksix Vim Tricks</title><link href="http://localhost:4000/ARTS-WeekSix-vim-tricks/" rel="alternate" type="text/html" title="Arts Weeksix Vim Tricks" /><published>2019-05-17T00:00:00+08:00</published><updated>2019-05-17T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSix-vim-tricks</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSix-vim-tricks/">&lt;p&gt;这篇文章介绍了一些vim中的小技巧。&lt;/p&gt;
+
+&lt;h2 id=&quot;替换单词&quot;&gt;替换单词&lt;/h2&gt;
+&lt;p&gt;替换命令可以将一个单词替换为另一个单词，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/four/4/g&lt;/code&gt;&lt;br /&gt;
+然而，对于&lt;code class=&quot;highlighter-rouge&quot;&gt;thirtyfour&lt;/code&gt;来说显然不用替换，此时可以使用”\&amp;lt;”标志，转化为&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;four/4/g&lt;/code&gt;&lt;br /&gt;
+显然，对于&lt;code class=&quot;highlighter-rouge&quot;&gt;fourteen&lt;/code&gt;来说，也是不对。可以使用”\&amp;gt;”标志，则转化为:&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;four\&amp;gt;/4/g&lt;/code&gt;&lt;br /&gt;
+如果正在编程，可能希望替换注释中的“four”，这可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\&amp;lt;four\&amp;gt;4/gc&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;将last-first转化为first-last&quot;&gt;将”Last, First”转化为”First Last”&lt;/h2&gt;
+&lt;p&gt;假设你有许多单词，其形式为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Doe, John
+Smith, Peter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;你想将它们变为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;John Doe
+Peter Smith
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这可以通过一个命令完成：&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\([^,]*\),\(.*\)/\2 \1/&lt;/code&gt;&lt;br /&gt;
+解释如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The first part between \( \) matches &quot;Last&quot;	\(     \)
+match anything but a comma			  [^,]
+any number of times				      *
+matches &quot;, &quot; literally					 ,
+The second part between \( \) matches &quot;First&quot;		   \(  \)
+any character					     .
+any number of times					      *
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;“\2”和”\1”叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;backreferences&lt;/code&gt;，可以指代前面用”\( \)”包围的文本&lt;/p&gt;
+
+&lt;h2 id=&quot;逆转行的顺序&quot;&gt;逆转行的顺序&lt;/h2&gt;
+&lt;p&gt;命令为&lt;code class=&quot;highlighter-rouge&quot;&gt;:global/^/m 0&lt;/code&gt;&lt;br /&gt;
+它的意思是，对于特定的一行，&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;到达行开始，&lt;code class=&quot;highlighter-rouge&quot;&gt;m&lt;/code&gt;移动整行，移动位置是第0行，也就是第一行之前。而&lt;code class=&quot;highlighter-rouge&quot;&gt;global&lt;/code&gt;命令不会被改变的顺序影响，因此所有的行依次进行上面的命令，则逆转了文件所有行的顺序&lt;/p&gt;
+
+&lt;h2 id=&quot;数单词&quot;&gt;数单词&lt;/h2&gt;
+&lt;p&gt;命令为&lt;code class=&quot;highlighter-rouge&quot;&gt;g CTRL-G&lt;/code&gt;，注意&lt;code class=&quot;highlighter-rouge&quot;&gt;g&lt;/code&gt;的后面没有空格。也可以在可视模式下选择部分内容再使用上面的命令&lt;/p&gt;
+
+&lt;h2 id=&quot;无用的空格&quot;&gt;无用的空格&lt;/h2&gt;
+&lt;p&gt;有时候有些空格在行的最后没有用且很丑，为了删除这些空格，可以使用这条命令&lt;code class=&quot;highlighter-rouge&quot;&gt;:%s/\s\+$//&lt;/code&gt;。这句话的意思是将一个或多个&lt;code class=&quot;highlighter-rouge&quot;&gt;(\+)&lt;/code&gt;在结尾&lt;code class=&quot;highlighter-rouge&quot;&gt;($)&lt;/code&gt;处的空格&lt;code class=&quot;highlighter-rouge&quot;&gt;(\s)&lt;/code&gt;替换成空白&lt;code class=&quot;highlighter-rouge&quot;&gt;(//)&lt;/code&gt;。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">这篇文章介绍了一些vim中的小技巧。</summary></entry><entry><title type="html">Arts Weeksix Threerules</title><link href="http://localhost:4000/ARTS-weekSix-ThreeRules/" rel="alternate" type="text/html" title="Arts Weeksix Threerules" /><published>2019-05-16T00:00:00+08:00</published><updated>2019-05-16T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-weekSix-ThreeRules</id><content type="html" xml:base="http://localhost:4000/ARTS-weekSix-ThreeRules/">&lt;p&gt;这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。&lt;/p&gt;
+
+&lt;h2 id=&quot;三使用被证实的稳定的技术&quot;&gt;三、使用被证实的稳定的技术&lt;/h2&gt;
+&lt;p&gt;Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。&lt;/p&gt;
+
+&lt;p&gt;例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。&lt;/p&gt;
+
+&lt;h2 id=&quot;二不要重新发明轮子&quot;&gt;二、不要重新发明轮子&lt;/h2&gt;
+&lt;p&gt;云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。&lt;/p&gt;
+
+&lt;p&gt;使用已有的东西，不管那是库、社区或是已知的内在知识。&lt;/p&gt;
+
+&lt;h2 id=&quot;一保持简单&quot;&gt;一、保持简单&lt;/h2&gt;
+&lt;p&gt;每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。</summary></entry><entry><title type="html">Arts Weekfive Avoid Over Engineering</title><link href="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/" rel="alternate" type="text/html" title="Arts Weekfive Avoid Over Engineering" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-Avoid-Over-Engineering/">&lt;p&gt;商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。&lt;/p&gt;
 
 &lt;p&gt;以下是一些误解&lt;/p&gt;
 &lt;h2 id=&quot;1-工程比商业更聪明&quot;&gt;1. 工程比商业更聪明&lt;/h2&gt;
@@ -301,217 +388,4 @@ filetype plugin indent on    &quot; required
 &lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginUpdate&lt;/code&gt; 更新插件&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginSearch&lt;/code&gt; 需要有&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;,搜索指定插件&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginList&lt;/code&gt; 列举已经安装的插件列表&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginClean&lt;/code&gt; 清除不在&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;而在安装目录下的插件&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。</summary></entry><entry><title type="html">Arts Weekfour Leetcode703 Kthinstream</title><link href="http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream/" rel="alternate" type="text/html" title="Arts Weekfour Leetcode703 Kthinstream" /><published>2019-04-30T00:00:00+08:00</published><updated>2019-04-30T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-Leetcode703-kthInStream/">&lt;p&gt;Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.&lt;/p&gt;
-
-&lt;p&gt;Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;这题其实的意思是在一段流里找第k大的数，也就是说对于连续的流，每次调用函数都能获取当前第k大的数。&lt;/p&gt;
-
-&lt;p&gt;这也是一道很经典的题了，但是最开始想着要保留所有的数，于是就超时了。实际上很容易想到，既然是求第k大的数，那么只需要保留前k个数即可。每新来一个数都将它与前k个数中最小的数比较，如果小于它就丢弃，如果大于它就将它插入合适位置。这里最开始我想的是排序，利用插入排序的方式。可是后来想到显然小顶堆是最合适的数据结构。另外，go语言很久没用了，这里编译错误好几次，还需要复习go语言的用法。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type KthLargest struct {
-    h *IntHeap
-    num int
-}
-
-// An IntHeap is a min-heap of ints.
-type IntHeap []int
-
-func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] &amp;lt; h[j] }
-func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-
-func (h *IntHeap) Push(x interface{}) {
-    // Push and Pop use pointer receivers because they modify the slice's length,
-    // not just its contents.
-    *h = append(*h, x.(int))
-}
-
-func (h *IntHeap) Pop() interface{} {
-    old := *h
-    n := len(old)
-    x := old[n-1]
-    *h = old[0 : n-1]
-    return x
-}
-
-func Constructor(k int, nums []int) KthLargest {
-    h := IntHeap(nums)
-    heap.Init(&amp;amp;h)
-    return KthLargest{&amp;amp;h, k}
-}
-
-
-func (this *KthLargest) Add(val int) int {
-    heap.Push(this.h, val)
-    for len(*(this.h)) &amp;gt; this.num {
-        heap.Pop(this.h)
-    } 
-    res := (*this.h)[0]
-    return res
-}
-
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * obj := Constructor(k, nums);
- * param_1 := obj.Add(val);
- */
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.</summary></entry><entry><title type="html">Arts Weekfour Twelve Factor(四)</title><link href="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/" rel="alternate" type="text/html" title="Arts Weekfour Twelve Factor(四)" /><published>2019-04-30T00:00:00+08:00</published><updated>2019-04-30T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-Twelve-Factor(%E5%9B%9B)/">&lt;p&gt;Dev/prod parity&lt;br /&gt;
-Logs&lt;br /&gt;
-Admin processes&lt;/p&gt;
-
-&lt;h2 id=&quot;十开发环境生产环境相同&quot;&gt;十、开发环境/生产环境相同&lt;/h2&gt;
-&lt;p&gt;保持开发环境、模拟环境和生产环境尽可能相似&lt;/p&gt;
-
-&lt;p&gt;历史上，在开发环境和生产环境之间有三道鸿沟，分别位：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作&lt;/li&gt;
-  &lt;li&gt;人事：开发者写代码，运维工程师部署它&lt;/li&gt;
-  &lt;li&gt;工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;twelve-factor app需要使上面三者尽可能小来便于持续部署。&lt;/p&gt;
-
-&lt;p&gt;以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。&lt;/p&gt;
-
-&lt;p&gt;twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。&lt;/p&gt;
-
-&lt;p&gt;对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务&lt;/p&gt;
-
-&lt;h2 id=&quot;十一日志&quot;&gt;十一、日志&lt;/h2&gt;
-&lt;p&gt;将日志当做事件流对待&lt;/p&gt;
-
-&lt;p&gt;日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。&lt;/p&gt;
-
-&lt;p&gt;一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;中。&lt;/p&gt;
-
-&lt;p&gt;在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。&lt;/p&gt;
-
-&lt;p&gt;app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能&lt;/p&gt;
-
-&lt;h2 id=&quot;管理进程&quot;&gt;管理进程&lt;/h2&gt;
-&lt;p&gt;将管理进程作为一次性的、不是经常开关的进程&lt;/p&gt;
-
-&lt;p&gt;开发者经常希望有一个一次性的管理进程，例如：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;运行数据库迁移&lt;/li&gt;
-  &lt;li&gt;运行一个控制台&lt;/li&gt;
-  &lt;li&gt;运行上传到app repo中的一次性脚本&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Dev/prod parity Logs Admin processes</summary></entry><entry><title type="html">技术学习之路</title><link href="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" rel="alternate" type="text/html" title="技术学习之路" /><published>2019-04-26T00:00:00+08:00</published><updated>2019-04-26T00:00:00+08:00</updated><id>http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF</id><content type="html" xml:base="http://localhost:4000/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">&lt;p&gt;这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。&lt;/p&gt;
-
-&lt;p&gt;说起来，Share好像变成了一个分享自己观点的东西。本意上Share应该是分享技术相关内容的。这样可能有点违规，但我觉得，分享自己的观点也不差，甚至非技术的内容也可以，因为这样促使人真正的去整理观点，审视自己，而人生除了技术之外还有很多东西能从这么做获益。&lt;/p&gt;
-
-&lt;p&gt;说回正题，计算机技术学习之路是一个很广泛的概念。目前计算机衍生出了这么多分支，肯定不可能每条都一样，因此这篇文章讲的是很宽泛的内容。此外，我是纯自学学的计算机，我想目前社会上像我这样的人不在少数，我的观点可能多多少少有点启发意义。&lt;/p&gt;
-
-&lt;h2 id=&quot;深度和广度&quot;&gt;深度和广度&lt;/h2&gt;
-&lt;p&gt;深度和广度是计算机技术中常常被人们谈及的领域，究竟是深度更重要还是广度更重要也常常被讨论。实际上，深度往往伴随着广度，深度到了一定地步，伴随着而来的就是涉及到的知识面更广。而广度——广度并不一定有深度，你可以从计算机工程到计算机理论各个领域全部涉及一遍。&lt;/p&gt;
-
-&lt;p&gt;然而，对于初学者而言，我认为还是广度更重要。求深度是一件好事，尤其现在社会分工日益精细了。但我认为，先求广度可以让初学者对计算机技术涉及的各个领域有一个基本的概念。在这之后寻求深度，往往花费时间更少。举例来说，我个人最喜欢的读书方式就是先快速读一遍，再精读一遍，最后再快速读一遍。第一遍是对书的主题、叙述方式有一个大概的了解，并且判断是否有必要再读第二遍。第二遍则是把第一遍留下的问题或者感兴趣的地方重点去看。第三编则类似于快速复习，查漏补缺。我喜欢的技术学习路线也和读书很像，先广后深再广，最后的广度就是复习自己学到的东西并看是否还有不会的。&lt;/p&gt;
-
-&lt;p&gt;另外，广度还有一个好处是能把知识点连起来。很多时候涉及的多了就会发现不同的问题都能有相同的方法解决，比如随处可见的缓存，算法里的分治等。对于这些东西有个初步的概念后，日后的学习就能知道重点——一般出现的越多说明它越重要，就能事半功倍。最重要的是，这些方法体现了计算机整个学科的精髓，而跨学科思考的思想也是很重要的。这些思想往往不局限于计算机，而是能解决各种问题。&lt;/p&gt;
-
-&lt;h2 id=&quot;内功招式和武器&quot;&gt;内功、招式和武器&lt;/h2&gt;
-&lt;p&gt;在提到计算机技术的基础时，有一个很常见的比喻，就是内功、招式和武器。内功就是基础，招式就是技术方法，武器就是工具。人们往往会强调基础的重要性，说如果没有内功，空有招式，打到敌人也不疼。如果没有招式，空有内功，至少浑厚的内功还能给你减伤。至于武器，则有锦上添花之效。&lt;/p&gt;
-
-&lt;p&gt;对于上面的比喻，我想说，说的太有道理了。基础的重要性是怎么强调也不为过的。随着时间的流逝，基础好的人其个人能力是先慢后块，而基础差的人则是先快后慢，最后还是得回来补。&lt;/p&gt;
-
-&lt;p&gt;但是对于基础怎么学，我有点想法。很多人一上来推荐书，推荐看视频。从编程语言到操作系统，各种基础类的资源推荐了个遍。然而这些东西学完恐怕要花个几年，而且又很枯燥，往往无法解决一些实际的问题。还是用上面那个比喻，学内功是很辛苦的，而且进度缓慢。而学招式还是挺好玩的，至少能摆个花架子唬人。&lt;/p&gt;
-
-&lt;p&gt;我认为，可以先学招式无妨。在学招式的过程中伴随着内功的修炼，或者学完招式之后再学内功，也是可以的。举例来说，在学习网络的时候，可以先学着实现一个简单的qq。在实现的过程中，有些细枝末节可以仅仅了解，而涉及到网络的部分则重点学习，并且尝试不同的方法。在实现过程中遇到的问题可以知其然而不知其所以然，但要记录在案。在实现了这个项目后，翻看《TCP/IP详解卷一》，往往看到某个知识点会和之前的问题对上。在这样的情况下，记忆更深刻，也更有效。&lt;/p&gt;
-
-&lt;h2 id=&quot;学习总结&quot;&gt;学习总结&lt;/h2&gt;
-&lt;p&gt;我这里稍微更具体的总结一下学习的方法。&lt;/p&gt;
-
-&lt;p&gt;对于任意一门科目，首先选取一种输入(视频、书甚至百度百科)，大概了解即可，不需要精通。这里所说的了解，是指知道它是什么，有什么用，怎么用。例如编程语言，知道类型是什么意思，怎么定义类型，函数是什么，几种循环结构即可。接下来去找一个实际的问题，去解决它。还是以C语言为例，你可以考虑怎么用C语言画画，用C语言写游戏等等。在解决的过程中你会发现各种问题，比如内存错误，编译错误等等。记下这些错误，并去搜解决它们的方法，但不一定要知道为什么这样可以解决它。最后，挑一本经典书籍或是其他类型的经典输入，仔细的读，并和问题对照。&lt;/p&gt;
-
-&lt;p&gt;想要学的好，就得记住，学习是伴随着枯燥的。刻意练习的核心就是踏出舒适区。如果你感觉到学习过程很轻松，那说明你还没有尽全力，或者还在换一种形式啃自己已经了解的东西。警惕心流，处于心流状态时，有可能也是处于钻牛角尖的状态。&lt;/p&gt;
-
-&lt;p&gt;最后，不要逼自己。实在学不下去的时候，let it go&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">这篇文章想讲讲对于学计算机技术应该怎么学，我自己的思考与观点。</summary></entry><entry><title type="html">Arts Weekthree Vim配置</title><link href="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/" rel="alternate" type="text/html" title="Arts Weekthree Vim配置" /><published>2019-04-24T00:00:00+08:00</published><updated>2019-04-24T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekThree-vim%E9%85%8D%E7%BD%AE/">&lt;p&gt;vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。&lt;/p&gt;
-
-&lt;h2 id=&quot;vimrc文件&quot;&gt;vimrc文件&lt;/h2&gt;
-&lt;p&gt;vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中&lt;/p&gt;
-
-&lt;p&gt;vimrc文件的名字叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;vimrc文件中可以包含所有能在vim中普通模式下”:”后面执行的命令，最简单的设置选项的指令，其一般格式是&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;set &amp;lt;options&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;想要查看有哪些配置可以输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:options&lt;/code&gt;查看或是在帮助中查看。&lt;/p&gt;
-
-&lt;p&gt;对于特定的配置，可以输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:help '&amp;lt;option name&amp;gt;'&lt;/code&gt;查看。另外，在设置某个选项时在后面加&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;即可恢复默认设置&lt;/p&gt;
-
-&lt;p&gt;为了使vimrc文件起作用需要退出vim再重新启动&lt;/p&gt;
-
-&lt;p&gt;下面列举一些设置作为例子说明&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set autoindent&lt;/code&gt;:自动缩进，使用前一行的缩进作为当前行缩进&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if has(&quot;vms&quot;)
-  set nobackup
-else
-  set backup
-endif
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set history=50&lt;/code&gt;:在历史记录中保持50个命令和50种搜索模式&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;set ruler&lt;/code&gt;:允许在右下角显示当前游标的位置&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;set showcmd&lt;/code&gt;:显示普通模式下输入的命令&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;set incsearch&lt;/code&gt;:在输入搜索模式下显示和其匹配的内容&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;map Q gq&lt;/code&gt;:这是一个按键映射，将&lt;code class=&quot;highlighter-rouge&quot;&gt;Q&lt;/code&gt;键映射到&lt;code class=&quot;highlighter-rouge&quot;&gt;gq&lt;/code&gt;按键上&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;filetype plugin indent on
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途&lt;/li&gt;
-  &lt;li&gt;使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中&lt;/li&gt;
-  &lt;li&gt;使用缩进文件：不同类型的文件种类使用不同的缩进&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;简单的映射&quot;&gt;简单的映射&lt;/h2&gt;
-&lt;p&gt;按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:map &amp;lt;F5&amp;gt; i{&amp;lt;Esc&amp;gt;ea}&amp;lt;Esc&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;上面的这个映射解析为&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&amp;lt;F5&amp;gt; 映射按键是F5键&lt;/li&gt;
-  &lt;li&gt;i{ 转换为插入模式并输入{&lt;/li&gt;
-  &lt;li&gt;&amp;lt;Esc&amp;gt; 退出为普通模式&lt;/li&gt;
-  &lt;li&gt;ea}到单词结尾并输入}&lt;/li&gt;
-  &lt;li&gt;&amp;lt;Esc&amp;gt;最后转化为普通模式&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号&lt;/p&gt;
-
-&lt;h2 id=&quot;添加插件&quot;&gt;添加插件&lt;/h2&gt;
-&lt;p&gt;vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在&lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt;文件夹中添加对应文件就可添加插件&lt;/p&gt;
-
-&lt;p&gt;有两种插件：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;全局插件：对所有文件都有效&lt;/li&gt;
-  &lt;li&gt;文件类型插件：对特定文件类型才有效&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;全局插件&quot;&gt;全局插件&lt;/h3&gt;
-&lt;p&gt;全局插件在启动时自动加载，它们提供了大部分通用的功能。&lt;/p&gt;
-
-&lt;p&gt;添加全局插件只需要两步，获取全局插件，放入对应文件夹&lt;/p&gt;
-
-&lt;p&gt;获取全局插件有许多地方，这里不再详述。若想要使用对应插件，则首先阅读该插件的说明文档看是否有需要注意的地方，然后将文件复制到插件文件夹下。对于Unix来说，位置一般是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vim/plugin&lt;/code&gt;。值得注意的是，不一定要直接放入&lt;code class=&quot;highlighter-rouge&quot;&gt;plugin&lt;/code&gt;目录下，也可以在其中创建子目录并放入其中&lt;/p&gt;
-
-&lt;h3 id=&quot;文件类型插件&quot;&gt;文件类型插件&lt;/h3&gt;
-&lt;p&gt;在使用文件类型插件时，需要使用命令&lt;code class=&quot;highlighter-rouge&quot;&gt;:filetype plugin on&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;添加文件类型插件需要将它放入特定的文件夹，在Unix环境下就是&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vim/ftplugin&lt;/code&gt;.对于文件类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;filetype&lt;/code&gt;的插件，该插件名字可以为&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;_&amp;lt;name&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;filetype&amp;gt;/&amp;lt;name&amp;gt;.vim&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&amp;lt;name&amp;gt;可以是任意的&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。</summary></entry></feed>
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginClean&lt;/code&gt; 清除不在&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;而在安装目录下的插件&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。</summary></entry></feed>

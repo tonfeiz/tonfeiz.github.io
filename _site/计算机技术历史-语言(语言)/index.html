@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Leetcode1022 Sumroottoleaf | Tonfeiz&#8217;s Blog</title>
-<meta name="description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
+<!-- begin _includes/seo.html --><title>计算机技术历史 语言(语言) | Tonfeiz’s Blog</title>
+<meta name="description" content="本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Leetcode1022 Sumroottoleaf">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+<meta property="og:title" content="计算机技术历史 语言(语言)">
+<meta property="og:url" content="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/">
 
 
-  <meta property="og:description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-23T00:00:00+08:00">
+  <meta property="og:description" content="本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-05-19T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+
+<link rel="canonical" href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/">
 
 
 
@@ -250,61 +250,17 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Leetcode1022 Sumroottoleaf</h1>
+      <h1 id="page-title" class="page__title">计算机技术历史 语言(语言)</h1>
     
-    <p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
+    <p>本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。</p>
 
-<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
+<p>ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。</p>
 
-<p>Return the sum of these numbers.</p>
+<p>Algol引入了代码块的概念和<code class="highlighter-rouge">begin...end</code>对。它也是第一个支持嵌套函数定义的编程语言。此外，它是第一个详细关注(?)正式语言定义的编程语言。并且也是它引入了BNF范式。</p>
 
-<p><strong>Note:</strong><br />
-    1. The number of nodes in the tree is between 1 and 1000.<br />
-    2. node.val is 0 or 1.<br />
-    3. The answer will not exceed 2^31 - 1.</p>
+<p>ALGOL 60有两种参数传递方式：按值传递和按名字传递。按名字传递对引用传递有深远的影响。按名字传递指的是当参数传递给函数时，它是在函数内部出现该参数的地方直接替换。这样的话，如果函数内部没有用到该参数，它就不会被求值。如果函数内部出现了多次，每次它都会被重新求值。</p>
 
-<hr />
-<p>这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。</p>
-
-<p>二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。</p>
-
-<p>递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点<code class="highlighter-rouge">node</code>和一个数<code class="highlighter-rouge">num</code>(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：</p>
-<ol>
-  <li>假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入<code class="highlighter-rouge">num</code>中。接着，如果该节点是叶子节点，那么返回<code class="highlighter-rouge">num</code>即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和</li>
-  <li>若函数输入的节点是空节点，则无法形成数，返回0即可</li>
-</ol>
-
-<p>代码如下：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sumRootToLeaf(root *TreeNode) int {   
-    number := 0
-    
-    res := sumRootToLeafHelper(root, number)
-    return res
-}
-
-func sumRootToLeafHelper(root *TreeNode, number int) int {
-    if root == nil {
-        return 0
-    }
-    
-    number = number * 2 + root.Val
-    
-    if root.Left == nil &amp;&amp; root.Right == nil {
-        return number
-    }
-    
-    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
-    
-}
-</code></pre></div></div>
+<p>然而，ALGOL 60没有定义I/O设施。</p>
 
 
 <!--<ul class="taxonomy__index">
@@ -664,7 +620,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.

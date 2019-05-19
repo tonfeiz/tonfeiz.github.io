@@ -98,4 +98,24 @@ var store = [{
         "excerpt":"在汇编语言之后，诞生了最早的程序设计语言，FORTRAN。   FORTRAN语言  FORTAN源自于英语：Formula Translation，即公式翻译。从这里就可以看出，FORTRAN语言的主要用处是科学和工程计算方面。   汇编语言的缺点在上次已经讲过，难以维护，入门门槛高，要维护各种寄存器等等。在1951年，IBM的John Backus针对这些缺点开始开发FORTRAN语言。   1954年，FORTRAN I发布。1957年，第一个FORTRAN编译器在IBM704计算机上实现，并首次成功运行了FORTRAN程序。   由于我也不会FORTRAN语言，因此我只能搜集一些资料，简单的介绍一下FORTRAN语言。   FORTRAN语言的最大特性是接近数学公式的自然描述，在计算机里具有很高的执行效率。另外，它可以直接对矩阵和复数进行运算，类似于MATLAB。很多大型的数值运算计算机针对Fortran做了优化。   相对于汇编语言，FORTRAN由于其语法的简洁性使得其入门门槛较低，可维护性也有所提高。然而，由于早期程序设计的局限性，FORTRAN的缺点也是有一大堆。FORTRAN中，某些字母开头的变量默认是某种类型，这就给命名增添了负担。早期的FORTRAN代码往往到处使用GOTO，使得程序的控制流混乱。FORTRAN的数值溢出等等也是坑。此外，虽然相比于汇编程序，FORTRAN的易读性和可维护性提高了，但相比于现代程序设计语言如C++、Java等，仍然有不少的差距。FORTRAN代码往往比较冗长，初看时会不知所以。   注：上文所说的主要是FORTRAN语言的早期版本，后来FORTRAN也加入了一些现代编程语言的特性，但和原始FORTRAN诞生原因关系不大，因此就不再详细叙述。   参考资料     百度百科   和 C++ 相比，用 Fortran 编程是怎样的体验？  ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)/",
+        "teaser":null},{
+        "title": "Arts Weeksix Threerules",
+        "excerpt":"这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。   三、使用被证实的稳定的技术  Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。   例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。   二、不要重新发明轮子  云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。   使用已有的东西，不管那是库、社区或是已知的内在知识。   一、保持简单  每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁  ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-weekSix-ThreeRules/",
+        "teaser":null},{
+        "title": "Arts Weeksix Leetcode674 Lcis",
+        "excerpt":"Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray). 这题其实就是找数组中的最长连续递增子序列。想法也很简单，设置一个startIndex，当发现序列不是递增时，则子序列的长度是当前的Index减去startIndex，同时将startIndex设置为当前位置(这里注意可能有off-by-one)。遍历整个序列，找到最长的序列即可。 代码如下： func findLengthOfLCIS(nums []int) int { if len(nums) == 0 { return 0 } lengthMax := 1 startIndex := 0 arrayLength := len(nums) for i := 0; i &lt; arrayLength - 1; i++ {...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSix-Leetcode674-LCIS/",
+        "teaser":null},{
+        "title": "Arts Weeksix Vim Tricks",
+        "excerpt":"这篇文章介绍了一些vim中的小技巧。 替换单词 替换命令可以将一个单词替换为另一个单词，例如:%s/four/4/g 然而，对于thirtyfour来说显然不用替换，此时可以使用”\\&lt;”标志，转化为:%s/\\&lt;four/4/g 显然，对于fourteen来说，也是不对。可以使用”\\&gt;”标志，则转化为::%s/\\&lt;four\\&gt;/4/g 如果正在编程，可能希望替换注释中的“four”，这可以使用:%s/\\&lt;four\\&gt;4/gc 将”Last, First”转化为”First Last” 假设你有许多单词，其形式为 Doe, John Smith, Peter 你想将它们变为 John Doe Peter Smith 这可以通过一个命令完成：:%s/\\([^,]*\\),\\(.*\\)/\\2 \\1/ 解释如下： The first part between \\( \\) matches \"Last\" \\( \\) match anything but a comma [^,] any number of times * matches \", \" literally , The second...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSix-vim-tricks/",
+        "teaser":null},{
+        "title": "计算机技术历史 语言(语言)",
+        "excerpt":"本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。   ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。   Algol引入了代码块的概念和begin...end对。它也是第一个支持嵌套函数定义的编程语言。此外，它是第一个详细关注(?)正式语言定义的编程语言。并且也是它引入了BNF范式。   ALGOL 60有两种参数传递方式：按值传递和按名字传递。按名字传递对引用传递有深远的影响。按名字传递指的是当参数传递给函数时，它是在函数内部出现该参数的地方直接替换。这样的话，如果函数内部没有用到该参数，它就不会被求值。如果函数内部出现了多次，每次它都会被重新求值。   然而，ALGOL 60没有定义I/O设施。  ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/",
         "teaser":null}]

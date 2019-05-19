@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Leetcode1022 Sumroottoleaf | Tonfeiz&#8217;s Blog</title>
-<meta name="description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
+<!-- begin _includes/seo.html --><title>Arts Weeksix Threerules | Tonfeiz&#8217;s Blog</title>
+<meta name="description" content="这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Leetcode1022 Sumroottoleaf">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+<meta property="og:title" content="Arts Weeksix Threerules">
+<meta property="og:url" content="http://localhost:4000/ARTS-weekSix-ThreeRules/">
 
 
-  <meta property="og:description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-23T00:00:00+08:00">
+  <meta property="og:description" content="这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-05-16T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-weekSix-ThreeRules/">
 
 
 
@@ -250,61 +250,22 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Leetcode1022 Sumroottoleaf</h1>
+      <h1 id="page-title" class="page__title">Arts Weeksix Threerules</h1>
     
-    <p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
+    <p>这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。</p>
 
-<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
+<h2 id="三使用被证实的稳定的技术">三、使用被证实的稳定的技术</h2>
+<p>Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。</p>
 
-<p>Return the sum of these numbers.</p>
+<p>例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。</p>
 
-<p><strong>Note:</strong><br />
-    1. The number of nodes in the tree is between 1 and 1000.<br />
-    2. node.val is 0 or 1.<br />
-    3. The answer will not exceed 2^31 - 1.</p>
+<h2 id="二不要重新发明轮子">二、不要重新发明轮子</h2>
+<p>云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。</p>
 
-<hr />
-<p>这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。</p>
+<p>使用已有的东西，不管那是库、社区或是已知的内在知识。</p>
 
-<p>二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。</p>
-
-<p>递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点<code class="highlighter-rouge">node</code>和一个数<code class="highlighter-rouge">num</code>(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：</p>
-<ol>
-  <li>假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入<code class="highlighter-rouge">num</code>中。接着，如果该节点是叶子节点，那么返回<code class="highlighter-rouge">num</code>即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和</li>
-  <li>若函数输入的节点是空节点，则无法形成数，返回0即可</li>
-</ol>
-
-<p>代码如下：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sumRootToLeaf(root *TreeNode) int {   
-    number := 0
-    
-    res := sumRootToLeafHelper(root, number)
-    return res
-}
-
-func sumRootToLeafHelper(root *TreeNode, number int) int {
-    if root == nil {
-        return 0
-    }
-    
-    number = number * 2 + root.Val
-    
-    if root.Left == nil &amp;&amp; root.Right == nil {
-        return number
-    }
-    
-    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
-    
-}
-</code></pre></div></div>
+<h2 id="一保持简单">一、保持简单</h2>
+<p>每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁</p>
 
 
 <!--<ul class="taxonomy__index">
@@ -664,7 +625,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
