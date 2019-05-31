@@ -1,0 +1,38 @@
+<p>这篇文章介绍了一些vim中的小技巧。</p>
+
+<h2 id="替换单词">替换单词</h2>
+<p>替换命令可以将一个单词替换为另一个单词，例如<code class="highlighter-rouge">:%s/four/4/g</code><br />
+然而，对于<code class="highlighter-rouge">thirtyfour</code>来说显然不用替换，此时可以使用”\&lt;”标志，转化为<code class="highlighter-rouge">:%s/\&lt;four/4/g</code><br />
+显然，对于<code class="highlighter-rouge">fourteen</code>来说，也是不对。可以使用”\&gt;”标志，则转化为:<code class="highlighter-rouge">:%s/\&lt;four\&gt;/4/g</code><br />
+如果正在编程，可能希望替换注释中的“four”，这可以使用<code class="highlighter-rouge">:%s/\&lt;four\&gt;4/gc</code></p>
+
+<h2 id="将last-first转化为first-last">将”Last, First”转化为”First Last”</h2>
+<p>假设你有许多单词，其形式为</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Doe, John
+Smith, Peter
+</code></pre></div></div>
+<p>你想将它们变为</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>John Doe
+Peter Smith
+</code></pre></div></div>
+<p>这可以通过一个命令完成：<code class="highlighter-rouge">:%s/\([^,]*\),\(.*\)/\2 \1/</code><br />
+解释如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The first part between \( \) matches "Last"	\(     \)
+match anything but a comma			  [^,]
+any number of times				      *
+matches ", " literally					 ,
+The second part between \( \) matches "First"		   \(  \)
+any character					     .
+any number of times					      *
+</code></pre></div></div>
+<p>“\2”和”\1”叫做<code class="highlighter-rouge">backreferences</code>，可以指代前面用”\( \)”包围的文本</p>
+
+<h2 id="逆转行的顺序">逆转行的顺序</h2>
+<p>命令为<code class="highlighter-rouge">:global/^/m 0</code><br />
+它的意思是，对于特定的一行，<code class="highlighter-rouge">^</code>到达行开始，<code class="highlighter-rouge">m</code>移动整行，移动位置是第0行，也就是第一行之前。而<code class="highlighter-rouge">global</code>命令不会被改变的顺序影响，因此所有的行依次进行上面的命令，则逆转了文件所有行的顺序</p>
+
+<h2 id="数单词">数单词</h2>
+<p>命令为<code class="highlighter-rouge">g CTRL-G</code>，注意<code class="highlighter-rouge">g</code>的后面没有空格。也可以在可视模式下选择部分内容再使用上面的命令</p>
+
+<h2 id="无用的空格">无用的空格</h2>
+<p>有时候有些空格在行的最后没有用且很丑，为了删除这些空格，可以使用这条命令<code class="highlighter-rouge">:%s/\s\+$//</code>。这句话的意思是将一个或多个<code class="highlighter-rouge">(\+)</code>在结尾<code class="highlighter-rouge">($)</code>处的空格<code class="highlighter-rouge">(\s)</code>替换成空白<code class="highlighter-rouge">(//)</code>。</p>

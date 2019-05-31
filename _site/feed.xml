@@ -1,4 +1,288 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-19T18:16:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">计算机技术历史 语言(语言)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/" rel="alternate" type="text/html" title="计算机技术历史 语言(语言)" /><published>2019-05-19T00:00:00+08:00</published><updated>2019-05-19T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/">&lt;p&gt;本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-31T21:24:59+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekseven Design Restful Api(一)</title><link href="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weekseven Design Restful Api(一)" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/">&lt;p&gt;Best Practice for Designing a Pragmatic RESTful API&lt;/p&gt;
+
+&lt;h2 id=&quot;key-requirements-for-the-api&quot;&gt;Key requirements for the API&lt;/h2&gt;
+&lt;p&gt;列举了一些API的需求：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;应当在有意义的地方使用web标准&lt;/li&gt;
+  &lt;li&gt;它应当对开发者友好并且可以通过浏览器地址栏探索&lt;/li&gt;
+  &lt;li&gt;它应当是简单的，符合直觉的&lt;/li&gt;
+  &lt;li&gt;它应当提供足够的灵活性&lt;/li&gt;
+  &lt;li&gt;在维持其他需求的同时，它应当是有效的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;use-restful-urls-and-actions&quot;&gt;Use RESTful URLS and actions&lt;/h2&gt;
+&lt;p&gt;RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。&lt;/p&gt;
+
+&lt;p&gt;API设计的一大关键是不要把实现细节暴露给API。&lt;/p&gt;
+
+&lt;p&gt;当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets&lt;/code&gt; - 获取tickets列表&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12&lt;/code&gt; - 获取一个特定的ticket&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POST /tickets&lt;/code&gt; - 创造一个新的ticket&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PUT /tickets/12&lt;/code&gt; - 更新#12 ticket&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PATCH /tickets/12&lt;/code&gt; - 部分更新#12 ticket&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE /tickets/12&lt;/code&gt; - 删除#12 ticket&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;REST的好处在于在单个端点&lt;code class=&quot;highlighter-rouge&quot;&gt;/tickets&lt;/code&gt;上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;端点名字应当是单数还是复数？&lt;/strong&gt;keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何处理关系？&lt;/strong&gt;如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到&lt;code class=&quot;highlighter-rouge&quot;&gt;/tickets&lt;/code&gt;端点：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12/messages&lt;/code&gt; - 获取#12 ticket的消息列表&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12/messages/5&lt;/code&gt; - 获取ticket #12的第5条消息&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POST /tickets/12/messages&lt;/code&gt; - 为ticket #12创建一个新消息&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;不能用CRUD操作表达的动作怎么办？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是事情变得复杂的地方。有许多方法：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;重新结构化动作使其表现的像是资源的一个域。如果该动作不接收参数则这是可以工作的。例如，激活动作可以被映射为布尔值&lt;code class=&quot;highlighter-rouge&quot;&gt;activated&lt;/code&gt;然后通过到资源的PATCH更新&lt;/li&gt;
+  &lt;li&gt;使用RESTful原则将它作为子资源对待。例如，GitHub的API允许你使用&lt;code class=&quot;highlighter-rouge&quot;&gt;PUT /gists/:id/star&lt;/code&gt;对gist打星，并且使用&lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE /gists/:id/star&lt;/code&gt;取消打星&lt;/li&gt;
+  &lt;li&gt;有时候确实不能将动作映射到有意义的RESTful架构。例如，一个多资源的搜索不能有意义的用到一个特定资源的端点。在这种情况下，&lt;code class=&quot;highlighter-rouge&quot;&gt;/search&lt;/code&gt;是可以的，虽然它不是一个资源。做从API使用者角度来看是对的事情并及早文档化以避免误解&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;ssl-everywhere---all-the-time&quot;&gt;SSL everywhere - all the time&lt;/h2&gt;
+&lt;p&gt;总是使用SSL，没有例外。今天，web API能够从各个地方被获取。不是所有的地方都是安全的。许多完全不加密通信，使得认证证书被劫持后信息被偷听或身份被冒充。&lt;/p&gt;
+
+&lt;p&gt;总是使用SSL的另一个好处是保证加密过的通信简化了认证&lt;/p&gt;
+
+&lt;p&gt;需要注意的是对API URL的无SSL请求。不要把它们重定向的SSL的版本，而是要抛出一个硬错误！&lt;/p&gt;
+
+&lt;h2 id=&quot;documentation&quot;&gt;Documentation&lt;/h2&gt;
+&lt;p&gt;一个API最多和它的文档一样好。文档应当便于获取并且是公共的。大多数开发者在使用API之前会检查文档。如果文档被隐藏在PDF文件中或者需要登录才能获取，则它们不仅难于找到且难于搜索到&lt;/p&gt;
+
+&lt;p&gt;文档应当展示完整的请求/回应循环的例子。最好请求是可以粘贴的例子——要不是可以粘贴到浏览器的链接，要不是可以粘贴到终端中的curl例子。&lt;/p&gt;
+
+&lt;p&gt;一旦发布了一个公共API，则你就承诺了不会无通知的破坏它。文档必须包含任何过时的东西。更新应当通过博客或是邮件列表发送。&lt;/p&gt;
+
+&lt;h2 id=&quot;versioning&quot;&gt;Versioning&lt;/h2&gt;
+&lt;p&gt;总是将你的API标识上版本号。这样帮助你更快的迭代并且阻止无效的请求到达更新过的端点。它也帮助平滑了主要API版本的转换，你可以继续提供旧API版本一段时间。&lt;/p&gt;
+
+&lt;p&gt;对于版本号应当在URL还是在首部中有不同的观点。学术上来说，它应当在首部中。然而，版本号应当在URL中来确保通过探索资源?(翻译有点问题)&lt;/p&gt;
+
+&lt;p&gt;作者比较喜欢的一种做法是URL有一个主要版本号，而API有一个可通过顾客HTTP请求头选择的基于日期的子版本号。在这种情况下，主版本号提供了API结构的稳定性，子版本号负责较小的变化。&lt;/p&gt;
+
+&lt;p&gt;API永远不可能是完全稳定的。变化是不可避免的。重要的是变化是怎么被管理的。被较好的文档化和声明的多个月的过时安排可以是一个可接受的选择。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Best Practice for Designing a Pragmatic RESTful API</summary></entry><entry><title type="html">Arts Weekseven Dockerfile Reference Temp</title><link href="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/" rel="alternate" type="text/html" title="Arts Weekseven Dockerfile Reference Temp" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;从一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;和&lt;em&gt;环境(context)&lt;/em&gt;中构建一个镜像。构建的环境是一个指定&lt;code class=&quot;highlighter-rouge&quot;&gt;路径(PATH)&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;处的文件集。&lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;是本地文件系统的目录，&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;是一个Git库的位置。&lt;/p&gt;
+
+&lt;p&gt;build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。&lt;/p&gt;
+
+&lt;p&gt;可以指定repository以及？&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t shykes/myapp .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Docker守护程序一个一个地执行&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。&lt;/p&gt;
+
+&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;的格式为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Comment
+INSTRUCTION arguments
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;指令不是大小写敏感的，但传统上均是大写&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;必须以&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令开头。&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令指定了你正在构造的镜像的基本镜像(&lt;em&gt;Base Image&lt;/em&gt;)。&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;之前只能是&lt;code class=&quot;highlighter-rouge&quot;&gt;ARG&lt;/code&gt;指令，它声明了&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;要使用的参数&lt;/p&gt;
+
+&lt;h2 id=&quot;from&quot;&gt;FROM&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; [AS &amp;lt;name&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt;[:&amp;lt;tag&amp;gt;] [AS &amp;lt;name&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt;[@&amp;lt;digest&amp;gt;] [AS &amp;lt;name&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;可以在一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。&lt;/li&gt;
+  &lt;li&gt;可以通过添加&lt;code class=&quot;highlighter-rouge&quot;&gt;AS name&lt;/code&gt;给一个新的构建阶段命名。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tag&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;digest&lt;/code&gt;是可选的。如果忽视它们，builder会默认给一个&lt;code class=&quot;highlighter-rouge&quot;&gt;latest&lt;/code&gt;标志。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;run&quot;&gt;RUN&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;有两种形式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN &amp;lt;command&amp;gt;&lt;/code&gt;(&lt;em&gt;shell&lt;/em&gt;形式，命令在一个shell中执行，Linux中默认是&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh -c&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(&lt;em&gt;exec&lt;/em&gt;形式)&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;分层次的&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;指令和生成的提交(commit)是Docker的核心概念。&lt;/p&gt;
+
+&lt;h2 id=&quot;cmd&quot;&gt;CMD&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;有三种形式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(较好的形式)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(作为&lt;em&gt;ENTRYPOINT&lt;/em&gt;的默认参数)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD command param1 param2&lt;/code&gt;&lt;br /&gt;
+一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;中只能有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;指令。如果有多个则只有最后一个起作用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;指令的主要作用是为正在执行的容器提供默认(入口)。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：不要把&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;搞混。&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;会运行一个命令并提交结果。&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;不会在构建时执行任何动作，而是为镜像指定了要执行的命令。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;expose&quot;&gt;EXPOSE&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EXPOSE &amp;lt;port&amp;gt; [&amp;lt;port&amp;gt;/&amp;lt;protocol&amp;gt;...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXPOSE&lt;/code&gt;指令告诉Docker容器在运行时的监听网络端口。可以指定是TCP还是UDP，默认是TCP。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXPOSE&lt;/code&gt;指令并不发布端口。它是作为构建镜像的人和运行容器的人之间的一种文档存在。想要在运行容器时发布端口，在&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;时使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt;标志来发布和映射一个或更多端口。&lt;/p&gt;
+
+&lt;h2 id=&quot;env&quot;&gt;ENV&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ENV &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;
+ENV &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENV&lt;/code&gt;指令将环境变量&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;key&amp;gt;&lt;/code&gt;设置为值&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;value&amp;gt;&lt;/code&gt;。该值将被接下去的指令使用。&lt;/p&gt;
+
+&lt;h2 id=&quot;add&quot;&gt;ADD&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;有两种形式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&quot;src&quot;, ... &quot;&amp;lt;dest&amp;gt;&quot;]&lt;/code&gt;(这种形式是因为有些路径中包含空格因而被需要)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;指令从&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;复制新的文件、目录或者远程文件的URL并将它们添加到镜像文件系统中的路径&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt;中&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;遵循下面的规则：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;路径必须在构建的&lt;em&gt;环境(context)&lt;/em&gt;中;你不能&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD ../something /something&lt;/code&gt;,因为&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;的第一步是将环境文件夹以及其子文件夹发送给docker守护程序&lt;/li&gt;
+  &lt;li&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;是一个目录，则目录的所有内容都会被复制，包括文件系统元数据(目录本身不会被拷贝，仅仅是它的内容)&lt;/li&gt;
+  &lt;li&gt;….&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;copy&quot;&gt;COPY&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;有两种形式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&quot;&amp;lt;src&amp;gt;&quot;,... &quot;&amp;lt;dest&amp;gt;&quot;]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;指令从&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;复制新的文件或目录并将它们添加到容器文件系统中的路径&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt;中&lt;/p&gt;
+
+&lt;h2 id=&quot;entrypoint&quot;&gt;ENTRYPOINT&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;有两种形式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(&lt;em&gt;exec&lt;/em&gt;形式，较好)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT command param1 param2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;允许你配置(configure)一个将作为可执行文件被运行的容器&lt;/p&gt;
+
+&lt;p&gt;例如，下列命令将启动nginx，在端口80监听：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -i -t --rm -p 80:80 nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run &amp;lt;image&amp;gt;&lt;/code&gt;的命令行参数将在执行形式&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;下的所有元素之后被添加，并且将覆盖&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;形式的元素。&lt;/p&gt;
+
+&lt;p&gt;只有最后一个&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;指令是有效的&lt;/p&gt;
+
+&lt;h2 id=&quot;volume&quot;&gt;VOLUME&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;VOLUME [&quot;/data&quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;VOLUME&lt;/code&gt;指令使用指定的名字创建一个挂载点并将它作为从原始本地或是其他容器获取数据的挂载卷。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;命令初始化新创建的卷时会包括基本镜像中在指定位置的数据。例如：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM ubuntu
+RUN mkdir /myvol
+RUN echo &quot;hello world&quot; &amp;gt; /myvol/greeting
+VOLUME /myvol
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这会创造一个镜像，该镜像的&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;会在&lt;code class=&quot;highlighter-rouge&quot;&gt;/myvol&lt;/code&gt;创造一个新的挂载点并将&lt;code class=&quot;highlighter-rouge&quot;&gt;greeting&lt;/code&gt;文件复制到新创建的挂载点&lt;/p&gt;
+
+&lt;h2 id=&quot;workdir&quot;&gt;WORKDIR&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WORKDIR /path/to/workdir
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WORKDIR&lt;/code&gt;为例如&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;等指令设置工作目录。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。</summary></entry><entry><title type="html">Arts Weekseven Envoy Example Analyze.</title><link href="http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze" rel="alternate" type="text/html" title="Arts Weekseven Envoy Example Analyze." /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze.</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze">&lt;p&gt;最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。&lt;/p&gt;
+
+&lt;h2 id=&quot;目录结构&quot;&gt;目录结构&lt;/h2&gt;
+&lt;p&gt;首先看下目录结构，如下所示&lt;br /&gt;
+&lt;img src=&quot;./directory_structure.png&quot; alt=&quot;目录结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大体上目录中的文件可以分为四个部分：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;docker compose: docker-compose.yaml&lt;/li&gt;
+  &lt;li&gt;docker: Dockerfile-frontenvoy, Dockerfile-service&lt;/li&gt;
+  &lt;li&gt;envoy: service-envoy.yaml, front-envoy.yaml&lt;/li&gt;
+  &lt;li&gt;source: service.py, start_service.sh&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;接下去分别看下这四个部分的内容&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-compose&quot;&gt;docker compose&lt;/h2&gt;
+&lt;p&gt;docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.&lt;/p&gt;
+
+&lt;p&gt;front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。&lt;/p&gt;
+
+&lt;p&gt;front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。&lt;/p&gt;
+
+&lt;p&gt;service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。&lt;/p&gt;
+
+&lt;p&gt;此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？&lt;/p&gt;
+&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
+&lt;p&gt;Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。&lt;/p&gt;
+
+&lt;p&gt;Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。&lt;/p&gt;
+
+&lt;p&gt;Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。&lt;/p&gt;
+
+&lt;h2 id=&quot;source&quot;&gt;source&lt;/h2&gt;
+&lt;p&gt;源文件包含了服务的业务逻辑。&lt;/p&gt;
+
+&lt;p&gt;start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。&lt;/p&gt;
+
+&lt;p&gt;服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。&lt;/p&gt;
+
+&lt;h2 id=&quot;envoy&quot;&gt;envoy&lt;/h2&gt;
+&lt;p&gt;最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。&lt;/p&gt;
+
+&lt;p&gt;在service-envoy中，envoy在80端口上监听，并匹配”/service”前缀的URL，匹配到之后把请求转发给8080端口。&lt;/p&gt;
+
+&lt;p&gt;在front-envoy中，envoy在80端口上监听，并分别匹配”/service/1”和”/service/2”前缀的URL，将请求分别分发给service1的80端口和service2的80端口。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。</summary></entry><entry><title type="html">Arts Weekseven Leetcode728 Selfdividenumbers</title><link href="http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers/" rel="alternate" type="text/html" title="Arts Weekseven Leetcode728 Selfdividenumbers" /><published>2019-05-20T00:00:00+08:00</published><updated>2019-05-20T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers/">&lt;p&gt;A self-dividing number is a number that is divisible by every digit it contains.&lt;/p&gt;
+
+&lt;p&gt;For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.&lt;/p&gt;
+
+&lt;p&gt;Also, a self-dividing number is not allowed to contain the digit zero.&lt;/p&gt;
+
+&lt;p&gt;Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题其实也很简单，就按照题目意思顺次遍历然后转化为字符串判断是否可以自除即可。go语言代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func selfDividingNumbers(left int, right int) []int {
+    res := make([]int, 0)
+    
+    for i := left; i &amp;lt;= right; i++ {
+        if(isSelfDivide(i)) {
+            res = append(res, i)
+        }
+    }
+    
+    return res
+    
+}
+
+func isSelfDivide(num int) bool {
+    strNum := strconv.Itoa(num)
+    
+    for i := 0; i &amp;lt; len(strNum); i++ {
+        n := (int)(strNum[i] - '0')
+        if n == 0 || num % n != 0 {
+            return false
+        }
+    }
+    
+    return true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">A self-dividing number is a number that is divisible by every digit it contains.</summary></entry><entry><title type="html">计算机技术历史 语言(三)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)/" rel="alternate" type="text/html" title="计算机技术历史 语言(三)" /><published>2019-05-19T00:00:00+08:00</published><updated>2019-05-19T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)/">&lt;p&gt;本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。&lt;/p&gt;
 
 &lt;p&gt;ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。&lt;/p&gt;
 
@@ -195,197 +479,4 @@ any number of times					      *
 &lt;p&gt;对于C或者C风格的程序例如Java或者C++，可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;cindent&lt;/code&gt;选项来控制缩进。一般来说四个空格是合适的。&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;set cindent shiftwidth=4&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符来对齐缩进。最简单的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;，该命令会将当前行的缩进对齐。&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符可以在可视化模式下使用。一个很有用的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;=a{&lt;/code&gt;，这个命令会将当前&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;所在的区域全部缩进对齐。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</summary></entry><entry><title type="html">计算机技术历史 语言(二)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)/" rel="alternate" type="text/html" title="计算机技术历史 语言(二)" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%BA%8C)/">&lt;p&gt;在汇编语言之后，诞生了最早的程序设计语言，FORTRAN。&lt;/p&gt;
-
-&lt;h2 id=&quot;fortran语言&quot;&gt;FORTRAN语言&lt;/h2&gt;
-&lt;p&gt;FORTAN源自于英语：Formula Translation，即公式翻译。从这里就可以看出，FORTRAN语言的主要用处是科学和工程计算方面。&lt;/p&gt;
-
-&lt;p&gt;汇编语言的缺点在上次已经讲过，难以维护，入门门槛高，要维护各种寄存器等等。在1951年，IBM的John Backus针对这些缺点开始开发FORTRAN语言。&lt;/p&gt;
-
-&lt;p&gt;1954年，FORTRAN I发布。1957年，第一个FORTRAN编译器在IBM704计算机上实现，并首次成功运行了FORTRAN程序。&lt;/p&gt;
-
-&lt;p&gt;由于我也不会FORTRAN语言，因此我只能搜集一些资料，简单的介绍一下FORTRAN语言。&lt;/p&gt;
-
-&lt;p&gt;FORTRAN语言的最大特性是接近数学公式的自然描述，在计算机里具有很高的执行效率。另外，它可以直接对矩阵和复数进行运算，类似于MATLAB。很多大型的数值运算计算机针对Fortran做了优化。&lt;/p&gt;
-
-&lt;p&gt;相对于汇编语言，FORTRAN由于其语法的简洁性使得其入门门槛较低，可维护性也有所提高。然而，由于早期程序设计的局限性，FORTRAN的缺点也是有一大堆。FORTRAN中，某些字母开头的变量默认是某种类型，这就给命名增添了负担。早期的FORTRAN代码往往到处使用GOTO，使得程序的控制流混乱。FORTRAN的数值溢出等等也是坑。此外，虽然相比于汇编程序，FORTRAN的易读性和可维护性提高了，但相比于现代程序设计语言如C++、Java等，仍然有不少的差距。FORTRAN代码往往比较冗长，初看时会不知所以。&lt;/p&gt;
-
-&lt;p&gt;注：上文所说的主要是FORTRAN语言的早期版本，后来FORTRAN也加入了一些现代编程语言的特性，但和原始FORTRAN诞生原因关系不大，因此就不再详细叙述。&lt;/p&gt;
-
-&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://baike.baidu.com/item/FORTRAN&quot;&gt;百度百科&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/28683874&quot;&gt;和 C++ 相比，用 Fortran 编程是怎样的体验？&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Tonfeiz</name></author><summary type="html">在汇编语言之后，诞生了最早的程序设计语言，FORTRAN。</summary></entry><entry><title type="html">Arts Weekfive Leetcode856 Scoreofparentheses</title><link href="http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses/" rel="alternate" type="text/html" title="Arts Weekfive Leetcode856 Scoreofparentheses" /><published>2019-05-06T00:00:00+08:00</published><updated>2019-05-06T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-Leetcode856-ScoreOfParentheses/">&lt;p&gt;Given a balanced parentheses string S, compute the score of the string based on the following rule:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;() has score 1
-AB has score A + B, where A and B are balanced parentheses strings.
-(A) has score 2 * A, where A is a balanced parentheses string.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: &quot;()&quot;
-Output: 1
-
-Input: &quot;(())&quot;
-Output: 2
-
-Input: &quot;()()&quot;
-Output: 2
-
-Input: &quot;(()(()))&quot;
-Output: 6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;hr /&gt;
-&lt;p&gt;这是一道mdeium题，题意是对于一个完全匹配的括号串，()表示1,AB表示A+B,(A)表示A*2，其中A、B都是某个括号表达式，求给定括号串的值。&lt;/p&gt;
-
-&lt;p&gt;这道题还是想了有一点时间，最开始是想用栈，但是感觉怎么用都不太对，后面才开始想用递归的方法。&lt;/p&gt;
-
-&lt;p&gt;递归的核心其实就是把问题的规模变小，并且要有一个最终的停止条件。对一个函数&lt;code class=&quot;highlighter-rouge&quot;&gt;f&lt;/code&gt;来说，假设其输入是字符串以及起始位置&lt;code class=&quot;highlighter-rouge&quot;&gt;start&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;(范围为&lt;code class=&quot;highlighter-rouge&quot;&gt;[start, end)&lt;/code&gt;)，显然终止条件有:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;end - start &amp;lt; 2&lt;/code&gt;, 此时值为0&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;s[start]s[end - 1] == &quot;()&quot;&lt;/code&gt;,此时值为1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如果不是上面这两种情况，则需要找到当前左括号匹配的右括号，如果该右括号不在&lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;处，那么说明后面还有字符串，则需要将两者代表的值相加。否则说明需要将内部的值扩大两倍并缩小范围。哪种情况都需要继续递归。&lt;/p&gt;
-
-&lt;p&gt;递归版的代码见下，用栈的方法留作练习&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func scoreOfParentheses(S string) int {
-    return eval(S, 0, len(S))
-}
-
-func eval(s string, start, end int) int {
-    if end - start &amp;lt; 2 {
-        return 0
-    }
-    
-    if end - start == 2 &amp;amp;&amp;amp;s[start] == '(' &amp;amp;&amp;amp; s[end - 1] == ')' {
-        return 1
-    }
-    
-    parenthes_num := 1
-    i := start + 1
-    for ; i &amp;lt; end; i++ {
-        if parenthes_num == 0 {
-            break;
-        }
-        if(s[i] == '(') {
-            parenthes_num++;
-        } else {
-            parenthes_num--;
-        }
-    }
-    
-    if i == end {
-        return 2 * eval(s, start + 1, end - 1)
-    }
-    return eval(s, start, i) + eval(s, i, end)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a balanced parentheses string S, compute the score of the string based on the following rule:</summary></entry><entry><title type="html">计算机技术历史 语言(一)</title><link href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)/" rel="alternate" type="text/html" title="计算机技术历史 语言(一)" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%80)/">&lt;p&gt;前段时间想去了解一下计算机技术的发展历史，但是搜了一下没有发现很系统的讲述这方面内容的书或者博客，因此就想自己来调查了解一下，也挺有意思的。&lt;/p&gt;
-
-&lt;p&gt;为什么要关注计算机技术的历史呢？除了兴趣之外，还有一个重要原因是想从历史获取计算机技术发展的主脉络。现在计算机技术发展日新月异，新技术曾出不穷，但不是所有的技术都能留下来，也有些技术是不必要学。想要判断这些东西，就必须得到以往的技术有所了解，找出其中的规律。&lt;/p&gt;
-
-&lt;p&gt;由于计算机技术实在太多了，因此不可能全部涉及。此外，硬件方面的技术门槛较高，我可能也看不懂。基于此，主要还是关注软件技术。&lt;/p&gt;
-
-&lt;p&gt;首先，先从编程语言开始。&lt;/p&gt;
-
-&lt;h2 id=&quot;机器语言&quot;&gt;机器语言&lt;/h2&gt;
-&lt;p&gt;机器语言是最早的编程语言，也可以叫做机器码。大约在第一台计算机诞生时，即20世纪50年代左右，机器语言是主要编程语言。&lt;/p&gt;
-
-&lt;p&gt;我们普通人也常常听到计算机其实就是一连串0和1这样的话，0和1其实就是机器语言。计算机接收这些0和1，将0和1组成的串变成硬件上的高低电平，再由高低电平控制机器完成实际动作。由0和1组成的串的集合又叫做指令集，每个计算机厂家的硬件不同，其指令集也不同。&lt;/p&gt;
-
-&lt;p&gt;机器语言的优点就是快，缺点就是不是写给人看的。写机器语言的人必须对于硬件厂家给出的指令集有深厚的了解，才能较好的驾驭机器语言。可是不同的厂家，甚至相同厂家下面的不同型号计算机，只要硬件架构有了一定改动，机器语言也可能随之发生变化，这就造成了其可移植性和重用性都很差的后果。&lt;/p&gt;
-
-&lt;p&gt;如今，已经没有人再用机器语言进行实际编程了。&lt;/p&gt;
-
-&lt;h2 id=&quot;汇编语言&quot;&gt;汇编语言&lt;/h2&gt;
-&lt;p&gt;汇编语言在机器语言之后出现，但也是在20世界50年代。汇编语言直到今天还在被使用，主要被用于一些对速度要求高的场合，例如嵌入式系统、驱动程序等。&lt;/p&gt;
-
-&lt;p&gt;汇编语言的出现主要是为了解决机器语言看不懂的缺点。机器语言的一连串0和1简直就是天书，而汇编语言已经开始有自己的语法。汇编语言的使用者对于计算机的体系结构，各个寄存器的作用，程序计数器等要有基本的了解。由于引入了语法，汇编语言需要经过编译器转化为机器语言再交由计算机执行。从这里就可以看出，计算机中引入中间层的观点是很早就有了的。此外，汇编语言的诞生也表明了程序是写给程序员看的，而不是写给机器看的。&lt;/p&gt;
-
-&lt;p&gt;汇编语言的优点是目标代码简短，占用内存少，执行速度快，且比起机器语言来便于记忆。但汇编语言没有解决机器语言无法移植的特点。在不同的机器之间，汇编语言的语法也不相同。另一方面，由于汇编语言直接对寄存器等进行操作，程序的真实意图也被掩盖在细节之中，并且常常需要大量的代码完成简单的工作。最后，汇编语言也很容易产生bug并且难于调试。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">前段时间想去了解一下计算机技术的发展历史，但是搜了一下没有发现很系统的讲述这方面内容的书或者博客，因此就想自己来调查了解一下，也挺有意思的。</summary></entry><entry><title type="html">Arts Weekfour Vim插件管理 Vundle</title><link href="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/" rel="alternate" type="text/html" title="Arts Weekfour Vim插件管理 Vundle" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-Vundle/">&lt;p&gt;vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。&lt;/p&gt;
-
-&lt;p&gt;Vundle是vim bundle的缩写。它能自动跟踪&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。&lt;/p&gt;
-
-&lt;h2 id=&quot;vundle的安装设置&quot;&gt;Vundle的安装设置：&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;首先输入&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;将下列内容保存到~/.vimrc中&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set nocompatible              &quot; be iMproved, required
-filetype off                  &quot; required
-
-&quot; set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-&quot; alternatively, pass a path where Vundle should install plugins
-&quot;call vundle#begin('~/some/path/here')
-
-&quot; let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-&quot; The following are examples of different formats supported.
-&quot; Keep Plugin commands between vundle#begin/end.
-&quot; plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-&quot; plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-&quot; Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-&quot; git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
-&quot; The sparkup vim script is in a subdirectory of this repo called vim.
-&quot; Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-&quot; Avoid a name conflict with L9
-Plugin 'user/L9', {'name': 'newL9'}
-
-&quot; All of your Plugins must be added before the following line
-call vundle#end()            &quot; required
-filetype plugin indent on    &quot; required
-&quot; To ignore plugin indent changes, instead use:
-&quot;filetype plugin on
-&quot;
-&quot; Brief help
-&quot; :PluginList          - list configured plugins
-&quot; :PluginInstall(!)    - install (update) plugins
-&quot; :PluginSearch(!) foo - search (or refresh cache first) for foo
-&quot; :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-&quot;
-&quot; see :h vundle for more details or wiki for FAQ
-&quot; Put your non-Plugin stuff after this line
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;安装配置好的bundle:打开vim并输入&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginInstall&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;插件&quot;&gt;插件&lt;/h2&gt;
-&lt;h3 id=&quot;配置插件&quot;&gt;配置插件&lt;/h3&gt;
-&lt;p&gt;Vundle跟踪&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令。每个&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令让Vundle使能脚本并将其加入|runtimepath|中。&lt;/p&gt;
-
-&lt;p&gt;每个&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;命令有一个指向脚本的URI。在URI后面可选择接受第二个参数。这个参数必须是一个目录。每个键值对都是一个配置选项。&lt;/p&gt;
-
-&lt;p&gt;下面是一些配置选项&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;‘rtp’:设置repo中的一个目录为vim插件所在目录。该目录将被加入|runtimepath|中&lt;/li&gt;
-  &lt;li&gt;‘name’:将放置配置脚本的本地拷贝的目录名字&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;支持的uri&quot;&gt;支持的URI&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Github:当user/repo被传递给&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin&lt;/code&gt;时Github被使用,例如&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'VundleVim/Vundle.vim' =&amp;gt; https://github.com/VundleVim/Vundle.vim&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Vim Scripts:没有’/’的单词都被认为从Vim Scripts中获取&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'ctrlp.vim' =&amp;gt; https://github.com/vim-scripts/ctrlp.vim&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;本地插件&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Plugin 'file:///path/from/root/to/plugin'&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;基本使用方式&quot;&gt;基本使用方式&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginInstall&lt;/code&gt; 安装&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;中配置的所有插件，也可以在后面跟上插件名特定安装&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginUpdate&lt;/code&gt; 更新插件&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginSearch&lt;/code&gt; 需要有&lt;code class=&quot;highlighter-rouge&quot;&gt;curl&lt;/code&gt;,搜索指定插件&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginList&lt;/code&gt; 列举已经安装的插件列表&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:PluginClean&lt;/code&gt; 清除不在&lt;code class=&quot;highlighter-rouge&quot;&gt;.vimrc&lt;/code&gt;而在安装目录下的插件&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。</summary></entry></feed>
+&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符来对齐缩进。最简单的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;，该命令会将当前行的缩进对齐。&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符可以在可视化模式下使用。一个很有用的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;=a{&lt;/code&gt;，这个命令会将当前&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;所在的区域全部缩进对齐。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</summary></entry></feed>

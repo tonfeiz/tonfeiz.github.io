@@ -114,8 +114,28 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekSix-vim-tricks/",
         "teaser":null},{
-        "title": "计算机技术历史 语言(语言)",
+        "title": "计算机技术历史 语言(三)",
         "excerpt":"本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。   ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。   Algol引入了代码块的概念和begin...end对。它也是第一个支持嵌套函数定义的编程语言。此外，它是第一个详细关注(?)正式语言定义的编程语言。并且也是它引入了BNF范式。   ALGOL 60有两种参数传递方式：按值传递和按名字传递。按名字传递对引用传递有深远的影响。按名字传递指的是当参数传递给函数时，它是在函数内部出现该参数的地方直接替换。这样的话，如果函数内部没有用到该参数，它就不会被求值。如果函数内部出现了多次，每次它都会被重新求值。   然而，ALGOL 60没有定义I/O设施。  ","categories": [],
         "tags": [],
-        "url": "http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E8%AF%AD%E8%A8%80)/",
+        "url": "http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)/",
+        "teaser":null},{
+        "title": "Arts Weekseven Leetcode728 Selfdividenumbers",
+        "excerpt":"A self-dividing number is a number that is divisible by every digit it contains. For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0. Also, a self-dividing number is not allowed to contain the digit zero....","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers/",
+        "teaser":null},{
+        "title": "Arts Weekseven Design Restful Api(一)",
+        "excerpt":"Best Practice for Designing a Pragmatic RESTful API Key requirements for the API 列举了一些API的需求： 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的 Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。 API设计的一大关键是不要把实现细节暴露给API。 当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为： GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/",
+        "teaser":null},{
+        "title": "Arts Weekseven Dockerfile Reference Temp",
+        "excerpt":"docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。 build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。 可以指定repository以及？ docker build -t shykes/myapp . Docker守护程序一个一个地执行Dockerfile中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。 格式 Dockerfile的格式为 # Comment INSTRUCTION arguments 指令不是大小写敏感的，但传统上均是大写 Dockerfile必须以FROM指令开头。FROM指令指定了你正在构造的镜像的基本镜像(Base Image)。FROM之前只能是ARG指令，它声明了FROM要使用的参数 FROM FROM &lt;image&gt; [AS &lt;name&gt;] 或者 FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;] 或者 FROM &lt;image&gt;[@&lt;digest&gt;] [AS &lt;name&gt;] FROM指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。 FROM可以在一个Dockerfile内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。 可以通过添加AS name给一个新的构建阶段命名。 tag或者digest是可选的。如果忽视它们，builder会默认给一个latest标志。 RUN RUN有两种形式： RUN &lt;command&gt;(shell形式，命令在一个shell中执行，Linux中默认是/bin/sh -c) RUN [\"executable\", \"param1\", \"param2\"](exec形式) RUN执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/",
+        "teaser":null},{
+        "title": "Arts Weekseven Envoy Example Analyze.",
+        "excerpt":"最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。   目录结构  首先看下目录结构，如下所示     大体上目录中的文件可以分为四个部分：     docker compose: docker-compose.yaml   docker: Dockerfile-frontenvoy, Dockerfile-service   envoy: service-envoy.yaml, front-envoy.yaml   source: service.py, start_service.sh   接下去分别看下这四个部分的内容   docker compose  docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.   front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。   front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。   service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。   此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？  Docker  Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。   Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。   Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。   source  源文件包含了服务的业务逻辑。   start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。   服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。   envoy  最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。   在service-envoy中，envoy在80端口上监听，并匹配”/service”前缀的URL，匹配到之后把请求转发给8080端口。   在front-envoy中，envoy在80端口上监听，并分别匹配”/service/1”和”/service/2”前缀的URL，将请求分别分发给service1的80端口和service2的80端口。   ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze",
         "teaser":null}]
