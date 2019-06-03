@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-31T21:24:59+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekseven Design Restful Api(一)</title><link href="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weekseven Design Restful Api(一)" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/">&lt;p&gt;Best Practice for Designing a Pragmatic RESTful API&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-02T11:13:51+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekeight Leetcode605 Canplaceflowers</title><link href="http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers/" rel="alternate" type="text/html" title="Arts Weekeight Leetcode605 Canplaceflowers" /><published>2019-06-02T00:00:00+08:00</published><updated>2019-06-02T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers/">&lt;p&gt;Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.&lt;/p&gt;
+
+&lt;p&gt;Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: flowerbed = [1,0,0,0,1], n = 1
+Output: True
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: flowerbed = [1,0,0,0,1], n = 2
+Output: False
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题的意思是在一串0和1组成的数组中，0表示可以放置花的位置，1表示已经有花的位置，花与花不能相邻，则判断给定数能否放下。&lt;/p&gt;
+
+&lt;p&gt;最开始直接采用了模拟的方法，考虑了多种情况，写出的代码较复杂，放在后面仅做参考。后来仔细思考后发现其实就是贪心算法。对于数组两侧为0的情况，则在两侧放置为1肯定是最优解。接下来遍历数组，碰到0则判断是否能放，能放则放，不能放则继续，如此就能得到最多能放下的花数。&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func canPlaceFlowers(flowerbed []int, n int) bool {
+
+    res := 0
+    length := len(flowerbed)
+    if length == 1 {
+        if flowerbed[0] == 0 {
+            return n &amp;lt;= 1
+        } else {
+            return n == 0
+        }
+    }
+    
+    if flowerbed[0] == 0 &amp;amp;&amp;amp; flowerbed[1] == 0 {
+        flowerbed[0] = 1
+        res++;
+    }
+    if flowerbed[length - 1] == 0 &amp;amp;&amp;amp; flowerbed[length - 2] == 0 {
+        flowerbed[length - 1] = 1
+        res++
+    }
+    
+    for i := 1; i &amp;lt; length - 1; i++ {
+        if(flowerbed[i] == 0 &amp;amp;&amp;amp; flowerbed[i - 1] == 0 &amp;amp;&amp;amp; flowerbed[i + 1] == 0) {
+            res++
+            flowerbed[i] = 1
+        }
+    }
+    
+    return res &amp;gt;= n
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第一种想法的代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func canPlaceFlowers(flowerbed []int, n int) bool {
+
+    left_start := 0
+    right_end := len(flowerbed) - 1
+
+    for left_start &amp;lt;= right_end &amp;amp;&amp;amp; flowerbed[left_start] == 0  {
+        left_start++;
+    }
+    for right_end &amp;gt;= left_start &amp;amp;&amp;amp; flowerbed[right_end] == 0 {
+        right_end--;
+    }
+
+    if left_start &amp;gt;= right_end {
+        if len(flowerbed) == 1 {
+            if(flowerbed[0] == 1 &amp;amp;&amp;amp; n &amp;gt;= 1) {
+                return false
+            } else {
+                return n &amp;lt;= 1
+            }
+        }
+        if left_start == len(flowerbed) {
+            return ((left_start + 1) / 2) &amp;gt;= n
+        } else {
+            return (left_start / 2 + (len(flowerbed) - 1 - right_end) / 2) &amp;gt;= n
+        }
+    }
+
+    res := 0
+    current_start := left_start
+    for i := left_start + 1; i &amp;lt;= right_end; i++ {
+        if flowerbed[i] == 1 {
+            res += (i - current_start - 2) / 2
+            current_start = i
+        }
+    }
+
+    return (res + left_start  / 2 + (len(flowerbed) - 1 - right_end) / 2) &amp;gt;= n
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.</summary></entry><entry><title type="html">Arts Weekseven Design Restful Api(一)</title><link href="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weekseven Design Restful Api(一)" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/">&lt;p&gt;Best Practice for Designing a Pragmatic RESTful API&lt;/p&gt;
 
 &lt;h2 id=&quot;key-requirements-for-the-api&quot;&gt;Key requirements for the API&lt;/h2&gt;
 &lt;p&gt;列举了一些API的需求：&lt;/p&gt;
@@ -69,7 +159,7 @@
 
 &lt;p&gt;作者比较喜欢的一种做法是URL有一个主要版本号，而API有一个可通过顾客HTTP请求头选择的基于日期的子版本号。在这种情况下，主版本号提供了API结构的稳定性，子版本号负责较小的变化。&lt;/p&gt;
 
-&lt;p&gt;API永远不可能是完全稳定的。变化是不可避免的。重要的是变化是怎么被管理的。被较好的文档化和声明的多个月的过时安排可以是一个可接受的选择。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Best Practice for Designing a Pragmatic RESTful API</summary></entry><entry><title type="html">Arts Weekseven Dockerfile Reference Temp</title><link href="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/" rel="alternate" type="text/html" title="Arts Weekseven Dockerfile Reference Temp" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;从一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;和&lt;em&gt;环境(context)&lt;/em&gt;中构建一个镜像。构建的环境是一个指定&lt;code class=&quot;highlighter-rouge&quot;&gt;路径(PATH)&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;处的文件集。&lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;是本地文件系统的目录，&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;是一个Git库的位置。&lt;/p&gt;
+&lt;p&gt;API永远不可能是完全稳定的。变化是不可避免的。重要的是变化是怎么被管理的。被较好的文档化和声明的多个月的过时安排可以是一个可接受的选择。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Best Practice for Designing a Pragmatic RESTful API</summary></entry><entry><title type="html">Arts Weekseven Dockerfile Reference</title><link href="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference/" rel="alternate" type="text/html" title="Arts Weekseven Dockerfile Reference" /><published>2019-05-26T00:00:00+08:00</published><updated>2019-05-26T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;从一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;和&lt;em&gt;环境(context)&lt;/em&gt;中构建一个镜像。构建的环境是一个指定&lt;code class=&quot;highlighter-rouge&quot;&gt;路径(PATH)&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;处的文件集。&lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;是本地文件系统的目录，&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;是一个Git库的位置。&lt;/p&gt;
 
 &lt;p&gt;build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。&lt;/p&gt;
 
@@ -453,30 +543,4 @@ any number of times					      *
 
 &lt;p&gt;第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。&lt;/p&gt;
 
-&lt;p&gt;第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。</summary></entry><entry><title type="html">Arts Weekfive Vim编辑计算机程序</title><link href="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/" rel="alternate" type="text/html" title="Arts Weekfive Vim编辑计算机程序" /><published>2019-05-12T00:00:00+08:00</published><updated>2019-05-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekFive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/">&lt;p&gt;vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。&lt;/p&gt;
-
-&lt;h2 id=&quot;一编译&quot;&gt;一、编译&lt;/h2&gt;
-&lt;p&gt;在vim内部可以编译程序并且跳转到出错的位置。&lt;/p&gt;
-
-&lt;p&gt;在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:make {arguments}&lt;/code&gt;
-在vim中会显示出错信息。此时按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Enter&amp;gt;&lt;/code&gt;键，vim会显示对应的文件并跳转到出错的位置。&lt;/p&gt;
-
-&lt;p&gt;下面是一些常用命令：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cnext&lt;/code&gt;将跳转到下个出错位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;:cprevious&lt;/code&gt;将跳转到前个出错位置&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cc&lt;/code&gt;将显示完整的出错信息&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:clist&lt;/code&gt;将显示完整的出错列表。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:clist!&lt;/code&gt;将显示所有的出错列表，包含链接错误等等&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cfirst&lt;/code&gt;将跳到第一个出错位置，&lt;code class=&quot;highlighter-rouge&quot;&gt;clast&lt;/code&gt;将跳到最后一个出错位置&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:cc 3&lt;/code&gt;将跳到第3个出错位置&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;makeprg&lt;/code&gt;选项指定要运行的编译器,通过斜杠指定传递的参数，例如&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;:set makeprg=nmake\ -f\ project.mak&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;二c风格的文本缩进&quot;&gt;二、C风格的文本缩进&lt;/h2&gt;
-&lt;p&gt;对于C或者C风格的程序例如Java或者C++，可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;cindent&lt;/code&gt;选项来控制缩进。一般来说四个空格是合适的。&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;set cindent shiftwidth=4&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符来对齐缩进。最简单的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;，该命令会将当前行的缩进对齐。&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;操作符可以在可视化模式下使用。一个很有用的命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;=a{&lt;/code&gt;，这个命令会将当前&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt;所在的区域全部缩进对齐。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</summary></entry></feed>
+&lt;p&gt;第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。</summary></entry></feed>

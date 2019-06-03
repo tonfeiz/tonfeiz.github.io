@@ -129,13 +129,18 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/",
         "teaser":null},{
-        "title": "Arts Weekseven Dockerfile Reference Temp",
+        "title": "Arts Weekseven Dockerfile Reference",
         "excerpt":"docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。 build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。 可以指定repository以及？ docker build -t shykes/myapp . Docker守护程序一个一个地执行Dockerfile中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。 格式 Dockerfile的格式为 # Comment INSTRUCTION arguments 指令不是大小写敏感的，但传统上均是大写 Dockerfile必须以FROM指令开头。FROM指令指定了你正在构造的镜像的基本镜像(Base Image)。FROM之前只能是ARG指令，它声明了FROM要使用的参数 FROM FROM &lt;image&gt; [AS &lt;name&gt;] 或者 FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;] 或者 FROM &lt;image&gt;[@&lt;digest&gt;] [AS &lt;name&gt;] FROM指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。 FROM可以在一个Dockerfile内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。 可以通过添加AS name给一个新的构建阶段命名。 tag或者digest是可选的。如果忽视它们，builder会默认给一个latest标志。 RUN RUN有两种形式： RUN &lt;command&gt;(shell形式，命令在一个shell中执行，Linux中默认是/bin/sh -c) RUN [\"executable\", \"param1\", \"param2\"](exec形式) RUN执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。...","categories": [],
         "tags": [],
-        "url": "http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference-temp/",
+        "url": "http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference/",
         "teaser":null},{
         "title": "Arts Weekseven Envoy Example Analyze.",
         "excerpt":"最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。   目录结构  首先看下目录结构，如下所示     大体上目录中的文件可以分为四个部分：     docker compose: docker-compose.yaml   docker: Dockerfile-frontenvoy, Dockerfile-service   envoy: service-envoy.yaml, front-envoy.yaml   source: service.py, start_service.sh   接下去分别看下这四个部分的内容   docker compose  docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.   front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。   front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。   service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。   此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？  Docker  Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。   Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。   Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。   source  源文件包含了服务的业务逻辑。   start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。   服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。   envoy  最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。   在service-envoy中，envoy在80端口上监听，并匹配”/service”前缀的URL，匹配到之后把请求转发给8080端口。   在front-envoy中，envoy在80端口上监听，并分别匹配”/service/1”和”/service/2”前缀的URL，将请求分别分发给service1的80端口和service2的80端口。   ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze",
+        "teaser":null},{
+        "title": "Arts Weekeight Leetcode605 Canplaceflowers",
+        "excerpt":"Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die. Given a flowerbed (represented as an array containing 0 and 1, where 0 means...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers/",
         "teaser":null}]

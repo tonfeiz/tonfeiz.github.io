@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekthree Leetcode1022 Sumroottoleaf | Tonfeiz&#8217;s Blog</title>
-<meta name="description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
+<!-- begin _includes/seo.html --><title>Arts Weekeight Leetcode605 Canplaceflowers | Tonfeiz&#8217;s Blog</title>
+<meta name="description" content="Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekthree Leetcode1022 Sumroottoleaf">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+<meta property="og:title" content="Arts Weekeight Leetcode605 Canplaceflowers">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers/">
 
 
-  <meta property="og:description" content="Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-23T00:00:00+08:00">
+  <meta property="og:description" content="Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-06-02T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekThree-Leetcode1022-sumRootToLeaf/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekEight-Leetcode605-CanPlaceFlowers/">
 
 
 
@@ -250,59 +250,97 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekthree Leetcode1022 Sumroottoleaf</h1>
+      <h1 id="page-title" class="page__title">Arts Weekeight Leetcode605 Canplaceflowers</h1>
     
-    <p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
+    <p>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.</p>
 
-<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
+<p>Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.</p>
 
-<p>Return the sum of these numbers.</p>
+<p>Example:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Input: flowerbed = [1,0,0,0,1], n = 1
+Output: True
+</code></pre></div></div>
 
-<p><strong>Note:</strong><br />
-    1. The number of nodes in the tree is between 1 and 1000.<br />
-    2. node.val is 0 or 1.<br />
-    3. The answer will not exceed 2^31 - 1.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Input: flowerbed = [1,0,0,0,1], n = 2
+Output: False
+</code></pre></div></div>
 
 <hr />
-<p>这道题的意思就是对一棵二叉树，每个结点可能是0或者1,则从根节点到叶节点就构成了一个二进制数。求所有这样的二进制数的和。</p>
+<p>这题的意思是在一串0和1组成的数组中，0表示可以放置花的位置，1表示已经有花的位置，花与花不能相邻，则判断给定数能否放下。</p>
 
-<p>二叉树的题目一般都是涉及到递归的。递归的方法主要就是回溯，因此一开始就往回溯那方面去想了。这题用回溯也可以做，但没那么复杂。</p>
-
-<p>递归的题目中，我觉得函数代表的意义是很重要的。对这题来说，假设有一个递归函数的输入是一个节点<code class="highlighter-rouge">node</code>和一个数<code class="highlighter-rouge">num</code>(表示到当前节点为止形成的二进制数，不包括当前节点)，输出是该节点到叶节点的二进制数的和，那么：</p>
-<ol>
-  <li>假设函数输入的节点不是空节点，那么肯定要将该节点中的数加入<code class="highlighter-rouge">num</code>中。接着，如果该节点是叶子节点，那么返回<code class="highlighter-rouge">num</code>即可。而如果该节点不是叶子节点，则是该节点左子节点到叶子节点形成的数和该节点右子节点形成的数的和</li>
-  <li>若函数输入的节点是空节点，则无法形成数，返回0即可</li>
-</ol>
+<p>最开始直接采用了模拟的方法，考虑了多种情况，写出的代码较复杂，放在后面仅做参考。后来仔细思考后发现其实就是贪心算法。对于数组两侧为0的情况，则在两侧放置为1肯定是最优解。接下来遍历数组，碰到0则判断是否能放，能放则放，不能放则继续，如此就能得到最多能放下的花数。</p>
 
 <p>代码如下：</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func sumRootToLeaf(root *TreeNode) int {   
-    number := 0
-    
-    res := sumRootToLeafHelper(root, number)
-    return res
-}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func canPlaceFlowers(flowerbed []int, n int) bool {
 
-func sumRootToLeafHelper(root *TreeNode, number int) int {
-    if root == nil {
-        return 0
+    res := 0
+    length := len(flowerbed)
+    if length == 1 {
+        if flowerbed[0] == 0 {
+            return n &lt;= 1
+        } else {
+            return n == 0
+        }
     }
     
-    number = number * 2 + root.Val
-    
-    if root.Left == nil &amp;&amp; root.Right == nil {
-        return number
+    if flowerbed[0] == 0 &amp;&amp; flowerbed[1] == 0 {
+        flowerbed[0] = 1
+        res++;
+    }
+    if flowerbed[length - 1] == 0 &amp;&amp; flowerbed[length - 2] == 0 {
+        flowerbed[length - 1] = 1
+        res++
     }
     
-    return sumRootToLeafHelper(root.Left, number) + sumRootToLeafHelper(root.Right, number)
+    for i := 1; i &lt; length - 1; i++ {
+        if(flowerbed[i] == 0 &amp;&amp; flowerbed[i - 1] == 0 &amp;&amp; flowerbed[i + 1] == 0) {
+            res++
+            flowerbed[i] = 1
+        }
+    }
     
+    return res &gt;= n
+}
+</code></pre></div></div>
+
+<p>第一种想法的代码如下：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func canPlaceFlowers(flowerbed []int, n int) bool {
+
+    left_start := 0
+    right_end := len(flowerbed) - 1
+
+    for left_start &lt;= right_end &amp;&amp; flowerbed[left_start] == 0  {
+        left_start++;
+    }
+    for right_end &gt;= left_start &amp;&amp; flowerbed[right_end] == 0 {
+        right_end--;
+    }
+
+    if left_start &gt;= right_end {
+        if len(flowerbed) == 1 {
+            if(flowerbed[0] == 1 &amp;&amp; n &gt;= 1) {
+                return false
+            } else {
+                return n &lt;= 1
+            }
+        }
+        if left_start == len(flowerbed) {
+            return ((left_start + 1) / 2) &gt;= n
+        } else {
+            return (left_start / 2 + (len(flowerbed) - 1 - right_end) / 2) &gt;= n
+        }
+    }
+
+    res := 0
+    current_start := left_start
+    for i := left_start + 1; i &lt;= right_end; i++ {
+        if flowerbed[i] == 1 {
+            res += (i - current_start - 2) / 2
+            current_start = i
+        }
+    }
+
+    return (res + left_start  / 2 + (len(flowerbed) - 1 - right_end) / 2) &gt;= n
 }
 </code></pre></div></div>
 
@@ -399,7 +437,7 @@ func sumRootToLeafHelper(root *TreeNode, number int) int {
 
 
 
-  1 分钟读完
+  少于 1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。
@@ -807,7 +845,7 @@ Admin processes
 
 
 
-  少于 1 分钟读完
+  1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
