@@ -5,7 +5,7 @@ vim有非常之多的插件，因此需要一个插件管理器来管理这些�
 
 Vundle是vim bundle的缩写。它能自动跟踪`.vimrc`中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。  
 
-## Vundle的安装设置：  
+## Vundle的安装设置  
 1. 首先输入`git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim`  
 2. 将下列内容保存到~/.vimrc中  
 
@@ -52,8 +52,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-```
-3. 安装配置好的bundle:打开vim并输入`:PluginInstall`  
+``` 
+
+3.安装配置好的bundle:打开vim并输入`:PluginInstall`  
 
 ## 插件  
 ### 配置插件  
