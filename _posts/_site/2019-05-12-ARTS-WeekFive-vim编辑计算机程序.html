@@ -1,0 +1,27 @@
+<p>vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。</p>
+
+<h2 id="一编译">一、编译</h2>
+<p>在vim内部可以编译程序并且跳转到出错的位置。</p>
+
+<p>在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。<br />
+<code class="highlighter-rouge">:make {arguments}</code>
+在vim中会显示出错信息。此时按下<code class="highlighter-rouge">&lt;Enter&gt;</code>键，vim会显示对应的文件并跳转到出错的位置。</p>
+
+<p>下面是一些常用命令：</p>
+<ol>
+  <li><code class="highlighter-rouge">:cnext</code>将跳转到下个出错位置，<code class="highlighter-rouge">:cprevious</code>将跳转到前个出错位置</li>
+  <li><code class="highlighter-rouge">:cc</code>将显示完整的出错信息</li>
+  <li><code class="highlighter-rouge">:clist</code>将显示完整的出错列表。</li>
+  <li><code class="highlighter-rouge">:clist!</code>将显示所有的出错列表，包含链接错误等等</li>
+  <li><code class="highlighter-rouge">:cfirst</code>将跳到第一个出错位置，<code class="highlighter-rouge">clast</code>将跳到最后一个出错位置</li>
+  <li><code class="highlighter-rouge">:cc 3</code>将跳到第3个出错位置</li>
+</ol>
+
+<p>可以通过设置<code class="highlighter-rouge">makeprg</code>选项指定要运行的编译器,通过斜杠指定传递的参数，例如<br />
+<code class="highlighter-rouge">:set makeprg=nmake\ -f\ project.mak</code></p>
+
+<h2 id="二c风格的文本缩进">二、C风格的文本缩进</h2>
+<p>对于C或者C风格的程序例如Java或者C++，可以通过设置<code class="highlighter-rouge">cindent</code>选项来控制缩进。一般来说四个空格是合适的。<br />
+<code class="highlighter-rouge">set cindent shiftwidth=4</code></p>
+
+<p>可以通过<code class="highlighter-rouge">=</code>操作符来对齐缩进。最简单的命令是<code class="highlighter-rouge">==</code>，该命令会将当前行的缩进对齐。<code class="highlighter-rouge">=</code>操作符可以在可视化模式下使用。一个很有用的命令是<code class="highlighter-rouge">=a{</code>，这个命令会将当前<code class="highlighter-rouge">{}</code>所在的区域全部缩进对齐。</p>
