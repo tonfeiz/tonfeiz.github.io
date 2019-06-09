@@ -32,6 +32,3 @@ API使用者并不总是需要完整的资源表示。选择返回的域的能�
 PUT,POST或者PATCH可能对不是所提供的参数的一部分的底层资源作出修改。(例如：created\_at或者updated\_at时间戳)。为了防止API使用者不得不在更新表示之后重新使用该API，让API返回被更新的(或是被创建的)表示作为响应的一部分  
 
 例如，一个POST引起了一个创建动作，使用`HTTP 201状态码`并包含一个指向新资源的URL的`Location header`  
-
-## Should you hate HATEOAS?
-
