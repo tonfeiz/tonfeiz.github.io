@@ -3,13 +3,671 @@
 <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
 <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-<updated>2019-06-09T15:41:06+08:00</updated>
+<updated>2019-06-12T15:14:51+08:00</updated>
 <id>http://localhost:4000/</id>
 <title>Tonfeiz</title>
 <subtitle></subtitle>
 <author>
 <name>Tonfeiz</name>
 </author>
+<entry>
+<title>Arts Weekten Progit(二)</title>
+<link href="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten Progit(二)" />
+<published>2019-06-12T00:00:00+08:00</published>
+<updated>2019-06-12T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-ProGit(二)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">&lt;p&gt;本章讲述Git的基础知识。&lt;/p&gt;
+
+&lt;h2 id=&quot;git基础&quot;&gt;Git基础&lt;/h2&gt;
+&lt;h3 id=&quot;获取git-repo&quot;&gt;获取Git Repo&lt;/h3&gt;
+&lt;p&gt;有两种获取Git Repo的方法&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;将本地未纳入版本控制的目录转变为Git repo&lt;/li&gt;
+  &lt;li&gt;从其他地方克隆Git repo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;在已存在的目录中初始化repo&quot;&gt;在已存在的目录中初始化Repo&lt;/h4&gt;
+&lt;p&gt;在已存在的目录中输入
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git init&lt;/code&gt;&lt;br /&gt;
+即可。&lt;/p&gt;
+
+&lt;p&gt;该命令会在目录中创建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。&lt;/p&gt;
+
+&lt;p&gt;如果想要开始对已存在的文件进行版本控制，可以输入下面命令&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add *.c
+$ git add LICENSE
+$ git commit -m &quot;initial project version&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;克隆已存在的repo&quot;&gt;克隆已存在的Repo&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;可以用来克隆已存在的文件。与其他版本控制系统常用的&lt;code class=&quot;highlighter-rouge&quot;&gt;checkout&lt;/code&gt;不同，这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。&lt;/p&gt;
+
+&lt;p&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone &amp;lt;url&amp;gt;&lt;/code&gt;可以克隆repo。例如：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git clone https://github.com/libgit2/libgit2&lt;/code&gt;&lt;br /&gt;
+创建了一个名叫&lt;code class=&quot;highlighter-rouge&quot;&gt;libgit2&lt;/code&gt;的目录，在其中初始化了&lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;目录，将该库的数据都拉到其中，并签出(&lt;code class=&quot;highlighter-rouge&quot;&gt;checkout&lt;/code&gt;)了最新版本的文件。&lt;/p&gt;
+
+&lt;h3 id=&quot;记录repo的变化&quot;&gt;记录Repo的变化&lt;/h3&gt;
+&lt;p&gt;每个工作目录中的文件有两个状态：&lt;em&gt;tracked&lt;/em&gt;或是&lt;em&gt;untracked&lt;/em&gt;。&lt;em&gt;tracked&lt;/em&gt;的文件是在上一个快照中的文件；它们可以是未修改的(&lt;code class=&quot;highlighter-rouge&quot;&gt;unmodified&lt;/code&gt;)，修改的(&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;)和暂存的(&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;)。&lt;/p&gt;
+
+&lt;p&gt;几个状态之间的转移图如图所示。&lt;br /&gt;
+&lt;img src=&quot;./git_status_change.png&quot; alt=&quot;文件状态生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;检查文件状态&quot;&gt;检查文件状态&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;可用来检查文件的状态。&lt;/p&gt;
+
+&lt;p&gt;例如，假设刚刚&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;了一个repo，则此时使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令一般显示如下&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这表明工作目录是干净的，即你所跟踪(&lt;code class=&quot;highlighter-rouge&quot;&gt;track&lt;/code&gt;)的文件都没有被修改&lt;/p&gt;
+
+&lt;p&gt;如果添加一个&lt;code class=&quot;highlighter-rouge&quot;&gt;README&lt;/code&gt;文件，则它是一个&lt;code class=&quot;highlighter-rouge&quot;&gt;untracked&lt;/code&gt;文件，目录的状态就发生了变化&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'My Project' &amp;gt; README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+(use &quot;git add &amp;lt;file&amp;gt;...&quot; to include in what will be committed)
+README
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;untracked&lt;/code&gt;文件表示该文件没有出现在上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的快照中&lt;/p&gt;
+
+&lt;h4 id=&quot;跟踪新文件&quot;&gt;跟踪新文件&lt;/h4&gt;
+&lt;p&gt;可通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令跟踪新文件。例如&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git add README&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;此时运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令，则输出为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+
+    new file:  README
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;现在该文件就处于暂存(&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;)状态了。该状态下对文件的改变等待被&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;暂存修改后文件&quot;&gt;暂存修改后文件&lt;/h4&gt;
+&lt;p&gt;如果修改了一个之前跟踪的文件，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;，然后运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;,则输出为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    new file:  README
+Changes not staged for commit:
+  (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
+    modified:  CONTRIBUTING.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件被修改了，但还没有位于暂存区中，需要通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令将其加入暂存区。&lt;/p&gt;
+
+&lt;p&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令后状态如下&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果此时调用&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则两个文件都会被加入快照中。如果此时你修改了&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件，则&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令的输出会是&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+
+Changes not staged for commit:
+ (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
+    modified: CONTRIBUTING.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;既是&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;又是&lt;code class=&quot;highlighter-rouge&quot;&gt;unstaged&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;的文件是上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;加进去的，而后面修改内容的文件处于&lt;code class=&quot;highlighter-rouge&quot;&gt;unstaged&lt;/code&gt;状态。如果现在&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则快照中的文件仍然是修改之前的，即&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;状态的文件。&lt;/p&gt;
+
+&lt;h4 id=&quot;忽略文件&quot;&gt;忽略文件&lt;/h4&gt;
+&lt;p&gt;Git可通过在&lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;文件中设置对应的语法规则来使得Git在添加、提交等操作时忽略一些文件，例如程序构建后的文件、构建过程中的目标文件、临时文件等。其中的语法这里不再详细介绍，当用到时去查看即可。&lt;/p&gt;
+
+&lt;h4 id=&quot;观看暂存以及未暂存的改变&quot;&gt;观看暂存以及未暂存的改变&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令的输出太模糊、宽泛了——你知道文件的状态，但不知道文件的内容发生了什么变化。&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;命令可用于观看这些变化。&lt;/p&gt;
+
+&lt;p&gt;例如，假设你编辑并且暂存了&lt;code class=&quot;highlighter-rouge&quot;&gt;README&lt;/code&gt;文件，编辑了&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件但没有暂存它，则&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;的输出是&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    modified: README
+Changes not staged for commit:
+ (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
+    modified: CONTRIBUTING.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;为了观看改变的但是没有暂存的内容，直接输入&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git diff
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+index 8ebb991..643e24f 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -65,7 +65,8 @@ branch directly, things can get messy.
+ Please include a nice description of your changes when you submit your PR;if we have to read the whole diff to figure out why you're contributing in the first place, you're less likely to get feedback and have your change
+-merged in.
++merged in. Also, split your changes into comprehensive +chunks if your patch is longer than a dozen lines.
+
+If you are starting to work on a particular area, feel free to submit a PR that highlights your work in progress (and note in the PR title that it's
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;该命令比较工作目录和暂存区的差异。因此结果就是告诉你你所改变的没有暂存的内容。&lt;/p&gt;
+
+&lt;p&gt;如果想看已经暂存的(即将要进入下一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;中的)内容，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff --staged&lt;/code&gt;。该命令比较暂存区和上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的内容的变化&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git diff --staged
+diff --git a/README b/README
+new file mode 100644
+index 0000000..03902a1
+--- /dev/null
++++ b/README
+@@ -0,0 +1 @@
++My Project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;提交发生的改变&quot;&gt;提交发生的改变&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;命令可以将暂存区中的内容加入到快照当中。&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令会打开默认编辑器让你键入&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的相关信息。也可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &amp;lt;message&amp;gt;&lt;/code&gt;来输入信息。&lt;/p&gt;
+
+&lt;p&gt;记住，只有暂存区的内容会加入快照当中，不在暂存区的修改都会是&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;状态。&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;命令的本质是创建一个暂存区的快照。&lt;/p&gt;
+
+&lt;h4 id=&quot;跳过暂存区&quot;&gt;跳过暂存区&lt;/h4&gt;
+&lt;p&gt;通过给&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令传递&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;选项可以使其跳过暂存阶段。该选项会将所有跟踪的改变内容的文件暂存(注意：未跟踪的文件不会被暂存！)&lt;/p&gt;
+
+&lt;h4 id=&quot;删除文件&quot;&gt;删除文件&lt;/h4&gt;
+&lt;p&gt;为了从Git中删除文件，需要删除跟踪着的文件然后&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;会删除跟踪着的文件。工作目录中的对应文件也会被删除。&lt;/p&gt;
+
+&lt;p&gt;如果只是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt;命令删除，则该改变使得Git进入下面的状态&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rm PROJECTS.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+ (use &quot;git add/rm &amp;lt;file&amp;gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
+    deleted: PROJECTS.md
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;命令，则对应的文件会从暂存区中删除&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git rm PROJECTS.md
+rm 'PROJECTS.md'
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    deleted: PROJECTS.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接着&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;即可。如果对文件进行了修改(处于&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;状态，未加入暂存区)或已经将它加入暂存区(没有&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;)，则需要加上&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;选项强制删除。&lt;/p&gt;
+
+&lt;p&gt;有时候或许只想从暂存区中删除文件，而希望在硬盘上保留它。也就是说，希望Git不再跟踪该文件，则可以给&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;命令加上&lt;code class=&quot;highlighter-rouge&quot;&gt;--cached&lt;/code&gt;选项。&lt;/p&gt;
+
+&lt;h4 id=&quot;移动文件&quot;&gt;移动文件&lt;/h4&gt;
+&lt;p&gt;Git不显式跟踪文件的移动。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git mv README.md README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
+    renamed: README.md -&amp;gt; README
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面的命令和下面的命令是等价的&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mv README.md README
+$ git rm README.md
+$ git add README
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>本章讲述Git的基础知识。</summary>
+</entry>
+<entry>
+<title>Arts Weekten Leetcode779 Kth Symbol</title>
+<link href="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/" rel="alternate" type="text/html" title="Arts Weekten Leetcode779 Kth Symbol" />
+<published>2019-06-11T00:00:00+08:00</published>
+<updated>2019-06-11T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/">&lt;p&gt;On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.&lt;/p&gt;
+
+&lt;p&gt;Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;br /&gt;
+Input: N = 1, K = 1&lt;br /&gt;
+Output: 0&lt;/p&gt;
+
+&lt;p&gt;Input: N = 2, K = 1&lt;br /&gt;
+Output: 0&lt;/p&gt;
+
+&lt;p&gt;Input: N = 2, K = 2&lt;br /&gt;
+Output: 1&lt;/p&gt;
+
+&lt;p&gt;Input: N = 4, K = 5&lt;br /&gt;
+Output: 1&lt;/p&gt;
+
+&lt;p&gt;row 1: 0&lt;br /&gt;
+row 2: 01&lt;br /&gt;
+row 3: 0110&lt;br /&gt;
+row 4: 01101001&lt;br /&gt;
+—
+这题还是很有意思的。最直观的解法是生成第N行然后直接索引第K个，然而很快就会发现，第row行的字符数量是&lt;code class=&quot;highlighter-rouge&quot;&gt;$2^(N-1)$&lt;/code&gt;，显然是放不下的。因此还要有其他方法。&lt;/p&gt;
+
+&lt;p&gt;我自己的解法是比较复杂的，主要是通过观察数列规律得出。很显然，可以根据K和N分为下列情况（假设middle是第N行的中间位置,f(N,K)是想要寻找的数字)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;K &amp;lt; middle, 此时就是第N-1行的对应索引，即f(N, K) = f(N-1, K)&lt;/li&gt;
+  &lt;li&gt;K &amp;gt; middle,此时要分N是奇数还是偶数
+    &lt;ul&gt;
+      &lt;li&gt;N为奇数时，此时N行左半边和右半边对称，因此f(N, K) = f(N, middle * 2 - K + 1) = f(N - 1, middle * 2- K + 1)&lt;/li&gt;
+      &lt;li&gt;N为偶数时，将数列划分为四等分，则必定是abba的形式，因此又分两种情况
+        &lt;ul&gt;
+          &lt;li&gt;K在右侧的左半边时，则位于abba中第2个b的位置，则可在第1个b中找到其对应位置，即f(N, K) = f(N, K - middle / 2) = f(N - 1, K - middle / 2)&lt;/li&gt;
+          &lt;li&gt;K在右侧的右半边时，即位于abba中第2个a的位置，则可在第1个a中找到其对应位置，即f(N, K) = f(N, K - middle / 2 * 3) = f(N - 1, K - middle / 2 * 3)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;基准情形则是N=1和N=2时的情况。总体来说，思路就是把N往小了化简。&lt;/p&gt;
+
+&lt;p&gt;在看了解析之后，才发现其实很简单。把第N-1行的0看作第N行的0和1的父节点，第N-1行的1看作第N行的1和0的父节点。很显然，第N行中如果K是偶数，则它是父节点的右子节点，如果K是奇数，则它是父节点的左子节点。而只要确定了K对应的位置的父节点的数值，则K的数值就很简单就能确定。从子节点一直往上回溯直到找到基准情形即可。这种思路的代码非常简单，如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
+public:
+    int kthGrammar(int N, int K) {
+	if (N == 1) return 0;
+	if (K % 2 == 0) return (kthGrammar(N - 1, K / 2) == 0) ? 1 : 0;
+	else return (kthGrammar(N - 1, (K + 1) / 2) == 0) ? 0 : 1;
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;我自己的代码复杂一些，这里也附上&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
+public:
+    int kthGrammar(int N, int K) {
+        if(N == 1)
+            return 0;   
+        if(N == 2 &amp;amp;&amp;amp; K == 1)
+            return 0;
+        if(N == 2 &amp;amp;&amp;amp; K == 2)
+            return 1;
+        
+        int middle = pow(2, N - 2);
+        if(K &amp;lt;= middle)
+            return kthGrammar(N-1, K);
+        else if(K &amp;gt; middle &amp;amp;&amp;amp; N % 2)
+            return kthGrammar(N - 1, middle * 2 - K + 1);
+        else 
+        {
+            if(K &amp;lt;= 3 * middle / 2)
+                return kthGrammar(N - 1, K - middle / 2);
+            else
+                return kthGrammar(N - 1, K - middle / 2 * 3);
+        }
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(三)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/" rel="alternate" type="text/html" title="Envoy学习之旅(三)" />
+<published>2019-06-10T00:00:00+08:00</published>
+<updated>2019-06-10T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(三)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/">&lt;p&gt;上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。&lt;/p&gt;
+
+&lt;h2 id=&quot;实现过程&quot;&gt;实现过程&lt;/h2&gt;
+&lt;p&gt;首先小小的修改一下&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;文件。在其中&lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;下面添加一个选项&lt;code class=&quot;highlighter-rouge&quot;&gt;volumes&lt;/code&gt;,如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;volumes:
+    - ./service-envoy.yaml:/etc/service-envoy.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这句话的意思是把当前目录下的配置文件&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;挂在到容器中的&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc&lt;/code&gt;目录下。&lt;/p&gt;
+
+&lt;p&gt;然后把&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;选项改成下面的样子：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expose:
+    - &quot;80&quot;
+ports:
+    - &quot;8000:80&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;至于为什么要改成这样，在后面马上会提到。&lt;/p&gt;
+
+&lt;p&gt;接下去修改一下启动脚本，其中添加了&lt;code class=&quot;highlighter-rouge&quot;&gt;envoy&lt;/code&gt;的启动，如下所示：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+python3 /code/hello_world_service.py &amp;amp;
+envoy &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; /etc/service-envoy.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最后，最关键的就是&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;文件了。&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;文件和官网提供的例子很像，其内容如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;static_resources:
+  listeners:
+  - address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 80
+    filter_chains:
+    - filters:
+      - name: envoy.http_connection_manager
+        typed_config:
+          &quot;@type&quot;: type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
+          codec_type: auto
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: service
+              domains:
+              - &quot;*&quot;
+              routes:
+              - match:
+                  prefix: &quot;/&quot;
+                route:
+                  cluster: local_service
+          http_filters:
+          - name: envoy.router
+            typed_config: {}
+  clusters:
+  - name: local_service
+    connect_timeout: 0.25s
+    type: strict_dns
+    lb_policy: round_robin
+    load_assignment:
+      cluster_name: local_service
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: 0.0.0.0
+                port_value: 8080
+admin:
+  access_log_path: &quot;/dev/null&quot;
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 8081
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这里的选项非常之多，我这里暂且不做详细的解释，在下面我阅读了envoy的官方文档，并将其中涉及到的重要选项列举一下。&lt;/p&gt;
+
+&lt;p&gt;这里我只大概说一下文件所表达的意思。首先，&lt;code class=&quot;highlighter-rouge&quot;&gt;envoy&lt;/code&gt;根据该文件创建了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;监听在端口号80上,&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;则监听在在端口号8080上。&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;根据过滤器的配置过滤、转发请求。这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;将前缀为&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;的所有请求转发给名字叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;local_service&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;,由&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;再给出回应。&lt;/p&gt;
+
+&lt;p&gt;这里尤其要注意的是端口号。此处&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;的监听端口号是容器内部的端口号。因此在做端口映射时，主机端口应当映射到该端口，也因此&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;中的文件中的端口相关选项做了修改。&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;的端口号应当是业务逻辑，即app中的监听端口号。&lt;/p&gt;
+
+&lt;h2 id=&quot;相关envoy选项含义&quot;&gt;相关envoy选项含义&lt;/h2&gt;
+</content>
+<summary>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(二)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/" rel="alternate" type="text/html" title="Envoy学习之旅(二)" />
+<published>2019-06-09T00:00:00+08:00</published>
+<updated>2019-06-09T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(二)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">&lt;p&gt;在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-compose内容说明&quot;&gt;docker compose内容说明&lt;/h2&gt;
+&lt;p&gt;在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。&lt;/p&gt;
+
+&lt;p&gt;docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;depends_on&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;networks&lt;/code&gt;等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;key&amp;gt;: &amp;lt;option&amp;gt;: &amp;lt;value&amp;gt;&lt;/code&gt;这样的。&lt;/p&gt;
+
+&lt;h3 id=&quot;service-configuration-reference&quot;&gt;Service configuration reference&lt;/h3&gt;
+&lt;p&gt;Service定义(&lt;code class=&quot;highlighter-rouge&quot;&gt;services:&lt;/code&gt;)包含了每个为了该服务启动的容器的配置，很像给&lt;code class=&quot;highlighter-rouge&quot;&gt;docker container create&lt;/code&gt;传递参数。与此类似的，网络和卷的定义和&lt;code class=&quot;highlighter-rouge&quot;&gt;docker network create&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;docker volume create&lt;/code&gt;很像。&lt;/p&gt;
+
+&lt;h4 id=&quot;build&quot;&gt;build&lt;/h4&gt;
+&lt;p&gt;包含在构建时的配置选项。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &quot;3.7&quot;
+services:
+  webapp:
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
+      args:
+	buildno: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;context&quot;&gt;CONTEXT&lt;/h5&gt;
+&lt;p&gt;可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url&lt;/p&gt;
+
+&lt;h5 id=&quot;dockerfile&quot;&gt;DOCKERFILE&lt;/h5&gt;
+&lt;p&gt;可选的Dockerfile&lt;/p&gt;
+
+&lt;h4 id=&quot;expose&quot;&gt;expose&lt;/h4&gt;
+&lt;p&gt;暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。&lt;/p&gt;
+
+&lt;p&gt;这里指的是app使用的端口号，而不是docker容器对外暴露的端口号&lt;/p&gt;
+
+&lt;h4 id=&quot;networks&quot;&gt;networks&lt;/h4&gt;
+&lt;p&gt;要加入的网络&lt;/p&gt;
+
+&lt;h5 id=&quot;aliases&quot;&gt;ALIASES&lt;/h5&gt;
+&lt;p&gt;在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。&lt;/p&gt;
+
+&lt;p&gt;由于&lt;code class=&quot;highlighter-rouge&quot;&gt;aliases&lt;/code&gt;是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。&lt;/p&gt;
+
+&lt;p&gt;一种通用格式是这样的：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;services:
+  some-service:
+    networks:
+      some-network:
+        aliases:
+         - alias1
+	 - alias3
+      other-network:
+        aliases:
+         - alias2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ports&quot;&gt;ports&lt;/h4&gt;
+&lt;p&gt;暴露端口&lt;/p&gt;
+
+&lt;h5 id=&quot;short-syntax&quot;&gt;SHORT SYNTAX&lt;/h5&gt;
+&lt;p&gt;指定两个端口号(&lt;code class=&quot;highlighter-rouge&quot;&gt;HOST:CONTAINER&lt;/code&gt;),或者只有容器端口(一个短暂的host端口将被选择)&lt;/p&gt;
+
+&lt;p&gt;后面的是容器内部的端口，即app监听端口，前面的是暴露端口，即我们访问docker容器的端口&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ports:
+ - &quot;3000&quot;
+ - &quot;3000-3005&quot;
+ - &quot;8000:8000&quot;
+ - &quot;9090-9091:8080-8081&quot;
+ - &quot;49100:22&quot;
+ - &quot;127.0.0.1:8001:8001&quot;
+ - &quot;127.0.0.1:5000-5010:5000-5010&quot;
+ - &quot;6060:6060/udp&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;long-syntax&quot;&gt;LONG SYNTAX&lt;/h5&gt;
+&lt;p&gt;较长形式的语法允许对不能被短语法形式表现的配置域。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt;:容器内部的端口&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt;:公开暴露的端口&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protocol&lt;/code&gt;:端口的协议(&lt;code class=&quot;highlighter-rouge&quot;&gt;tcp&lt;/code&gt;或是&lt;code class=&quot;highlighter-rouge&quot;&gt;udp&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt;: 在每个节点上都发布一个host端口则是&lt;code class=&quot;highlighter-rouge&quot;&gt;host&lt;/code&gt;,在需要负载均衡的swarm模式下的端口则是&lt;code class=&quot;highlighter-rouge&quot;&gt;ingress&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ports:
+  - target: 80
+    published: 8080
+    protocol: tcp
+    mode: host
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;修改端口&quot;&gt;修改端口&lt;/h2&gt;
+&lt;p&gt;app监听端口仍为8080，将容器暴露端口改为8000，docker-compose文件的格式为&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expose:
+- &quot;8080&quot;
+ports:
+- &quot;8000:8080&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样，就可以通过8000端口号访问服务了。&lt;/p&gt;
+
+&lt;p&gt;中间由于对端口的配置理解有误，自己尝试了各种端口号配置，记录如下。app的监听端口号不变是8080。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;expose&lt;/th&gt;
+      &lt;th&gt;ports&lt;/th&gt;
+      &lt;th&gt;访问&lt;/th&gt;
+      &lt;th&gt;结果&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8000”&lt;/td&gt;
+      &lt;td&gt;“8000:8000”&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8000”&lt;/td&gt;
+      &lt;td&gt;“8000:8080”&lt;/td&gt;
+      &lt;td&gt;8080&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8000”&lt;/td&gt;
+      &lt;td&gt;“8000:8080”&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;成功&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8000”&lt;/td&gt;
+      &lt;td&gt;“8080:8000”&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8000”&lt;/td&gt;
+      &lt;td&gt;“8080:8000”&lt;/td&gt;
+      &lt;td&gt;8080&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8080”&lt;/td&gt;
+      &lt;td&gt;“8000:8080”&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;成功&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8080”&lt;/td&gt;
+      &lt;td&gt;“8000:8080”&lt;/td&gt;
+      &lt;td&gt;8080&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8080”&lt;/td&gt;
+      &lt;td&gt;“8080:8000”&lt;/td&gt;
+      &lt;td&gt;8000&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;“8080”&lt;/td&gt;
+      &lt;td&gt;“8080:8000”&lt;/td&gt;
+      &lt;td&gt;8080&lt;/td&gt;
+      &lt;td&gt;失败&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;从上面表格可以看出，&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;的作用感觉不大，&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。&lt;/p&gt;
+</content>
+<summary>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</summary>
+</entry>
+<entry>
+<title>Arts Weeknine High Performance Server(二)</title>
+<link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(二)" />
+<published>2019-06-09T00:00:00+08:00</published>
+<updated>2019-06-09T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(二)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/">&lt;p&gt;接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
+
+&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
+&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
+
+&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
+  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
+  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
+</content>
+<summary>接下去介绍高性能服务器设计的最后两个因素。</summary>
+</entry>
+<entry>
+<title>Arts Weeknine High Performance Server(一)</title>
+<link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(一)" />
+<published>2019-06-09T00:00:00+08:00</published>
+<updated>2019-06-09T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(一)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/">&lt;p&gt;这篇英文文章讲的是高性能服务器设计的一些要点。&lt;br /&gt;
+原文链接为&lt;img src=&quot;http://pl.atyp.us/content/tech/servers.html&quot; alt=&quot;High-Performance Server Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;data-copies&quot;&gt;Data Copies&lt;/h2&gt;
+&lt;p&gt;数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。&lt;/p&gt;
+
+&lt;p&gt;一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;一个指针以及缓冲区的长度&lt;/li&gt;
+  &lt;li&gt;一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度&lt;/li&gt;
+  &lt;li&gt;指向其他缓冲区的前向以及后向指针&lt;/li&gt;
+  &lt;li&gt;引用计数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。&lt;/p&gt;
+
+&lt;p&gt;作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。&lt;/p&gt;
+
+&lt;p&gt;作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。&lt;/p&gt;
+
+&lt;h2 id=&quot;context-switches&quot;&gt;Context Switches&lt;/h2&gt;
+&lt;p&gt;当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。&lt;/p&gt;
+
+&lt;p&gt;造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。&lt;/p&gt;
+
+&lt;p&gt;通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。&lt;/p&gt;
+
+&lt;p&gt;最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个&lt;code class=&quot;highlighter-rouge&quot;&gt;listeners&lt;/code&gt;监听并放入队列，而&lt;code class=&quot;highlighter-rouge&quot;&gt;worker threads&lt;/code&gt;从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;能变成&lt;code class=&quot;highlighter-rouge&quot;&gt;worker&lt;/code&gt;再变回&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。&lt;/p&gt;
+
+&lt;p&gt;作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;请求需要传给下一个阶段(ID或是指针作为返回值)&lt;/li&gt;
+  &lt;li&gt;请求已经被完成(特殊的”请求完成”返回值)&lt;/li&gt;
+  &lt;li&gt;请求被阻塞(特殊的”请求阻塞”返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续&lt;br /&gt;
+在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;作者最后对SEDA发表了自己的看法。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理&lt;/li&gt;
+  &lt;li&gt;学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+<summary>这篇英文文章讲的是高性能服务器设计的一些要点。原文链接为</summary>
+</entry>
 <entry>
 <title>Arts Weeknine Progit(一)</title>
 <link href="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine Progit(一)" />
@@ -177,6 +835,36 @@ ENTRYPOINT /usr/local/bin/start_service.sh
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
 python3 /code/hello_world_service.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;docker-compose&quot;&gt;docker compose&lt;/h2&gt;
+&lt;p&gt;docker compose主要用于管理多个docker运行时实例，虽然目前只有一个实例，但将来必定会扩展为多个，因此从最开始就使用docker compose来管理。&lt;/p&gt;
+
+&lt;p&gt;docker compse文件的内容如下&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &quot;3.4&quot;
+services:
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile-service
+    volumes:
+      - ./service-envoy.yaml:/etc/service-envoy.yaml
+    networks:
+      envoymesh:
+        aliases:
+          - service1
+    environment:
+      - SERVICE_NAME=1
+    expose:
+      - &quot;8080&quot;
+    ports:
+      - &quot;8080:8080&quot;
+
+networks:
+  envoymesh: {}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这里值得注意的是，app的8080端口是在docker容器中的，而我们可以选择在实际机器环境中docker容器暴露给我们的端口是什么，这里选择8080只是出于方便，也可以更改。&lt;/p&gt;
+
 </content>
 <summary>最近由于公司需要，开始学习一下envoy。envoy的官网教程基本上就是给例子，然而由于缺乏docker、docker-compose等相关知识，在自己搭建envoy过程中遇到了很多问题，因此这里就记录一下学习envoy的过程以及其中所遇到的问题。</summary>
 </entry>
@@ -279,423 +967,5 @@ Output: False
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
 <summary>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.</summary>
-</entry>
-<entry>
-<title>Arts Weekeight Design Restful Api(二)</title>
-<link href="http://localhost:4000/ARTS-WeekEight-Design-RESTful-API(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekeight Design Restful Api(二)" />
-<published>2019-06-02T00:00:00+08:00</published>
-<updated>2019-06-02T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekEight-Design-RESTful-API(二)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekEight-Design-RESTful-API(%E4%BA%8C)/">&lt;p&gt;Best practices for designing a pragramtic RESTful API PartII&lt;/p&gt;
-
-&lt;h2 id=&quot;result-filtering-sorting--searching&quot;&gt;Result filtering, sorting &amp;amp; searching&lt;/h2&gt;
-&lt;p&gt;资源URL越简洁越好。复杂的结果滤除，排序需求和高级搜索都能在基本URL上通过query参数简单的实现。例如：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Flitering&lt;/strong&gt;:每个实现滤除功能的域都使用一个唯一的query参数。例如，当从&lt;code class=&quot;highlighter-rouge&quot;&gt;/tickets&lt;/code&gt;端点中请求一列tickets时，你也许只需要那些处于open状态的ticket。这可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?state=open&lt;/code&gt;实现&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sorting&lt;/strong&gt;:和filtering相似的，一个通用的参数&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;可以被用来描述排序规则。通过允许排序参数包含一系列逗号分隔的域(每个域伴随一个可能的一元负号来提示递减的排序顺序)为复杂的排序需求预留空间。例如：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?sort=-priority&lt;/code&gt; - 按照递减的优先级获取一列tickets&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?sort=-priority, create_at&lt;/code&gt; - 按照递减的优先级获取一列tickets。在特定的优先级内，较老的tickets放在前面&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Searching&lt;/strong&gt;: 有些时候基本的滤波器不够，因此需要全文搜索。也许你已经使用ElasticSearch或者其他基于Lucene的搜索技术。当全文搜索被用于提取特殊资源类型的资源实例时，它可以作为资源端点的一种query参数在API中被暴露,例如就叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;q&lt;/code&gt;。搜索的query应当被直接传送给搜索引擎，API的输出应当和普通的列表结果有相同的格式。&lt;/p&gt;
-
-&lt;p&gt;将上述三者结合起来，我们可以构建这样的query：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?sort=-update_at&lt;/code&gt; - 提取最近更新的tickets&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?state=close&amp;amp;sort=-update_at&lt;/code&gt; - 提取最近关闭的tickets&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?q=return&amp;amp;state=open&amp;amp;sort=-priority,create_at&lt;/code&gt; - 提取提到单词&lt;code class=&quot;highlighter-rouge&quot;&gt;return&lt;/code&gt;的最高优先级的open状态的tickets&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;aliases-for-common-queries&quot;&gt;Aliases for common queries&lt;/h3&gt;
-&lt;p&gt;为了方便API对普通使用者的使用，可以考虑将一系列状况打包到简单可接触的RESTful路径中。例如，最近被关闭的tickets的query可以被打包为&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/recently_closed&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;limiting-which-fields-are-returned-by-the-api&quot;&gt;Limiting which fields are returned by the API&lt;/h2&gt;
-&lt;p&gt;API使用者并不总是需要完整的资源表示。选择返回的域的能力使得API使用者最小化网络传输并加速他们自身对API的使用。&lt;/p&gt;
-
-&lt;p&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;fields&lt;/code&gt;query参数，该参数包含由逗号分隔的列表指示要包含的域。例如，下面请求将获取仅仅是足够的信息来显示排序的open状态的tickets：&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets?fields=id,subject,customer_name,updated_at&amp;amp;state=open&amp;amp;sort=-updated_at&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;updates--creation-should-return-resource-representation&quot;&gt;Updates &amp;amp; creation should return resource representation&lt;/h2&gt;
-&lt;p&gt;PUT,POST或者PATCH可能对不是所提供的参数的一部分的底层资源作出修改。(例如：created_at或者updated_at时间戳)。为了防止API使用者不得不在更新表示之后重新使用该API，让API返回被更新的(或是被创建的)表示作为响应的一部分&lt;/p&gt;
-
-&lt;p&gt;例如，一个POST引起了一个创建动作，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;HTTP 201状态码&lt;/code&gt;并包含一个指向新资源的URL的&lt;code class=&quot;highlighter-rouge&quot;&gt;Location header&lt;/code&gt;&lt;/p&gt;
-</content>
-<summary>Best practices for designing a pragramtic RESTful API PartII</summary>
-</entry>
-<entry>
-<title>Arts Weekeight Apt</title>
-<link href="http://localhost:4000/ARTS-WeekEight-Apt/" rel="alternate" type="text/html" title="Arts Weekeight Apt" />
-<published>2019-06-02T00:00:00+08:00</published>
-<updated>2019-06-02T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekEight-Apt</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekEight-Apt/">&lt;p&gt;这次介绍一下&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;(Advanced Package Tool),在基于&lt;code class=&quot;highlighter-rouge&quot;&gt;Debian&lt;/code&gt;的Linux操作系统下被广泛使用的包管理器。(注：这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;是&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-cache&lt;/code&gt;的结合，但是影响不大&lt;code class=&quot;highlighter-rouge&quot;&gt;)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;一简介&quot;&gt;一、简介&lt;/h2&gt;
-&lt;p&gt;在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;./configure -&amp;gt; make -&amp;gt; make install&lt;/code&gt;&lt;br /&gt;
-其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在&lt;code class=&quot;highlighter-rouge&quot;&gt;Debian&lt;/code&gt;下是&lt;code class=&quot;highlighter-rouge&quot;&gt;dpkg&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;，在&lt;code class=&quot;highlighter-rouge&quot;&gt;CentOS&lt;/code&gt;下是&lt;code class=&quot;highlighter-rouge&quot;&gt;rpm&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。&lt;/p&gt;
-
-&lt;p&gt;以前，基于&lt;code class=&quot;highlighter-rouge&quot;&gt;Debian&lt;/code&gt;的系统使用&lt;code class=&quot;highlighter-rouge&quot;&gt;dpkg&lt;/code&gt;命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;命令就被发明了。&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;命令能自动发现并安装软件依赖，大大简化了软件的管理。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;所获取的软件包一般从网上获得。&lt;code class=&quot;highlighter-rouge&quot;&gt;Debian&lt;/code&gt;工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt;)中被&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;查询(由于国内访问环境不好，一般安装&lt;code class=&quot;highlighter-rouge&quot;&gt;Ubuntu&lt;/code&gt;之后的第一步就是更换源为国内源)。&lt;/p&gt;
-
-&lt;h2 id=&quot;二用法&quot;&gt;二、用法&lt;/h2&gt;
-&lt;p&gt;这里参考了&lt;code class=&quot;highlighter-rouge&quot;&gt;man apt&lt;/code&gt;页的输出，对&lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;的关键用法作一个小结。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;update&lt;/code&gt;: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;upgrade&lt;/code&gt;: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;full-upgrade&lt;/code&gt;: 和&lt;code class=&quot;highlighter-rouge&quot;&gt;upgrade&lt;/code&gt;相似，但如果需要更新整个系统则会移除已经安装的包&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;install&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;remove&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;purge&lt;/code&gt;: 看名字即可&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;autoremove&lt;/code&gt;: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;search&lt;/code&gt;: 用于搜索想要的软件&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;另外，软件默认安装在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share&lt;/code&gt;中，可执行文件在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin&lt;/code&gt;中，库文件在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib&lt;/code&gt;中，下载的软件存放在&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/cache/apt/archives&lt;/code&gt;中&lt;/p&gt;
-
-&lt;h2 id=&quot;三配置文件&quot;&gt;三、配置文件&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt;:获取包的位置&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list.d/&lt;/code&gt;: 其余的源列表片段&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/apt.conf&lt;/code&gt;: APT配置文件&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/apt.conf.d&lt;/code&gt;: APT配置文件列表片段&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/preferences.d/&lt;/code&gt;:版本偏好目录&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/cache/apt/archives/&lt;/code&gt;:获取的包文件的存储位置&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/cache/apt/archives/partial/&lt;/code&gt;:传输中的包文件的存储位置&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/var/lib/apt/lists&lt;/code&gt;:每个在&lt;code class=&quot;highlighter-rouge&quot;&gt;sources.list&lt;/code&gt;中指定的包资源的状态信息的存储位置&lt;/li&gt;
-&lt;/ul&gt;
-
-</content>
-<summary>这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)</summary>
-</entry>
-<entry>
-<title>Arts Weekseven Envoy Example Analyze.</title>
-<link href="http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze" rel="alternate" type="text/html" title="Arts Weekseven Envoy Example Analyze." />
-<published>2019-05-26T00:00:00+08:00</published>
-<updated>2019-05-26T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze.</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Envoy-Example-Analyze">&lt;p&gt;最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。&lt;/p&gt;
-
-&lt;h2 id=&quot;目录结构&quot;&gt;目录结构&lt;/h2&gt;
-&lt;p&gt;首先看下目录结构，如下所示&lt;br /&gt;
-&lt;img src=&quot;./directory_structure.png&quot; alt=&quot;目录结构&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;大体上目录中的文件可以分为四个部分：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;docker compose: docker-compose.yaml&lt;/li&gt;
-  &lt;li&gt;docker: Dockerfile-frontenvoy, Dockerfile-service&lt;/li&gt;
-  &lt;li&gt;envoy: service-envoy.yaml, front-envoy.yaml&lt;/li&gt;
-  &lt;li&gt;source: service.py, start_service.sh&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;接下去分别看下这四个部分的内容&lt;/p&gt;
-
-&lt;h2 id=&quot;docker-compose&quot;&gt;docker compose&lt;/h2&gt;
-&lt;p&gt;docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.&lt;/p&gt;
-
-&lt;p&gt;front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。&lt;/p&gt;
-
-&lt;p&gt;front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。&lt;/p&gt;
-
-&lt;p&gt;service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。&lt;/p&gt;
-
-&lt;p&gt;此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？&lt;/p&gt;
-&lt;h2 id=&quot;docker&quot;&gt;Docker&lt;/h2&gt;
-&lt;p&gt;Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。&lt;/p&gt;
-
-&lt;p&gt;Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。&lt;/p&gt;
-
-&lt;p&gt;Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。&lt;/p&gt;
-
-&lt;h2 id=&quot;source&quot;&gt;source&lt;/h2&gt;
-&lt;p&gt;源文件包含了服务的业务逻辑。&lt;/p&gt;
-
-&lt;p&gt;start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。&lt;/p&gt;
-
-&lt;p&gt;服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。&lt;/p&gt;
-
-&lt;h2 id=&quot;envoy&quot;&gt;envoy&lt;/h2&gt;
-&lt;p&gt;最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。&lt;/p&gt;
-
-&lt;p&gt;在service-envoy中，envoy在80端口上监听，并匹配”/service”前缀的URL，匹配到之后把请求转发给8080端口。&lt;/p&gt;
-
-&lt;p&gt;在front-envoy中，envoy在80端口上监听，并分别匹配”/service/1”和”/service/2”前缀的URL，将请求分别分发给service1的80端口和service2的80端口。&lt;/p&gt;
-
-</content>
-<summary>最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。</summary>
-</entry>
-<entry>
-<title>Arts Weekseven Dockerfile Reference</title>
-<link href="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference/" rel="alternate" type="text/html" title="Arts Weekseven Dockerfile Reference" />
-<published>2019-05-26T00:00:00+08:00</published>
-<updated>2019-05-26T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Dockerfile-Reference/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;从一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;和&lt;em&gt;环境(context)&lt;/em&gt;中构建一个镜像。构建的环境是一个指定&lt;code class=&quot;highlighter-rouge&quot;&gt;路径(PATH)&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;处的文件集。&lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt;是本地文件系统的目录，&lt;code class=&quot;highlighter-rouge&quot;&gt;URL&lt;/code&gt;是一个Git库的位置。&lt;/p&gt;
-
-&lt;p&gt;build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。&lt;/p&gt;
-
-&lt;p&gt;可以指定repository以及？&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker build -t shykes/myapp .
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Docker守护程序一个一个地执行&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。&lt;/p&gt;
-
-&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;的格式为&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Comment
-INSTRUCTION arguments
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;指令不是大小写敏感的，但传统上均是大写&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;必须以&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令开头。&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令指定了你正在构造的镜像的基本镜像(&lt;em&gt;Base Image&lt;/em&gt;)。&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;之前只能是&lt;code class=&quot;highlighter-rouge&quot;&gt;ARG&lt;/code&gt;指令，它声明了&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;要使用的参数&lt;/p&gt;
-
-&lt;h2 id=&quot;from&quot;&gt;FROM&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; [AS &amp;lt;name&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt;[:&amp;lt;tag&amp;gt;] [AS &amp;lt;name&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt;[@&amp;lt;digest&amp;gt;] [AS &amp;lt;name&amp;gt;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;可以在一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。&lt;/li&gt;
-  &lt;li&gt;可以通过添加&lt;code class=&quot;highlighter-rouge&quot;&gt;AS name&lt;/code&gt;给一个新的构建阶段命名。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tag&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;digest&lt;/code&gt;是可选的。如果忽视它们，builder会默认给一个&lt;code class=&quot;highlighter-rouge&quot;&gt;latest&lt;/code&gt;标志。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;run&quot;&gt;RUN&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;有两种形式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN &amp;lt;command&amp;gt;&lt;/code&gt;(&lt;em&gt;shell&lt;/em&gt;形式，命令在一个shell中执行，Linux中默认是&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/sh -c&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(&lt;em&gt;exec&lt;/em&gt;形式)&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;分层次的&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;指令和生成的提交(commit)是Docker的核心概念。&lt;/p&gt;
-
-&lt;h2 id=&quot;cmd&quot;&gt;CMD&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;有三种形式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(较好的形式)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD [&quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(作为&lt;em&gt;ENTRYPOINT&lt;/em&gt;的默认参数)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD command param1 param2&lt;/code&gt;&lt;br /&gt;
-一个&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;中只能有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;指令。如果有多个则只有最后一个起作用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;指令的主要作用是为正在执行的容器提供默认(入口)。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;注意：不要把&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;搞混。&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;会运行一个命令并提交结果。&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;不会在构建时执行任何动作，而是为镜像指定了要执行的命令。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;expose&quot;&gt;EXPOSE&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EXPOSE &amp;lt;port&amp;gt; [&amp;lt;port&amp;gt;/&amp;lt;protocol&amp;gt;...]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXPOSE&lt;/code&gt;指令告诉Docker容器在运行时的监听网络端口。可以指定是TCP还是UDP，默认是TCP。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;EXPOSE&lt;/code&gt;指令并不发布端口。它是作为构建镜像的人和运行容器的人之间的一种文档存在。想要在运行容器时发布端口，在&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;时使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt;标志来发布和映射一个或更多端口。&lt;/p&gt;
-
-&lt;h2 id=&quot;env&quot;&gt;ENV&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ENV &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;
-ENV &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENV&lt;/code&gt;指令将环境变量&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;key&amp;gt;&lt;/code&gt;设置为值&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;value&amp;gt;&lt;/code&gt;。该值将被接下去的指令使用。&lt;/p&gt;
-
-&lt;h2 id=&quot;add&quot;&gt;ADD&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;有两种形式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&quot;src&quot;, ... &quot;&amp;lt;dest&amp;gt;&quot;]&lt;/code&gt;(这种形式是因为有些路径中包含空格因而被需要)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;指令从&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;复制新的文件、目录或者远程文件的URL并将它们添加到镜像文件系统中的路径&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt;中&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD&lt;/code&gt;遵循下面的规则：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;路径必须在构建的&lt;em&gt;环境(context)&lt;/em&gt;中;你不能&lt;code class=&quot;highlighter-rouge&quot;&gt;ADD ../something /something&lt;/code&gt;,因为&lt;code class=&quot;highlighter-rouge&quot;&gt;docker build&lt;/code&gt;的第一步是将环境文件夹以及其子文件夹发送给docker守护程序&lt;/li&gt;
-  &lt;li&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;是一个目录，则目录的所有内容都会被复制，包括文件系统元数据(目录本身不会被拷贝，仅仅是它的内容)&lt;/li&gt;
-  &lt;li&gt;….&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;copy&quot;&gt;COPY&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;有两种形式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&quot;&amp;lt;src&amp;gt;&quot;,... &quot;&amp;lt;dest&amp;gt;&quot;]&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;指令从&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;src&amp;gt;&lt;/code&gt;复制新的文件或目录并将它们添加到容器文件系统中的路径&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dest&amp;gt;&lt;/code&gt;中&lt;/p&gt;
-
-&lt;h2 id=&quot;entrypoint&quot;&gt;ENTRYPOINT&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;有两种形式：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]&lt;/code&gt;(&lt;em&gt;exec&lt;/em&gt;形式，较好)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT command param1 param2&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;允许你配置(configure)一个将作为可执行文件被运行的容器&lt;/p&gt;
-
-&lt;p&gt;例如，下列命令将启动nginx，在端口80监听：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run -i -t --rm -p 80:80 nginx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run &amp;lt;image&amp;gt;&lt;/code&gt;的命令行参数将在执行形式&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;下的所有元素之后被添加，并且将覆盖&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;形式的元素。&lt;/p&gt;
-
-&lt;p&gt;只有最后一个&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;指令是有效的&lt;/p&gt;
-
-&lt;h2 id=&quot;volume&quot;&gt;VOLUME&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;VOLUME [&quot;/data&quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;VOLUME&lt;/code&gt;指令使用指定的名字创建一个挂载点并将它作为从原始本地或是其他容器获取数据的挂载卷。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;命令初始化新创建的卷时会包括基本镜像中在指定位置的数据。例如：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM ubuntu
-RUN mkdir /myvol
-RUN echo &quot;hello world&quot; &amp;gt; /myvol/greeting
-VOLUME /myvol
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这会创造一个镜像，该镜像的&lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;会在&lt;code class=&quot;highlighter-rouge&quot;&gt;/myvol&lt;/code&gt;创造一个新的挂载点并将&lt;code class=&quot;highlighter-rouge&quot;&gt;greeting&lt;/code&gt;文件复制到新创建的挂载点&lt;/p&gt;
-
-&lt;h2 id=&quot;workdir&quot;&gt;WORKDIR&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;WORKDIR /path/to/workdir
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WORKDIR&lt;/code&gt;为例如&lt;code class=&quot;highlighter-rouge&quot;&gt;RUN&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;ENTRYPOINT&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;COPY&lt;/code&gt;等指令设置工作目录。&lt;/p&gt;
-</content>
-<summary>docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。</summary>
-</entry>
-<entry>
-<title>Arts Weekseven Design Restful Api(一)</title>
-<link href="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weekseven Design Restful Api(一)" />
-<published>2019-05-26T00:00:00+08:00</published>
-<updated>2019-05-26T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(一)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Design-RESTful-API(%E4%B8%80)/">&lt;p&gt;Best Practice for Designing a Pragmatic RESTful API&lt;/p&gt;
-
-&lt;h2 id=&quot;key-requirements-for-the-api&quot;&gt;Key requirements for the API&lt;/h2&gt;
-&lt;p&gt;列举了一些API的需求：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;应当在有意义的地方使用web标准&lt;/li&gt;
-  &lt;li&gt;它应当对开发者友好并且可以通过浏览器地址栏探索&lt;/li&gt;
-  &lt;li&gt;它应当是简单的，符合直觉的&lt;/li&gt;
-  &lt;li&gt;它应当提供足够的灵活性&lt;/li&gt;
-  &lt;li&gt;在维持其他需求的同时，它应当是有效的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;use-restful-urls-and-actions&quot;&gt;Use RESTful URLS and actions&lt;/h2&gt;
-&lt;p&gt;RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。&lt;/p&gt;
-
-&lt;p&gt;API设计的一大关键是不要把实现细节暴露给API。&lt;/p&gt;
-
-&lt;p&gt;当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets&lt;/code&gt; - 获取tickets列表&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12&lt;/code&gt; - 获取一个特定的ticket&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POST /tickets&lt;/code&gt; - 创造一个新的ticket&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PUT /tickets/12&lt;/code&gt; - 更新#12 ticket&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PATCH /tickets/12&lt;/code&gt; - 部分更新#12 ticket&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE /tickets/12&lt;/code&gt; - 删除#12 ticket&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;REST的好处在于在单个端点&lt;code class=&quot;highlighter-rouge&quot;&gt;/tickets&lt;/code&gt;上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;端点名字应当是单数还是复数？&lt;/strong&gt;keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;如何处理关系？&lt;/strong&gt;如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到&lt;code class=&quot;highlighter-rouge&quot;&gt;/tickets&lt;/code&gt;端点：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12/messages&lt;/code&gt; - 获取#12 ticket的消息列表&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;GET /tickets/12/messages/5&lt;/code&gt; - 获取ticket #12的第5条消息&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;POST /tickets/12/messages&lt;/code&gt; - 为ticket #12创建一个新消息&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;不能用CRUD操作表达的动作怎么办？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;这是事情变得复杂的地方。有许多方法：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;重新结构化动作使其表现的像是资源的一个域。如果该动作不接收参数则这是可以工作的。例如，激活动作可以被映射为布尔值&lt;code class=&quot;highlighter-rouge&quot;&gt;activated&lt;/code&gt;然后通过到资源的PATCH更新&lt;/li&gt;
-  &lt;li&gt;使用RESTful原则将它作为子资源对待。例如，GitHub的API允许你使用&lt;code class=&quot;highlighter-rouge&quot;&gt;PUT /gists/:id/star&lt;/code&gt;对gist打星，并且使用&lt;code class=&quot;highlighter-rouge&quot;&gt;DELETE /gists/:id/star&lt;/code&gt;取消打星&lt;/li&gt;
-  &lt;li&gt;有时候确实不能将动作映射到有意义的RESTful架构。例如，一个多资源的搜索不能有意义的用到一个特定资源的端点。在这种情况下，&lt;code class=&quot;highlighter-rouge&quot;&gt;/search&lt;/code&gt;是可以的，虽然它不是一个资源。做从API使用者角度来看是对的事情并及早文档化以避免误解&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;ssl-everywhere---all-the-time&quot;&gt;SSL everywhere - all the time&lt;/h2&gt;
-&lt;p&gt;总是使用SSL，没有例外。今天，web API能够从各个地方被获取。不是所有的地方都是安全的。许多完全不加密通信，使得认证证书被劫持后信息被偷听或身份被冒充。&lt;/p&gt;
-
-&lt;p&gt;总是使用SSL的另一个好处是保证加密过的通信简化了认证&lt;/p&gt;
-
-&lt;p&gt;需要注意的是对API URL的无SSL请求。不要把它们重定向的SSL的版本，而是要抛出一个硬错误！&lt;/p&gt;
-
-&lt;h2 id=&quot;documentation&quot;&gt;Documentation&lt;/h2&gt;
-&lt;p&gt;一个API最多和它的文档一样好。文档应当便于获取并且是公共的。大多数开发者在使用API之前会检查文档。如果文档被隐藏在PDF文件中或者需要登录才能获取，则它们不仅难于找到且难于搜索到&lt;/p&gt;
-
-&lt;p&gt;文档应当展示完整的请求/回应循环的例子。最好请求是可以粘贴的例子——要不是可以粘贴到浏览器的链接，要不是可以粘贴到终端中的curl例子。&lt;/p&gt;
-
-&lt;p&gt;一旦发布了一个公共API，则你就承诺了不会无通知的破坏它。文档必须包含任何过时的东西。更新应当通过博客或是邮件列表发送。&lt;/p&gt;
-
-&lt;h2 id=&quot;versioning&quot;&gt;Versioning&lt;/h2&gt;
-&lt;p&gt;总是将你的API标识上版本号。这样帮助你更快的迭代并且阻止无效的请求到达更新过的端点。它也帮助平滑了主要API版本的转换，你可以继续提供旧API版本一段时间。&lt;/p&gt;
-
-&lt;p&gt;对于版本号应当在URL还是在首部中有不同的观点。学术上来说，它应当在首部中。然而，版本号应当在URL中来确保通过探索资源?(翻译有点问题)&lt;/p&gt;
-
-&lt;p&gt;作者比较喜欢的一种做法是URL有一个主要版本号，而API有一个可通过顾客HTTP请求头选择的基于日期的子版本号。在这种情况下，主版本号提供了API结构的稳定性，子版本号负责较小的变化。&lt;/p&gt;
-
-&lt;p&gt;API永远不可能是完全稳定的。变化是不可避免的。重要的是变化是怎么被管理的。被较好的文档化和声明的多个月的过时安排可以是一个可接受的选择。&lt;/p&gt;
-
-</content>
-<summary>Best Practice for Designing a Pragmatic RESTful API</summary>
-</entry>
-<entry>
-<title>Arts Weekseven Leetcode728 Selfdividenumbers</title>
-<link href="http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers/" rel="alternate" type="text/html" title="Arts Weekseven Leetcode728 Selfdividenumbers" />
-<published>2019-05-20T00:00:00+08:00</published>
-<updated>2019-05-20T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekSeven-Leetcode728-SelfDivideNumbers/">&lt;p&gt;A self-dividing number is a number that is divisible by every digit it contains.&lt;/p&gt;
-
-&lt;p&gt;For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.&lt;/p&gt;
-
-&lt;p&gt;Also, a self-dividing number is not allowed to contain the digit zero.&lt;/p&gt;
-
-&lt;p&gt;Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;这题其实也很简单，就按照题目意思顺次遍历然后转化为字符串判断是否可以自除即可。go语言代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;func selfDividingNumbers(left int, right int) []int {
-    res := make([]int, 0)
-    
-    for i := left; i &amp;lt;= right; i++ {
-        if(isSelfDivide(i)) {
-            res = append(res, i)
-        }
-    }
-    
-    return res
-    
-}
-
-func isSelfDivide(num int) bool {
-    strNum := strconv.Itoa(num)
-    
-    for i := 0; i &amp;lt; len(strNum); i++ {
-        n := (int)(strNum[i] - '0')
-        if n == 0 || num % n != 0 {
-            return false
-        }
-    }
-    
-    return true
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
-<summary>A self-dividing number is a number that is divisible by every digit it contains.</summary>
 </entry>
 </feed>

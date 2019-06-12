@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekeight Apt | Tonfeiz&#8217;s Blog</title>
-<meta name="description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)">
+<!-- begin _includes/seo.html --><title>Arts Weekten Progit(二) | Tonfeiz’s Blog</title>
+<meta name="description" content="本章讲述Git的基础知识。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekeight Apt">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekEight-Apt/">
+<meta property="og:title" content="Arts Weekten Progit(二)">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">
 
 
-  <meta property="og:description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-06-02T00:00:00+08:00">
+  <meta property="og:description" content="本章讲述Git的基础知识。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-06-12T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekEight-Apt/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">
 
 
 
@@ -250,47 +250,225 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekeight Apt</h1>
+      <h1 id="page-title" class="page__title">Arts Weekten Progit(二)</h1>
     
-    <p>这次介绍一下<code class="highlighter-rouge">apt</code>(Advanced Package Tool),在基于<code class="highlighter-rouge">Debian</code>的Linux操作系统下被广泛使用的包管理器。(注：这里的<code class="highlighter-rouge">apt</code>是<code class="highlighter-rouge">apt-get</code>与<code class="highlighter-rouge">apt-cache</code>的结合，但是影响不大<code class="highlighter-rouge">)</code></p>
+    <p>本章讲述Git的基础知识。</p>
 
-<h2 id="一简介">一、简介</h2>
-<p>在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程<br />
-<code class="highlighter-rouge">./configure -&gt; make -&gt; make install</code><br />
-其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在<code class="highlighter-rouge">Debian</code>下是<code class="highlighter-rouge">dpkg</code>和<code class="highlighter-rouge">apt</code>，在<code class="highlighter-rouge">CentOS</code>下是<code class="highlighter-rouge">rpm</code>和<code class="highlighter-rouge">yum</code>。</p>
-
-<p>包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。</p>
-
-<p>以前，基于<code class="highlighter-rouge">Debian</code>的系统使用<code class="highlighter-rouge">dpkg</code>命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此<code class="highlighter-rouge">apt</code>命令就被发明了。<code class="highlighter-rouge">apt</code>命令能自动发现并安装软件依赖，大大简化了软件的管理。</p>
-
-<p><code class="highlighter-rouge">apt</code>所获取的软件包一般从网上获得。<code class="highlighter-rouge">Debian</code>工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(<code class="highlighter-rouge">/etc/apt/sources.list</code>)中被<code class="highlighter-rouge">apt</code>查询(由于国内访问环境不好，一般安装<code class="highlighter-rouge">Ubuntu</code>之后的第一步就是更换源为国内源)。</p>
-
-<h2 id="二用法">二、用法</h2>
-<p>这里参考了<code class="highlighter-rouge">man apt</code>页的输出，对<code class="highlighter-rouge">apt</code>的关键用法作一个小结。</p>
-
+<h2 id="git基础">Git基础</h2>
+<h3 id="获取git-repo">获取Git Repo</h3>
+<p>有两种获取Git Repo的方法</p>
 <ul>
-  <li><code class="highlighter-rouge">update</code>: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包</li>
-  <li><code class="highlighter-rouge">upgrade</code>: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除</li>
-  <li><code class="highlighter-rouge">full-upgrade</code>: 和<code class="highlighter-rouge">upgrade</code>相似，但如果需要更新整个系统则会移除已经安装的包</li>
-  <li><code class="highlighter-rouge">install</code>,<code class="highlighter-rouge">remove</code>,<code class="highlighter-rouge">purge</code>: 看名字即可</li>
-  <li><code class="highlighter-rouge">autoremove</code>: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。</li>
-  <li><code class="highlighter-rouge">search</code>: 用于搜索想要的软件</li>
+  <li>将本地未纳入版本控制的目录转变为Git repo</li>
+  <li>从其他地方克隆Git repo</li>
 </ul>
 
-<p>另外，软件默认安装在<code class="highlighter-rouge">/usr/share</code>中，可执行文件在<code class="highlighter-rouge">/usr/bin</code>中，库文件在<code class="highlighter-rouge">/usr/lib</code>中，下载的软件存放在<code class="highlighter-rouge">/var/cache/apt/archives</code>中</p>
+<h4 id="在已存在的目录中初始化repo">在已存在的目录中初始化Repo</h4>
+<p>在已存在的目录中输入
+<code class="highlighter-rouge">$ git init</code><br />
+即可。</p>
 
-<h2 id="三配置文件">三、配置文件</h2>
-<ul>
-  <li><code class="highlighter-rouge">/etc/apt/sources.list</code>:获取包的位置</li>
-  <li><code class="highlighter-rouge">/etc/apt/sources.list.d/</code>: 其余的源列表片段</li>
-  <li><code class="highlighter-rouge">/etc/apt/apt.conf</code>: APT配置文件</li>
-  <li><code class="highlighter-rouge">/etc/apt/apt.conf.d</code>: APT配置文件列表片段</li>
-  <li><code class="highlighter-rouge">/etc/apt/preferences.d/</code>:版本偏好目录</li>
-  <li><code class="highlighter-rouge">/var/cache/apt/archives/</code>:获取的包文件的存储位置</li>
-  <li><code class="highlighter-rouge">/var/cache/apt/archives/partial/</code>:传输中的包文件的存储位置</li>
-  <li><code class="highlighter-rouge">/var/lib/apt/lists</code>:每个在<code class="highlighter-rouge">sources.list</code>中指定的包资源的状态信息的存储位置</li>
-</ul>
+<p>该命令会在目录中创建一个<code class="highlighter-rouge">.git</code>的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。</p>
 
+<p>如果想要开始对已存在的文件进行版本控制，可以输入下面命令</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add *.c
+$ git add LICENSE
+$ git commit -m "initial project version"
+</code></pre></div></div>
+
+<h4 id="克隆已存在的repo">克隆已存在的Repo</h4>
+<p><code class="highlighter-rouge">git clone</code>可以用来克隆已存在的文件。与其他版本控制系统常用的<code class="highlighter-rouge">checkout</code>不同，这里的<code class="highlighter-rouge">clone</code>表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。</p>
+
+<p>通过<code class="highlighter-rouge">git clone &lt;url&gt;</code>可以克隆repo。例如：<br />
+<code class="highlighter-rouge">$ git clone https://github.com/libgit2/libgit2</code><br />
+创建了一个名叫<code class="highlighter-rouge">libgit2</code>的目录，在其中初始化了<code class="highlighter-rouge">.git</code>目录，将该库的数据都拉到其中，并签出(<code class="highlighter-rouge">checkout</code>)了最新版本的文件。</p>
+
+<h3 id="记录repo的变化">记录Repo的变化</h3>
+<p>每个工作目录中的文件有两个状态：<em>tracked</em>或是<em>untracked</em>。<em>tracked</em>的文件是在上一个快照中的文件；它们可以是未修改的(<code class="highlighter-rouge">unmodified</code>)，修改的(<code class="highlighter-rouge">modified</code>)和暂存的(<code class="highlighter-rouge">staged</code>)。</p>
+
+<p>几个状态之间的转移图如图所示。<br />
+<img src="./git_status_change.png" alt="文件状态生命周期" /></p>
+
+<h4 id="检查文件状态">检查文件状态</h4>
+<p><code class="highlighter-rouge">git status</code>可用来检查文件的状态。</p>
+
+<p>例如，假设刚刚<code class="highlighter-rouge">clone</code>了一个repo，则此时使用<code class="highlighter-rouge">git status</code>命令一般显示如下</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+</code></pre></div></div>
+
+<p>这表明工作目录是干净的，即你所跟踪(<code class="highlighter-rouge">track</code>)的文件都没有被修改</p>
+
+<p>如果添加一个<code class="highlighter-rouge">README</code>文件，则它是一个<code class="highlighter-rouge">untracked</code>文件，目录的状态就发生了变化</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo 'My Project' &gt; README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+(use "git add &lt;file&gt;..." to include in what will be committed)
+README
+nothing added to commit but untracked files present (use "git add" to track)
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">untracked</code>文件表示该文件没有出现在上一次<code class="highlighter-rouge">commit</code>的快照中</p>
+
+<h4 id="跟踪新文件">跟踪新文件</h4>
+<p>可通过<code class="highlighter-rouge">git add</code>命令跟踪新文件。例如<br />
+<code class="highlighter-rouge">git add README</code></p>
+
+<p>此时运行<code class="highlighter-rouge">git status</code>命令，则输出为</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+    new file:  README
+</code></pre></div></div>
+<p>现在该文件就处于暂存(<code class="highlighter-rouge">staged</code>)状态了。该状态下对文件的改变等待被<code class="highlighter-rouge">commit</code>。</p>
+
+<h4 id="暂存修改后文件">暂存修改后文件</h4>
+<p>如果修改了一个之前跟踪的文件，例如<code class="highlighter-rouge">CONTRIBUTING.md</code>，然后运行<code class="highlighter-rouge">git status</code>,则输出为</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+    new file:  README
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    modified:  CONTRIBUTING.md
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">CONTRIBUTING.md</code>文件被修改了，但还没有位于暂存区中，需要通过<code class="highlighter-rouge">git add</code>命令将其加入暂存区。</p>
+
+<p>运行<code class="highlighter-rouge">git add</code>命令后状态如下</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+</code></pre></div></div>
+<p>如果此时调用<code class="highlighter-rouge">commit</code>，则两个文件都会被加入快照中。如果此时你修改了<code class="highlighter-rouge">CONTRIBUTING.md</code>文件，则<code class="highlighter-rouge">git status</code>命令的输出会是</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vim CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+
+Changes not staged for commit:
+ (use "git add &lt;file&gt;..." to update what will be committed)
+ (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    modified: CONTRIBUTING.md
+</code></pre></div></div>
+<p><code class="highlighter-rouge">CONTRIBUTING.md</code>既是<code class="highlighter-rouge">staged</code>又是<code class="highlighter-rouge">unstaged</code>。<code class="highlighter-rouge">staged</code>的文件是上一次<code class="highlighter-rouge">git add</code>加进去的，而后面修改内容的文件处于<code class="highlighter-rouge">unstaged</code>状态。如果现在<code class="highlighter-rouge">commit</code>，则快照中的文件仍然是修改之前的，即<code class="highlighter-rouge">staged</code>状态的文件。</p>
+
+<h4 id="忽略文件">忽略文件</h4>
+<p>Git可通过在<code class="highlighter-rouge">.gitignore</code>文件中设置对应的语法规则来使得Git在添加、提交等操作时忽略一些文件，例如程序构建后的文件、构建过程中的目标文件、临时文件等。其中的语法这里不再详细介绍，当用到时去查看即可。</p>
+
+<h4 id="观看暂存以及未暂存的改变">观看暂存以及未暂存的改变</h4>
+<p><code class="highlighter-rouge">git status</code>命令的输出太模糊、宽泛了——你知道文件的状态，但不知道文件的内容发生了什么变化。<code class="highlighter-rouge">git diff</code>命令可用于观看这些变化。</p>
+
+<p>例如，假设你编辑并且暂存了<code class="highlighter-rouge">README</code>文件，编辑了<code class="highlighter-rouge">CONTRIBUTING.md</code>文件但没有暂存它，则<code class="highlighter-rouge">git status</code>的输出是</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use "git reset HEAD &lt;file&gt;..." to unstage)
+    modified: README
+Changes not staged for commit:
+ (use "git add &lt;file&gt;..." to update what will be committed)
+ (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    modified: CONTRIBUTING.md
+</code></pre></div></div>
+<p>为了观看改变的但是没有暂存的内容，直接输入<code class="highlighter-rouge">git diff</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git diff
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+index 8ebb991..643e24f 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -65,7 +65,8 @@ branch directly, things can get messy.
+ Please include a nice description of your changes when you submit your PR;if we have to read the whole diff to figure out why you're contributing in the first place, you're less likely to get feedback and have your change
+-merged in.
++merged in. Also, split your changes into comprehensive +chunks if your patch is longer than a dozen lines.
+
+If you are starting to work on a particular area, feel free to submit a PR that highlights your work in progress (and note in the PR title that it's
+</code></pre></div></div>
+
+<p>该命令比较工作目录和暂存区的差异。因此结果就是告诉你你所改变的没有暂存的内容。</p>
+
+<p>如果想看已经暂存的(即将要进入下一次<code class="highlighter-rouge">commit</code>中的)内容，可以使用<code class="highlighter-rouge">git diff --staged</code>。该命令比较暂存区和上一次<code class="highlighter-rouge">commit</code>的内容的变化</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git diff --staged
+diff --git a/README b/README
+new file mode 100644
+index 0000000..03902a1
+--- /dev/null
++++ b/README
+@@ -0,0 +1 @@
++My Project
+</code></pre></div></div>
+
+<h4 id="提交发生的改变">提交发生的改变</h4>
+<p><code class="highlighter-rouge">commit</code>命令可以将暂存区中的内容加入到快照当中。<code class="highlighter-rouge">git commit</code>命令会打开默认编辑器让你键入<code class="highlighter-rouge">commit</code>的相关信息。也可以通过<code class="highlighter-rouge">git commit -m &lt;message&gt;</code>来输入信息。</p>
+
+<p>记住，只有暂存区的内容会加入快照当中，不在暂存区的修改都会是<code class="highlighter-rouge">modified</code>状态。<code class="highlighter-rouge">commit</code>命令的本质是创建一个暂存区的快照。</p>
+
+<h4 id="跳过暂存区">跳过暂存区</h4>
+<p>通过给<code class="highlighter-rouge">git commit</code>命令传递<code class="highlighter-rouge">-a</code>选项可以使其跳过暂存阶段。该选项会将所有跟踪的改变内容的文件暂存(注意：未跟踪的文件不会被暂存！)</p>
+
+<h4 id="删除文件">删除文件</h4>
+<p>为了从Git中删除文件，需要删除跟踪着的文件然后<code class="highlighter-rouge">commit</code>。<code class="highlighter-rouge">git rm</code>会删除跟踪着的文件。工作目录中的对应文件也会被删除。</p>
+
+<p>如果只是使用<code class="highlighter-rouge">rm</code>命令删除，则该改变使得Git进入下面的状态</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ rm PROJECTS.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+ (use "git add/rm &lt;file&gt;..." to update what will be committed)
+ (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    deleted: PROJECTS.md
+no changes added to commit (use "git add" and/or "git commit -a")
+</code></pre></div></div>
+<p>如果使用<code class="highlighter-rouge">git rm</code>命令，则对应的文件会从暂存区中删除</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git rm PROJECTS.md
+rm 'PROJECTS.md'
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use "git reset HEAD &lt;file&gt;..." to unstage)
+    deleted: PROJECTS.md
+</code></pre></div></div>
+<p>接着<code class="highlighter-rouge">commit</code>即可。如果对文件进行了修改(处于<code class="highlighter-rouge">modified</code>状态，未加入暂存区)或已经将它加入暂存区(没有<code class="highlighter-rouge">commit</code>)，则需要加上<code class="highlighter-rouge">-f</code>选项强制删除。</p>
+
+<p>有时候或许只想从暂存区中删除文件，而希望在硬盘上保留它。也就是说，希望Git不再跟踪该文件，则可以给<code class="highlighter-rouge">git rm</code>命令加上<code class="highlighter-rouge">--cached</code>选项。</p>
+
+<h4 id="移动文件">移动文件</h4>
+<p>Git不显式跟踪文件的移动。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git mv README.md README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use "git reset HEAD &lt;file&gt;..." to unstage)
+    renamed: README.md -&gt; README
+</code></pre></div></div>
+
+<p>上面的命令和下面的命令是等价的</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mv README.md README
+$ git rm README.md
+$ git add README
+</code></pre></div></div>
 
 
 
@@ -415,7 +593,7 @@
 
 
 
-  1 分钟读完
+  少于 1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。

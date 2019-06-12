@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Arts Weekeight Apt | Tonfeiz&#8217;s Blog</title>
-<meta name="description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)">
+<!-- begin _includes/seo.html --><title>Envoy学习之旅(二) | Tonfeiz’s Blog</title>
+<meta name="description" content="在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="Arts Weekeight Apt">
-<meta property="og:url" content="http://localhost:4000/ARTS-WeekEight-Apt/">
+<meta property="og:title" content="Envoy学习之旅(二)">
+<meta property="og:url" content="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">
 
 
-  <meta property="og:description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-06-02T00:00:00+08:00">
+  <meta property="og:description" content="在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-06-09T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/ARTS-WeekEight-Apt/">
+
+<link rel="canonical" href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">
 
 
 
@@ -250,47 +250,179 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">Arts Weekeight Apt</h1>
+      <h1 id="page-title" class="page__title">Envoy学习之旅(二)</h1>
     
-    <p>这次介绍一下<code class="highlighter-rouge">apt</code>(Advanced Package Tool),在基于<code class="highlighter-rouge">Debian</code>的Linux操作系统下被广泛使用的包管理器。(注：这里的<code class="highlighter-rouge">apt</code>是<code class="highlighter-rouge">apt-get</code>与<code class="highlighter-rouge">apt-cache</code>的结合，但是影响不大<code class="highlighter-rouge">)</code></p>
+    <p>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</p>
 
-<h2 id="一简介">一、简介</h2>
-<p>在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程<br />
-<code class="highlighter-rouge">./configure -&gt; make -&gt; make install</code><br />
-其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在<code class="highlighter-rouge">Debian</code>下是<code class="highlighter-rouge">dpkg</code>和<code class="highlighter-rouge">apt</code>，在<code class="highlighter-rouge">CentOS</code>下是<code class="highlighter-rouge">rpm</code>和<code class="highlighter-rouge">yum</code>。</p>
+<h2 id="docker-compose内容说明">docker compose内容说明</h2>
+<p>在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。</p>
 
-<p>包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。</p>
+<p>docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如<code class="highlighter-rouge">build</code>,<code class="highlighter-rouge">deploy</code>,<code class="highlighter-rouge">depends_on</code>,<code class="highlighter-rouge">networks</code>等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是<code class="highlighter-rouge">&lt;key&gt;: &lt;option&gt;: &lt;value&gt;</code>这样的。</p>
 
-<p>以前，基于<code class="highlighter-rouge">Debian</code>的系统使用<code class="highlighter-rouge">dpkg</code>命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此<code class="highlighter-rouge">apt</code>命令就被发明了。<code class="highlighter-rouge">apt</code>命令能自动发现并安装软件依赖，大大简化了软件的管理。</p>
+<h3 id="service-configuration-reference">Service configuration reference</h3>
+<p>Service定义(<code class="highlighter-rouge">services:</code>)包含了每个为了该服务启动的容器的配置，很像给<code class="highlighter-rouge">docker container create</code>传递参数。与此类似的，网络和卷的定义和<code class="highlighter-rouge">docker network create</code>和<code class="highlighter-rouge">docker volume create</code>很像。</p>
 
-<p><code class="highlighter-rouge">apt</code>所获取的软件包一般从网上获得。<code class="highlighter-rouge">Debian</code>工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(<code class="highlighter-rouge">/etc/apt/sources.list</code>)中被<code class="highlighter-rouge">apt</code>查询(由于国内访问环境不好，一般安装<code class="highlighter-rouge">Ubuntu</code>之后的第一步就是更换源为国内源)。</p>
+<h4 id="build">build</h4>
+<p>包含在构建时的配置选项。</p>
 
-<h2 id="二用法">二、用法</h2>
-<p>这里参考了<code class="highlighter-rouge">man apt</code>页的输出，对<code class="highlighter-rouge">apt</code>的关键用法作一个小结。</p>
+<p><code class="highlighter-rouge">build</code>可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: "3.7"
+services:
+  webapp:
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
+      args:
+	buildno: 1
+</code></pre></div></div>
 
+<h5 id="context">CONTEXT</h5>
+<p>可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url</p>
+
+<h5 id="dockerfile">DOCKERFILE</h5>
+<p>可选的Dockerfile</p>
+
+<h4 id="expose">expose</h4>
+<p>暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。</p>
+
+<p>这里指的是app使用的端口号，而不是docker容器对外暴露的端口号</p>
+
+<h4 id="networks">networks</h4>
+<p>要加入的网络</p>
+
+<h5 id="aliases">ALIASES</h5>
+<p>在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。</p>
+
+<p>由于<code class="highlighter-rouge">aliases</code>是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。</p>
+
+<p>一种通用格式是这样的：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>services:
+  some-service:
+    networks:
+      some-network:
+        aliases:
+         - alias1
+	 - alias3
+      other-network:
+        aliases:
+         - alias2
+</code></pre></div></div>
+
+<h4 id="ports">ports</h4>
+<p>暴露端口</p>
+
+<h5 id="short-syntax">SHORT SYNTAX</h5>
+<p>指定两个端口号(<code class="highlighter-rouge">HOST:CONTAINER</code>),或者只有容器端口(一个短暂的host端口将被选择)</p>
+
+<p>后面的是容器内部的端口，即app监听端口，前面的是暴露端口，即我们访问docker容器的端口</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ports:
+ - "3000"
+ - "3000-3005"
+ - "8000:8000"
+ - "9090-9091:8080-8081"
+ - "49100:22"
+ - "127.0.0.1:8001:8001"
+ - "127.0.0.1:5000-5010:5000-5010"
+ - "6060:6060/udp"
+</code></pre></div></div>
+
+<h5 id="long-syntax">LONG SYNTAX</h5>
+<p>较长形式的语法允许对不能被短语法形式表现的配置域。</p>
 <ul>
-  <li><code class="highlighter-rouge">update</code>: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包</li>
-  <li><code class="highlighter-rouge">upgrade</code>: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除</li>
-  <li><code class="highlighter-rouge">full-upgrade</code>: 和<code class="highlighter-rouge">upgrade</code>相似，但如果需要更新整个系统则会移除已经安装的包</li>
-  <li><code class="highlighter-rouge">install</code>,<code class="highlighter-rouge">remove</code>,<code class="highlighter-rouge">purge</code>: 看名字即可</li>
-  <li><code class="highlighter-rouge">autoremove</code>: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。</li>
-  <li><code class="highlighter-rouge">search</code>: 用于搜索想要的软件</li>
+  <li><code class="highlighter-rouge">target</code>:容器内部的端口</li>
+  <li><code class="highlighter-rouge">published</code>:公开暴露的端口</li>
+  <li><code class="highlighter-rouge">protocol</code>:端口的协议(<code class="highlighter-rouge">tcp</code>或是<code class="highlighter-rouge">udp</code>)</li>
+  <li><code class="highlighter-rouge">mode</code>: 在每个节点上都发布一个host端口则是<code class="highlighter-rouge">host</code>,在需要负载均衡的swarm模式下的端口则是<code class="highlighter-rouge">ingress</code></li>
 </ul>
 
-<p>另外，软件默认安装在<code class="highlighter-rouge">/usr/share</code>中，可执行文件在<code class="highlighter-rouge">/usr/bin</code>中，库文件在<code class="highlighter-rouge">/usr/lib</code>中，下载的软件存放在<code class="highlighter-rouge">/var/cache/apt/archives</code>中</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ports:
+  - target: 80
+    published: 8080
+    protocol: tcp
+    mode: host
+</code></pre></div></div>
 
-<h2 id="三配置文件">三、配置文件</h2>
-<ul>
-  <li><code class="highlighter-rouge">/etc/apt/sources.list</code>:获取包的位置</li>
-  <li><code class="highlighter-rouge">/etc/apt/sources.list.d/</code>: 其余的源列表片段</li>
-  <li><code class="highlighter-rouge">/etc/apt/apt.conf</code>: APT配置文件</li>
-  <li><code class="highlighter-rouge">/etc/apt/apt.conf.d</code>: APT配置文件列表片段</li>
-  <li><code class="highlighter-rouge">/etc/apt/preferences.d/</code>:版本偏好目录</li>
-  <li><code class="highlighter-rouge">/var/cache/apt/archives/</code>:获取的包文件的存储位置</li>
-  <li><code class="highlighter-rouge">/var/cache/apt/archives/partial/</code>:传输中的包文件的存储位置</li>
-  <li><code class="highlighter-rouge">/var/lib/apt/lists</code>:每个在<code class="highlighter-rouge">sources.list</code>中指定的包资源的状态信息的存储位置</li>
-</ul>
+<h2 id="修改端口">修改端口</h2>
+<p>app监听端口仍为8080，将容器暴露端口改为8000，docker-compose文件的格式为</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>expose:
+- "8080"
+ports:
+- "8000:8080"
+</code></pre></div></div>
 
+<p>这样，就可以通过8000端口号访问服务了。</p>
+
+<p>中间由于对端口的配置理解有误，自己尝试了各种端口号配置，记录如下。app的监听端口号不变是8080。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>expose</th>
+      <th>ports</th>
+      <th>访问</th>
+      <th>结果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“8000”</td>
+      <td>“8000:8000”</td>
+      <td>8000</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8000”</td>
+      <td>“8000:8080”</td>
+      <td>8080</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8000”</td>
+      <td>“8000:8080”</td>
+      <td>8000</td>
+      <td>成功</td>
+    </tr>
+    <tr>
+      <td>“8000”</td>
+      <td>“8080:8000”</td>
+      <td>8000</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8000”</td>
+      <td>“8080:8000”</td>
+      <td>8080</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8080”</td>
+      <td>“8000:8080”</td>
+      <td>8000</td>
+      <td>成功</td>
+    </tr>
+    <tr>
+      <td>“8080”</td>
+      <td>“8000:8080”</td>
+      <td>8080</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8080”</td>
+      <td>“8080:8000”</td>
+      <td>8000</td>
+      <td>失败</td>
+    </tr>
+    <tr>
+      <td>“8080”</td>
+      <td>“8080:8000”</td>
+      <td>8080</td>
+      <td>失败</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>从上面表格可以看出，<code class="highlighter-rouge">expose</code>的作用感觉不大，<code class="highlighter-rouge">ports</code>中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。</p>
 
 
 
@@ -415,7 +547,7 @@
 
 
 
-  1 分钟读完
+  少于 1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。
