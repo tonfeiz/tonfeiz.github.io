@@ -3,7 +3,7 @@
 <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
 <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-<updated>2019-06-12T15:14:51+08:00</updated>
+<updated>2019-06-12T16:13:11+08:00</updated>
 <id>http://localhost:4000/</id>
 <title>Tonfeiz</title>
 <subtitle></subtitle>
@@ -237,6 +237,32 @@ $ git add README
 <summary>本章讲述Git的基础知识。</summary>
 </entry>
 <entry>
+<title>Arts Weekten High Performance Server(二)</title>
+<link href="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten High Performance Server(二)" />
+<published>2019-06-12T00:00:00+08:00</published>
+<updated>2019-06-12T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-High-Performance-Server(二)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/">
+&lt;hr /&gt;
+&lt;p&gt;layout: posts
+—
+接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
+
+&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
+&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
+
+&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
+  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
+  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
+</content>
+<summary>layout: posts—接下去介绍高性能服务器设计的最后两个因素。</summary>
+</entry>
+<entry>
 <title>Arts Weekten Leetcode779 Kth Symbol</title>
 <link href="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/" rel="alternate" type="text/html" title="Arts Weekten Leetcode779 Kth Symbol" />
 <published>2019-06-11T00:00:00+08:00</published>
@@ -410,6 +436,36 @@ admin:
 &lt;p&gt;这里尤其要注意的是端口号。此处&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;的监听端口号是容器内部的端口号。因此在做端口映射时，主机端口应当映射到该端口，也因此&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;中的文件中的端口相关选项做了修改。&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;的端口号应当是业务逻辑，即app中的监听端口号。&lt;/p&gt;
 
 &lt;h2 id=&quot;相关envoy选项含义&quot;&gt;相关envoy选项含义&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* `static_resources`: 静态指定的资源  
+  * `listeners`: 静态的监听者
+    * `address`: 监听者监听的地址。通常，该地址应当是唯一的  
+    * `filter_chains`: 一系列用于该监听者的过滤器链  
+      * `filters`: 过滤器列表。注意：如果过滤器列表是空的，则连接默认将会关闭  
+        * `name`: 要实例化的滤波器的名字。该名字必须匹配一个支持的滤波器。内置的滤波器包括：  
+          * `envoy.echo`  
+          * `envoy.http_connection_manager`  
+          * `envoy.tcp_proxy`
+        还有一些，这里不列出了  
+        * `config`与`typed_config`: 与选定的过滤器名字相关，下面以`envoy.http_connection_manager`为例  
+          * `codec_type`: 编码译码类型  
+          * `stat_prefix`: 发送统计信息时人可阅读的前缀。  
+          * `route_config`: `connection_manager`的路由表。  
+            * `name`: 路由配置的名字。  
+            * `virtual_hosts`: 组成路由表的虚拟主机列表  
+              * `name`: 虚拟主机的逻辑名字。当发送特定的统计信息时被使用，但和路由无关  
+              * `domains`: 将匹配到该虚拟主机的域名。也可以使用通配符匹配  
+              * `routes`: 将被匹配的路由列表。第一个匹配的路由将被使用  
+                * `match`: 路由匹配参数  
+                * `route`: 将请求路由给上游的`cluster`  
+                  * `cluster`: 指定请求将要传给哪个上游`cluster`  
+          * `http_filters`: http的过滤器列表  
+            * `name`: 要实例的过滤器名字。一些特定的过滤器包括  
+              * `envoy.buffer`  
+              * `envoy.gzip`  
+              * `envoy.rate_limit`  
+              * `envoy.router`  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
 <summary>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。</summary>
 </entry>
@@ -592,28 +648,6 @@ ports:
 &lt;p&gt;从上面表格可以看出，&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;的作用感觉不大，&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。&lt;/p&gt;
 </content>
 <summary>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</summary>
-</entry>
-<entry>
-<title>Arts Weeknine High Performance Server(二)</title>
-<link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(二)" />
-<published>2019-06-09T00:00:00+08:00</published>
-<updated>2019-06-09T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(二)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/">&lt;p&gt;接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
-
-&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
-&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
-
-&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
-  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
-  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
-</content>
-<summary>接下去介绍高性能服务器设计的最后两个因素。</summary>
 </entry>
 <entry>
 <title>Arts Weeknine High Performance Server(一)</title>

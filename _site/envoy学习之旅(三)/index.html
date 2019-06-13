@@ -333,6 +333,36 @@ admin:
 
 <h2 id="相关envoy选项含义">相关envoy选项含义</h2>
 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* `static_resources`: 静态指定的资源  
+  * `listeners`: 静态的监听者
+    * `address`: 监听者监听的地址。通常，该地址应当是唯一的  
+    * `filter_chains`: 一系列用于该监听者的过滤器链  
+      * `filters`: 过滤器列表。注意：如果过滤器列表是空的，则连接默认将会关闭  
+        * `name`: 要实例化的滤波器的名字。该名字必须匹配一个支持的滤波器。内置的滤波器包括：  
+          * `envoy.echo`  
+          * `envoy.http_connection_manager`  
+          * `envoy.tcp_proxy`
+        还有一些，这里不列出了  
+        * `config`与`typed_config`: 与选定的过滤器名字相关，下面以`envoy.http_connection_manager`为例  
+          * `codec_type`: 编码译码类型  
+          * `stat_prefix`: 发送统计信息时人可阅读的前缀。  
+          * `route_config`: `connection_manager`的路由表。  
+            * `name`: 路由配置的名字。  
+            * `virtual_hosts`: 组成路由表的虚拟主机列表  
+              * `name`: 虚拟主机的逻辑名字。当发送特定的统计信息时被使用，但和路由无关  
+              * `domains`: 将匹配到该虚拟主机的域名。也可以使用通配符匹配  
+              * `routes`: 将被匹配的路由列表。第一个匹配的路由将被使用  
+                * `match`: 路由匹配参数  
+                * `route`: 将请求路由给上游的`cluster`  
+                  * `cluster`: 指定请求将要传给哪个上游`cluster`  
+          * `http_filters`: http的过滤器列表  
+            * `name`: 要实例的过滤器名字。一些特定的过滤器包括  
+              * `envoy.buffer`  
+              * `envoy.gzip`  
+              * `envoy.rate_limit`  
+              * `envoy.router`  
+</code></pre></div></div>
+
 
 
 <!--<ul class="taxonomy__index">
@@ -375,6 +405,40 @@ admin:
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">本章讲述Git的基础知识。
+
+</p>
+  </article>
+</div>
+
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/" rel="permalink">Arts Weekten High Performance Server(二)
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  少于 1 分钟读完
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+
+
+layout: posts
+—
+接下去介绍高性能服务器设计的最后两个因素。
 
 </p>
   </article>
@@ -460,35 +524,6 @@ admin:
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。
-
-</p>
-  </article>
-</div>
-
-      
-        
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/" rel="permalink">Arts Weeknine High Performance Server(二)
-</a>
-      
-    </h2>
-    
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
-
-
-
-
-  少于 1 分钟读完
-</p>
-    
-    <p class="archive__item-excerpt" itemprop="description">接下去介绍高性能服务器设计的最后两个因素。
 
 </p>
   </article>

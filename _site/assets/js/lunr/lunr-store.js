@@ -174,11 +174,6 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/",
         "teaser":null},{
-        "title": "Arts Weeknine High Performance Server(二)",
-        "excerpt":"接下去介绍高性能服务器设计的最后两个因素。   Memory allocation  内存分配是制约服务器性能的一大瓶颈。   作者提出了三种方法：     预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。   使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。   在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支   Lock Contention  ","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%BA%8C)/",
-        "teaser":null},{
         "title": "Envoy学习之旅(二)",
         "excerpt":"在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。 docker compose内容说明 在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。 docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如build,deploy,depends_on,networks等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是&lt;key&gt;: &lt;option&gt;: &lt;value&gt;这样的。 Service configuration reference Service定义(services:)包含了每个为了该服务启动的容器的配置，很像给docker container create传递参数。与此类似的，网络和卷的定义和docker network create和docker volume create很像。 build 包含在构建时的配置选项。 build可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如 version: \"3.7\" services: webapp: build: context: ./dir dockerfile: Dockerfile-alternate args: buildno: 1 CONTEXT 可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url DOCKERFILE 可选的Dockerfile expose 暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。 这里指的是app使用的端口号，而不是docker容器对外暴露的端口号 networks 要加入的网络 ALIASES 在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。 由于aliases是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。 一种通用格式是这样的：...","categories": [],
         "tags": [],
@@ -193,6 +188,11 @@ var store = [{
         "excerpt":"On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10. Given row N and index K, return the K-th indexed symbol in row N. (The values...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/",
+        "teaser":null},{
+        "title": "Arts Weekten High Performance Server(二)",
+        "excerpt":"  layout: posts — 接下去介绍高性能服务器设计的最后两个因素。   Memory allocation  内存分配是制约服务器性能的一大瓶颈。   作者提出了三种方法：     预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。   使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。   在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支   Lock Contention  ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/",
         "teaser":null},{
         "title": "Arts Weekten Progit(二)",
         "excerpt":"本章讲述Git的基础知识。 Git基础 获取Git Repo 有两种获取Git Repo的方法 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo 在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init 即可。 该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。 如果想要开始对已存在的文件进行版本控制，可以输入下面命令 $ git add *.c $ git add LICENSE $ git commit -m \"initial project version\" 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。 通过git clone &lt;url&gt;可以克隆repo。例如： $ git clone https://github.com/libgit2/libgit2 创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。 记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。 几个状态之间的转移图如图所示。 检查文件状态 git status可用来检查文件的状态。...","categories": [],
