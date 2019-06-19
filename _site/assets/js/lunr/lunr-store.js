@@ -190,7 +190,7 @@ var store = [{
         "url": "http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/",
         "teaser":null},{
         "title": "Arts Weekten High Performance Server(二)",
-        "excerpt":"  layout: posts — 接下去介绍高性能服务器设计的最后两个因素。   Memory allocation  内存分配是制约服务器性能的一大瓶颈。   作者提出了三种方法：     预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。   使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。   在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支   Lock Contention  ","categories": [],
+        "excerpt":"接下去介绍高性能服务器设计的最后两个因素。   Memory allocation  内存分配是制约服务器性能的一大瓶颈。   作者提出了三种方法：     预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。   使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。   在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支   Lock Contention  这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。   Other Stuff  作者提出了一些其他的问题     对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？read-ahead和write-behind工作情况如何？   你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像TCP_CORK,MSG_PUSH或是Nagle这样的技巧使其避免较小的信息？   你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦   页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？   你的读/写锁会饥饿吗？你的事件有惊群效应吗？   问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。  ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/",
         "teaser":null},{
@@ -198,4 +198,14 @@ var store = [{
         "excerpt":"本章讲述Git的基础知识。 Git基础 获取Git Repo 有两种获取Git Repo的方法 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo 在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init 即可。 该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。 如果想要开始对已存在的文件进行版本控制，可以输入下面命令 $ git add *.c $ git add LICENSE $ git commit -m \"initial project version\" 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。 通过git clone &lt;url&gt;可以克隆repo。例如： $ git clone https://github.com/libgit2/libgit2 创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。 记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。 几个状态之间的转移图如图所示。 检查文件状态 git status可用来检查文件的状态。...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/",
+        "teaser":null},{
+        "title": "Envoy学习之旅(四)",
+        "excerpt":"本周对envoy的介绍文档仔细的阅读了一遍。在此将笔记记录如下。 What is Envoy Envoy是一个L7的代理以及通讯总线，被用于大规模现代SOA架构。 Envoy认为: 网络对应用应当是透明的。当网络和应用发生了问题，应该可以很简单就定位到问题的源头 Envoy有下列特性： Out of process architecture：Envoy是一个自包含进程，与应用服务一同启动。这有两大好处： 与任意应用语言都能工作 由于不是库的形式，Envoy可以快速部署和升级 现代C++11代码: 既有速度又有生产力 L3/L4过滤架构: Envoy在其核心是一个L3/L4的网络代理。可插入的filter chain机制使过滤器能被写出来用于完成不同的TCP代理任务并插入到主服务器中。 HTTP过滤架构：Envoy提供一层额外的HTPP过滤层。 HTTP L7 路由: 在HTTP模式下，Envoy支持一个路由子系统。该系统能基于路径、内容和运行时值等路由和重定向请求。 多种支持： gRPC,MongDB L7, Dynamo DB L7等 服务发现和动态配置： Envoy可选的提供了动态配置API层。该层允许Envoy动态的更新：后端cluster中的host,后端clusters,HTTP 路由，监听 sockets等 健康检查： 构建Envoy网格的建议方式是将服务发现作为最终一致的过程。Envoy包含一个健康检查子系统，能可选的主动检查上游服务cluster的健康情况。 高级负载均衡: Architecture overview Terminoogy Host: 能进行网络通信的一个实体(移动手机上的应用，服务器等)。一台硬件上可能有多个Host Downstream: 一个下游host连接到Envoy，发送请求并接收回应 Upstream: 一个上游host从Envoy接收连接和请求并作出回应 Listener: 一个Listener是一个命名了的网络位置(例如端口，Unix域socket等)，该位置可以被下游客户端连接。Envoy会暴露一个或多个listener供下游host连接 Cluster: 一个cluster是逻辑上相似的一组上游host，Envoy连接到这些host。Envoy通过服务发现找到cluster中的成员，通过健康检查判断该成员是否健康，通过负载均衡策略路由请求...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)/",
+        "teaser":null},{
+        "title": "Arts Weekeleven Leetcode915 Disjoint Intervals",
+        "excerpt":"Given an array A, partition it into two (contiguous) subarrays left and right so that: Every element in left is less than or equal to every element in right. left and right are non-empty. left has the smallest possible size. Return the length of left after such a partitioning. It...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/",
         "teaser":null}]

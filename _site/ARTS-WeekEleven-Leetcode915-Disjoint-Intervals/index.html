@@ -9,38 +9,38 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>计算机技术历史 语言(三) | Tonfeiz’s Blog</title>
-<meta name="description" content="本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。">
+<!-- begin _includes/seo.html --><title>Arts Weekeleven Leetcode915 Disjoint Intervals | Tonfeiz&#8217;s Blog</title>
+<meta name="description" content="Given an array A, partition it into two (contiguous) subarrays left and right so that:">
 
 
 
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="Tonfeiz's Blog">
-<meta property="og:title" content="计算机技术历史 语言(三)">
-<meta property="og:url" content="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)/">
+<meta property="og:title" content="Arts Weekeleven Leetcode915 Disjoint Intervals">
+<meta property="og:url" content="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/">
 
 
-  <meta property="og:description" content="本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-05-19T00:00:00+08:00">
+  <meta property="og:description" content="Given an array A, partition it into two (contiguous) subarrays left and right so that:">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2019-06-19T00:00:00+08:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF%E5%8E%86%E5%8F%B2-%E8%AF%AD%E8%A8%80(%E4%B8%89)/">
+
+<link rel="canonical" href="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/">
 
 
 
@@ -250,17 +250,69 @@
 
   <div class="archive">
     
-      <h1 id="page-title" class="page__title">计算机技术历史 语言(三)</h1>
+      <h1 id="page-title" class="page__title">Arts Weekeleven Leetcode915 Disjoint Intervals</h1>
     
-    <p>本次介绍一下虽然没有名气，但是深远的影响了后面的大部分程序设计语言的一个语言-Algol编程语言。</p>
+    <p>Given an array A, partition it into two (contiguous) subarrays left and right so that:</p>
 
-<p>ALGOL语言诞生在20世纪50年代末。目前大多数现代语言的语法其实都是类似类Algol的。它是最有影响力的四种高级语言之一：FORTRAN，Lisp和COBOL。它被设计来改善FORTRAN暴露的问题并且最后导致了许多编程语言的诞生——PL/I，BCPL，B，Pascal和C。</p>
+<ul>
+  <li>Every element in left is less than or equal to every element in right.</li>
+  <li>left and right are non-empty.</li>
+  <li>left has the smallest possible size.</li>
+</ul>
 
-<p>Algol引入了代码块的概念和<code class="highlighter-rouge">begin...end</code>对。它也是第一个支持嵌套函数定义的编程语言。此外，它是第一个详细关注(?)正式语言定义的编程语言。并且也是它引入了BNF范式。</p>
+<p>Return the length of left after such a partitioning.  It is guaranteed that such a partitioning exists.</p>
 
-<p>ALGOL 60有两种参数传递方式：按值传递和按名字传递。按名字传递对引用传递有深远的影响。按名字传递指的是当参数传递给函数时，它是在函数内部出现该参数的地方直接替换。这样的话，如果函数内部没有用到该参数，它就不会被求值。如果函数内部出现了多次，每次它都会被重新求值。</p>
+<p>Example 1:</p>
 
-<p>然而，ALGOL 60没有定义I/O设施。</p>
+<p>Input: [5,0,3,8,6]
+Output: 3
+Explanation: left = [5,0,3], right = [8,6]</p>
+
+<p>Example 2:</p>
+
+<p>Input: [1,1,1,0,6,12]
+Output: 4
+Explanation: left = [1,1,1,0], right = [6,12]</p>
+
+<hr />
+<p>这题的意思是将数组划分成两个区间，左边的每一个元素都小于右边的每一个元素。如此一来，思路就很清晰了——找到数组中每个位置左边最大元素和右边最小元素，使得该位置上左边最大元素小于右边最小元素，同时该位置应当尽量靠近左边。</p>
+
+<p>为了找到每个位置的左边最大元素和右边最小元素，需遍历数组两次。第一次从左往右，并与当前的最大值做比较，同时记录。第二次从右往左，并与当前的最小值作比较，同时记录。最后根据左边最大、右边最小两个数组上对应位置的大小关系即可确认划分位置。这里要注意的是，存在一些细节问题，但只要仔细思考，这些细节问题很容易解决。</p>
+
+<p>代码如下所示：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Solution {
+public:
+    int partitionDisjoint(vector&lt;int&gt;&amp; A) {
+        vector&lt;int&gt; left_max(A.size()), right_min(A.size());
+        
+        int current_max = INT_MIN;
+        for(int i = 0; i &lt; A.size(); ++i) {
+            if(A[i] &gt; current_max) {
+                current_max = A[i];
+            }
+            left_max[i] = current_max;
+        }
+        
+        int current_min = INT_MAX;
+        for(int i = A.size() - 1; i &gt;= 0; --i) {
+            right_min[i] = current_min;
+            if(A[i] &lt; current_min) {
+                current_min = A[i];
+            }
+        }
+    
+        int res = 0;
+        for(int i = 0; i &lt; A.size() - 1; ++i) {
+            if(left_max[i] &lt;= right_min[i]) {
+                res = i + 1;
+                break;
+            }
+        }
+        return res;
+    }
+    
+};
+</code></pre></div></div>
 
 
 
@@ -472,7 +524,7 @@
 
 
 
-  1 分钟读完
+  少于 1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。
@@ -732,7 +784,7 @@
 
 
 
-  1 分钟读完
+  少于 1 分钟读完
 </p>
     
     <p class="archive__item-excerpt" itemprop="description">docker build从一个Dockerfile和环境(context)中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。
