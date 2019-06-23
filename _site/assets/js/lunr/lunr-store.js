@@ -209,6 +209,11 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/",
         "teaser":null},{
+        "title": "ARTS WeekEleven ProGit(三)",
+        "excerpt":"由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用。 git commit --amend: 覆盖上一次的`commit`，主要用于微小的改动的提交 git reset HEAD &lt;file&gt;: 将staged状态的文件改为unstaged git checkout -- &lt;file&gt;: 将modified状态的文件改为上一次快照中的样子，可能丢失东西！ git remote: 展示远程库 git remote -v: 展示远程库及其URL git remote add &lt;remote&gt; URL: 添加远程库并指定本地用名字 git fetch &lt;remote&gt;: 从远程库中获取内容但不合并 git pull &lt;remote&gt;: 从远程库中获取内容并合并 git push &lt;remote&gt; &lt;branch&gt;: 推送内容到远程库 git remote show &lt;remote&gt;: 展示远程库的相关内容 git remote rename &lt;oldname&gt;...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/ARTS-WeekEleven-ProGit(%E4%B8%89)/",
+        "teaser":null},{
         "title": "ARTS Week Eleven Pattern Service Mesh.md",
         "excerpt":"原文是Pattern: Service Mesh 本文的主要思想是，Service Mesh的诞生其实和TCP/IP网络栈的诞生很相似，都遵循下面的过程： 发现问题 -&gt; 将解决方案纳入代码 -&gt; 抽取共通问题 -&gt; 将解决方案抽出代码放在外部共同具备的区域 作者举了TCP/IP中流控的例子来说明这一问题。最开始电脑和电脑之间的通讯没有流控，这时人们发现如果不进行流控，接收消息的机器有可能会收到过量的信息(可能由于该机器在处理其他事务没空接收信息，而另一侧机器不知道这一点一直发送，还有很多情况会导致该现象)。 为了解决该问题，人们把处理流控的代码和业务代码放在一起。然而很快人们发现，处理流控的代码其实是共通的，所有的机器都需要处理这一点，因此最后，处理流控的代码就被放入网络栈中，而网络栈是所有网络通信的机器必须经过的一层。 接下来作者引出了分布式架构中的例子。作者举了服务发现和熔断的例子。最开始，为了解决这两个问题，相关代码也被放入业务逻辑中。后来，人们将代码抽取出来，用库的形式调用。然而，用库处理有下面的问题： 需要花时间将库和生态中的组件胶合起来 库通常是在特定的平台下编写的(例如JVM、某种特定语言等) 对库的管理、维护很困难，例如不同版本的库兼容性不同等 最后，诞生了sidecar模式。sidecar模式其实就是对于每个服务，都有一个代理(称作sidecar)和它共同启动。该sidecar就负责处理一些共通的问题，例如上面的服务发现。服务之间均通过sidecar进行互相通信——当然，它们不知道sidecar的存在。 对所有的服务都启动sidecar，则所有的服务及其sidecar就构成了Service Mesh。这里引用William Morgan的一段话说明Service Mesh： A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that...","categories": [],
         "tags": [],

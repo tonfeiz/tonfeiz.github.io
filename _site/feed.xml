@@ -3,7 +3,7 @@
 <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
 <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-<updated>2019-06-23T10:07:16+08:00</updated>
+<updated>2019-06-23T10:22:40+08:00</updated>
 <id>http://localhost:4000/</id>
 <title>Tonfeiz</title>
 <subtitle></subtitle>
@@ -43,6 +43,30 @@
 &lt;p&gt;在Service Mesh中有一个控制面(Control plane)。控制面知道每个代理实例，并能控制代理实例的功能。&lt;/p&gt;
 </content>
 <summary>原文是Pattern: Service Mesh</summary>
+</entry>
+<entry>
+<title>ARTS WeekEleven ProGit(三)</title>
+<link href="http://localhost:4000/ARTS-WeekEleven-ProGit(%E4%B8%89)/" rel="alternate" type="text/html" title="ARTS WeekEleven ProGit(三)" />
+<published>2019-06-19T00:00:00+08:00</published>
+<updated>2019-06-19T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekEleven-ProGit(三)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekEleven-ProGit(%E4%B8%89)/">&lt;p&gt;由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit --amend: 覆盖上一次的`commit`，主要用于微小的改动的提交  
+git reset HEAD &amp;lt;file&amp;gt;: 将staged状态的文件改为unstaged
+git checkout -- &amp;lt;file&amp;gt;: 将modified状态的文件改为上一次快照中的样子，可能丢失东西！  
+git remote: 展示远程库  
+git remote -v: 展示远程库及其URL  
+git remote add &amp;lt;remote&amp;gt; URL: 添加远程库并指定本地用名字  
+git fetch &amp;lt;remote&amp;gt;: 从远程库中获取内容但不合并  
+git pull &amp;lt;remote&amp;gt;: 从远程库中获取内容并合并  
+git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;: 推送内容到远程库  
+git remote show &amp;lt;remote&amp;gt;: 展示远程库的相关内容
+git remote rename &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt;: 重命名远程库
+git remote remove &amp;lt;remote&amp;gt;: 删除远程库
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用。</summary>
 </entry>
 <entry>
 <title>Arts Weekeleven Leetcode915 Disjoint Intervals</title>
@@ -1004,60 +1028,5 @@ ports:
 &lt;/ul&gt;
 </content>
 <summary>这篇英文文章讲的是高性能服务器设计的一些要点。原文链接为</summary>
-</entry>
-<entry>
-<title>Arts Weeknine Progit(一)</title>
-<link href="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine Progit(一)" />
-<published>2019-06-06T00:00:00+08:00</published>
-<updated>2019-06-06T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekNine-ProGit(一)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/">&lt;p&gt;git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。&lt;/p&gt;
-
-&lt;h2 id=&quot;一基本信息&quot;&gt;一、基本信息&lt;/h2&gt;
-&lt;h3 id=&quot;版本控制&quot;&gt;版本控制&lt;/h3&gt;
-&lt;p&gt;在日常生活中，我们编辑文件。随着时间的流逝，文件数目越来越多，对文件的修改也越来越多。有时我们修改错误，想要找回上一个版本的东西。有时在不同的场合下，我们想换一个版本使用。这就诞生出了版本控制，即控制我们开发的东西的不同版本，并且具备回退等能力。&lt;/p&gt;
-
-&lt;p&gt;通常由三种版本控制系统：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;本地控制，即自己手动通过文件名等手段标志出版本信息&lt;/li&gt;
-  &lt;li&gt;中心化版本控制，文件存在一个中心服务器，任何想要文件的人通过服务器获取最新文件并编辑&lt;/li&gt;
-  &lt;li&gt;分布式版本控制，每个机器都把文件以及版本信息复制下来，这样当一个服务器失效，任何一台机器都可顶替服务器的位置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;git的一些基本概念&quot;&gt;Git的一些基本概念&lt;/h3&gt;
-&lt;h4 id=&quot;快照而不是差别&quot;&gt;快照，而不是差别&lt;/h4&gt;
-&lt;p&gt;其他的VCS大多把一个版本一个版本的更迭视为对文件的修改，即他们存下文件，而以后的版本是对文件作出修改。Git则把每个版本视为对当前文件的一个快照。在git中，每次commit或是保存当前工程的状态，git都会记录当前你的所有文件看起来是怎么样的并且保存一个到该快照的引用。对于未修改的文件，git则会有到上一个版本该文件的引用，而不重新保存。&lt;/p&gt;
-
-&lt;h4 id=&quot;几乎所有操作都是本地的&quot;&gt;几乎所有操作都是本地的&lt;/h4&gt;
-&lt;p&gt;由于git在本地电脑上保留了所有的版本控制信息，因此提交等操作不需要依赖于服务器，只需在本地进行即可。其他的VCS在提交、浏览过去版本信息等操作中往往需要和中心服务器取得联络，这就要求必须由互联网，且造成了网络通信的开销。&lt;/p&gt;
-
-&lt;h4 id=&quot;三个状态&quot;&gt;三个状态&lt;/h4&gt;
-&lt;p&gt;git中有三个区域：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;工作区：即放置工作文件的位置，是工程的一个签出版本&lt;/li&gt;
-  &lt;li&gt;暂存区：是包含在Git目录中的一个文件，其中存储了将放入下一个commit中的信息&lt;/li&gt;
-  &lt;li&gt;Git目录区：是Git放置元数据和对象数据库的地方&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;由此引入了三种状态，在工作区中修改但还没加入暂存区的状态是&lt;em&gt;modified&lt;/em&gt;，在暂存区中但还没加入Git目录区(即还没commit)的状态是&lt;em&gt;staged&lt;/em&gt;,在Git目录区中的状态是&lt;em&gt;commited&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;初次设置&quot;&gt;初次设置&lt;/h3&gt;
-&lt;p&gt;Git有一个叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;git config&lt;/code&gt;的工具能设置那些控制Git操作的变量。这些变量存在三个不同的地方：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/config&lt;/code&gt;:包含应用到系统中所有人的值。如果给&lt;code class=&quot;highlighter-rouge&quot;&gt;git config&lt;/code&gt;传递&lt;code class=&quot;highlighter-rouge&quot;&gt;--system&lt;/code&gt;选项，则它会从这个文件中读写&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.config/git/config&lt;/code&gt;:该值影响的是当前用户。可以传递&lt;code class=&quot;highlighter-rouge&quot;&gt;--global&lt;/code&gt;选项来让Git从中读写。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt;文件：该文件在Git目录中(&lt;code class=&quot;highlighter-rouge&quot;&gt;.git/config&lt;/code&gt;)，影响的是当前的仓库。通过&lt;code class=&quot;highlighter-rouge&quot;&gt;--local&lt;/code&gt;选项即可让Git从中读写&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;每个层级的值都会覆盖上层的值&lt;/p&gt;
-
-&lt;h4 id=&quot;认证身份&quot;&gt;认证身份&lt;/h4&gt;
-&lt;p&gt;首次安装Git后需要配置用户的名字和邮箱，如下所示：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.name &quot;${USER_NAME}&quot;  
-$ git config --global user.email ${USER_EMAIL}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</content>
-<summary>git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。</summary>
 </entry>
 </feed>
