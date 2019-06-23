@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-19T17:13:46+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tonfeiz’s Blog</title><subtitle></subtitle><author><name>Tonfeiz</name></author><entry><title type="html">Arts Weekeleven Leetcode915 Disjoint Intervals</title><link href="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/" rel="alternate" type="text/html" title="Arts Weekeleven Leetcode915 Disjoint Intervals" /><published>2019-06-19T00:00:00+08:00</published><updated>2019-06-19T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/">&lt;p&gt;Given an array A, partition it into two (contiguous) subarrays left and right so that:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
+<link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
+<link href="http://localhost:4000/" rel="alternate" type="text/html" />
+<updated>2019-06-23T10:07:16+08:00</updated>
+<id>http://localhost:4000/</id>
+<title>Tonfeiz</title>
+<subtitle></subtitle>
+<author>
+<name>Tonfeiz</name>
+</author>
+<entry>
+<title>ARTS Week Eleven Pattern Service Mesh.md</title>
+<link href="http://localhost:4000/ARTS-WeekEleven-Pattern-ServiceMesh/" rel="alternate" type="text/html" title="ARTS Week Eleven Pattern Service Mesh.md" />
+<published>2019-06-22T00:00:00+08:00</published>
+<updated>2019-06-22T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekEleven-Pattern-ServiceMesh</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekEleven-Pattern-ServiceMesh/">&lt;p&gt;原文是&lt;a href=&quot;https://philcalcado.com/2017/08/03/pattern_service_mesh.html&quot;&gt;Pattern: Service Mesh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;本文的主要思想是，Service Mesh的诞生其实和TCP/IP网络栈的诞生很相似，都遵循下面的过程：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;发现问题 -&amp;gt; 将解决方案纳入代码 -&amp;gt; 抽取共通问题 -&amp;gt; 将解决方案抽出代码放在外部共同具备的区域&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;作者举了TCP/IP中流控的例子来说明这一问题。最开始电脑和电脑之间的通讯没有流控，这时人们发现如果不进行流控，接收消息的机器有可能会收到过量的信息(可能由于该机器在处理其他事务没空接收信息，而另一侧机器不知道这一点一直发送，还有很多情况会导致该现象)。&lt;/p&gt;
+
+&lt;p&gt;为了解决该问题，人们把处理流控的代码和业务代码放在一起。然而很快人们发现，处理流控的代码其实是共通的，所有的机器都需要处理这一点，因此最后，处理流控的代码就被放入网络栈中，而网络栈是所有网络通信的机器必须经过的一层。&lt;/p&gt;
+
+&lt;p&gt;接下来作者引出了分布式架构中的例子。作者举了服务发现和熔断的例子。最开始，为了解决这两个问题，相关代码也被放入业务逻辑中。后来，人们将代码抽取出来，用库的形式调用。然而，用库处理有下面的问题：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;需要花时间将库和生态中的组件胶合起来&lt;/li&gt;
+  &lt;li&gt;库通常是在特定的平台下编写的(例如JVM、某种特定语言等)&lt;/li&gt;
+  &lt;li&gt;对库的管理、维护很困难，例如不同版本的库兼容性不同等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最后，诞生了sidecar模式。sidecar模式其实就是对于每个服务，都有一个代理(称作sidecar)和它共同启动。该sidecar就负责处理一些共通的问题，例如上面的服务发现。服务之间均通过sidecar进行互相通信——当然，它们不知道sidecar的存在。&lt;/p&gt;
+
+&lt;p&gt;对所有的服务都启动sidecar，则所有的服务及其sidecar就构成了Service Mesh。这里引用William Morgan的一段话说明Service Mesh：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在Service Mesh中有一个控制面(Control plane)。控制面知道每个代理实例，并能控制代理实例的功能。&lt;/p&gt;
+</content>
+<summary>原文是Pattern: Service Mesh</summary>
+</entry>
+<entry>
+<title>Arts Weekeleven Leetcode915 Disjoint Intervals</title>
+<link href="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/" rel="alternate" type="text/html" title="Arts Weekeleven Leetcode915 Disjoint Intervals" />
+<published>2019-06-19T00:00:00+08:00</published>
+<updated>2019-06-19T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekEleven-Leetcode915-Disjoint-Intervals/">&lt;p&gt;Given an array A, partition it into two (contiguous) subarrays left and right so that:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Every element in left is less than or equal to every element in right.&lt;/li&gt;
@@ -58,7 +110,17 @@ public:
     }
     
 };
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given an array A, partition it into two (contiguous) subarrays left and right so that:</summary></entry><entry><title type="html">Envoy学习之旅(四)</title><link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)/" rel="alternate" type="text/html" title="Envoy学习之旅(四)" /><published>2019-06-17T00:00:00+08:00</published><updated>2019-06-17T00:00:00+08:00</updated><id>http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)</id><content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)/">&lt;p&gt;本周对envoy的介绍文档仔细的阅读了一遍。在此将笔记记录如下。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>Given an array A, partition it into two (contiguous) subarrays left and right so that:</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(四)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)/" rel="alternate" type="text/html" title="Envoy学习之旅(四)" />
+<published>2019-06-17T00:00:00+08:00</published>
+<updated>2019-06-17T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(四)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E5%9B%9B)/">&lt;p&gt;本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下。&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-envoy&quot;&gt;What is Envoy&lt;/h2&gt;
 &lt;p&gt;Envoy是一个L7的代理以及通讯总线，被用于大规模现代SOA架构。&lt;/p&gt;
@@ -237,32 +299,18 @@ public:
       &lt;td&gt;Don’t Route/Delete&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>Tonfeiz</name></author><summary type="html">本周对envoy的介绍文档仔细的阅读了一遍。在此将笔记记录如下。</summary></entry><entry><title type="html">Arts Weekten High Performance Server(二)</title><link href="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten High Performance Server(二)" /><published>2019-06-12T00:00:00+08:00</published><updated>2019-06-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/">&lt;p&gt;接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
+&lt;/table&gt;
 
-&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
-&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
-
-&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
-  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
-  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
-&lt;p&gt;这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。&lt;/p&gt;
-
-&lt;h2 id=&quot;other-stuff&quot;&gt;Other Stuff&lt;/h2&gt;
-&lt;p&gt;作者提出了一些其他的问题&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？&lt;code class=&quot;highlighter-rouge&quot;&gt;read-ahead&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;write-behind&lt;/code&gt;工作情况如何？&lt;/li&gt;
-  &lt;li&gt;你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像&lt;code class=&quot;highlighter-rouge&quot;&gt;TCP_CORK&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;MSG_PUSH&lt;/code&gt;或是Nagle这样的技巧使其避免较小的信息？&lt;/li&gt;
-  &lt;li&gt;你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦&lt;/li&gt;
-  &lt;li&gt;页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？&lt;/li&gt;
-  &lt;li&gt;你的读/写锁会饥饿吗？你的事件有惊群效应吗？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">接下去介绍高性能服务器设计的最后两个因素。</summary></entry><entry><title type="html">Arts Weekten Progit(二)</title><link href="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten Progit(二)" /><published>2019-06-12T00:00:00+08:00</published><updated>2019-06-12T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">&lt;p&gt;本章讲述Git的基础知识。&lt;/p&gt;
+</content>
+<summary>本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下。</summary>
+</entry>
+<entry>
+<title>Arts Weekten Progit(二)</title>
+<link href="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten Progit(二)" />
+<published>2019-06-12T00:00:00+08:00</published>
+<updated>2019-06-12T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-ProGit(二)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">&lt;p&gt;本章讲述Git的基础知识。&lt;/p&gt;
 
 &lt;h2 id=&quot;git基础&quot;&gt;Git基础&lt;/h2&gt;
 &lt;h3 id=&quot;获取git-repo&quot;&gt;获取Git Repo&lt;/h3&gt;
@@ -478,7 +526,52 @@ Changes to be committed:
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mv README.md README
 $ git rm README.md
 $ git add README
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">本章讲述Git的基础知识。</summary></entry><entry><title type="html">Arts Weekten Leetcode779 Kth Symbol</title><link href="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/" rel="alternate" type="text/html" title="Arts Weekten Leetcode779 Kth Symbol" /><published>2019-06-11T00:00:00+08:00</published><updated>2019-06-11T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/">&lt;p&gt;On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>本章讲述Git的基础知识。</summary>
+</entry>
+<entry>
+<title>Arts Weekten High Performance Server(二)</title>
+<link href="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten High Performance Server(二)" />
+<published>2019-06-12T00:00:00+08:00</published>
+<updated>2019-06-12T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-High-Performance-Server(二)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/">&lt;p&gt;接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
+
+&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
+&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
+
+&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
+  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
+  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
+&lt;p&gt;这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。&lt;/p&gt;
+
+&lt;h2 id=&quot;other-stuff&quot;&gt;Other Stuff&lt;/h2&gt;
+&lt;p&gt;作者提出了一些其他的问题&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？&lt;code class=&quot;highlighter-rouge&quot;&gt;read-ahead&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;write-behind&lt;/code&gt;工作情况如何？&lt;/li&gt;
+  &lt;li&gt;你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像&lt;code class=&quot;highlighter-rouge&quot;&gt;TCP_CORK&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;MSG_PUSH&lt;/code&gt;或是Nagle这样的技巧使其避免较小的信息？&lt;/li&gt;
+  &lt;li&gt;你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦&lt;/li&gt;
+  &lt;li&gt;页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？&lt;/li&gt;
+  &lt;li&gt;你的读/写锁会饥饿吗？你的事件有惊群效应吗？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。&lt;/p&gt;
+</content>
+<summary>接下去介绍高性能服务器设计的最后两个因素。</summary>
+</entry>
+<entry>
+<title>Arts Weekten Leetcode779 Kth Symbol</title>
+<link href="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/" rel="alternate" type="text/html" title="Arts Weekten Leetcode779 Kth Symbol" />
+<published>2019-06-11T00:00:00+08:00</published>
+<updated>2019-06-11T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/">&lt;p&gt;On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.&lt;/p&gt;
 
 &lt;p&gt;Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).&lt;/p&gt;
 
@@ -556,7 +649,17 @@ public:
         }
     }
 };
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</summary></entry><entry><title type="html">Envoy学习之旅(三)</title><link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/" rel="alternate" type="text/html" title="Envoy学习之旅(三)" /><published>2019-06-10T00:00:00+08:00</published><updated>2019-06-10T00:00:00+08:00</updated><id>http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)</id><content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/">&lt;p&gt;上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(三)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/" rel="alternate" type="text/html" title="Envoy学习之旅(三)" />
+<published>2019-06-10T00:00:00+08:00</published>
+<updated>2019-06-10T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(三)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/">&lt;p&gt;上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。&lt;/p&gt;
 
 &lt;h2 id=&quot;实现过程&quot;&gt;实现过程&lt;/h2&gt;
 &lt;p&gt;首先小小的修改一下&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;文件。在其中&lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;下面添加一个选项&lt;code class=&quot;highlighter-rouge&quot;&gt;volumes&lt;/code&gt;,如下所示&lt;/p&gt;
@@ -665,50 +768,17 @@ admin:
               * `envoy.gzip`  
               * `envoy.rate_limit`  
               * `envoy.router`  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。</summary></entry><entry><title type="html">Arts Weeknine High Performance Server(一)</title><link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(一)" /><published>2019-06-09T00:00:00+08:00</published><updated>2019-06-09T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/">&lt;p&gt;这篇英文文章讲的是高性能服务器设计的一些要点。&lt;br /&gt;
-原文链接为&lt;img src=&quot;http://pl.atyp.us/content/tech/servers.html&quot; alt=&quot;High-Performance Server Architecture&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;data-copies&quot;&gt;Data Copies&lt;/h2&gt;
-&lt;p&gt;数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。&lt;/p&gt;
-
-&lt;p&gt;一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;一个指针以及缓冲区的长度&lt;/li&gt;
-  &lt;li&gt;一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度&lt;/li&gt;
-  &lt;li&gt;指向其他缓冲区的前向以及后向指针&lt;/li&gt;
-  &lt;li&gt;引用计数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。&lt;/p&gt;
-
-&lt;p&gt;作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。&lt;/p&gt;
-
-&lt;p&gt;作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。&lt;/p&gt;
-
-&lt;h2 id=&quot;context-switches&quot;&gt;Context Switches&lt;/h2&gt;
-&lt;p&gt;当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。&lt;/p&gt;
-
-&lt;p&gt;造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。&lt;/p&gt;
-
-&lt;p&gt;通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。&lt;/p&gt;
-
-&lt;p&gt;最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个&lt;code class=&quot;highlighter-rouge&quot;&gt;listeners&lt;/code&gt;监听并放入队列，而&lt;code class=&quot;highlighter-rouge&quot;&gt;worker threads&lt;/code&gt;从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;能变成&lt;code class=&quot;highlighter-rouge&quot;&gt;worker&lt;/code&gt;再变回&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。&lt;/p&gt;
-
-&lt;p&gt;作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;请求需要传给下一个阶段(ID或是指针作为返回值)&lt;/li&gt;
-  &lt;li&gt;请求已经被完成(特殊的”请求完成”返回值)&lt;/li&gt;
-  &lt;li&gt;请求被阻塞(特殊的”请求阻塞”返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续&lt;br /&gt;
-在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;作者最后对SEDA发表了自己的看法。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理&lt;/li&gt;
-  &lt;li&gt;学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Tonfeiz</name></author><summary type="html">这篇英文文章讲的是高性能服务器设计的一些要点。 原文链接为</summary></entry><entry><title type="html">Envoy学习之旅(二)</title><link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/" rel="alternate" type="text/html" title="Envoy学习之旅(二)" /><published>2019-06-09T00:00:00+08:00</published><updated>2019-06-09T00:00:00+08:00</updated><id>http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)</id><content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">&lt;p&gt;在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(二)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/" rel="alternate" type="text/html" title="Envoy学习之旅(二)" />
+<published>2019-06-09T00:00:00+08:00</published>
+<updated>2019-06-09T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(二)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">&lt;p&gt;在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。&lt;/p&gt;
 
 &lt;h2 id=&quot;docker-compose内容说明&quot;&gt;docker compose内容说明&lt;/h2&gt;
 &lt;p&gt;在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。&lt;/p&gt;
@@ -878,7 +948,70 @@ ports:
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;从上面表格可以看出，&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;的作用感觉不大，&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。&lt;/p&gt;</content><author><name>Tonfeiz</name></author><summary type="html">在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</summary></entry><entry><title type="html">Arts Weeknine Progit(一)</title><link href="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine Progit(一)" /><published>2019-06-06T00:00:00+08:00</published><updated>2019-06-06T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/">&lt;p&gt;git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。&lt;/p&gt;
+&lt;p&gt;从上面表格可以看出，&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;的作用感觉不大，&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。&lt;/p&gt;
+</content>
+<summary>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</summary>
+</entry>
+<entry>
+<title>Arts Weeknine High Performance Server(一)</title>
+<link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(一)" />
+<published>2019-06-09T00:00:00+08:00</published>
+<updated>2019-06-09T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(一)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/">&lt;p&gt;这篇英文文章讲的是高性能服务器设计的一些要点。&lt;br /&gt;
+原文链接为&lt;img src=&quot;http://pl.atyp.us/content/tech/servers.html&quot; alt=&quot;High-Performance Server Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;data-copies&quot;&gt;Data Copies&lt;/h2&gt;
+&lt;p&gt;数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。&lt;/p&gt;
+
+&lt;p&gt;一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;一个指针以及缓冲区的长度&lt;/li&gt;
+  &lt;li&gt;一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度&lt;/li&gt;
+  &lt;li&gt;指向其他缓冲区的前向以及后向指针&lt;/li&gt;
+  &lt;li&gt;引用计数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。&lt;/p&gt;
+
+&lt;p&gt;作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。&lt;/p&gt;
+
+&lt;p&gt;作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。&lt;/p&gt;
+
+&lt;h2 id=&quot;context-switches&quot;&gt;Context Switches&lt;/h2&gt;
+&lt;p&gt;当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。&lt;/p&gt;
+
+&lt;p&gt;造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。&lt;/p&gt;
+
+&lt;p&gt;通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。&lt;/p&gt;
+
+&lt;p&gt;最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个&lt;code class=&quot;highlighter-rouge&quot;&gt;listeners&lt;/code&gt;监听并放入队列，而&lt;code class=&quot;highlighter-rouge&quot;&gt;worker threads&lt;/code&gt;从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;能变成&lt;code class=&quot;highlighter-rouge&quot;&gt;worker&lt;/code&gt;再变回&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。&lt;/p&gt;
+
+&lt;p&gt;作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;请求需要传给下一个阶段(ID或是指针作为返回值)&lt;/li&gt;
+  &lt;li&gt;请求已经被完成(特殊的”请求完成”返回值)&lt;/li&gt;
+  &lt;li&gt;请求被阻塞(特殊的”请求阻塞”返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续&lt;br /&gt;
+在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;作者最后对SEDA发表了自己的看法。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理&lt;/li&gt;
+  &lt;li&gt;学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+<summary>这篇英文文章讲的是高性能服务器设计的一些要点。原文链接为</summary>
+</entry>
+<entry>
+<title>Arts Weeknine Progit(一)</title>
+<link href="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine Progit(一)" />
+<published>2019-06-06T00:00:00+08:00</published>
+<updated>2019-06-06T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekNine-ProGit(一)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekNine-ProGit(%E4%B8%80)/">&lt;p&gt;git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。&lt;/p&gt;
 
 &lt;h2 id=&quot;一基本信息&quot;&gt;一、基本信息&lt;/h2&gt;
 &lt;h3 id=&quot;版本控制&quot;&gt;版本控制&lt;/h3&gt;
@@ -922,56 +1055,9 @@ ports:
 &lt;p&gt;首次安装Git后需要配置用户的名字和邮箱，如下所示：&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git config --global user.name &quot;${USER_NAME}&quot;  
 $ git config --global user.email ${USER_EMAIL}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。</summary></entry><entry><title type="html">Arts Weeknine Leetcode942 Distringmatch</title><link href="http://localhost:4000/ARTS-WeekNine-Leetcode942-DIStringMatch/" rel="alternate" type="text/html" title="Arts Weeknine Leetcode942 Distringmatch" /><published>2019-06-05T00:00:00+08:00</published><updated>2019-06-05T00:00:00+08:00</updated><id>http://localhost:4000/ARTS-WeekNine-Leetcode942-DIStringMatch</id><content type="html" xml:base="http://localhost:4000/ARTS-WeekNine-Leetcode942-DIStringMatch/">&lt;p&gt;Given a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Return any permutation A of [0, 1, …, N] such that for all i = 0, …, N-1:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If S[i] == “I”, then A[i] &amp;lt; A[i+1]&lt;/li&gt;
-  &lt;li&gt;If S[i] == “D”, then A[i] &amp;gt; A[i+1]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Example 1:&lt;/p&gt;
-
-&lt;p&gt;Input: “IDID”&lt;br /&gt;
-Output: [0,4,1,3,2]&lt;/p&gt;
-
-&lt;p&gt;Example 2:&lt;/p&gt;
-
-&lt;p&gt;Input: “III”&lt;br /&gt;
-Output: [0,1,2,3]&lt;/p&gt;
-
-&lt;p&gt;Example 3:&lt;/p&gt;
-
-&lt;p&gt;Input: “DDI”&lt;br /&gt;
-Output: [3,2,0,1]&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;这题的意思是对于一个由”I”和”D”组成的序列，”I”表示增加,”D”表示减少，则根据该序列，给出一个由0到N组成的满足上面序列的数字序列。&lt;/p&gt;
-
-&lt;p&gt;这题刚开始思考了一下，有点摸不着头脑，但后来发现，只要遇到”I”则放入当前能放入的最小的数，遇到”D”则放入当前能放入的最大的数，最后两者肯定汇聚到某个数，最后再放入汇聚的数即可。&lt;/p&gt;
-
-&lt;p&gt;代码如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
-public:
-    vector&amp;lt;int&amp;gt; diStringMatch(string S) {
-        int left = 0, right = S.size();
-        
-        vector&amp;lt;int&amp;gt; res(right + 1);
-        
-        for(int i = 0; i &amp;lt; S.size(); ++i) {
-            if(S[i] == 'I') {
-                res[i] = left;
-                left++;
-            } else {
-                res[i] = right;
-                right--;
-            }
-        }
-        
-        res[res.size() - 1] = left;
-        
-        return res;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tonfeiz</name></author><summary type="html">Given a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.</summary></entry></feed>
+</content>
+<summary>git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。</summary>
+</entry>
+</feed>
