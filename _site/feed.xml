@@ -3,13 +3,476 @@
 <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
 <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-<updated>2019-06-23T10:22:40+08:00</updated>
+<updated>2019-07-06T11:33:38+08:00</updated>
 <id>http://localhost:4000/</id>
 <title>Tonfeiz</title>
 <subtitle></subtitle>
 <author>
 <name>Tonfeiz</name>
 </author>
+<entry>
+<title>ARTS Week Thirteen Leetcode868 BinaryGap</title>
+<link href="http://localhost:4000/ARTS-WeekThriteen-Leetcode868-BinaryGap/" rel="alternate" type="text/html" title="ARTS Week Thirteen Leetcode868 BinaryGap" />
+<published>2019-07-06T00:00:00+08:00</published>
+<updated>2019-07-06T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekThriteen-Leetcode868-BinaryGap</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekThriteen-Leetcode868-BinaryGap/">&lt;p&gt;Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N.&lt;/p&gt;
+
+&lt;p&gt;If there aren’t two consecutive 1’s, return 0.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: 22
+Output: 2
+Explanation: 
+22 in binary is 0b10110.
+In the binary representation of 22, there are three ones, and two consecutive pairs of 1's.
+The first consecutive pair of 1's have distance 2.
+The second consecutive pair of 1's have distance 1.
+The answer is the largest of these two distances, which is 2.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题的意思是找出十进制数的二进制表示中两个连续的1之间最远的距离。思路也非常简单，在将十进制数转换为二进制时记录上一个1和当前的1的位置，然后相减即得到距离。在转换同时记录距离的最大值即可。&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
+public:
+    int binaryGap(int N) {
+        int last_pos = -1, cur_pos = -1;
+        
+        int mod;
+        int max_dis = 0;
+        int cur_iter = 0;
+        while(N &amp;gt; 0) {
+            mod = N % 2;
+            if(mod == 1) {
+                last_pos = cur_pos;
+                cur_pos = cur_iter;
+                if(last_pos &amp;gt; -1 &amp;amp;&amp;amp; cur_pos - last_pos &amp;gt; max_dis) {
+                    max_dis = cur_pos - last_pos;
+                }
+            }
+            N /= 2;
+            cur_iter++;
+        }
+        
+        return max_dis;
+        
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N.</summary>
+</entry>
+<entry>
+<title>Envoy学习之旅(五)</title>
+<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%94)/" rel="alternate" type="text/html" title="Envoy学习之旅(五)" />
+<published>2019-06-28T00:00:00+08:00</published>
+<updated>2019-06-28T00:00:00+08:00</updated>
+<id>http://localhost:4000/envoy学习之旅(五)</id>
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%94)/">&lt;p&gt;本次继续把Envoy的文档阅读完。&lt;/p&gt;
+
+&lt;h3 id=&quot;health-checking&quot;&gt;Health checking&lt;/h3&gt;
+&lt;p&gt;主动健康检查可以在每个上游cluster上配置。Envoy支持三种不同类型的健康检查：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP&lt;/strong&gt;: Envoy会发送HTTP请求给上游host。默认情况下，如果host是健康的，它会期待收到一个200回应。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;L3/L4&lt;/strong&gt;: Envoy会发送可配置的字节缓冲给上游host。它期待在回应中该字节缓冲被回射(echo)。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Envoy会发送Redis的PING命令并期待收到PONG回应。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;http-health-checking-filter&quot;&gt;HTTP health checking filter&lt;/h4&gt;
+&lt;p&gt;Envoy包括了一个可被安装在配置好的HTTP监听器上的健康检查过滤器。该过滤器有几种操作模式：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;No pass through&lt;/strong&gt;: 该模式下，健康检查请求不会传送给本地服务。Envoy会根据当前服务器的状态(draining state)发回200或503响应&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;No pass through, computed from upstream cluster health&lt;/strong&gt;: 在该模式下，Envoy会根据上游的一个或多个cluster中是否存在指定比例的服务器可用来返回200或503响应。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pass through&lt;/strong&gt;: 该模式下，健康检查请求会传送给本地服务。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pass through with caching&lt;/strong&gt;: 该模式下，Envoy会传送健康检查请求给本地服务，然后会缓存结果一段时间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;connection-pooling&quot;&gt;Connection pooling&lt;/h3&gt;
+&lt;p&gt;对于HTTP流量来说，Envoy支持在底层线协议(HTTP/1.1或HTTP/2)之上一层的抽象连接池。使用的过滤器代码不需要知道底层协议是否支持真正的复用。底层实现实际上有下面的高层属性。&lt;/p&gt;
+
+&lt;h4 id=&quot;http11&quot;&gt;HTTP/1.1&lt;/h4&gt;
+&lt;p&gt;HTTP/1.1连接池在需要时就像上游host获取连接(最大不超过熔断限制)。请求在连接可用时与其绑定。连接可用有几种原因，例如一个连接已经处理完了之前的请求，一个新的连接已经准备好接收请求。&lt;/p&gt;
+
+&lt;h4 id=&quot;http2&quot;&gt;HTTP/2&lt;/h4&gt;
+&lt;p&gt;HTTP/2连接池对每个上游host获取一个连接。所有的请求都通过该连接复用。如果收到了GOAWAY帧或者连接数达到了最大流限制，连接池会创建一个新的连接并且排空已经存在的连接。&lt;/p&gt;
+
+&lt;h3 id=&quot;load-balancing&quot;&gt;Load balancing&lt;/h3&gt;
+&lt;h4 id=&quot;what-is-load-balancing&quot;&gt;What is Load Balancing?&lt;/h4&gt;
+&lt;p&gt;负载均衡指的是将流量分给一个cluster中的不同host的方法。Envoy提供了不同的负载均衡策略。从高层看，可以把这些策略分为两种：全局负载均衡和分布式负载均衡。&lt;/p&gt;
+
+&lt;h5 id=&quot;distributed-load-balancing&quot;&gt;Distributed Load Balancing&lt;/h5&gt;
+&lt;p&gt;分布式负载均衡指的是让Envoy自己基于上游hosts的位置决定负载如何分给端点。&lt;/p&gt;
+&lt;h5 id=&quot;global-load-balancing&quot;&gt;Global Load Balancing&lt;/h5&gt;
+&lt;p&gt;全局负载均衡指的是有一个全局的authority决定负载应该怎样在hosts之间分布。对Envoy来说，这可以通过控制面完成。控制面可以通过指定不同的参数(例如优先级、本地权重、端点权重和端点健康等)来分发负载。&lt;/p&gt;
+
+&lt;p&gt;一个简单的例子是控制面基于网络拓扑给hosts设置不同的优先级来确保需要更少的网络跳数的hosts优先被选择。&lt;/p&gt;
+
+&lt;h5 id=&quot;both-distributed-and-global&quot;&gt;Both Distributed and Global&lt;/h5&gt;
+&lt;p&gt;大部分复杂的部署会同时使用两种方法。例如，全局负载均衡可以被用来定义高级路由优先级和权重，而分布式负载均衡可以被用来对系统变化做出反应。&lt;/p&gt;
+
+&lt;h4 id=&quot;supported-load-balancers&quot;&gt;Supported load balancers&lt;/h4&gt;
+&lt;p&gt;当过滤器需要获取到上游cluster中的某个host的连接，cluster manager会使用负载均衡策略来决定选择哪个host。&lt;/p&gt;
+
+&lt;h5 id=&quot;weight-round-robin&quot;&gt;Weight round robin&lt;/h5&gt;
+&lt;p&gt;每个有效的上游host以循环方式被选择。如果&lt;code class=&quot;highlighter-rouge&quot;&gt;weights&lt;/code&gt;被分配给本地的端点，则&lt;code class=&quot;highlighter-rouge&quot;&gt;weighted round robin&lt;/code&gt;策略会被使用。较高权重的端点在循环中出现的次数会更多。&lt;/p&gt;
+
+&lt;h5 id=&quot;weighted-least-request&quot;&gt;Weighted least request&lt;/h5&gt;
+&lt;p&gt;最少请求负载均衡依据是否有host的权重大于1来使用不同的算法。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;都是权重1：一种O(1)算法。该算法随机选择N个可用的hosts，然后选择活跃请求最少的host。&lt;/li&gt;
+  &lt;li&gt;不都是权重1：如果cluster中的某个host权重大于1(即便这些host权重都相等)，负载均衡器会使用&lt;code class=&quot;highlighter-rouge&quot;&gt;weighted round robin&lt;/code&gt;方式，且每个host的权重会根据host的请求负载动态的变化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;ring-hash&quot;&gt;Ring hash&lt;/h5&gt;
+&lt;p&gt;环形哈希负载均衡器对上游的hosts采用一致性哈希算法。每个host通过对它的地址哈希被映射到一个环上；每个请求通过对它的某些性质进行哈希然后找到环上最近的host被路由到某个host上。&lt;/p&gt;
+
+&lt;p&gt;每个host被哈希和放在环上的次数和它的权重成正比。例如，如果host A权重为1而host B权重为2，则环上可能有1个A和2个B。然而这不会提供我们所希望的2:1分割环，因为可能它们被计算出来的哈希值很接近导致环上它们也很近。所以每个host的数量需要同时乘以某个数，例如100个A和200个B。&lt;/p&gt;
+
+&lt;p&gt;当基于优先级的负载均衡被使用，优先级级别也是通过哈希被选择的。&lt;/p&gt;
+
+&lt;h4 id=&quot;priority-levels&quot;&gt;Priority levels&lt;/h4&gt;
+&lt;p&gt;在负载均衡期间，Envoy通常只考虑设置在最高优先级的hosts。当最高优先级的端点是健康的，所有的流量都会流往在该优先级的端点。当该优先级的端点变得不健康之后，流量才会流到优先级低一级的端点。&lt;/p&gt;
+
+&lt;p&gt;总体系统可以通过设置&lt;code class=&quot;highlighter-rouge&quot;&gt;overprovisioning factor&lt;/code&gt;(默认是1.4))过载。如果80%的某优先级的端点是健康的，则该级别仍然被认为是健康的因为80*1.4 &amp;gt; 100.&lt;/p&gt;
+
+&lt;p&gt;优先级逻辑和整数健康分数一同工作。某个级别的健康分数是(该级别的健康host百分比)*(过载系数)，最大100%.P=0的端点接收(级别0的健康分数)百分比的流量，其余的流向P=1.例如，当50%的P=0的端点是健康时，它们将收到50*1.4=70%的流量。&lt;/p&gt;
+
+&lt;p&gt;健康分数代表了一个级别现在处理流量的能力。因此，如果所有级别的健康分数总和小于100，则Envoy认为现在没有足够的健康端点来处理所有的流量。该总和叫做归一化健康总分(normalized total health)。当归一化健康总分比100低时，流量会依据按照该小于100的总量归一化来分布。&lt;/p&gt;
+
+&lt;h4 id=&quot;degraded-endpoints&quot;&gt;Degraded endpoints&lt;/h4&gt;
+&lt;p&gt;Envoy支持将特定的端点标记为降级的，意味着它们能接收流量，但只有在没有足够的健康hosts时才可以。&lt;/p&gt;
+
+&lt;p&gt;路由到降级的hosts可以被认为是路由到低优先级的hosts。在高优先级的hosts变为非健康之后，流量被分给低优先级的hosts。在健康hosts的数量不能处理100%的负载时，流量会分给降级的hosts。&lt;/p&gt;
+
+&lt;h3 id=&quot;outlier-detection&quot;&gt;Outlier detection&lt;/h3&gt;
+&lt;p&gt;Outlier检测和驱逐是动态决定一个上游cluster中的hosts是否与其他不同并将该host从健康的负载均衡集中移除的过程。性能可能通过不同的方式衡量，例如连续失败数，短时成功率，短时延迟等。Outlier检测是被动健康检测的一种。Outlier检测是集群配置(cluster configuration)的一部分，需要过滤器来报告错误，超时和重置。目前http router,tcp proxy和redis proxy这三种过来器支持outlier检测。&lt;/p&gt;
+
+&lt;p&gt;检测到的错误分为两类：外部的和本地的。外部产生的错误发生在上游服务器回应收到的请求之时。例如，HTTP服务器返回错误码500或者redis服务器返回无法解码的负载。这些错误发生在Envoy成功连接到host之后。本地错误发生在Envoy与上游host的连接发生问题之时，例如超时、TCP重置、不能连接到特定的端口等。&lt;/p&gt;
+
+&lt;p&gt;检测到的错误类型依赖于过滤器种类。http router过滤器既能检测本地错误也能检测外部错误。tcp proxy过滤器由于不了解高层协议，因此只能检测本地错误。&lt;br /&gt;
+默认情况下本地错误和外部错误不分开，也就是它们会一起累加。能通过配置&lt;code class=&quot;highlighter-rouge&quot;&gt;outlier_detection.split_external_local_origin_errors&lt;/code&gt;选项把它们分开。&lt;/p&gt;
+
+&lt;h4 id=&quot;ejection-algorithm&quot;&gt;Ejection algorithm&lt;/h4&gt;
+&lt;p&gt;根据outlier检测的种类，驱逐outlier的过程可以是内联的(例如连续5xx)，也可以是有指定的间隔的(例如周期性的成功率)。驱逐算法按照下面的步骤工作：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;一个host被决定为outlier&lt;/li&gt;
+  &lt;li&gt;如果没有host被驱逐，Envoy会马上驱逐该host。否则的话，它会检查以确定驱逐的hosts数量在允许的阈值之下。如果已经驱逐的hosts数量在该阈值之上，则该host不会被驱逐&lt;/li&gt;
+  &lt;li&gt;该host会被驱逐一段微秒级别的时间。驱逐意味着该host被标记为不健康并且在负载均衡期间不会被使用(除非负载均衡器处于panic状态)。等待时间由配置&lt;code class=&quot;highlighter-rouge&quot;&gt;outlier_detection.base_ejection_time_ms&lt;/code&gt;和该host被拒绝的次数相乘决定——因此该host被拒绝的次数越多，它就越不易被加入集群。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;detection-types&quot;&gt;Detection types&lt;/h4&gt;
+&lt;p&gt;Envoy支持下面的几种检测类型。&lt;/p&gt;
+
+&lt;h5 id=&quot;consecutive-5xx&quot;&gt;Consecutive 5xx&lt;/h5&gt;
+&lt;p&gt;默认情况下该检测类型将所有生成的错误都纳入考虑。非HTTP过滤器检测到的错误都会被映射到HTTP 5xx。&lt;/p&gt;
+
+&lt;p&gt;在分离模式下，该检测模式只会考虑外部错误而忽视内部错误。&lt;/p&gt;
+
+&lt;h5 id=&quot;consecutive-gateway-failure&quot;&gt;Consecutive Gateway Failure&lt;/h5&gt;
+&lt;p&gt;该检测类型是5xx错误的子集，叫做网关错误(502, 503或者504)，并且只被http router支持。&lt;/p&gt;
+
+&lt;h5 id=&quot;consecutive-local-origin-failure&quot;&gt;Consecutive Local Origin Failure&lt;/h5&gt;
+&lt;p&gt;该类型只有当配置&lt;code class=&quot;highlighter-rouge&quot;&gt;outlier_detection.split_external_local_origin_errors&lt;/code&gt;为真时才有效。它只会考虑本地错误。如果Envoy重复性地不能连接到一个上游host或与该上游host的通信重复得被中断，该host将被驱逐。&lt;/p&gt;
+
+&lt;h5 id=&quot;success-rate&quot;&gt;Success Rate&lt;/h5&gt;
+&lt;p&gt;基于成功率的outlier驱逐模式从cluster中的每个host中合计出成功率，然后基于统计上的outlier检测以一定间隔驱逐hosts。&lt;/p&gt;
+
+&lt;h3 id=&quot;circuit-breaking&quot;&gt;Circuit breaking&lt;/h3&gt;
+&lt;p&gt;熔断是分布式系统中的关键成分。快速的失败和尽快对下流背压几乎总是好的。Envoy mesh的一个主要好处是Envoy在网络层实施熔断限制而不是必须对每个应用单独配置和编码。Envoy支持各种类型的分布式的熔断：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Cluster maximum connections&lt;/strong&gt;: Envoy将和上游cluster的所有hosts建立的最大连接数。实际中只对HTTP/1.1集群有用因为HTTP/2对每个host建立单个连接。如果该熔断器溢出则&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream_cx_overflow&lt;/code&gt;计数器会增加。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cluster maximum pending requests&lt;/strong&gt;: 等待一个准备好的连接池连接时最大的将被列入队列中的请求数。由于HTTP/2的请求通过单个连接发送，该熔断器只在初始连接创建时有效，因为马上请求就会被复用了。对于HTTP/1.1，当没有足够的上游连接处理请求时该请求就会被加入等待队列，所以该熔断器在进程的生命期都会起作用。如果该熔断器溢出则&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream_rq_pending_overflow&lt;/code&gt;会增长。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cluster maximum requests&lt;/strong&gt;: 给定时间时能给所有hosts的最大请求数量。实际中只对HTTP/2集群有效因为HTTP/1.1集群通过最大连接数限制了。如果该熔断器溢出则&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream_rq_pending_overflow&lt;/code&gt;会增长。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cluster maximum active retries&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+<summary>本次继续把Envoy的文档阅读完。</summary>
+</entry>
+<entry>
+<title>Data Plane &amp;amp; Control Plane</title>
+<link href="http://localhost:4000/ARTS-WeekTwelve-DataPlane-ControlPlane/" rel="alternate" type="text/html" title="Data Plane &amp; Control Plane" />
+<published>2019-06-26T00:00:00+08:00</published>
+<updated>2019-06-26T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTwelve-DataPlane-ControlPlane</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTwelve-DataPlane-ControlPlane/">&lt;p&gt;这篇文章介绍了数据面和控制面之间的差别。原文是&lt;a href=&quot;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&quot;&gt;Service mesh data plane vs. control plane&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;首先，作者简单介绍了service mesh。在Service mesh中，每个服务有一个sidecar代理。所有的网络流量都通过该代理流到特定地点。服务本身不会知道网络分布，而只知道代理。也就是说，分布式系统网络对服务编写人员来说是不用知道的。&lt;/p&gt;
+
+&lt;h2 id=&quot;数据面data-plane&quot;&gt;数据面(data plane)&lt;/h2&gt;
+&lt;p&gt;接下来，作者介绍了数据面(data plane)。数据面其实就是sidecar代理。sidecar代理通常要完成的工作包括：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;服务发现：有哪些上游服务实例是可用的？&lt;/li&gt;
+  &lt;li&gt;健康检查：通过服务发现找到的上游服务实例是健康的吗？它们准备好接收网络流量了吗？这可能包括主动(例如，带外ping某个端点)和被动(例如，连续3个5xx回应表示不健康状态)健康检查。&lt;/li&gt;
+  &lt;li&gt;路由：本地服务给出了一个REST请求，该把这个请求送到哪个上游服务实例？&lt;/li&gt;
+  &lt;li&gt;负载均衡：当上游服务实例被选定后，请求该送到哪个服务实例？超时时间是多少？熔断设置怎么样？&lt;/li&gt;
+  &lt;li&gt;认证：对于到来的请求，调用者能通过mTLS或其他机制被秘密的认证吗？&lt;/li&gt;
+  &lt;li&gt;观测性：对于每个请求，统计数据，日志和分布式跟踪数据应当被生成。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;数据面被用于有条件的翻译、转发和观察每个流入和流出的网络包。&lt;/p&gt;
+
+&lt;h2 id=&quot;控制面control-plane&quot;&gt;控制面(control plane)&lt;/h2&gt;
+&lt;p&gt;作者指出，控制面将一些独立的无状态sidecar代理整合起来并将它们变为分布式系统。&lt;/p&gt;
+
+&lt;p&gt;大部分人自身就是控制面。人们自己手动写出静态的配置，并将它们部署到所有的代理上。代理使用这些配置并用数据面处理。&lt;/p&gt;
+
+&lt;p&gt;目前出现了高级的控制面。高级的控制面可以包括控制面UI、工作调度器(例如Kubernetes)、服务发现系统(当调度器启动或停止实例则向该系统汇报)和sidecar代理配置API等。&lt;/p&gt;
+
+&lt;p&gt;最终，控制面的目的还是设置将要被数据面执行的政策。&lt;/p&gt;
+
+&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;数据面：与系统中的每个包/请求接触。对服务发现、健康检查、路由、负载均衡、认证和观测性负责&lt;/li&gt;
+  &lt;li&gt;控制面：为运行着的数据面提供政策和配置。不接触系统中的请求/包。控制面将所有的数据面转化为分布式系统。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+<summary>这篇文章介绍了数据面和控制面之间的差别。原文是Service mesh data plane vs. control plane</summary>
+</entry>
+<entry>
+<title>ARTS Week Twelve ProGit(四)</title>
+<link href="http://localhost:4000/ARTS-WeekTwelve-ProGit(%E5%9B%9B)/" rel="alternate" type="text/html" title="ARTS Week Twelve ProGit(四)" />
+<published>2019-06-25T00:00:00+08:00</published>
+<updated>2019-06-25T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTwelve-ProGit(四)</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTwelve-ProGit(%E5%9B%9B)/">&lt;p&gt;本章介绍Git关于分支的知识，包括基本的分支切换合并。&lt;/p&gt;
+
+&lt;h2 id=&quot;git-branching&quot;&gt;Git Branching&lt;/h2&gt;
+&lt;h3 id=&quot;branches-in-a-nutshell&quot;&gt;Branches in a Nutshell&lt;/h3&gt;
+&lt;p&gt;当你进行&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;时，Git存储了一个包含指向你快照的指针的&lt;em&gt;提交&lt;/em&gt;对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。&lt;/p&gt;
+
+&lt;p&gt;假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做&lt;em&gt;blobs&lt;/em&gt;),并将checksum赋值给暂存区。&lt;/p&gt;
+
+&lt;p&gt;当你提交(&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个&lt;em&gt;commit&lt;/em&gt;对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。&lt;/p&gt;
+
+&lt;p&gt;因此，现在你的Git库中包含了五个对象：三个&lt;em&gt;blob&lt;/em&gt;(每个分别表示三个文件中的一个的内容)，一个&lt;em&gt;tree&lt;/em&gt;包含了目录的内容并且指定了哪个文件名作为哪个&lt;em&gt;blob&lt;/em&gt;保存，以及一个&lt;em&gt;commit&lt;/em&gt;包含了指向该树的指针以及所有的元数据。&lt;/p&gt;
+
+&lt;p&gt;如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(&lt;em&gt;commit&lt;/em&gt;的指针。&lt;/p&gt;
+
+&lt;p&gt;在Git中的一个分支(&lt;strong&gt;branch&lt;/strong&gt;)就是指向这些&lt;em&gt;commit&lt;/em&gt;其中之一的指针。默认的分支是master。&lt;/p&gt;
+
+&lt;h4 id=&quot;creating-a-new-branch&quot;&gt;Creating a New Branch&lt;/h4&gt;
+&lt;p&gt;创建一个新的分支其实就是创建了一个新的指针供你移动。&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch &amp;lt;branch_name&amp;gt;&lt;/code&gt;即创建了一个新分支，该分支指向当前的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;Git通过一个特殊的&lt;strong&gt;HEAD&lt;/strong&gt;指针知晓当前你在哪个分支上。&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指针指向某一个&lt;code class=&quot;highlighter-rouge&quot;&gt;branch&lt;/code&gt;指针。默认情况下该指针指向master。注意：使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;只是创建分支，而不会切换到该分支，因此&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;不会改变&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指针的指向。&lt;/p&gt;
+
+&lt;h4 id=&quot;switching-branches&quot;&gt;Switching Branches&lt;/h4&gt;
+&lt;p&gt;切换分支可用下面的指令：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout &amp;lt;branch_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;该指令把&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指针指向&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;branch_name&amp;gt;&lt;/code&gt;代表的分支指针。&lt;/p&gt;
+
+&lt;p&gt;如果在该情况下进行&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则原来的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支指针仍指向原来的位置，而切换到的分支指针和&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指针则向前移动了。&lt;/p&gt;
+
+&lt;p&gt;如果在此之后，将分支切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;(&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout master&lt;/code&gt;)，则&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;指针会指向&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;，并且目录中的文件会切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指向的快照中的文件。&lt;/p&gt;
+
+&lt;p&gt;接下来，如果你进行了改动并再次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。&lt;/p&gt;
+
+&lt;p&gt;一个Git中的分支其实就是&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的40字节SHA-1校验和，因此分支的创建和销毁都很简单。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -b &amp;lt;branch_name&amp;gt;&lt;/code&gt;可以创建并切换到该分支。&lt;/p&gt;
+
+&lt;h3 id=&quot;basic-branching-and-merging&quot;&gt;Basic Branching and Merging&lt;/h3&gt;
+&lt;h4 id=&quot;basic-branching&quot;&gt;Basic Branching&lt;/h4&gt;
+&lt;p&gt;假设你在完成工作，之前已经有几个&lt;code class=&quot;highlighter-rouge&quot;&gt;commits&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支上了。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          master
+            |
+c0 &amp;lt;- c1 &amp;lt;- c2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;你决定在#53号事务上工作。你使用了下面的命令&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;于是现在情况变成了&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          master
+            |
+c0 &amp;lt;- c1 &amp;lt;- c2
+            |
+          iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;你完成了一些工作，进行了提交。则&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;分支前进了，如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          master
+            |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c3
+                  |
+                iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，假设你接到信息，需要紧急修复一个bug，则此时可以先从&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;分支切换到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;注意：如果工作目录或者暂存区中有未提交的改变和正在签出的分支冲突，则Git不会让你切换分支。&lt;/p&gt;
+
+&lt;p&gt;然后，需要创造一个&lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;分支，并且修改bug、提交，则此时如下所示&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;          master hotfix
+            |     |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c4
+             | &amp;lt;- c3               
+                  |
+                iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接下去，你可以切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，然后进行分支合并。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+$ git merge hotfix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这里有个&lt;code class=&quot;highlighter-rouge&quot;&gt;fast-forward&lt;/code&gt;模式。在上面的例子中，&lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;就在&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;之后，因此直接将&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;指针往后移一步则完成了分支合并。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                master
+                  ||
+                hotfix
+                  |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c4
+             | &amp;lt;- c3               
+                  |
+                iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在，由于&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;一样都指向同样的&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则可以删除&lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git branch -d hotfix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;接着你可以切换回&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;分支继续工作并提交。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                master
+                  |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c4
+             | &amp;lt;- c3 &amp;lt;- c5
+                        |
+                      iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意：你在&lt;code class=&quot;highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;中完成的工作不会包含在&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;中。你可以把&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支的内容和当前内容合并，也可以在完成&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;的工作中将其合并到主分支中。&lt;/p&gt;
+
+&lt;h4 id=&quot;basic-merging&quot;&gt;Basic Merging&lt;/h4&gt;
+&lt;p&gt;假设你想把&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;分支合并到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支，则和之前一样，先&lt;code class=&quot;highlighter-rouge&quot;&gt;checkout&lt;/code&gt;再&lt;code class=&quot;highlighter-rouge&quot;&gt;merge&lt;/code&gt;即可&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout master
+$ git merge iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;和之前的合并不同的是，这是一个&lt;code class=&quot;highlighter-rouge&quot;&gt;recursive&lt;/code&gt;的模式。这是因为当前分支的提交不是正在合并进来的提交的直接祖先。在这样的情况下，Git进行一个简单的三路合并，使用两个分支指针指向的快照以及两者的共同祖先。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;         common master(merge into)
+            |     |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c4
+             | &amp;lt;- c3 &amp;lt;- c5
+                        |
+                      iss53(merge in)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Git会创建一个新的快照，并自动创建一个指向它的提交(&lt;em&gt;commit&lt;/em&gt;)。这被称为一个合并提交(&lt;em&gt;merge commit&lt;/em&gt;)，并且有两个父亲(因此是特殊的)。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                           master
+                             |
+c0 &amp;lt;- c1 &amp;lt;- c2 &amp;lt;- c4 &amp;lt;------ c6
+             | &amp;lt;- c3 &amp;lt;- c5 &amp;lt;-|
+                        |
+                      iss53
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;现在你就可以删除&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;分支了。&lt;/p&gt;
+
+&lt;h4 id=&quot;basic-merge-conflicts&quot;&gt;Basic Merge Conflicts&lt;/h4&gt;
+&lt;p&gt;如果你正在合并的两个分支中的相同文件的相同部分并不一样，则Git不会完整干净的合并它们，而是会发生合并冲突。&lt;/p&gt;
+
+&lt;p&gt;Git不会自动创建新的合并提交，而是会暂停过程。可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;查看在发生合并冲突后哪些文件是&lt;code class=&quot;highlighter-rouge&quot;&gt;unmerged&lt;/code&gt;状态的。&lt;/p&gt;
+
+&lt;p&gt;Git会在文件中发生冲突的地方加上标志。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD:index.html
+&amp;lt;div id=&quot;footer&quot;&amp;gt;contact : email.support@github.com&amp;lt;/div&amp;gt;
+=======
+&amp;lt;div id=&quot;footer&quot;&amp;gt;
+please contact us at support@github.com
+&amp;lt;/div&amp;gt;
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; iss53:index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;它的意思是&lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;版本的内容在&lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt;符号的上方和&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;符号的下方，&lt;code class=&quot;highlighter-rouge&quot;&gt;iss53&lt;/code&gt;版本的内容在&lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt;的下方而在&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;的上方。&lt;/p&gt;
+
+&lt;p&gt;你可以通过自己手动修改冲突，再运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;将它们标记为&lt;code class=&quot;highlighter-rouge&quot;&gt;merged&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;还有一种选择是通过合并工具进行合并。命令是&lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;最后，可以通过运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;提交此次合并。默认的消息感觉比较好，也可以自行写消息介绍你合并的过程。&lt;/p&gt;
+</content>
+<summary>本章介绍Git关于分支的知识，包括基本的分支切换合并。</summary>
+</entry>
+<entry>
+<title>Arts Weektwelve Leetcode670 Maximum Swap</title>
+<link href="http://localhost:4000/ARTS-WeekTwelve-Leetcode670-Maximum-Swap/" rel="alternate" type="text/html" title="Arts Weektwelve Leetcode670 Maximum Swap" />
+<published>2019-06-25T00:00:00+08:00</published>
+<updated>2019-06-25T00:00:00+08:00</updated>
+<id>http://localhost:4000/ARTS-WeekTwelve-Leetcode670-Maximum-Swap</id>
+<content type="html" xml:base="http://localhost:4000/ARTS-WeekTwelve-Leetcode670-Maximum-Swap/">&lt;p&gt;Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.&lt;/p&gt;
+
+&lt;p&gt;Example 1:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: 2736  
+Output: 7236  
+Explanation: Swap the number 2 and the number 7.  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example 2:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Input: 9973  
+Output: 9973  
+Explanation: No swap.  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;这题的意思是对给定数字，只能交换一次不同位置的数字，则能得到的最大数字是多少。&lt;/p&gt;
+
+&lt;p&gt;我自己的想法比较复杂。对于一个多位数字，显然把较大的数字放在前面更好。为了找到拿来交换的较大的数字的位置，遍历数组，并且找到递增的最大位置，该位置即为可以拿来交换的最大位置。当然，这样的位置可能有多个，则需要从这些位置中找到最大的、最靠后的位置。&lt;/p&gt;
+
+&lt;p&gt;接下去找可拿来交换的最小位置，该位置一定在0到我们找到的第一个递增的最大位置之间，因此在这两个位置之间再找到比我们之前找到的最大位置数字小的位置，则该位置为能交换的小位置。最后，交换这两个位置的数字即可。&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
+public:
+    int maximumSwap(int num) {
+        string s = to_string(num);
+        vector&amp;lt;int&amp;gt; vi;
+        
+        for(int i = 0; i &amp;lt; s.size() - 1; ++i) {
+            if(s[i] &amp;lt; s[i + 1]) {
+                while(s[i] &amp;lt;= s[i + 1] &amp;amp;&amp;amp; i &amp;lt; s.size() - 1) {
+                    ++i;
+                }
+                vi.push_back(i);
+            }
+        }
+        
+        if(vi.empty()) {
+            return num;
+        }
+        
+        int max_num_index = vi[0];
+        char max_num = s[max_num_index];
+        for(int i = 0; i &amp;lt; vi.size(); ++i) {
+            if(s[vi[i]] &amp;gt;= max_num) {
+                max_num = s[vi[i]];
+                max_num_index = vi[i];
+            }
+        }
+        
+        for(int i = 0; i &amp;lt; vi[0]; ++i) {
+            if(max_num &amp;gt; s[i]) {
+                char c = s[i];
+                s[i] = max_num;
+                s[max_num_index] = c;
+                break;
+            }
+        }
+        
+        return stoi(s);
+        
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+<summary>Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.</summary>
+</entry>
 <entry>
 <title>ARTS Week Eleven Pattern Service Mesh.md</title>
 <link href="http://localhost:4000/ARTS-WeekEleven-Pattern-ServiceMesh/" rel="alternate" type="text/html" title="ARTS Week Eleven Pattern Service Mesh.md" />
@@ -553,480 +1016,5 @@ $ git add README
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
 <summary>本章讲述Git的基础知识。</summary>
-</entry>
-<entry>
-<title>Arts Weekten High Performance Server(二)</title>
-<link href="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten High Performance Server(二)" />
-<published>2019-06-12T00:00:00+08:00</published>
-<updated>2019-06-12T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekTen-High-Performance-Server(二)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-High-Performance-Server(%E4%BA%8C)/">&lt;p&gt;接下去介绍高性能服务器设计的最后两个因素。&lt;/p&gt;
-
-&lt;h2 id=&quot;memory-allocation&quot;&gt;Memory allocation&lt;/h2&gt;
-&lt;p&gt;内存分配是制约服务器性能的一大瓶颈。&lt;/p&gt;
-
-&lt;p&gt;作者提出了三种方法：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。&lt;/li&gt;
-  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。&lt;/li&gt;
-  &lt;li&gt;在分配内存时会出现锁争用的情况，即使使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的&lt;code class=&quot;highlighter-rouge&quot;&gt;look aside&lt;/code&gt;列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;lock-contention&quot;&gt;Lock Contention&lt;/h2&gt;
-&lt;p&gt;这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。&lt;/p&gt;
-
-&lt;h2 id=&quot;other-stuff&quot;&gt;Other Stuff&lt;/h2&gt;
-&lt;p&gt;作者提出了一些其他的问题&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？&lt;code class=&quot;highlighter-rouge&quot;&gt;read-ahead&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;write-behind&lt;/code&gt;工作情况如何？&lt;/li&gt;
-  &lt;li&gt;你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像&lt;code class=&quot;highlighter-rouge&quot;&gt;TCP_CORK&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;MSG_PUSH&lt;/code&gt;或是Nagle这样的技巧使其避免较小的信息？&lt;/li&gt;
-  &lt;li&gt;你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦&lt;/li&gt;
-  &lt;li&gt;页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？&lt;/li&gt;
-  &lt;li&gt;你的读/写锁会饥饿吗？你的事件有惊群效应吗？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。&lt;/p&gt;
-</content>
-<summary>接下去介绍高性能服务器设计的最后两个因素。</summary>
-</entry>
-<entry>
-<title>Arts Weekten Leetcode779 Kth Symbol</title>
-<link href="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/" rel="alternate" type="text/html" title="Arts Weekten Leetcode779 Kth Symbol" />
-<published>2019-06-11T00:00:00+08:00</published>
-<updated>2019-06-11T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-Leetcode779-Kth-Symbol/">&lt;p&gt;On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.&lt;/p&gt;
-
-&lt;p&gt;Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).&lt;/p&gt;
-
-&lt;p&gt;Examples:&lt;br /&gt;
-Input: N = 1, K = 1&lt;br /&gt;
-Output: 0&lt;/p&gt;
-
-&lt;p&gt;Input: N = 2, K = 1&lt;br /&gt;
-Output: 0&lt;/p&gt;
-
-&lt;p&gt;Input: N = 2, K = 2&lt;br /&gt;
-Output: 1&lt;/p&gt;
-
-&lt;p&gt;Input: N = 4, K = 5&lt;br /&gt;
-Output: 1&lt;/p&gt;
-
-&lt;p&gt;row 1: 0&lt;br /&gt;
-row 2: 01&lt;br /&gt;
-row 3: 0110&lt;br /&gt;
-row 4: 01101001&lt;br /&gt;
-—
-这题还是很有意思的。最直观的解法是生成第N行然后直接索引第K个，然而很快就会发现，第row行的字符数量是&lt;code class=&quot;highlighter-rouge&quot;&gt;$2^(N-1)$&lt;/code&gt;，显然是放不下的。因此还要有其他方法。&lt;/p&gt;
-
-&lt;p&gt;我自己的解法是比较复杂的，主要是通过观察数列规律得出。很显然，可以根据K和N分为下列情况（假设middle是第N行的中间位置,f(N,K)是想要寻找的数字)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;K &amp;lt; middle, 此时就是第N-1行的对应索引，即f(N, K) = f(N-1, K)&lt;/li&gt;
-  &lt;li&gt;K &amp;gt; middle,此时要分N是奇数还是偶数
-    &lt;ul&gt;
-      &lt;li&gt;N为奇数时，此时N行左半边和右半边对称，因此f(N, K) = f(N, middle * 2 - K + 1) = f(N - 1, middle * 2- K + 1)&lt;/li&gt;
-      &lt;li&gt;N为偶数时，将数列划分为四等分，则必定是abba的形式，因此又分两种情况
-        &lt;ul&gt;
-          &lt;li&gt;K在右侧的左半边时，则位于abba中第2个b的位置，则可在第1个b中找到其对应位置，即f(N, K) = f(N, K - middle / 2) = f(N - 1, K - middle / 2)&lt;/li&gt;
-          &lt;li&gt;K在右侧的右半边时，即位于abba中第2个a的位置，则可在第1个a中找到其对应位置，即f(N, K) = f(N, K - middle / 2 * 3) = f(N - 1, K - middle / 2 * 3)&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;基准情形则是N=1和N=2时的情况。总体来说，思路就是把N往小了化简。&lt;/p&gt;
-
-&lt;p&gt;在看了解析之后，才发现其实很简单。把第N-1行的0看作第N行的0和1的父节点，第N-1行的1看作第N行的1和0的父节点。很显然，第N行中如果K是偶数，则它是父节点的右子节点，如果K是奇数，则它是父节点的左子节点。而只要确定了K对应的位置的父节点的数值，则K的数值就很简单就能确定。从子节点一直往上回溯直到找到基准情形即可。这种思路的代码非常简单，如下所示&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
-public:
-    int kthGrammar(int N, int K) {
-	if (N == 1) return 0;
-	if (K % 2 == 0) return (kthGrammar(N - 1, K / 2) == 0) ? 1 : 0;
-	else return (kthGrammar(N - 1, (K + 1) / 2) == 0) ? 0 : 1;
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;我自己的代码复杂一些，这里也附上&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
-public:
-    int kthGrammar(int N, int K) {
-        if(N == 1)
-            return 0;   
-        if(N == 2 &amp;amp;&amp;amp; K == 1)
-            return 0;
-        if(N == 2 &amp;amp;&amp;amp; K == 2)
-            return 1;
-        
-        int middle = pow(2, N - 2);
-        if(K &amp;lt;= middle)
-            return kthGrammar(N-1, K);
-        else if(K &amp;gt; middle &amp;amp;&amp;amp; N % 2)
-            return kthGrammar(N - 1, middle * 2 - K + 1);
-        else 
-        {
-            if(K &amp;lt;= 3 * middle / 2)
-                return kthGrammar(N - 1, K - middle / 2);
-            else
-                return kthGrammar(N - 1, K - middle / 2 * 3);
-        }
-    }
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
-<summary>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</summary>
-</entry>
-<entry>
-<title>Envoy学习之旅(三)</title>
-<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/" rel="alternate" type="text/html" title="Envoy学习之旅(三)" />
-<published>2019-06-10T00:00:00+08:00</published>
-<updated>2019-06-10T00:00:00+08:00</updated>
-<id>http://localhost:4000/envoy学习之旅(三)</id>
-<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%B8%89)/">&lt;p&gt;上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。&lt;/p&gt;
-
-&lt;h2 id=&quot;实现过程&quot;&gt;实现过程&lt;/h2&gt;
-&lt;p&gt;首先小小的修改一下&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;文件。在其中&lt;code class=&quot;highlighter-rouge&quot;&gt;service&lt;/code&gt;下面添加一个选项&lt;code class=&quot;highlighter-rouge&quot;&gt;volumes&lt;/code&gt;,如下所示&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;volumes:
-    - ./service-envoy.yaml:/etc/service-envoy.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这句话的意思是把当前目录下的配置文件&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;挂在到容器中的&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc&lt;/code&gt;目录下。&lt;/p&gt;
-
-&lt;p&gt;然后把&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;选项改成下面的样子：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expose:
-    - &quot;80&quot;
-ports:
-    - &quot;8000:80&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;至于为什么要改成这样，在后面马上会提到。&lt;/p&gt;
-
-&lt;p&gt;接下去修改一下启动脚本，其中添加了&lt;code class=&quot;highlighter-rouge&quot;&gt;envoy&lt;/code&gt;的启动，如下所示：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
-python3 /code/hello_world_service.py &amp;amp;
-envoy &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; /etc/service-envoy.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;最后，最关键的就是&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;文件了。&lt;code class=&quot;highlighter-rouge&quot;&gt;service-envoy.yaml&lt;/code&gt;文件和官网提供的例子很像，其内容如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;static_resources:
-  listeners:
-  - address:
-      socket_address:
-        address: 0.0.0.0
-        port_value: 80
-    filter_chains:
-    - filters:
-      - name: envoy.http_connection_manager
-        typed_config:
-          &quot;@type&quot;: type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
-          codec_type: auto
-          stat_prefix: ingress_http
-          route_config:
-            name: local_route
-            virtual_hosts:
-            - name: service
-              domains:
-              - &quot;*&quot;
-              routes:
-              - match:
-                  prefix: &quot;/&quot;
-                route:
-                  cluster: local_service
-          http_filters:
-          - name: envoy.router
-            typed_config: {}
-  clusters:
-  - name: local_service
-    connect_timeout: 0.25s
-    type: strict_dns
-    lb_policy: round_robin
-    load_assignment:
-      cluster_name: local_service
-      endpoints:
-      - lb_endpoints:
-        - endpoint:
-            address:
-              socket_address:
-                address: 0.0.0.0
-                port_value: 8080
-admin:
-  access_log_path: &quot;/dev/null&quot;
-  address:
-    socket_address:
-      address: 0.0.0.0
-      port_value: 8081
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这里的选项非常之多，我这里暂且不做详细的解释，在下面我阅读了envoy的官方文档，并将其中涉及到的重要选项列举一下。&lt;/p&gt;
-
-&lt;p&gt;这里我只大概说一下文件所表达的意思。首先，&lt;code class=&quot;highlighter-rouge&quot;&gt;envoy&lt;/code&gt;根据该文件创建了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;监听在端口号80上,&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;则监听在在端口号8080上。&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;根据过滤器的配置过滤、转发请求。这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;将前缀为&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;的所有请求转发给名字叫做&lt;code class=&quot;highlighter-rouge&quot;&gt;local_service&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;,由&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;再给出回应。&lt;/p&gt;
-
-&lt;p&gt;这里尤其要注意的是端口号。此处&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;的监听端口号是容器内部的端口号。因此在做端口映射时，主机端口应当映射到该端口，也因此&lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;中的文件中的端口相关选项做了修改。&lt;code class=&quot;highlighter-rouge&quot;&gt;cluster&lt;/code&gt;的端口号应当是业务逻辑，即app中的监听端口号。&lt;/p&gt;
-
-&lt;h2 id=&quot;相关envoy选项含义&quot;&gt;相关envoy选项含义&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* `static_resources`: 静态指定的资源  
-  * `listeners`: 静态的监听者
-    * `address`: 监听者监听的地址。通常，该地址应当是唯一的  
-    * `filter_chains`: 一系列用于该监听者的过滤器链  
-      * `filters`: 过滤器列表。注意：如果过滤器列表是空的，则连接默认将会关闭  
-        * `name`: 要实例化的滤波器的名字。该名字必须匹配一个支持的滤波器。内置的滤波器包括：  
-          * `envoy.echo`  
-          * `envoy.http_connection_manager`  
-          * `envoy.tcp_proxy`
-        还有一些，这里不列出了  
-        * `config`与`typed_config`: 与选定的过滤器名字相关，下面以`envoy.http_connection_manager`为例  
-          * `codec_type`: 编码译码类型  
-          * `stat_prefix`: 发送统计信息时人可阅读的前缀。  
-          * `route_config`: `connection_manager`的路由表。  
-            * `name`: 路由配置的名字。  
-            * `virtual_hosts`: 组成路由表的虚拟主机列表  
-              * `name`: 虚拟主机的逻辑名字。当发送特定的统计信息时被使用，但和路由无关  
-              * `domains`: 将匹配到该虚拟主机的域名。也可以使用通配符匹配  
-              * `routes`: 将被匹配的路由列表。第一个匹配的路由将被使用  
-                * `match`: 路由匹配参数  
-                * `route`: 将请求路由给上游的`cluster`  
-                  * `cluster`: 指定请求将要传给哪个上游`cluster`  
-          * `http_filters`: http的过滤器列表  
-            * `name`: 要实例的过滤器名字。一些特定的过滤器包括  
-              * `envoy.buffer`  
-              * `envoy.gzip`  
-              * `envoy.rate_limit`  
-              * `envoy.router`  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
-<summary>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。</summary>
-</entry>
-<entry>
-<title>Envoy学习之旅(二)</title>
-<link href="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/" rel="alternate" type="text/html" title="Envoy学习之旅(二)" />
-<published>2019-06-09T00:00:00+08:00</published>
-<updated>2019-06-09T00:00:00+08:00</updated>
-<id>http://localhost:4000/envoy学习之旅(二)</id>
-<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%8C)/">&lt;p&gt;在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。&lt;/p&gt;
-
-&lt;h2 id=&quot;docker-compose内容说明&quot;&gt;docker compose内容说明&lt;/h2&gt;
-&lt;p&gt;在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。&lt;/p&gt;
-
-&lt;p&gt;docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;depends_on&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;networks&lt;/code&gt;等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;key&amp;gt;: &amp;lt;option&amp;gt;: &amp;lt;value&amp;gt;&lt;/code&gt;这样的。&lt;/p&gt;
-
-&lt;h3 id=&quot;service-configuration-reference&quot;&gt;Service configuration reference&lt;/h3&gt;
-&lt;p&gt;Service定义(&lt;code class=&quot;highlighter-rouge&quot;&gt;services:&lt;/code&gt;)包含了每个为了该服务启动的容器的配置，很像给&lt;code class=&quot;highlighter-rouge&quot;&gt;docker container create&lt;/code&gt;传递参数。与此类似的，网络和卷的定义和&lt;code class=&quot;highlighter-rouge&quot;&gt;docker network create&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;docker volume create&lt;/code&gt;很像。&lt;/p&gt;
-
-&lt;h4 id=&quot;build&quot;&gt;build&lt;/h4&gt;
-&lt;p&gt;包含在构建时的配置选项。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt;可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &quot;3.7&quot;
-services:
-  webapp:
-    build:
-      context: ./dir
-      dockerfile: Dockerfile-alternate
-      args:
-	buildno: 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;context&quot;&gt;CONTEXT&lt;/h5&gt;
-&lt;p&gt;可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url&lt;/p&gt;
-
-&lt;h5 id=&quot;dockerfile&quot;&gt;DOCKERFILE&lt;/h5&gt;
-&lt;p&gt;可选的Dockerfile&lt;/p&gt;
-
-&lt;h4 id=&quot;expose&quot;&gt;expose&lt;/h4&gt;
-&lt;p&gt;暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。&lt;/p&gt;
-
-&lt;p&gt;这里指的是app使用的端口号，而不是docker容器对外暴露的端口号&lt;/p&gt;
-
-&lt;h4 id=&quot;networks&quot;&gt;networks&lt;/h4&gt;
-&lt;p&gt;要加入的网络&lt;/p&gt;
-
-&lt;h5 id=&quot;aliases&quot;&gt;ALIASES&lt;/h5&gt;
-&lt;p&gt;在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。&lt;/p&gt;
-
-&lt;p&gt;由于&lt;code class=&quot;highlighter-rouge&quot;&gt;aliases&lt;/code&gt;是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。&lt;/p&gt;
-
-&lt;p&gt;一种通用格式是这样的：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;services:
-  some-service:
-    networks:
-      some-network:
-        aliases:
-         - alias1
-	 - alias3
-      other-network:
-        aliases:
-         - alias2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;ports&quot;&gt;ports&lt;/h4&gt;
-&lt;p&gt;暴露端口&lt;/p&gt;
-
-&lt;h5 id=&quot;short-syntax&quot;&gt;SHORT SYNTAX&lt;/h5&gt;
-&lt;p&gt;指定两个端口号(&lt;code class=&quot;highlighter-rouge&quot;&gt;HOST:CONTAINER&lt;/code&gt;),或者只有容器端口(一个短暂的host端口将被选择)&lt;/p&gt;
-
-&lt;p&gt;后面的是容器内部的端口，即app监听端口，前面的是暴露端口，即我们访问docker容器的端口&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ports:
- - &quot;3000&quot;
- - &quot;3000-3005&quot;
- - &quot;8000:8000&quot;
- - &quot;9090-9091:8080-8081&quot;
- - &quot;49100:22&quot;
- - &quot;127.0.0.1:8001:8001&quot;
- - &quot;127.0.0.1:5000-5010:5000-5010&quot;
- - &quot;6060:6060/udp&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;long-syntax&quot;&gt;LONG SYNTAX&lt;/h5&gt;
-&lt;p&gt;较长形式的语法允许对不能被短语法形式表现的配置域。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt;:容器内部的端口&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;published&lt;/code&gt;:公开暴露的端口&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protocol&lt;/code&gt;:端口的协议(&lt;code class=&quot;highlighter-rouge&quot;&gt;tcp&lt;/code&gt;或是&lt;code class=&quot;highlighter-rouge&quot;&gt;udp&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt;: 在每个节点上都发布一个host端口则是&lt;code class=&quot;highlighter-rouge&quot;&gt;host&lt;/code&gt;,在需要负载均衡的swarm模式下的端口则是&lt;code class=&quot;highlighter-rouge&quot;&gt;ingress&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ports:
-  - target: 80
-    published: 8080
-    protocol: tcp
-    mode: host
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;修改端口&quot;&gt;修改端口&lt;/h2&gt;
-&lt;p&gt;app监听端口仍为8080，将容器暴露端口改为8000，docker-compose文件的格式为&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expose:
-- &quot;8080&quot;
-ports:
-- &quot;8000:8080&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这样，就可以通过8000端口号访问服务了。&lt;/p&gt;
-
-&lt;p&gt;中间由于对端口的配置理解有误，自己尝试了各种端口号配置，记录如下。app的监听端口号不变是8080。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;expose&lt;/th&gt;
-      &lt;th&gt;ports&lt;/th&gt;
-      &lt;th&gt;访问&lt;/th&gt;
-      &lt;th&gt;结果&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8000”&lt;/td&gt;
-      &lt;td&gt;“8000:8000”&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8000”&lt;/td&gt;
-      &lt;td&gt;“8000:8080”&lt;/td&gt;
-      &lt;td&gt;8080&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8000”&lt;/td&gt;
-      &lt;td&gt;“8000:8080”&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;成功&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8000”&lt;/td&gt;
-      &lt;td&gt;“8080:8000”&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8000”&lt;/td&gt;
-      &lt;td&gt;“8080:8000”&lt;/td&gt;
-      &lt;td&gt;8080&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8080”&lt;/td&gt;
-      &lt;td&gt;“8000:8080”&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;成功&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8080”&lt;/td&gt;
-      &lt;td&gt;“8000:8080”&lt;/td&gt;
-      &lt;td&gt;8080&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8080”&lt;/td&gt;
-      &lt;td&gt;“8080:8000”&lt;/td&gt;
-      &lt;td&gt;8000&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;“8080”&lt;/td&gt;
-      &lt;td&gt;“8080:8000”&lt;/td&gt;
-      &lt;td&gt;8080&lt;/td&gt;
-      &lt;td&gt;失败&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;从上面表格可以看出，&lt;code class=&quot;highlighter-rouge&quot;&gt;expose&lt;/code&gt;的作用感觉不大，&lt;code class=&quot;highlighter-rouge&quot;&gt;ports&lt;/code&gt;中前面的端口可以自己配置，访问时需访问该端口。后面的端口需要和app监听端口保持一致，否则访问也会失败。&lt;/p&gt;
-</content>
-<summary>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。</summary>
-</entry>
-<entry>
-<title>Arts Weeknine High Performance Server(一)</title>
-<link href="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/" rel="alternate" type="text/html" title="Arts Weeknine High Performance Server(一)" />
-<published>2019-06-09T00:00:00+08:00</published>
-<updated>2019-06-09T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(一)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekNIne-High-Performance-Server(%E4%B8%80)/">&lt;p&gt;这篇英文文章讲的是高性能服务器设计的一些要点。&lt;br /&gt;
-原文链接为&lt;img src=&quot;http://pl.atyp.us/content/tech/servers.html&quot; alt=&quot;High-Performance Server Architecture&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;data-copies&quot;&gt;Data Copies&lt;/h2&gt;
-&lt;p&gt;数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。&lt;/p&gt;
-
-&lt;p&gt;一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;一个指针以及缓冲区的长度&lt;/li&gt;
-  &lt;li&gt;一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度&lt;/li&gt;
-  &lt;li&gt;指向其他缓冲区的前向以及后向指针&lt;/li&gt;
-  &lt;li&gt;引用计数&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。&lt;/p&gt;
-
-&lt;p&gt;作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。&lt;/p&gt;
-
-&lt;p&gt;作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。&lt;/p&gt;
-
-&lt;h2 id=&quot;context-switches&quot;&gt;Context Switches&lt;/h2&gt;
-&lt;p&gt;当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。&lt;/p&gt;
-
-&lt;p&gt;造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。&lt;/p&gt;
-
-&lt;p&gt;通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。&lt;/p&gt;
-
-&lt;p&gt;最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个&lt;code class=&quot;highlighter-rouge&quot;&gt;listeners&lt;/code&gt;监听并放入队列，而&lt;code class=&quot;highlighter-rouge&quot;&gt;worker threads&lt;/code&gt;从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;能变成&lt;code class=&quot;highlighter-rouge&quot;&gt;worker&lt;/code&gt;再变回&lt;code class=&quot;highlighter-rouge&quot;&gt;listener&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。&lt;/p&gt;
-
-&lt;p&gt;作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;请求需要传给下一个阶段(ID或是指针作为返回值)&lt;/li&gt;
-  &lt;li&gt;请求已经被完成(特殊的”请求完成”返回值)&lt;/li&gt;
-  &lt;li&gt;请求被阻塞(特殊的”请求阻塞”返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续&lt;br /&gt;
-在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;作者最后对SEDA发表了自己的看法。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理&lt;/li&gt;
-  &lt;li&gt;学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-<summary>这篇英文文章讲的是高性能服务器设计的一些要点。原文链接为</summary>
 </entry>
 </feed>
