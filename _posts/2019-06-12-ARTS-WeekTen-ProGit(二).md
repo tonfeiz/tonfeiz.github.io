@@ -34,7 +34,7 @@ $ git commit -m "initial project version"
 每个工作目录中的文件有两个状态：*tracked*或是*untracked*。*tracked*的文件是在上一个快照中的文件；它们可以是未修改的(`unmodified`)，修改的(`modified`)和暂存的(`staged`)。  
 
 几个状态之间的转移图如图所示。  
-![文件状态生命周期](./git_status_change.png)
+![文件状态生命周期](../assets/images/git_status_change.png)
 
 #### 检查文件状态
 `git status`可用来检查文件的状态。  

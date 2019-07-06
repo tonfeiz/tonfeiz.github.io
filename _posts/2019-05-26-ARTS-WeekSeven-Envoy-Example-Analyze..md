@@ -6,7 +6,8 @@ layout: posts
 
 ## 目录结构
 首先看下目录结构，如下所示  
-![目录结构](./directory_structure.png)
+
+![ ](../assets/images/directory_structure.png)
 
 大体上目录中的文件可以分为四个部分：  
 * docker compose: docker-compose.yaml  

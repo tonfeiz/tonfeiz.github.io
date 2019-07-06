@@ -3,13 +3,107 @@
 <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
 <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
 <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-<updated>2019-07-06T11:33:38+08:00</updated>
+<updated>2019-07-06T16:11:17+08:00</updated>
 <id>http://localhost:4000/</id>
 <title>Tonfeiz</title>
 <subtitle></subtitle>
 <author>
 <name>Tonfeiz</name>
 </author>
+<entry>
+<title>ATS Week Thirteen ProGit(五)</title>
+<link href="http://localhost:4000/ATS-WeekThirteen-ProGit(%E4%BA%94)/" rel="alternate" type="text/html" title="ATS Week Thirteen ProGit(五)" />
+<published>2019-07-06T00:00:00+08:00</published>
+<updated>2019-07-06T00:00:00+08:00</updated>
+<id>http://localhost:4000/ATS-WeekThirteen-ProGit(五)</id>
+<content type="html" xml:base="http://localhost:4000/ATS-WeekThirteen-ProGit(%E4%BA%94)/">&lt;p&gt;本周把有关分支的部分结束。&lt;/p&gt;
+
+&lt;h2 id=&quot;branch-management&quot;&gt;Branch Management&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch -v&lt;/code&gt;可以显示所有分支以及所有分支的最后一次提交的信息。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch --merged&lt;/code&gt;可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch --no-merged&lt;/code&gt;会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。&lt;/p&gt;
+
+&lt;h2 id=&quot;branching-workflows&quot;&gt;Branching workflows&lt;/h2&gt;
+&lt;h3 id=&quot;long-running-branches&quot;&gt;Long-Running Branches&lt;/h3&gt;
+&lt;p&gt;一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。&lt;/p&gt;
+
+&lt;p&gt;可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。&lt;/p&gt;
+
+&lt;h3 id=&quot;topic-branches&quot;&gt;Topic Branches&lt;/h3&gt;
+&lt;p&gt;另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。&lt;/p&gt;
+
+&lt;h2 id=&quot;remote-branches&quot;&gt;Remote Branches&lt;/h2&gt;
+&lt;p&gt;远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。&lt;/p&gt;
+
+&lt;p&gt;远程跟踪分支的名字是&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;&lt;/code&gt;,例如&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;origin&amp;gt;/&amp;lt;master&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;下面还是用例子来说明。例如在你的网络&lt;code class=&quot;highlighter-rouge&quot;&gt;git.ourcompany.com&lt;/code&gt;中有一个git server。你从它&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;后，Git会自动为你将该server取名为&lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;，将它的数据拉下来，创造一个指向它的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支的指针并将其命名为&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/master&lt;/code&gt;。此外，Git还会给你本地的&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/figure30.png&quot; alt=&quot; &quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/figure31.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;假设你进行了fetch(&lt;code class=&quot;highlighter-rouge&quot;&gt;git fetch origin&lt;/code&gt;),则示意图如下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/figure32.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pushing&quot;&gt;Pushing&lt;/h3&gt;
+&lt;p&gt;可以利用&lt;code class=&quot;highlighter-rouge&quot;&gt;git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;&lt;/code&gt;命令推送自己的代码。例如，你有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;serverfix&lt;/code&gt;分支要推送，则命令为&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin serverfix&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;这里Git将该命令进行了展开。它会把&lt;code class=&quot;highlighter-rouge&quot;&gt;serverfix&lt;/code&gt;分支名扩展为&lt;code class=&quot;highlighter-rouge&quot;&gt;refs/heads/serverfix:refs/heads/serverfix&lt;/code&gt;。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin serverfix:serverfix&lt;/code&gt;。如果本地分支与远程分支不同也可以，命令为&lt;code class=&quot;highlighter-rouge&quot;&gt;git push origin &amp;lt;local_branch&amp;gt;:&amp;lt;remote_branch&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;要注意的是如果你&lt;code class=&quot;highlighter-rouge&quot;&gt;git fetch &amp;lt;remote&amp;gt;&lt;/code&gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;&lt;/code&gt;的不可修改的指针而已。你可以利用&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;把该分支合并到自己的分支，也可以利用&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -b &amp;lt;local_branch&amp;gt; &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;&lt;/code&gt;来获得本地的对应分支。&lt;/p&gt;
+
+&lt;h3 id=&quot;tracking-branches&quot;&gt;Tracking Branches&lt;/h3&gt;
+&lt;p&gt;从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入&lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt;，Git会自动知道从哪个server fetch以及要合并到哪个分支。&lt;/p&gt;
+
+&lt;p&gt;当你克隆一个库，它会自动创建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支跟踪&lt;code class=&quot;highlighter-rouge&quot;&gt;origin/master&lt;/code&gt;。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -b &amp;lt;branch&amp;gt; &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;-vv&lt;/code&gt;选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。&lt;/p&gt;
+
+&lt;p&gt;要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。&lt;/p&gt;
+
+&lt;h3 id=&quot;deleting-remote-branches&quot;&gt;Deleting Remote Branches&lt;/h3&gt;
+&lt;p&gt;可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;--delete&lt;/code&gt;选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。&lt;/p&gt;
+
+&lt;h2 id=&quot;rebasing&quot;&gt;Rebasing&lt;/h2&gt;
+&lt;h3 id=&quot;the-basic-rebase&quot;&gt;The Basic Rebase&lt;/h3&gt;
+&lt;p&gt;Rebase是Git中另一种将变化从一个分支集成到另一个分支的方法（还有一个是merge）。&lt;/p&gt;
+
+&lt;p&gt;例如你有两个分支&lt;code class=&quot;highlighter-rouge&quot;&gt;experiment&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;，你想将&lt;code class=&quot;highlighter-rouge&quot;&gt;experiment&lt;/code&gt;分支合并到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;中去。你可以输入以下命令。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout experiment
+$ git rebase master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;该操作两个分支的公共祖先，得到你所在分支的每个commit引入的变化，将这些变化保存到临时文件中，将当前分支重置为你rebase到的分支的相同的commit，最后依次应用这些变化。&lt;/p&gt;
+
+&lt;p&gt;此时，你就可以回到&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;分支并进行fast-forward merge。&lt;/p&gt;
+
+&lt;p&gt;两种集成方式的结果是一样的，但是&lt;code class=&quot;highlighter-rouge&quot;&gt;rebase&lt;/code&gt;能提供更干净的历史。即便是并行的工作，使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;rebase&lt;/code&gt;之后看上去也是串行的。&lt;/p&gt;
+
+&lt;h3 id=&quot;the-perils-of-rebasing&quot;&gt;The Perils of Rebasing&lt;/h3&gt;
+&lt;p&gt;Rebase的使用原则是：&lt;br /&gt;
+&lt;strong&gt;不要rebase在你的仓库之外的、人们也许会基于它做工作的commit&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;当你rebase时，你在抛弃已经存在的commits并创建新的但不同的commits。如果你push了一些commits，其他人pull了这些东西并基于它们开展了一些工作，然后你用&lt;code class=&quot;highlighter-rouge&quot;&gt;git rebase&lt;/code&gt;重写了这些commits然后重新push了它们，那么你的协同者不得不重写merge他们的工作，而当你又将他们的工作拉下时，事情会变得更复杂。&lt;/p&gt;
+
+&lt;p&gt;我的理解是，如果你把commit push了，那么就不要再rebase这些commit了。本地的commit则可以rebase。&lt;/p&gt;
+
+&lt;h3 id=&quot;rebase-vs-merge&quot;&gt;Rebase vs. Merge&lt;/h3&gt;
+&lt;p&gt;Rebase和Merge的使用要根据对历史的不同解读来。&lt;/p&gt;
+
+&lt;p&gt;一种对历史的解读认为历史就是对于发生的事情的记录，改变历史则记录它就没有意义了。&lt;/p&gt;
+
+&lt;p&gt;还有一种对历史的解读则认为历史是你的工程是如何构建的过程的故事。为了其他人或者后来者能更清楚的看到工程的发展流程，需要对历史进行一定的改进。&lt;/p&gt;
+
+&lt;p&gt;不管哪一种都有各自的道理。Git支持两种观点，具体实行则要看具体的人、具体的工程。&lt;/p&gt;
+
+</content>
+<summary>本周把有关分支的部分结束。</summary>
+</entry>
 <entry>
 <title>ARTS Week Thirteen Leetcode868 BinaryGap</title>
 <link href="http://localhost:4000/ARTS-WeekThriteen-Leetcode868-BinaryGap/" rel="alternate" type="text/html" title="ARTS Week Thirteen Leetcode868 BinaryGap" />
@@ -70,7 +164,7 @@ public:
 <published>2019-06-28T00:00:00+08:00</published>
 <updated>2019-06-28T00:00:00+08:00</updated>
 <id>http://localhost:4000/envoy学习之旅(五)</id>
-<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%94)/">&lt;p&gt;本次继续把Envoy的文档阅读完。&lt;/p&gt;
+<content type="html" xml:base="http://localhost:4000/envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85(%E4%BA%94)/">&lt;p&gt;本次继续阅读Envoy的文档。&lt;/p&gt;
 
 &lt;h3 id=&quot;health-checking&quot;&gt;Health checking&lt;/h3&gt;
 &lt;p&gt;主动健康检查可以在每个上游cluster上配置。Envoy支持三种不同类型的健康检查：&lt;/p&gt;
@@ -192,7 +286,7 @@ public:
   &lt;li&gt;&lt;strong&gt;Cluster maximum active retries&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-<summary>本次继续把Envoy的文档阅读完。</summary>
+<summary>本次继续阅读Envoy的文档。</summary>
 </entry>
 <entry>
 <title>Data Plane &amp;amp; Control Plane</title>
@@ -790,231 +884,5 @@ public:
 
 </content>
 <summary>本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下。</summary>
-</entry>
-<entry>
-<title>Arts Weekten Progit(二)</title>
-<link href="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/" rel="alternate" type="text/html" title="Arts Weekten Progit(二)" />
-<published>2019-06-12T00:00:00+08:00</published>
-<updated>2019-06-12T00:00:00+08:00</updated>
-<id>http://localhost:4000/ARTS-WeekTen-ProGit(二)</id>
-<content type="html" xml:base="http://localhost:4000/ARTS-WeekTen-ProGit(%E4%BA%8C)/">&lt;p&gt;本章讲述Git的基础知识。&lt;/p&gt;
-
-&lt;h2 id=&quot;git基础&quot;&gt;Git基础&lt;/h2&gt;
-&lt;h3 id=&quot;获取git-repo&quot;&gt;获取Git Repo&lt;/h3&gt;
-&lt;p&gt;有两种获取Git Repo的方法&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;将本地未纳入版本控制的目录转变为Git repo&lt;/li&gt;
-  &lt;li&gt;从其他地方克隆Git repo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;在已存在的目录中初始化repo&quot;&gt;在已存在的目录中初始化Repo&lt;/h4&gt;
-&lt;p&gt;在已存在的目录中输入
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git init&lt;/code&gt;&lt;br /&gt;
-即可。&lt;/p&gt;
-
-&lt;p&gt;该命令会在目录中创建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。&lt;/p&gt;
-
-&lt;p&gt;如果想要开始对已存在的文件进行版本控制，可以输入下面命令&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add *.c
-$ git add LICENSE
-$ git commit -m &quot;initial project version&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;克隆已存在的repo&quot;&gt;克隆已存在的Repo&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt;可以用来克隆已存在的文件。与其他版本控制系统常用的&lt;code class=&quot;highlighter-rouge&quot;&gt;checkout&lt;/code&gt;不同，这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。&lt;/p&gt;
-
-&lt;p&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone &amp;lt;url&amp;gt;&lt;/code&gt;可以克隆repo。例如：&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git clone https://github.com/libgit2/libgit2&lt;/code&gt;&lt;br /&gt;
-创建了一个名叫&lt;code class=&quot;highlighter-rouge&quot;&gt;libgit2&lt;/code&gt;的目录，在其中初始化了&lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt;目录，将该库的数据都拉到其中，并签出(&lt;code class=&quot;highlighter-rouge&quot;&gt;checkout&lt;/code&gt;)了最新版本的文件。&lt;/p&gt;
-
-&lt;h3 id=&quot;记录repo的变化&quot;&gt;记录Repo的变化&lt;/h3&gt;
-&lt;p&gt;每个工作目录中的文件有两个状态：&lt;em&gt;tracked&lt;/em&gt;或是&lt;em&gt;untracked&lt;/em&gt;。&lt;em&gt;tracked&lt;/em&gt;的文件是在上一个快照中的文件；它们可以是未修改的(&lt;code class=&quot;highlighter-rouge&quot;&gt;unmodified&lt;/code&gt;)，修改的(&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;)和暂存的(&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;)。&lt;/p&gt;
-
-&lt;p&gt;几个状态之间的转移图如图所示。&lt;br /&gt;
-&lt;img src=&quot;./git_status_change.png&quot; alt=&quot;文件状态生命周期&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;检查文件状态&quot;&gt;检查文件状态&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;可用来检查文件的状态。&lt;/p&gt;
-
-&lt;p&gt;例如，假设刚刚&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;了一个repo，则此时使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令一般显示如下&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-nothing to commit, working directory clean
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这表明工作目录是干净的，即你所跟踪(&lt;code class=&quot;highlighter-rouge&quot;&gt;track&lt;/code&gt;)的文件都没有被修改&lt;/p&gt;
-
-&lt;p&gt;如果添加一个&lt;code class=&quot;highlighter-rouge&quot;&gt;README&lt;/code&gt;文件，则它是一个&lt;code class=&quot;highlighter-rouge&quot;&gt;untracked&lt;/code&gt;文件，目录的状态就发生了变化&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'My Project' &amp;gt; README
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Untracked files:
-(use &quot;git add &amp;lt;file&amp;gt;...&quot; to include in what will be committed)
-README
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;untracked&lt;/code&gt;文件表示该文件没有出现在上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的快照中&lt;/p&gt;
-
-&lt;h4 id=&quot;跟踪新文件&quot;&gt;跟踪新文件&lt;/h4&gt;
-&lt;p&gt;可通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令跟踪新文件。例如&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git add README&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;此时运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令，则输出为&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
-  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-
-    new file:  README
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;现在该文件就处于暂存(&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;)状态了。该状态下对文件的改变等待被&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;暂存修改后文件&quot;&gt;暂存修改后文件&lt;/h4&gt;
-&lt;p&gt;如果修改了一个之前跟踪的文件，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;，然后运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;,则输出为&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
-  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    new file:  README
-Changes not staged for commit:
-  (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
-  (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
-    modified:  CONTRIBUTING.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件被修改了，但还没有位于暂存区中，需要通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令将其加入暂存区。&lt;/p&gt;
-
-&lt;p&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令后状态如下&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add CONTRIBUTING.md
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
-  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    new file: README
-    modified: CONTRIBUTING.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;如果此时调用&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则两个文件都会被加入快照中。如果此时你修改了&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件，则&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令的输出会是&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim CONTRIBUTING.md
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
-  (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    new file: README
-    modified: CONTRIBUTING.md
-
-Changes not staged for commit:
- (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
- (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
-    modified: CONTRIBUTING.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;既是&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;又是&lt;code class=&quot;highlighter-rouge&quot;&gt;unstaged&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;的文件是上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt;加进去的，而后面修改内容的文件处于&lt;code class=&quot;highlighter-rouge&quot;&gt;unstaged&lt;/code&gt;状态。如果现在&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;，则快照中的文件仍然是修改之前的，即&lt;code class=&quot;highlighter-rouge&quot;&gt;staged&lt;/code&gt;状态的文件。&lt;/p&gt;
-
-&lt;h4 id=&quot;忽略文件&quot;&gt;忽略文件&lt;/h4&gt;
-&lt;p&gt;Git可通过在&lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;文件中设置对应的语法规则来使得Git在添加、提交等操作时忽略一些文件，例如程序构建后的文件、构建过程中的目标文件、临时文件等。其中的语法这里不再详细介绍，当用到时去查看即可。&lt;/p&gt;
-
-&lt;h4 id=&quot;观看暂存以及未暂存的改变&quot;&gt;观看暂存以及未暂存的改变&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;命令的输出太模糊、宽泛了——你知道文件的状态，但不知道文件的内容发生了什么变化。&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;命令可用于观看这些变化。&lt;/p&gt;
-
-&lt;p&gt;例如，假设你编辑并且暂存了&lt;code class=&quot;highlighter-rouge&quot;&gt;README&lt;/code&gt;文件，编辑了&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;文件但没有暂存它，则&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;的输出是&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
- (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    modified: README
-Changes not staged for commit:
- (use &quot;git add &amp;lt;file&amp;gt;...&quot; to update what will be committed)
- (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
-    modified: CONTRIBUTING.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;为了观看改变的但是没有暂存的内容，直接输入&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git diff
-diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
-index 8ebb991..643e24f 100644
---- a/CONTRIBUTING.md
-+++ b/CONTRIBUTING.md
-@@ -65,7 +65,8 @@ branch directly, things can get messy.
- Please include a nice description of your changes when you submit your PR;if we have to read the whole diff to figure out why you're contributing in the first place, you're less likely to get feedback and have your change
--merged in.
-+merged in. Also, split your changes into comprehensive +chunks if your patch is longer than a dozen lines.
-
-If you are starting to work on a particular area, feel free to submit a PR that highlights your work in progress (and note in the PR title that it's
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;该命令比较工作目录和暂存区的差异。因此结果就是告诉你你所改变的没有暂存的内容。&lt;/p&gt;
-
-&lt;p&gt;如果想看已经暂存的(即将要进入下一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;中的)内容，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff --staged&lt;/code&gt;。该命令比较暂存区和上一次&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的内容的变化&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git diff --staged
-diff --git a/README b/README
-new file mode 100644
-index 0000000..03902a1
---- /dev/null
-+++ b/README
-@@ -0,0 +1 @@
-+My Project
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;提交发生的改变&quot;&gt;提交发生的改变&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;命令可以将暂存区中的内容加入到快照当中。&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令会打开默认编辑器让你键入&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;的相关信息。也可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &amp;lt;message&amp;gt;&lt;/code&gt;来输入信息。&lt;/p&gt;
-
-&lt;p&gt;记住，只有暂存区的内容会加入快照当中，不在暂存区的修改都会是&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;状态。&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;命令的本质是创建一个暂存区的快照。&lt;/p&gt;
-
-&lt;h4 id=&quot;跳过暂存区&quot;&gt;跳过暂存区&lt;/h4&gt;
-&lt;p&gt;通过给&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令传递&lt;code class=&quot;highlighter-rouge&quot;&gt;-a&lt;/code&gt;选项可以使其跳过暂存阶段。该选项会将所有跟踪的改变内容的文件暂存(注意：未跟踪的文件不会被暂存！)&lt;/p&gt;
-
-&lt;h4 id=&quot;删除文件&quot;&gt;删除文件&lt;/h4&gt;
-&lt;p&gt;为了从Git中删除文件，需要删除跟踪着的文件然后&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;会删除跟踪着的文件。工作目录中的对应文件也会被删除。&lt;/p&gt;
-
-&lt;p&gt;如果只是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;rm&lt;/code&gt;命令删除，则该改变使得Git进入下面的状态&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rm PROJECTS.md
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
- (use &quot;git add/rm &amp;lt;file&amp;gt;...&quot; to update what will be committed)
- (use &quot;git checkout -- &amp;lt;file&amp;gt;...&quot; to discard changes in working directory)
-    deleted: PROJECTS.md
-no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;如果使用&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;命令，则对应的文件会从暂存区中删除&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git rm PROJECTS.md
-rm 'PROJECTS.md'
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
- (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    deleted: PROJECTS.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;接着&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;即可。如果对文件进行了修改(处于&lt;code class=&quot;highlighter-rouge&quot;&gt;modified&lt;/code&gt;状态，未加入暂存区)或已经将它加入暂存区(没有&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;)，则需要加上&lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;选项强制删除。&lt;/p&gt;
-
-&lt;p&gt;有时候或许只想从暂存区中删除文件，而希望在硬盘上保留它。也就是说，希望Git不再跟踪该文件，则可以给&lt;code class=&quot;highlighter-rouge&quot;&gt;git rm&lt;/code&gt;命令加上&lt;code class=&quot;highlighter-rouge&quot;&gt;--cached&lt;/code&gt;选项。&lt;/p&gt;
-
-&lt;h4 id=&quot;移动文件&quot;&gt;移动文件&lt;/h4&gt;
-&lt;p&gt;Git不显式跟踪文件的移动。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git mv README.md README
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes to be committed:
- (use &quot;git reset HEAD &amp;lt;file&amp;gt;...&quot; to unstage)
-    renamed: README.md -&amp;gt; README
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;上面的命令和下面的命令是等价的&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mv README.md README
-$ git rm README.md
-$ git add README
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
-<summary>本章讲述Git的基础知识。</summary>
 </entry>
 </feed>
