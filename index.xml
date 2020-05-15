@@ -20,5 +20,16 @@
       <description>adsfdaf</description>
     </item>
     
+    <item>
+      <title>Leetcode941-Valid Mountain Array</title>
+      <link>http://example.org/posts/2019-04-10-arts-weekone-leetcode941/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-04-10-arts-weekone-leetcode941/</guid>
+      <description>Given an array A of integers, return true if and only if it is a valid mountain array.
+Recall that A is a mountain array if and only if:
+ A.length &amp;gt;= 3 There exists some i with 0 &amp;lt; i &amp;lt; A.length - 1 such that:  A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i] A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]     这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。</description>
+    </item>
+    
   </channel>
 </rss>
