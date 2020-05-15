@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Dev/prod parity
+Logs
+Admin processes
+十、开发环境/生产环境相同 保持开发环境、模拟环境和生产环境尽可能相似
+历史上，在开发环境和生产环境之间有三道鸿沟，分别位：
+ 时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作 人事：开发者写代码，运维工程师部署它 工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux  twelve-factor app需要使上面三者尽可能小来便于持续部署。
+以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。
+twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。
+对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务
+十一、日志 将日志当做事件流对待
+日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。
+一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入stdout中。
+在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。
+app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能
+管理进程 将管理进程作为一次性的、不是经常开关的进程
+开发者经常希望有一个一次性的管理进程，例如：
+ 运行数据库迁移 运行一个控制台 运行上传到app repo中的一次性脚本  一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/twelvefactor-4/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Dev/prod parity
+Logs
+Admin processes
+十、开发环境/生产环境相同 保持开发环境、模拟环境和生产环境尽可能相似
+历史上，在开发环境和生产环境之间有三道鸿沟，分别位：
+ 时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作 人事：开发者写代码，运维工程师部署它 工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux  twelve-factor app需要使上面三者尽可能小来便于持续部署。
+以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。
+twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。
+对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务
+十一、日志 将日志当做事件流对待
+日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。
+一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入stdout中。
+在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。
+app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能
+管理进程 将管理进程作为一次性的、不是经常开关的进程
+开发者经常希望有一个一次性的管理进程，例如：
+ 运行数据库迁移 运行一个控制台 运行上传到app repo中的一次性脚本  一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。">
+
+<meta itemprop="wordCount" content="34">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Dev/prod parity
+Logs
+Admin processes
+十、开发环境/生产环境相同 保持开发环境、模拟环境和生产环境尽可能相似
+历史上，在开发环境和生产环境之间有三道鸿沟，分别位：
+ 时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作 人事：开发者写代码，运维工程师部署它 工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux  twelve-factor app需要使上面三者尽可能小来便于持续部署。
+以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。
+twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。
+对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务
+十一、日志 将日志当做事件流对待
+日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。
+一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入stdout中。
+在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。
+app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能
+管理进程 将管理进程作为一次性的、不是经常开关的进程
+开发者经常希望有一个一次性的管理进程，例如：
+ 运行数据库迁移 运行一个控制台 运行上传到app repo中的一次性脚本  一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/twelvefactor-4/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/twelvefactor-4/&amp;text=" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/twelvefactor-4/&amp;title=" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Dev/prod parity<br>
+Logs<br>
+Admin processes</p>
+<h2 id="十开发环境生产环境相同">十、开发环境/生产环境相同</h2>
+<p>保持开发环境、模拟环境和生产环境尽可能相似</p>
+<p>历史上，在开发环境和生产环境之间有三道鸿沟，分别位：</p>
+<ul>
+<li>时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作</li>
+<li>人事：开发者写代码，运维工程师部署它</li>
+<li>工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux</li>
+</ul>
+<p>twelve-factor app需要使上面三者尽可能小来便于持续部署。</p>
+<p>以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。</p>
+<p>twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。</p>
+<p>对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务</p>
+<h2 id="十一日志">十一、日志</h2>
+<p>将日志当做事件流对待</p>
+<p>日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。</p>
+<p>一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入<code>stdout</code>中。</p>
+<p>在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。</p>
+<p>app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能</p>
+<h2 id="管理进程">管理进程</h2>
+<p>将管理进程作为一次性的、不是经常开关的进程</p>
+<p>开发者经常希望有一个一次性的管理进程，例如：</p>
+<ul>
+<li>运行数据库迁移</li>
+<li>运行一个控制台</li>
+<li>运行上传到app repo中的一次性脚本</li>
+</ul>
+<p>一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -34,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://tonfeiz.github.io/posts/" />
-<meta property="og:updated_time" content="2020-05-15T23:58:29+08:00" />
+<meta property="og:updated_time" content="2019-06-02T00:00:00+00:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -96,12 +96,21 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/my-first-post/" class="link black dim">
-        My First Post
+      <a href="http://tonfeiz.github.io/posts/apt/" class="link black dim">
+        Apt
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      adsfdaf
+      这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
+一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
+./configure -&gt; make -&gt; make install
+其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
+包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
+以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
+apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
+二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
+ update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
+三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  
     </div>
   </div>
 </div>
@@ -111,14 +120,42 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-10-arts-weekone-leetcode941/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/avoidoverengineering/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Given an array A of integers, return true if and only if it is a valid mountain array.
-Recall that A is a mountain array if and only if:
- A.length &gt;= 3 There exists some i with 0 &lt; i &lt; A.length - 1 such that:  A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] A[i] &gt; A[i+1] &gt; ... &gt; A[B.length - 1]     这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。
+      商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。
+以下是一些误解
+1. 工程比商业更聪明 工程师们往往认为自己掌控一切，但事实上商业需求永远技高一筹。在第1000个问题被解决后，它们还能冒出第1001个需求来。
+商业需求是发散的，而不是收敛的
+2. 重用商业功能模块 当商业抛出越来越多的功能，我们有时候会将逻辑组合起来，尽量泛化它们。然而商业需求只会发散而不会收敛，这就使得共享的逻辑变得庞大。反之，我们应该将每个动作和逻辑分离开来，只有很少的共享逻辑。
+在横向分离之前先尝试纵向分裂商业功能。多隔离动作而少组合动作。
+3. 所有的事情都是关于泛型 有些时候工程师会执着于完美的抽象而忽略了真正的问题。其实答案非常简单。
+今天最好的设计是它能怎么样被取消(undesigned)。写的代码要易于删除，而不是易于扩展。
+重复比错误的抽象要好。重复次数多了，抽象就显现出来了。
+4. 臃肿的包裹器 在使用每个外部库之前都写一个包裹器是不对的。这会使得包裹器变得臃肿。另一方面，包裹器往往和底层的库紧密的耦合，底层库变了包裹器也变了。
+现在许多外部库的API已经足够优秀了，因此不要总想着写包裹器。包裹器是一个异常情况，而不是正常情况。
+5. 像使用工具一样使用质量 盲目的应用质量概念（例如将所有变量改成&quot;private final&rdquo;,为所有的类写接口等）并不会使代码奇迹般的变好。
+记住要总是往后退一步然后看看总体的风景。
+有些代码完全符合各种原则和概念，但是从整体来看却很糟糕。
+5.1 三明治层 例如，将一个简洁的，紧密相连的动作划分层10或20层三明治层，每一层都与外界无关。在过去使用继承来完成，即A扩展出B扩展出C&hellip;&hellip;。现在想要完成这件事并且符合SOLID原则，则需要对每个类构建接口，并且把一个类依次注入到下一个类中，明显变得更麻烦了。
+像SOLID这样的概念是由于继承和其他OOP概念的滥用才产生的。大多数工程师不知道这些东西为什么诞生，只是跟随着就用。
+脑海中的概念应当会转换，而不能被盲目的像工具一样使用。
+6. 过度使用综合征 一些过度使用综合征的例子：
+ 发现了泛型，于是一个简单的&quot;HelloWorldPrinter&quot;变成了&quot;HelloWorldPrinter&lt;String, Writer&gt;&rdquo; 发现了策略模式，于是每个&quot;if&quot;都是一个策略 发现了怎么写DSL，于是到处使用DSL 发现了Mocks，于是对每个测试的对象都使用mock 元编程太棒了，到处都使用元编程 枚举/扩展方法/Traits等等太棒了，到处都使用它&hellip;  7. &lt;X&gt;-ity &hellip;性。例如可配置性，安全性，扩展性，维护性，伸缩性等等。这些性质当然是好的，但不要对每个性能都担忧会发生意外。仔细的考虑使用场景，再对这些性能作优化。
+8. 内部&quot;发明&rdquo; 内部的库、框架和工具最近很流行，但并不一定是好的。
+一些被错过的事情：
+ 对于某个问题领域有很深的了解是很难的，需要很多的技能。 让“发明”持续运行需要很多努力。即使是很小的库的维护也需要诸多时间 和对现有框架作出贡献相比，创造一个&quot;发明&quot;往往需要更多的时间  重用，fork，贡献，重新考虑
+9. 维持现状 一旦一件事情被完成了，每个人都开始基于它构建东西。没人质疑现状。工作着的代码被认为是正确的。每个人都改变自己来适应这个库。
+这样是不对的。一个健康的系统是会搅动、翻腾的。很长时间不提交的代码一定是有问题的。
+重构是每个故事的一部分。没有代码是不可触碰的。
+10. 差的估计 我们经常发现非常优秀的团队或是程序员写出糟糕的代码。这是因为质量需要时间而不仅仅是技术。聪明的程序员往往会高估自己的实力于是只能匆忙写出较差的代码。因此，谨慎估计完成日期。
+差的估计在代码开始写之前就破坏了质量。
+总结 这篇文章主要是关于过度设计的。作者列举了10个过度设计的例子，其中有些由于我还没有接触实际的生产代码还不清楚，但大部分内容还是很有帮助的。
+第1点是文章的核心，我在很多其他地方也见到过类似的内容，即需求是一直变化的，不要妄想自己写出完美的代码。
+第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。
+第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。
     </div>
   </div>
 </div>
@@ -128,39 +165,7 @@ Recall that A is a mountain array if and only if:
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-11-arts-weekone-twelve-factor%E4%B8%80/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。
-这些应用程序具备的特点包括：
- 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展  上面有一些名词是我暂时还不太理解的，这里做个简单的解释。
- 声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见declarative programming 持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang) 生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)  本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。
-一、基准代码(codebase) 这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)
-在中心化的版本管理系统中，一个codebase就是单个的代码库。在去中心化的版本管理系统中，一个codebase就是共享一个根提交(root commit)的代码库
-需要注意的是，在codebase和app之间永远是一对一的关系，如果有多个codebase，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。
-然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。
-不同部署的codebase是相同的，但是每个活跃的部署可以是不同的版本。
-二、依赖 这一特性用一句话说就是，显示的声明依赖并隔离它们
-这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。
-一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏进来(leak in)。对Ruby来说，依赖清单就是Gemfile，依赖隔离工具就是bundle exec。对Python来说，依赖清单就是pip，依赖隔离工具就是virtualenv。
-这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。
-twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如curl。
-三、配置 将配置存在环境中
-一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。
-一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。
-twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-12-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/buildblog/" class="link black dim">
         
       </a>
     </h1>
@@ -194,14 +199,20 @@ echo '# Install Ruby Gems to ~/gems' &gt;&gt; ~/.
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-14-arts-weekone-vimtutor%E6%80%BB%E7%BB%93/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/designrestfulapi-1/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。
-一  使用h，j，k，l作为vim中光标的移动键(比上下左右要有效率的多)。 使用:q!(quit!)强制退出当前正在编辑的文件 使用x删除当前光标停留处的文字 使用i(insert)在当前光标位置处插入内容 使用A(Append)在当前最后一行处添加内容  二  使用dw(delete word)来删除当前光标处的一个单词 使用d$删除当前位置到行末的所有内容 许多改变文本的命令都由一个operator和motion组成，例如d代表删除operator，而motion可以有如下选择：  w：直到下一个单词的起始位置，不包括该起始位置 e: 直到当前单词的结束位置，包括该结束位置 $: 直到当前行的结尾，包括最后一个单词
-如果只按上述motion则可以让光标按motion移动   在motion前面可以使用数字进行对多个motion的操作 使用0到一行的起始位置处 使用dd删除一整行数据 使用u来撤销上一个操作，U来修复一整行的操作，CTRL-R来撤销撤销操作  三  使用p(put或paste)来放置vim寄存器中的文本数据(可通过dd，d，yy等操作得到) 使用r(replace)来替换当前光标处的文本 使用c(change)+motion来改变文版，注意按c之后会进入插入模式  四  使用CTRL-G命令显示当前文件名以及总行数、当前行数 使用G(Go)到当前文件底端，gg到当前文件顶端,[number]G到[number]行 使用/[text]搜索和[text]一样的文本，n是前进，N是后退 使用%来匹配各种括号 使用:s(substitute)来替进行各种替换  五  使用:!来执行外部的shell命令，例如:!ls就可以列举目录 使用:w(write) FILENAME来将当前已经写完的内容写入某个文件 使用v(visual)进入可视化模式，选择部分内容并利用:w来将这些内容写入某个文件 使用:r(read) FILENAME来将目标文件的内容读入当前正在编辑的文件中(不一定是文件内容，某个命令的输出也可以，感觉和管道或是重定向很像)  六  使用o来在当前行下面插入一行，使用O来在当前行上面插入一行 使用a来在当前光标的下一个位置插入文本 使用R来批量替换文本 使用y来复制，p来粘贴。  总结 对我来说，这个教程比较有用的是2.3,4.4和5.5。以后还要多多练习，对这些基本操作更加熟练
+      Best Practice for Designing a Pragmatic RESTful API
+Key requirements for the API 列举了一些API的需求：
+ 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
+API设计的一大关键是不要把实现细节暴露给API。
+当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
+ GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
+**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
+**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
+ GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)
     </div>
   </div>
 </div>
@@ -211,16 +222,22 @@ echo '# Install Ruby Gems to ~/gems' &gt;&gt; ~/.
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-15-arts-weektwo-leetcode704-binarysearch/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/designrestfulapi-2/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.
-You may assume that all elements in nums are unique. n will be in the range [1, 10000]. The value of each element in nums will be in the range [-9999, 9999].
- 这题其实就是一个简单的二分搜索，数组中的元素都是唯一的，且数值也不大，难怪会被分到简单题里
-二分搜索很有名，要实现一个完全正确的二分搜索是很困难的，但这题的要求并不高。基本思想就是每次寻找中间元素并根据中间元素与目标元素的大小判断下一个搜索范围应该在哪一侧
-二分搜索时，左侧和右侧的范围应当界定明确。在下面的代码中，采用的范围是C++中的通用范围，即[left, right)。因此，循环的推出条件就是两者相等。当缩小范围时，要根据上面的关系选择是中间元素还是中间元素的两侧元素
+      Best practices for designing a pragramtic RESTful API PartII
+Result filtering, sorting &amp; searching 资源URL越简洁越好。复杂的结果滤除，排序需求和高级搜索都能在基本URL上通过query参数简单的实现。例如：
+Flitering:每个实现滤除功能的域都使用一个唯一的query参数。例如，当从/tickets端点中请求一列tickets时，你也许只需要那些处于open状态的ticket。这可以通过GET /tickets?state=open实现
+Sorting:和filtering相似的，一个通用的参数sort可以被用来描述排序规则。通过允许排序参数包含一系列逗号分隔的域(每个域伴随一个可能的一元负号来提示递减的排序顺序)为复杂的排序需求预留空间。例如：
+ GET /tickets?sort=-priority - 按照递减的优先级获取一列tickets GET /tickets?sort=-priority, create_at - 按照递减的优先级获取一列tickets。在特定的优先级内，较老的tickets放在前面  Searching: 有些时候基本的滤波器不够，因此需要全文搜索。也许你已经使用ElasticSearch或者其他基于Lucene的搜索技术。当全文搜索被用于提取特殊资源类型的资源实例时，它可以作为资源端点的一种query参数在API中被暴露,例如就叫做q。搜索的query应当被直接传送给搜索引擎，API的输出应当和普通的列表结果有相同的格式。
+将上述三者结合起来，我们可以构建这样的query：
+ GET /tickets?sort=-update_at - 提取最近更新的tickets GET /tickets?state=close&amp;sort=-update_at - 提取最近关闭的tickets GET /tickets?q=return&amp;state=open&amp;sort=-priority,create_at - 提取提到单词return的最高优先级的open状态的tickets  Aliases for common queries 为了方便API对普通使用者的使用，可以考虑将一系列状况打包到简单可接触的RESTful路径中。例如，最近被关闭的tickets的query可以被打包为GET /tickets/recently_closed
+Limiting which fields are returned by the API API使用者并不总是需要完整的资源表示。选择返回的域的能力使得API使用者最小化网络传输并加速他们自身对API的使用。
+使用fieldsquery参数，该参数包含由逗号分隔的列表指示要包含的域。例如，下面请求将获取仅仅是足够的信息来显示排序的open状态的tickets：
+GET /tickets?fields=id,subject,customer_name,updated_at&amp;state=open&amp;sort=-updated_at
+Updates &amp; creation should return resource representation PUT,POST或者PATCH可能对不是所提供的参数的一部分的底层资源作出修改。(例如：created_at或者updated_at时间戳)。为了防止API使用者不得不在更新表示之后重新使用该API，让API返回被更新的(或是被创建的)表示作为响应的一部分
     </div>
   </div>
 </div>
@@ -230,27 +247,27 @@ You may assume that all elements in nums are unique. n will be in the range [1, 
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-15-arts-weektwo-twelve-factor%E4%BA%8C/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/dockerfilereference/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Twelve Factor Part Two
-Backing services
-Build, release and run
-processes
-四、支持服务(Backing services) backing services应当被视为附加资源
-backing services是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。
-backing services包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。
-对于app来说，一个backing services应当和另一个同样功能的backing services完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处
-五、构建、发行和运行 严格的区分构建和运行阶段
-一个codebase通过下面三个阶段被转换为一个部署：
- 构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源 发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行 运行阶段在执行环境中运行，启动app的一些进程  twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本
-运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。
-六、进程 将app作为一个或多个无状态进程执行
-进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的backing service中，通常是一个数据库
-进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。 、
-sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。
+      docker build从一个Dockerfile和*环境(context)*中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。
+build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。
+可以指定repository以及？
+docker build -t shykes/myapp . Docker守护程序一个一个地执行Dockerfile中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。
+格式 Dockerfile的格式为
+# Comment INSTRUCTION arguments 指令不是大小写敏感的，但传统上均是大写
+Dockerfile必须以FROM指令开头。FROM指令指定了你正在构造的镜像的基本镜像(Base Image)。FROM之前只能是ARG指令，它声明了FROM要使用的参数
+FROM FROM &lt;image&gt; [AS &lt;name&gt;] 或者
+FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;] 或者
+FROM &lt;image&gt;[@&lt;digest&gt;] [AS &lt;name&gt;] FROM指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。
+ FROM可以在一个Dockerfile内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。 可以通过添加AS name给一个新的构建阶段命名。 tag或者digest是可选的。如果忽视它们，builder会默认给一个latest标志。  RUN RUN有两种形式：
+ RUN &lt;command&gt;(shell形式，命令在一个shell中执行，Linux中默认是/bin/sh -c) RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;](exec形式)
+RUN执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。  分层次的RUN指令和生成的提交(commit)是Docker的核心概念。
+CMD CMD有三种形式：
+ CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;](较好的形式) CMD [&quot;param1&quot;, &quot;param2&quot;](作为ENTRYPOINT的默认参数) CMD command param1 param2
+一个Dockerfile中只能有一个CMD指令。如果有多个则只有最后一个起作用  CMD指令的主要作用是为正在执行的容器提供默认(入口)。
     </div>
   </div>
 </div>
@@ -260,16 +277,29 @@ sticky session将用户的session数据保存在app的进程内存中并期望�
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-16-arts-weektwo-vim%E8%BF%9B%E9%98%B6/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/envoyexampleanalyze/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。
- ^ -&gt; 到本行第一个不是blank字符的位置 g_ -&gt; 到本行最后一个不是blank字符的位置 :e &lt;path/to/file&gt; -&gt; 打开一个文件 :saveas &lt;path/to/file&gt; -&gt; 另存为&lt;path/to/file&gt; :bn和:bp -&gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件 . -&gt; 可以重复上一次的命令 N&lt;command&gt; -&gt; 重复某个命令N次 *和# -&gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词 很多命令可以以下面的形式来干
-&lt;start position&gt;&lt;command&gt;&lt;end position&gt;
-例如0y$意味着：   0 -&gt; 到行头 y -&gt; 拷贝 $ -&gt; 到本行最后一个字符  gU和gu后跟位置(例如w，e，$等)变换大小写 在当前行上，fa可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字 区域选择 &lt;action&gt;a&lt;object&gt;或&lt;action&gt;i&lt;object&gt;   action可以是任何命令，例如d，y，v等 object可以是w(单词),s(句子),p(段落)，或者是特别字符:&quot;、'、)、}、]
-举例来说，字符串(haha (-) (&quot;tfz&quot;)).光标在f位置    vi&rdquo; -&gt; 选择tfz va&rdquo; -&gt; 选择&quot;tfz&quot; vi) -&gt; 选择&quot;tfz&quot; va) -&gt; 选择(&quot;tfz&quot;) v2i) -&gt; 选择haha (-) (&quot;tfz&quot;) v2a) -&gt; 选择(haha (-) (&quot;tfz&quot;))   块操作 &lt;C-v&gt; &lt;move&gt; &lt;motion&gt; [ESC]
+      最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。
+目录结构 首先看下目录结构，如下所示
+大体上目录中的文件可以分为四个部分：
+ docker compose: docker-compose.yaml docker: Dockerfile-frontenvoy, Dockerfile-service envoy: service-envoy.yaml, front-envoy.yaml source: service.py, start_service.sh  接下去分别看下这四个部分的内容
+docker compose docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.
+front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。
+front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。
+service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。
+此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？
+Docker Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。
+Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。
+Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。
+source 源文件包含了服务的业务逻辑。
+start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。
+服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。
+envoy 最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。
+在service-envoy中，envoy在80端口上监听，并匹配&rdquo;/service&quot;前缀的URL，匹配到之后把请求转发给8080端口。
+在front-envoy中，envoy在80端口上监听，并分别匹配&rdquo;/service/1&quot;和&rdquo;/service/2&quot;前缀的URL，将请求分别分发给service1的80端口和service2的80端口。
     </div>
   </div>
 </div>
@@ -279,14 +309,19 @@ sticky session将用户的session数据保存在app的进程内存中并期望�
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-23-arts-weekthree-leetcode1022-sumroottoleaf/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/envoylearning-1/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Given a binary tree, each node has value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit. For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.
-For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.
-Return the sum of these numbers.
+      最近由于公司需要，开始学习一下envoy。envoy的官网教程基本上就是给例子，然而由于缺乏docker、docker-compose等相关知识，在自己搭建envoy过程中遇到了很多问题，因此这里就记录一下学习envoy的过程以及其中所遇到的问题。
+首先，假设不用envoy，直接写一个简单的返回&quot;Hello, World&quot;网页的应用。
+业务逻辑 业务逻辑是用python+flask写的，当然有其他很多方法，利用go等，只是这种方法相对最为简单而已。其代码如下
+from flask import Flask app = Flask(__name__) @app.route('/') def hello(): return ('Hello world!\n') if __name__ == &quot;__main__&quot;: app.run(host='0.0.0.0', port=8080, debug=False)  Question: host改成127.0.0.1后，在本机上可以，在docker环境下不行，为什么？  docker容器配置 接下去将上面的业务逻辑放入docker容器中运行。docker的使用方法就不介绍了。直接给出docker文件如下
+FROM envoyproxy/envoy-alpine-dev:latest RUN apk update &amp;&amp; apk add python3 bash curl RUN pip3 install -q Flask==0.11.1 RUN mkdir /code ADD ./service.py /code/service.py ADD ./start_service.sh /usr/local/bin/start_service.sh RUN chmod u+x /usr/local/bin/start_service.sh ENTRYPOINT /usr/local/bin/start_service.sh 这里用的基准镜像是envoy的镜像，因此需要安装python3、flask等。
+这里用脚本的原因是为了方便后面envoy的使用，目前也可以直接用CMD命令代替
+start_service.sh的内容如下
+#!/bin/sh python3 /code/hello_world_service.py docker compose docker compose主要用于管理多个docker运行时实例，虽然目前只有一个实例，但将来必定会扩展为多个，因此从最开始就使用docker compose来管理。
     </div>
   </div>
 </div>
@@ -296,31 +331,51 @@ Return the sum of these numbers.
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-23-arts-weekthree-twelve-factor%E4%B8%89/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/envoylearning-2/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Twelve Factor Part Three
-Port binding
-Concurrency
-Disposability
-七、端口号绑定 通过绑定端口号导出服务
-应用程序应当是自包含(self-contained)的，并且它不应当依赖运行时服务器的注入。web app通过将HTTP绑定到一个端口号上来将其导出作为服务。
-在本地的开发环境，开发者通过像http://localhost:5000/这样的URL访问自己开发的服务。在部署环境中，则通过公共域名和端口访问。
-通常这通过使用依赖声明将一个web服务器库添加到app中完成，例如Python的Tornado，Java的Jetty。
-注意绑定端口的服务意味着它也可以成为其他app的backing service。
-八、并发 通过进程模型达成横向扩展
-任何计算机程序都表示为一个或多个计算机程序。Web应用使用了许多不同类型的进程执行形式，例如PHP进程作为Apache的子进程存在，Java由JVM提供一个维护大块系统资源的进程，而并发就由线程内在的管理。不管哪种形式，运行着的进程对于app的开发者来说都只具有最小的可见性。
-在twelve-factor app中，进程是一等公民。twelve-factor中的进程从运行守护服务的UNIX进程模型获得强烈的启发。在这种模型下，开发者可通过将每种类型的工作分发一个进程类型来架构自己的app以使它们能处理形色各异的工作负载。
-twelve-factor app无共享、水平可分的特性意味着增强并发是一个简单可信任的操作。进程类型和每种类型的进程数量组成的矩阵则是进程信息。
-twelve-factor app不能被配置为守护进程也不能写PID文件，而应当依赖操作系统的进程管理器来管理输出流，对崩溃进程作出反应或是处理用户的重启和关闭
-九、可弃性(Disposability) 通过快速启动和优雅的关闭来最大化鲁棒性
-disposability意味着app可以被一瞬间开启或关闭。这对于伸缩性、代码或配置改变时的快速部署以及生产环境部署的鲁棒性都很重要。
-进程应当尽量最小化启动时间，最好只需几秒钟。短暂的启动时间意味着更灵活，更鲁棒(进程管理器可以更快的把进程移动到新的物理机上)
-当进程从进程管理器处收到SIGTERM信号时应当优雅的关闭。对于web进程来说，这意味着停止监听端口，让当前的请求结束然后退出。
-对于工作进程来说，这意味着把当前的工作返回到工作队列中。
-进程应当对由底层硬件导致的突然死亡也鲁棒。一个建议的方法是使用鲁棒的后端队列，例如Beanstalked
+      在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。
+docker compose内容说明 在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。
+docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如build,deploy,depends_on,networks等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是&lt;key&gt;: &lt;option&gt;: &lt;value&gt;这样的。
+Service configuration reference Service定义(services:)包含了每个为了该服务启动的容器的配置，很像给docker container create传递参数。与此类似的，网络和卷的定义和docker network create和docker volume create很像。
+build 包含在构建时的配置选项。
+build可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如
+version: &quot;3.7&quot; services: webapp: build: context: ./dir dockerfile: Dockerfile-alternate args: buildno: 1 CONTEXT 可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url
+DOCKERFILE 可选的Dockerfile
+expose 暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。
+这里指的是app使用的端口号，而不是docker容器对外暴露的端口号
+networks 要加入的网络
+ALIASES 在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。
+由于aliases是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。
+一种通用格式是这样的：
+services: some-service: networks: some-network: aliases: - alias1 - alias3 other-network: aliases: - alias2 ports 暴露端口
+SHORT SYNTAX 指定两个端口号(HOST:CONTAINER),或者只有容器端口(一个短暂的host端口将被选择)
+后面的是容器内部的端口，即app监听端口，前面的是暴露端口，即我们访问docker容器的端口
+ports: - &quot;3000&quot; - &quot;3000-3005&quot; - &quot;8000:8000&quot; - &quot;9090-9091:8080-8081&quot; - &quot;49100:22&quot; - &quot;127.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/envoylearning-3/" class="link black dim">
+        
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。
+实现过程 首先小小的修改一下docker-compose.yaml文件。在其中service下面添加一个选项volumes,如下所示
+volumes: - ./service-envoy.yaml:/etc/service-envoy.yaml 这句话的意思是把当前目录下的配置文件service-envoy.yaml挂在到容器中的/etc目录下。
+然后把expose和ports选项改成下面的样子：
+expose: - &quot;80&quot; ports: - &quot;8000:80&quot; 至于为什么要改成这样，在后面马上会提到。
+接下去修改一下启动脚本，其中添加了envoy的启动，如下所示：
+#!/bin/sh python3 /code/hello_world_service.py &amp; envoy -c /etc/service-envoy.yaml 最后，最关键的就是service-envoy.yaml文件了。service-envoy.yaml文件和官网提供的例子很像，其内容如下：
+static_resources: listeners: - address: socket_address: address: 0.0.0.0 port_value: 80 filter_chains: - filters: - name: envoy.http_connection_manager typed_config: &quot;@type&quot;: type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager codec_type: auto stat_prefix: ingress_http route_config: name: local_route virtual_hosts: - name: service domains: - &quot;*&quot; routes: - match: prefix: &quot;/&quot; route: cluster: local_service http_filters: - name: envoy.router typed_config: {} clusters: - name: local_service connect_timeout: 0.
     </div>
   </div>
 </div>

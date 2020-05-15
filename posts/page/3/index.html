@@ -34,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://tonfeiz.github.io/posts/" />
-<meta property="og:updated_time" content="2020-05-15T23:58:29+08:00" />
+<meta property="og:updated_time" content="2019-06-02T00:00:00+00:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -96,7 +96,7 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-20-arts-weekseven-leetcode728-selfdividenumbers/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode728-selfdividenumbers/" class="link black dim">
         
       </a>
     </h1>
@@ -114,20 +114,17 @@ Given a lower and upper number bound, output a list of every possible self divid
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-design-restful-api%E4%B8%80/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode779-kthsymbol/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Best Practice for Designing a Pragmatic RESTful API
-Key requirements for the API 列举了一些API的需求：
- 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
-API设计的一大关键是不要把实现细节暴露给API。
-当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
- GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
-**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
-**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
- GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)
+      On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.
+Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).
+Examples:
+Input: N = 1, K = 1
+Output: 0
+Input: N = 2, K = 1
     </div>
   </div>
 </div>
@@ -137,27 +134,16 @@ API设计的一大关键是不要把实现细节暴露给API。
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-dockerfile-reference/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode856-scoreofparentheses/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      docker build从一个Dockerfile和*环境(context)*中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。
-build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。
-可以指定repository以及？
-docker build -t shykes/myapp . Docker守护程序一个一个地执行Dockerfile中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。
-格式 Dockerfile的格式为
-# Comment INSTRUCTION arguments 指令不是大小写敏感的，但传统上均是大写
-Dockerfile必须以FROM指令开头。FROM指令指定了你正在构造的镜像的基本镜像(Base Image)。FROM之前只能是ARG指令，它声明了FROM要使用的参数
-FROM FROM &lt;image&gt; [AS &lt;name&gt;] 或者
-FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;] 或者
-FROM &lt;image&gt;[@&lt;digest&gt;] [AS &lt;name&gt;] FROM指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。
- FROM可以在一个Dockerfile内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。 可以通过添加AS name给一个新的构建阶段命名。 tag或者digest是可选的。如果忽视它们，builder会默认给一个latest标志。  RUN RUN有两种形式：
- RUN &lt;command&gt;(shell形式，命令在一个shell中执行，Linux中默认是/bin/sh -c) RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;](exec形式)
-RUN执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。  分层次的RUN指令和生成的提交(commit)是Docker的核心概念。
-CMD CMD有三种形式：
- CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;](较好的形式) CMD [&quot;param1&quot;, &quot;param2&quot;](作为ENTRYPOINT的默认参数) CMD command param1 param2
-一个Dockerfile中只能有一个CMD指令。如果有多个则只有最后一个起作用  CMD指令的主要作用是为正在执行的容器提供默认(入口)。
+      Given a balanced parentheses string S, compute the score of the string based on the following rule:
+() has score 1 AB has score A + B, where A and B are balanced parentheses strings. (A) has score 2 * A, where A is a balanced parentheses string.  Example:
+Input: &quot;()&quot; Output: 1 Input: &quot;(())&quot; Output: 2 Input: &quot;()()&quot; Output: 2 Input: &quot;(()(()))&quot; Output: 6  这是一道mdeium题，题意是对于一个完全匹配的括号串，()表示1,AB表示A+B,(A)表示A*2，其中A、B都是某个括号表达式，求给定括号串的值。
+这道题还是想了有一点时间，最开始是想用栈，但是感觉怎么用都不太对，后面才开始想用递归的方法。
+递归的核心其实就是把问题的规模变小，并且要有一个最终的停止条件。对一个函数f来说，假设其输入是字符串以及起始位置start和end(范围为[start, end))，显然终止条件有:
     </div>
   </div>
 </div>
@@ -167,29 +153,15 @@ CMD CMD有三种形式：
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-envoy-example-analyze./" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode915-disjointintervals/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。
-目录结构 首先看下目录结构，如下所示
-大体上目录中的文件可以分为四个部分：
- docker compose: docker-compose.yaml docker: Dockerfile-frontenvoy, Dockerfile-service envoy: service-envoy.yaml, front-envoy.yaml source: service.py, start_service.sh  接下去分别看下这四个部分的内容
-docker compose docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.
-front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。
-front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。
-service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。
-此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？
-Docker Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。
-Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。
-Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。
-source 源文件包含了服务的业务逻辑。
-start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。
-服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。
-envoy 最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。
-在service-envoy中，envoy在80端口上监听，并匹配&rdquo;/service&quot;前缀的URL，匹配到之后把请求转发给8080端口。
-在front-envoy中，envoy在80端口上监听，并分别匹配&rdquo;/service/1&quot;和&rdquo;/service/2&quot;前缀的URL，将请求分别分发给service1的80端口和service2的80端口。
+      Given an array A, partition it into two (contiguous) subarrays left and right so that:
+ Every element in left is less than or equal to every element in right. left and right are non-empty. left has the smallest possible size.  Return the length of left after such a partitioning. It is guaranteed that such a partitioning exists.
+Example 1:
+Input: [5,0,3,8,6] Output: 3 Explanation: left = [5,0,3], right = [8,6]
     </div>
   </div>
 </div>
@@ -199,21 +171,14 @@ envoy 最后是envoy的配置文件。这些配置文件在启动envoy程序时�
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-apt/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode941-validmountainarray/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
-一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
-./configure -&gt; make -&gt; make install
-其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
-包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
-以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
-apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
-二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
- update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
-三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  
+      Given an array A of integers, return true if and only if it is a valid mountain array.
+Recall that A is a mountain array if and only if:
+ A.length &gt;= 3 There exists some i with 0 &lt; i &lt; A.length - 1 such that:  A[0] &lt; A[1] &lt; ... A[i-1] &lt; A[i] A[i] &gt; A[i+1] &gt; ... &gt; A[B.length - 1]     这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。
     </div>
   </div>
 </div>
@@ -223,70 +188,7 @@ apt所获取的软件包一般从网上获得。Debian工程维护了超过25000
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-design-restful-api%E4%BA%8C/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Best practices for designing a pragramtic RESTful API PartII
-Result filtering, sorting &amp; searching 资源URL越简洁越好。复杂的结果滤除，排序需求和高级搜索都能在基本URL上通过query参数简单的实现。例如：
-Flitering:每个实现滤除功能的域都使用一个唯一的query参数。例如，当从/tickets端点中请求一列tickets时，你也许只需要那些处于open状态的ticket。这可以通过GET /tickets?state=open实现
-Sorting:和filtering相似的，一个通用的参数sort可以被用来描述排序规则。通过允许排序参数包含一系列逗号分隔的域(每个域伴随一个可能的一元负号来提示递减的排序顺序)为复杂的排序需求预留空间。例如：
- GET /tickets?sort=-priority - 按照递减的优先级获取一列tickets GET /tickets?sort=-priority, create_at - 按照递减的优先级获取一列tickets。在特定的优先级内，较老的tickets放在前面  Searching: 有些时候基本的滤波器不够，因此需要全文搜索。也许你已经使用ElasticSearch或者其他基于Lucene的搜索技术。当全文搜索被用于提取特殊资源类型的资源实例时，它可以作为资源端点的一种query参数在API中被暴露,例如就叫做q。搜索的query应当被直接传送给搜索引擎，API的输出应当和普通的列表结果有相同的格式。
-将上述三者结合起来，我们可以构建这样的query：
- GET /tickets?sort=-update_at - 提取最近更新的tickets GET /tickets?state=close&amp;sort=-update_at - 提取最近关闭的tickets GET /tickets?q=return&amp;state=open&amp;sort=-priority,create_at - 提取提到单词return的最高优先级的open状态的tickets  Aliases for common queries 为了方便API对普通使用者的使用，可以考虑将一系列状况打包到简单可接触的RESTful路径中。例如，最近被关闭的tickets的query可以被打包为GET /tickets/recently_closed
-Limiting which fields are returned by the API API使用者并不总是需要完整的资源表示。选择返回的域的能力使得API使用者最小化网络传输并加速他们自身对API的使用。
-使用fieldsquery参数，该参数包含由逗号分隔的列表指示要包含的域。例如，下面请求将获取仅仅是足够的信息来显示排序的open状态的tickets：
-GET /tickets?fields=id,subject,customer_name,updated_at&amp;state=open&amp;sort=-updated_at
-Updates &amp; creation should return resource representation PUT,POST或者PATCH可能对不是所提供的参数的一部分的底层资源作出修改。(例如：created_at或者updated_at时间戳)。为了防止API使用者不得不在更新表示之后重新使用该API，让API返回被更新的(或是被创建的)表示作为响应的一部分
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-leetcode605-canplaceflowers/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.
-Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-02-envoy%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85%E4%B8%80/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      最近由于公司需要，开始学习一下envoy。envoy的官网教程基本上就是给例子，然而由于缺乏docker、docker-compose等相关知识，在自己搭建envoy过程中遇到了很多问题，因此这里就记录一下学习envoy的过程以及其中所遇到的问题。
-首先，假设不用envoy，直接写一个简单的返回&quot;Hello, World&quot;网页的应用。
-业务逻辑 业务逻辑是用python+flask写的，当然有其他很多方法，利用go等，只是这种方法相对最为简单而已。其代码如下
-from flask import Flask app = Flask(__name__) @app.route('/') def hello(): return ('Hello world!\n') if __name__ == &quot;__main__&quot;: app.run(host='0.0.0.0', port=8080, debug=False)  Question: host改成127.0.0.1后，在本机上可以，在docker环境下不行，为什么？  docker容器配置 接下去将上面的业务逻辑放入docker容器中运行。docker的使用方法就不介绍了。直接给出docker文件如下
-FROM envoyproxy/envoy-alpine-dev:latest RUN apk update &amp;&amp; apk add python3 bash curl RUN pip3 install -q Flask==0.11.1 RUN mkdir /code ADD ./service.py /code/service.py ADD ./start_service.sh /usr/local/bin/start_service.sh RUN chmod u+x /usr/local/bin/start_service.sh ENTRYPOINT /usr/local/bin/start_service.sh 这里用的基准镜像是envoy的镜像，因此需要安装python3、flask等。
-这里用脚本的原因是为了方便后面envoy的使用，目前也可以直接用CMD命令代替
-start_service.sh的内容如下
-#!/bin/sh python3 /code/hello_world_service.py docker compose docker compose主要用于管理多个docker运行时实例，虽然目前只有一个实例，但将来必定会扩展为多个，因此从最开始就使用docker compose来管理。
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-05-arts-weeknine-leetcode942-distringmatch/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode942-distringmatch/" class="link black dim">
         
       </a>
     </h1>
@@ -311,7 +213,7 @@ Output: [3,2,0,1]
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-06-06-arts-weeknine-progit%E4%B8%80/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/progit-1/" class="link black dim">
         
       </a>
     </h1>
@@ -327,6 +229,87 @@ Output: [3,2,0,1]
  /etc/config:包含应用到系统中所有人的值。如果给git config传递--system选项，则它会从这个文件中读写 ~/.gitconfig或~/.config/git/config:该值影响的是当前用户。可以传递--global选项来让Git从中读写。 config文件：该文件在Git目录中(.git/config)，影响的是当前的仓库。通过--local选项即可让Git从中读写  每个层级的值都会覆盖上层的值
 认证身份 首次安装Git后需要配置用户的名字和邮箱，如下所示：
 $ git config --global user.name &quot;${USER_NAME}&quot; $ git config --global user.email ${USER_EMAIL} 
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/progit-2/" class="link black dim">
+        
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      本章讲述Git的基础知识。
+Git基础 获取Git Repo 有两种获取Git Repo的方法
+ 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo  在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init
+即可。
+该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。
+如果想要开始对已存在的文件进行版本控制，可以输入下面命令
+$ git add *.c $ git add LICENSE $ git commit -m &quot;initial project version&quot; 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。
+通过git clone &lt;url&gt;可以克隆repo。例如：
+$ git clone https://github.com/libgit2/libgit2
+创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。
+记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。
+几个状态之间的转移图如图所示。
+检查文件状态 git status可用来检查文件的状态。
+例如，假设刚刚clone了一个repo，则此时使用git status命令一般显示如下
+$ git status On branch master Your branch is up-to-date with 'origin/master'. nothing to commit, working directory clean 这表明工作目录是干净的，即你所跟踪(track)的文件都没有被修改
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/threerules/" class="link black dim">
+        
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。
+三、使用被证实的稳定的技术 Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。
+例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。
+二、不要重新发明轮子 云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。
+使用已有的东西，不管那是库、社区或是已知的内在知识。
+一、保持简单 每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/twelvefactor-1/" class="link black dim">
+        
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。
+这些应用程序具备的特点包括：
+ 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展  上面有一些名词是我暂时还不太理解的，这里做个简单的解释。
+ 声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见declarative programming 持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang) 生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)  本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。
+一、基准代码(codebase) 这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)
+在中心化的版本管理系统中，一个codebase就是单个的代码库。在去中心化的版本管理系统中，一个codebase就是共享一个根提交(root commit)的代码库
+需要注意的是，在codebase和app之间永远是一对一的关系，如果有多个codebase，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。
+然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。
+不同部署的codebase是相同的，但是每个活跃的部署可以是不同的版本。
+二、依赖 这一特性用一句话说就是，显示的声明依赖并隔离它们
+这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。
+一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏进来(leak in)。对Ruby来说，依赖清单就是Gemfile，依赖隔离工具就是bundle exec。对Python来说，依赖清单就是pip，依赖隔离工具就是virtualenv。
+这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。
+twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如curl。
+三、配置 将配置存在环境中
+一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。
+一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。
+twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。
     </div>
   </div>
 </div>

@@ -34,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://tonfeiz.github.io/posts/" />
-<meta property="og:updated_time" content="2020-05-15T23:58:29+08:00" />
+<meta property="og:updated_time" content="2019-06-02T00:00:00+00:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -96,33 +96,38 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-24-arts-weekthree-vim%E9%85%8D%E7%BD%AE/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/envoylearning-4/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。
-vimrc文件 vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中
-vimrc文件的名字叫做.vimrc，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是~/.vimrc。
-vimrc文件中可以包含所有能在vim中普通模式下&rdquo;:&ldquo;后面执行的命令，最简单的设置选项的指令，其一般格式是
-set &lt;options&gt;
-想要查看有哪些配置可以输入:options查看或是在帮助中查看。
-对于特定的配置，可以输入:help '&lt;option name&gt;'查看。另外，在设置某个选项时在后面加&amp;即可恢复默认设置
-为了使vimrc文件起作用需要退出vim再重新启动
-下面列举一些设置作为例子说明
-set autoindent:自动缩进，使用前一行的缩进作为当前行缩进
-if has(&quot;vms&quot;) set nobackup else set backup endif 使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。
-set history=50:在历史记录中保持50个命令和50种搜索模式
-set ruler:允许在右下角显示当前游标的位置
-set showcmd:显示普通模式下输入的命令
-set incsearch:在输入搜索模式下显示和其匹配的内容
-map Q gq:这是一个按键映射，将Q键映射到gq按键上
-filetype plugin indent on  文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途 使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中 使用缩进文件：不同类型的文件种类使用不同的缩进  简单的映射 按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加
-:map &lt;F5&gt; i{&lt;Esc&gt;ea}&lt;Esc&gt; 上面的这个映射解析为
- &lt;F5&gt; 映射按键是F5键 i{ 转换为插入模式并输入{ &lt;Esc&gt; 退出为普通模式 ea}到单词结尾并输入} &lt;Esc&gt;最后转化为普通模式  这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号
-添加插件 vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在plugin文件夹中添加对应文件就可添加插件
-有两种插件：
- 全局插件：对所有文件都有效 文件类型插件：对特定文件类型才有效  全局插件 全局插件在启动时自动加载，它们提供了大部分通用的功能。
+      本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下。
+What is Envoy Envoy是一个L7的代理以及通讯总线，被用于大规模现代SOA架构。
+Envoy认为:
+网络对应用应当是透明的。当网络和应用发生了问题，应该可以很简单就定位到问题的源头
+Envoy有下列特性：
+Out of process architecture：Envoy是一个自包含进程，与应用服务一同启动。这有两大好处：
+ 与任意应用语言都能工作 由于不是库的形式，Envoy可以快速部署和升级  现代C++11代码: 既有速度又有生产力
+L3/L4过滤架构: Envoy在其核心是一个L3/L4的网络代理。可插入的filter chain机制使过滤器能被写出来用于完成不同的TCP代理任务并插入到主服务器中。
+HTTP过滤架构：Envoy提供一层额外的HTPP过滤层。
+HTTP L7 路由: 在HTTP模式下，Envoy支持一个路由子系统。该系统能基于路径、内容和运行时值等路由和重定向请求。
+多种支持： gRPC,MongDB L7, Dynamo DB L7等
+服务发现和动态配置： Envoy可选的提供了动态配置API层。该层允许Envoy动态的更新：后端cluster中的host,后端clusters,HTTP 路由，监听 sockets等
+健康检查： 构建Envoy网格的建议方式是将服务发现作为最终一致的过程。Envoy包含一个健康检查子系统，能可选的主动检查上游服务cluster的健康情况。
+高级负载均衡:
+Architecture overview Terminoogy Host: 能进行网络通信的一个实体(移动手机上的应用，服务器等)。一台硬件上可能有多个Host
+Downstream: 一个下游host连接到Envoy，发送请求并接收回应
+Upstream: 一个上游host从Envoy接收连接和请求并作出回应
+Listener: 一个Listener是一个命名了的网络位置(例如端口，Unix域socket等)，该位置可以被下游客户端连接。Envoy会暴露一个或多个listener供下游host连接
+Cluster: 一个cluster是逻辑上相似的一组上游host，Envoy连接到这些host。Envoy通过服务发现找到cluster中的成员，通过健康检查判断该成员是否健康，通过负载均衡策略路由请求
+Mesh: 一组协调起来提供一致的网络拓扑的host。在本文档中，&ldquo;Envoy mesh&quot;是指一组分布式系统中组成了消息传递基础的Envoy代理
+Runtime configuration: 带外实时配置系统，与Envoy一同部署
+Thread model Envoy使用单进程多线程架构。单个master线程控制偶尔发生的协调任务，一些worker线程处理监听、过滤和转发任务。一旦一个连接被一个listener接受，该连接的剩余生命就和该worker线程绑定了。这使得Envoy大部分是单线程的(embarrassingly parallel),一小部分更复杂的代码处理worker线程之间的协调。通常Envoy是完全非阻塞的，大部分情况下建议工作线程的数量和硬件线程的数量一致。
+Listeners Envoy配置支持在一个进程中设置任意数量的listener。通常我们建议不管设置的listener有多少，每个机器都设置一个Envoy。
+每个listener都通过一些网络层(L3/L4)过滤器独立的配置。当listener接收到了一个新的连接，配置好的本地连接过滤器堆栈将会被实例化并开始处理一系列的事件。
+Listener也可以配置一些listener过滤器。该过滤器在网络层过滤器之前被使用，可以操纵连接的元数据。通常这是为了影响连接后续怎么被过滤器或者cluster处理。
+Listener也可以通过listener discovery service(LDS)动态的获取。
+Listener filters Listener filters的主要目的是使得以后增加系统集成函数更简单(通过不改变Envoy的核心功能)。
     </div>
   </div>
 </div>
@@ -132,13 +137,23 @@ filetype plugin indent on  文件类型检测：当开始编辑一个文件时�
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-30-arts-weekfour-leetcode703-kthinstream/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/envoylearning-5/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
-Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.
+      本次继续阅读Envoy的文档。
+Health checking 主动健康检查可以在每个上游cluster上配置。Envoy支持三种不同类型的健康检查：
+ HTTP: Envoy会发送HTTP请求给上游host。默认情况下，如果host是健康的，它会期待收到一个200回应。 L3/L4: Envoy会发送可配置的字节缓冲给上游host。它期待在回应中该字节缓冲被回射(echo)。 Redis: Envoy会发送Redis的PING命令并期待收到PONG回应。  HTTP health checking filter Envoy包括了一个可被安装在配置好的HTTP监听器上的健康检查过滤器。该过滤器有几种操作模式：
+ No pass through: 该模式下，健康检查请求不会传送给本地服务。Envoy会根据当前服务器的状态(draining state)发回200或503响应 No pass through, computed from upstream cluster health: 在该模式下，Envoy会根据上游的一个或多个cluster中是否存在指定比例的服务器可用来返回200或503响应。 Pass through: 该模式下，健康检查请求会传送给本地服务。 Pass through with caching: 该模式下，Envoy会传送健康检查请求给本地服务，然后会缓存结果一段时间。  Connection pooling 对于HTTP流量来说，Envoy支持在底层线协议(HTTP/1.1或HTTP/2)之上一层的抽象连接池。使用的过滤器代码不需要知道底层协议是否支持真正的复用。底层实现实际上有下面的高层属性。
+HTTP/1.1 HTTP/1.1连接池在需要时就像上游host获取连接(最大不超过熔断限制)。请求在连接可用时与其绑定。连接可用有几种原因，例如一个连接已经处理完了之前的请求，一个新的连接已经准备好接收请求。
+HTTP/2 HTTP/2连接池对每个上游host获取一个连接。所有的请求都通过该连接复用。如果收到了GOAWAY帧或者连接数达到了最大流限制，连接池会创建一个新的连接并且排空已经存在的连接。
+Load balancing What is Load Balancing? 负载均衡指的是将流量分给一个cluster中的不同host的方法。Envoy提供了不同的负载均衡策略。从高层看，可以把这些策略分为两种：全局负载均衡和分布式负载均衡。
+Distributed Load Balancing 分布式负载均衡指的是让Envoy自己基于上游hosts的位置决定负载如何分给端点。
+Global Load Balancing 全局负载均衡指的是有一个全局的authority决定负载应该怎样在hosts之间分布。对Envoy来说，这可以通过控制面完成。控制面可以通过指定不同的参数(例如优先级、本地权重、端点权重和端点健康等)来分发负载。
+一个简单的例子是控制面基于网络拓扑给hosts设置不同的优先级来确保需要更少的网络跳数的hosts优先被选择。
+Both Distributed and Global 大部分复杂的部署会同时使用两种方法。例如，全局负载均衡可以被用来定义高级路由优先级和权重，而分布式负载均衡可以被用来对系统变化做出反应。
+Supported load balancers 当过滤器需要获取到上游cluster中的某个host的连接，cluster manager会使用负载均衡策略来决定选择哪个host。
     </div>
   </div>
 </div>
@@ -148,28 +163,26 @@ Your KthLargest class will have a constructor which accepts an integer k and an 
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-04-30-arts-weekfour-twelve-factor%E5%9B%9B/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/highperformanceserver-1/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Dev/prod parity
-Logs
-Admin processes
-十、开发环境/生产环境相同 保持开发环境、模拟环境和生产环境尽可能相似
-历史上，在开发环境和生产环境之间有三道鸿沟，分别位：
- 时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作 人事：开发者写代码，运维工程师部署它 工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux  twelve-factor app需要使上面三者尽可能小来便于持续部署。
-以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。
-twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。
-对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务
-十一、日志 将日志当做事件流对待
-日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。
-一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入stdout中。
-在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。
-app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能
-管理进程 将管理进程作为一次性的、不是经常开关的进程
-开发者经常希望有一个一次性的管理进程，例如：
- 运行数据库迁移 运行一个控制台 运行上传到app repo中的一次性脚本  一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。
+      这篇英文文章讲的是高性能服务器设计的一些要点。
+原文链接为Data Copies 数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。
+一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：
+ 一个指针以及缓冲区的长度 一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度 指向其他缓冲区的前向以及后向指针 引用计数  上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。
+作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。
+作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。
+Context Switches 当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。
+造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。
+通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。
+最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个listeners监听并放入队列，而worker threads从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是listener能变成worker再变回listener。
+如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。
+作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:
+ 请求需要传给下一个阶段(ID或是指针作为返回值) 请求已经被完成(特殊的&quot;请求完成&quot;返回值) 请求被阻塞(特殊的&quot;请求阻塞&quot;返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续
+在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出  作者最后对SEDA发表了自己的看法。
+ SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理 学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好  
     </div>
   </div>
 </div>
@@ -179,14 +192,17 @@ app的事件流还可以被送到日志索引和分析系统，例如Splunk，�
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-01-arts-weekfour-vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86-vundle/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/highperformanceserver-2/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。
-Vundle是vim bundle的缩写。它能自动跟踪.vimrc中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。
-Vundle的安装设置  首先输入git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim 将下列内容保存到~/.vimrc中  set nocompatible &quot; be iMproved, required filetype off &quot; required &quot; set the runtime path to include Vundle and initialize set rtp+=~/.vim/bundle/Vundle.vim call vundle#begin() &quot; alternatively, pass a path where Vundle should install plugins &quot;call vundle#begin('~/some/path/here') &quot; let Vundle manage Vundle, required Plugin 'VundleVim/Vundle.vim' &quot; The following are examples of different formats supported. &quot; Keep Plugin commands between vundle#begin/end. &quot; plugin on GitHub repo Plugin 'tpope/vim-fugitive' &quot; plugin from http://vim-scripts.
+      接下去介绍高性能服务器设计的最后两个因素。
+Memory allocation 内存分配是制约服务器性能的一大瓶颈。
+作者提出了三种方法：
+ 预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。 使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。 在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支  Lock Contention 这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。
+Other Stuff 作者提出了一些其他的问题
+ 对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？read-ahead和write-behind工作情况如何？ 你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像TCP_CORK,MSG_PUSH或是Nagle这样的技巧使其避免较小的信息？ 你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦 页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？ 你的读/写锁会饥饿吗？你的事件有惊群效应吗？  问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。
     </div>
   </div>
 </div>
@@ -196,16 +212,14 @@ Vundle的安装设置  首先输入git clone https://github.com/VundleVim/Vundle
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-06-arts-weekfive-leetcode856-scoreofparentheses/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode1022-sumroottoleaf/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Given a balanced parentheses string S, compute the score of the string based on the following rule:
-() has score 1 AB has score A + B, where A and B are balanced parentheses strings. (A) has score 2 * A, where A is a balanced parentheses string.  Example:
-Input: &quot;()&quot; Output: 1 Input: &quot;(())&quot; Output: 2 Input: &quot;()()&quot; Output: 2 Input: &quot;(()(()))&quot; Output: 6  这是一道mdeium题，题意是对于一个完全匹配的括号串，()表示1,AB表示A+B,(A)表示A*2，其中A、B都是某个括号表达式，求给定括号串的值。
-这道题还是想了有一点时间，最开始是想用栈，但是感觉怎么用都不太对，后面才开始想用递归的方法。
-递归的核心其实就是把问题的规模变小，并且要有一个最终的停止条件。对一个函数f来说，假设其输入是字符串以及起始位置start和end(范围为[start, end))，显然终止条件有:
+      Given a binary tree, each node has value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit. For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.
+For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.
+Return the sum of these numbers.
     </div>
   </div>
 </div>
@@ -215,42 +229,13 @@ Input: &quot;()&quot; Output: 1 Input: &quot;(())&quot; Output: 2 Input: &quot;(
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-12-arts-weekfive-avoid-over-engineering/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode605-canplaceflowers/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。
-以下是一些误解
-1. 工程比商业更聪明 工程师们往往认为自己掌控一切，但事实上商业需求永远技高一筹。在第1000个问题被解决后，它们还能冒出第1001个需求来。
-商业需求是发散的，而不是收敛的
-2. 重用商业功能模块 当商业抛出越来越多的功能，我们有时候会将逻辑组合起来，尽量泛化它们。然而商业需求只会发散而不会收敛，这就使得共享的逻辑变得庞大。反之，我们应该将每个动作和逻辑分离开来，只有很少的共享逻辑。
-在横向分离之前先尝试纵向分裂商业功能。多隔离动作而少组合动作。
-3. 所有的事情都是关于泛型 有些时候工程师会执着于完美的抽象而忽略了真正的问题。其实答案非常简单。
-今天最好的设计是它能怎么样被取消(undesigned)。写的代码要易于删除，而不是易于扩展。
-重复比错误的抽象要好。重复次数多了，抽象就显现出来了。
-4. 臃肿的包裹器 在使用每个外部库之前都写一个包裹器是不对的。这会使得包裹器变得臃肿。另一方面，包裹器往往和底层的库紧密的耦合，底层库变了包裹器也变了。
-现在许多外部库的API已经足够优秀了，因此不要总想着写包裹器。包裹器是一个异常情况，而不是正常情况。
-5. 像使用工具一样使用质量 盲目的应用质量概念（例如将所有变量改成&quot;private final&rdquo;,为所有的类写接口等）并不会使代码奇迹般的变好。
-记住要总是往后退一步然后看看总体的风景。
-有些代码完全符合各种原则和概念，但是从整体来看却很糟糕。
-5.1 三明治层 例如，将一个简洁的，紧密相连的动作划分层10或20层三明治层，每一层都与外界无关。在过去使用继承来完成，即A扩展出B扩展出C&hellip;&hellip;。现在想要完成这件事并且符合SOLID原则，则需要对每个类构建接口，并且把一个类依次注入到下一个类中，明显变得更麻烦了。
-像SOLID这样的概念是由于继承和其他OOP概念的滥用才产生的。大多数工程师不知道这些东西为什么诞生，只是跟随着就用。
-脑海中的概念应当会转换，而不能被盲目的像工具一样使用。
-6. 过度使用综合征 一些过度使用综合征的例子：
- 发现了泛型，于是一个简单的&quot;HelloWorldPrinter&quot;变成了&quot;HelloWorldPrinter&lt;String, Writer&gt;&rdquo; 发现了策略模式，于是每个&quot;if&quot;都是一个策略 发现了怎么写DSL，于是到处使用DSL 发现了Mocks，于是对每个测试的对象都使用mock 元编程太棒了，到处都使用元编程 枚举/扩展方法/Traits等等太棒了，到处都使用它&hellip;  7. &lt;X&gt;-ity &hellip;性。例如可配置性，安全性，扩展性，维护性，伸缩性等等。这些性质当然是好的，但不要对每个性能都担忧会发生意外。仔细的考虑使用场景，再对这些性能作优化。
-8. 内部&quot;发明&rdquo; 内部的库、框架和工具最近很流行，但并不一定是好的。
-一些被错过的事情：
- 对于某个问题领域有很深的了解是很难的，需要很多的技能。 让“发明”持续运行需要很多努力。即使是很小的库的维护也需要诸多时间 和对现有框架作出贡献相比，创造一个&quot;发明&quot;往往需要更多的时间  重用，fork，贡献，重新考虑
-9. 维持现状 一旦一件事情被完成了，每个人都开始基于它构建东西。没人质疑现状。工作着的代码被认为是正确的。每个人都改变自己来适应这个库。
-这样是不对的。一个健康的系统是会搅动、翻腾的。很长时间不提交的代码一定是有问题的。
-重构是每个故事的一部分。没有代码是不可触碰的。
-10. 差的估计 我们经常发现非常优秀的团队或是程序员写出糟糕的代码。这是因为质量需要时间而不仅仅是技术。聪明的程序员往往会高估自己的实力于是只能匆忙写出较差的代码。因此，谨慎估计完成日期。
-差的估计在代码开始写之前就破坏了质量。
-总结 这篇文章主要是关于过度设计的。作者列举了10个过度设计的例子，其中有些由于我还没有接触实际的生产代码还不清楚，但大部分内容还是很有帮助的。
-第1点是文章的核心，我在很多其他地方也见到过类似的内容，即需求是一直变化的，不要妄想自己写出完美的代码。
-第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。
-第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。
+      Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.
+Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.
     </div>
   </div>
 </div>
@@ -260,21 +245,19 @@ Input: &quot;()&quot; Output: 1 Input: &quot;(())&quot; Output: 2 Input: &quot;(
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-12-arts-weekfive-vim%E7%BC%96%E8%BE%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode670-maximumswap/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。
-一、编译 在vim内部可以编译程序并且跳转到出错的位置。
-在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。
-:make {arguments} 在vim中会显示出错信息。此时按下&lt;Enter&gt;键，vim会显示对应的文件并跳转到出错的位置。
-下面是一些常用命令：
- :cnext将跳转到下个出错位置，:cprevious将跳转到前个出错位置 :cc将显示完整的出错信息 :clist将显示完整的出错列表。 :clist!将显示所有的出错列表，包含链接错误等等 :cfirst将跳到第一个出错位置，clast将跳到最后一个出错位置 :cc 3将跳到第3个出错位置  可以通过设置makeprg选项指定要运行的编译器,通过斜杠指定传递的参数，例如
-:set makeprg=nmake\ -f\ project.mak
-二、C风格的文本缩进 对于C或者C风格的程序例如Java或者C++，可以通过设置cindent选项来控制缩进。一般来说四个空格是合适的。
-set cindent shiftwidth=4
-可以通过=操作符来对齐缩进。最简单的命令是==，该命令会将当前行的缩进对齐。=操作符可以在可视化模式下使用。一个很有用的命令是=a{，这个命令会将当前{}所在的区域全部缩进对齐。
+      Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
+Example 1:
+Input: 2736 Output: 7236 Explanation: Swap the number 2 and the number 7. Example 2:
+Input: 9973 Output: 9973 Explanation: No swap.  这题的意思是对给定数字，只能交换一次不同位置的数字，则能得到的最大数字是多少。
+我自己的想法比较复杂。对于一个多位数字，显然把较大的数字放在前面更好。为了找到拿来交换的较大的数字的位置，遍历数组，并且找到递增的最大位置，该位置即为可以拿来交换的最大位置。当然，这样的位置可能有多个，则需要从这些位置中找到最大的、最靠后的位置。
+接下去找可拿来交换的最小位置，该位置一定在0到我们找到的第一个递增的最大位置之间，因此在这两个位置之间再找到比我们之前找到的最大位置数字小的位置，则该位置为能交换的小位置。最后，交换这两个位置的数字即可。
+代码如下：
+class Solution { public: int maximumSwap(int num) { string s = to_string(num); vector&lt;int&gt; vi; for(int i = 0; i &lt; s.
     </div>
   </div>
 </div>
@@ -284,27 +267,7 @@ set cindent shiftwidth=4
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-16-arts-weeksix-threerules/" class="link black dim">
-        
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。
-三、使用被证实的稳定的技术 Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。
-例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。
-二、不要重新发明轮子 云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。
-使用已有的东西，不管那是库、社区或是已知的内在知识。
-一、保持简单 每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-17-arts-weeksix-leetcode674-lcis/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode674-lcis/" class="link black dim">
         
       </a>
     </h1>
@@ -322,22 +285,32 @@ func findLengthOfLCIS(nums []int) int { if len(nums) == 0 { return 0 } lengthMax
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="http://tonfeiz.github.io/posts/2019-05-17-arts-weeksix-vim-tricks/" class="link black dim">
+      <a href="http://tonfeiz.github.io/posts/leetcode703-kthinstream/" class="link black dim">
         
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      这篇文章介绍了一些vim中的小技巧。
-替换单词 替换命令可以将一个单词替换为另一个单词，例如:%s/four/4/g
-然而，对于thirtyfour来说显然不用替换，此时可以使用&rdquo;\&lt;&quot;标志，转化为:%s/\&lt;four/4/g
-显然，对于fourteen来说，也是不对。可以使用&rdquo;\&gt;&quot;标志，则转化为::%s/\&lt;four\&gt;/4/g
-如果正在编程，可能希望替换注释中的“four”，这可以使用:%s/\&lt;four\&gt;4/gc
-将&quot;Last, First&quot;转化为&quot;First Last&rdquo; 假设你有许多单词，其形式为
-Doe, John Smith, Peter 你想将它们变为
-John Doe Peter Smith 这可以通过一个命令完成：:%s/\([^,]*\),\(.*\)/\2 \1/
-解释如下：
-The first part between \( \) matches &quot;Last&quot;	\( \) match anything but a comma	[^,] any number of times	* matches &quot;, &quot; literally	, The second part between \( \) matches &quot;First&quot;	\( \) any character	. any number of times	* &ldquo;\2&quot;和&rdquo;\1&quot;叫做backreferences，可以指代前面用&rdquo;\( \)&ldquo;包围的文本
-逆转行的顺序 命令为:global/^/m 0
+      Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/leetcode704-binarysearch/" class="link black dim">
+        
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.
+You may assume that all elements in nums are unique. n will be in the range [1, 10000]. The value of each element in nums will be in the range [-9999, 9999].
+ 这题其实就是一个简单的二分搜索，数组中的元素都是唯一的，且数值也不大，难怪会被分到简单题里
+二分搜索很有名，要实现一个完全正确的二分搜索是很困难的，但这题的要求并不高。基本思想就是每次寻找中间元素并根据中间元素与目标元素的大小判断下一个搜索范围应该在哪一侧
+二分搜索时，左侧和右侧的范围应当界定明确。在下面的代码中，采用的范围是C++中的通用范围，即[left, right)。因此，循环的推出条件就是两者相等。当缩小范围时，要根据上面的关系选择是中间元素还是中间元素的两侧元素
     </div>
   </div>
 </div>

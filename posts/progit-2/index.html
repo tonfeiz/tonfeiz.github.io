@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="本章讲述Git的基础知识。
+Git基础 获取Git Repo 有两种获取Git Repo的方法
+ 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo  在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init
+即可。
+该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。
+如果想要开始对已存在的文件进行版本控制，可以输入下面命令
+$ git add *.c $ git add LICENSE $ git commit -m &quot;initial project version&quot; 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。
+通过git clone &lt;url&gt;可以克隆repo。例如：
+$ git clone https://github.com/libgit2/libgit2
+创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。
+记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。
+几个状态之间的转移图如图所示。
+检查文件状态 git status可用来检查文件的状态。
+例如，假设刚刚clone了一个repo，则此时使用git status命令一般显示如下
+$ git status On branch master Your branch is up-to-date with &#39;origin/master&#39;. nothing to commit, working directory clean 这表明工作目录是干净的，即你所跟踪(track)的文件都没有被修改" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/progit-2/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="本章讲述Git的基础知识。
+Git基础 获取Git Repo 有两种获取Git Repo的方法
+ 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo  在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init
+即可。
+该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。
+如果想要开始对已存在的文件进行版本控制，可以输入下面命令
+$ git add *.c $ git add LICENSE $ git commit -m &quot;initial project version&quot; 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。
+通过git clone &lt;url&gt;可以克隆repo。例如：
+$ git clone https://github.com/libgit2/libgit2
+创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。
+记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。
+几个状态之间的转移图如图所示。
+检查文件状态 git status可用来检查文件的状态。
+例如，假设刚刚clone了一个repo，则此时使用git status命令一般显示如下
+$ git status On branch master Your branch is up-to-date with &#39;origin/master&#39;. nothing to commit, working directory clean 这表明工作目录是干净的，即你所跟踪(track)的文件都没有被修改">
+
+<meta itemprop="wordCount" content="666">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="本章讲述Git的基础知识。
+Git基础 获取Git Repo 有两种获取Git Repo的方法
+ 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo  在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init
+即可。
+该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。
+如果想要开始对已存在的文件进行版本控制，可以输入下面命令
+$ git add *.c $ git add LICENSE $ git commit -m &quot;initial project version&quot; 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。
+通过git clone &lt;url&gt;可以克隆repo。例如：
+$ git clone https://github.com/libgit2/libgit2
+创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。
+记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。
+几个状态之间的转移图如图所示。
+检查文件状态 git status可用来检查文件的状态。
+例如，假设刚刚clone了一个repo，则此时使用git status命令一般显示如下
+$ git status On branch master Your branch is up-to-date with &#39;origin/master&#39;. nothing to commit, working directory clean 这表明工作目录是干净的，即你所跟踪(track)的文件都没有被修改"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/progit-2/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/progit-2/&amp;text=" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/progit-2/&amp;title=" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>本章讲述Git的基础知识。</p>
+<h2 id="git基础">Git基础</h2>
+<h3 id="获取git-repo">获取Git Repo</h3>
+<p>有两种获取Git Repo的方法</p>
+<ul>
+<li>将本地未纳入版本控制的目录转变为Git repo</li>
+<li>从其他地方克隆Git repo</li>
+</ul>
+<h4 id="在已存在的目录中初始化repo">在已存在的目录中初始化Repo</h4>
+<p>在已存在的目录中输入
+<code>$ git init</code><br>
+即可。</p>
+<p>该命令会在目录中创建一个<code>.git</code>的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。</p>
+<p>如果想要开始对已存在的文件进行版本控制，可以输入下面命令</p>
+<pre><code>$ git add *.c
+$ git add LICENSE
+$ git commit -m &quot;initial project version&quot;
+</code></pre><h4 id="克隆已存在的repo">克隆已存在的Repo</h4>
+<p><code>git clone</code>可以用来克隆已存在的文件。与其他版本控制系统常用的<code>checkout</code>不同，这里的<code>clone</code>表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。</p>
+<p>通过<code>git clone &lt;url&gt;</code>可以克隆repo。例如：<br>
+<code>$ git clone https://github.com/libgit2/libgit2</code><br>
+创建了一个名叫<code>libgit2</code>的目录，在其中初始化了<code>.git</code>目录，将该库的数据都拉到其中，并签出(<code>checkout</code>)了最新版本的文件。</p>
+<h3 id="记录repo的变化">记录Repo的变化</h3>
+<p>每个工作目录中的文件有两个状态：<em>tracked</em>或是<em>untracked</em>。<em>tracked</em>的文件是在上一个快照中的文件；它们可以是未修改的(<code>unmodified</code>)，修改的(<code>modified</code>)和暂存的(<code>staged</code>)。</p>
+<p>几个状态之间的转移图如图所示。<br>
+<img src="../assets/images/git_status_change.png" alt="文件状态生命周期"></p>
+<h4 id="检查文件状态">检查文件状态</h4>
+<p><code>git status</code>可用来检查文件的状态。</p>
+<p>例如，假设刚刚<code>clone</code>了一个repo，则此时使用<code>git status</code>命令一般显示如下</p>
+<pre><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+</code></pre><p>这表明工作目录是干净的，即你所跟踪(<code>track</code>)的文件都没有被修改</p>
+<p>如果添加一个<code>README</code>文件，则它是一个<code>untracked</code>文件，目录的状态就发生了变化</p>
+<pre><code>$ echo 'My Project' &gt; README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+(use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+README
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre><p><code>untracked</code>文件表示该文件没有出现在上一次<code>commit</code>的快照中</p>
+<h4 id="跟踪新文件">跟踪新文件</h4>
+<p>可通过<code>git add</code>命令跟踪新文件。例如<br>
+<code>git add README</code></p>
+<p>此时运行<code>git status</code>命令，则输出为</p>
+<pre><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+    new file:  README
+</code></pre><p>现在该文件就处于暂存(<code>staged</code>)状态了。该状态下对文件的改变等待被<code>commit</code>。</p>
+<h4 id="暂存修改后文件">暂存修改后文件</h4>
+<p>如果修改了一个之前跟踪的文件，例如<code>CONTRIBUTING.md</code>，然后运行<code>git status</code>,则输出为</p>
+<pre><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    new file:  README
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:  CONTRIBUTING.md
+</code></pre><p><code>CONTRIBUTING.md</code>文件被修改了，但还没有位于暂存区中，需要通过<code>git add</code>命令将其加入暂存区。</p>
+<p>运行<code>git add</code>命令后状态如下</p>
+<pre><code>$ git add CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+</code></pre><p>如果此时调用<code>commit</code>，则两个文件都会被加入快照中。如果此时你修改了<code>CONTRIBUTING.md</code>文件，则<code>git status</code>命令的输出会是</p>
+<pre><code>$ vim CONTRIBUTING.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    new file: README
+    modified: CONTRIBUTING.md
+
+Changes not staged for commit:
+ (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    modified: CONTRIBUTING.md
+</code></pre><p><code>CONTRIBUTING.md</code>既是<code>staged</code>又是<code>unstaged</code>。<code>staged</code>的文件是上一次<code>git add</code>加进去的，而后面修改内容的文件处于<code>unstaged</code>状态。如果现在<code>commit</code>，则快照中的文件仍然是修改之前的，即<code>staged</code>状态的文件。</p>
+<h4 id="忽略文件">忽略文件</h4>
+<p>Git可通过在<code>.gitignore</code>文件中设置对应的语法规则来使得Git在添加、提交等操作时忽略一些文件，例如程序构建后的文件、构建过程中的目标文件、临时文件等。其中的语法这里不再详细介绍，当用到时去查看即可。</p>
+<h4 id="观看暂存以及未暂存的改变">观看暂存以及未暂存的改变</h4>
+<p><code>git status</code>命令的输出太模糊、宽泛了——你知道文件的状态，但不知道文件的内容发生了什么变化。<code>git diff</code>命令可用于观看这些变化。</p>
+<p>例如，假设你编辑并且暂存了<code>README</code>文件，编辑了<code>CONTRIBUTING.md</code>文件但没有暂存它，则<code>git status</code>的输出是</p>
+<pre><code>$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    modified: README
+Changes not staged for commit:
+ (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    modified: CONTRIBUTING.md
+</code></pre><p>为了观看改变的但是没有暂存的内容，直接输入<code>git diff</code></p>
+<pre><code>$ git diff
+diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md
+index 8ebb991..643e24f 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -65,7 +65,8 @@ branch directly, things can get messy.
+ Please include a nice description of your changes when you submit your PR;if we have to read the whole diff to figure out why you're contributing in the first place, you're less likely to get feedback and have your change
+-merged in.
++merged in. Also, split your changes into comprehensive +chunks if your patch is longer than a dozen lines.
+
+If you are starting to work on a particular area, feel free to submit a PR that highlights your work in progress (and note in the PR title that it's
+</code></pre><p>该命令比较工作目录和暂存区的差异。因此结果就是告诉你你所改变的没有暂存的内容。</p>
+<p>如果想看已经暂存的(即将要进入下一次<code>commit</code>中的)内容，可以使用<code>git diff --staged</code>。该命令比较暂存区和上一次<code>commit</code>的内容的变化</p>
+<pre><code>$ git diff --staged
+diff --git a/README b/README
+new file mode 100644
+index 0000000..03902a1
+--- /dev/null
++++ b/README
+@@ -0,0 +1 @@
++My Project
+</code></pre><h4 id="提交发生的改变">提交发生的改变</h4>
+<p><code>commit</code>命令可以将暂存区中的内容加入到快照当中。<code>git commit</code>命令会打开默认编辑器让你键入<code>commit</code>的相关信息。也可以通过<code>git commit -m &lt;message&gt;</code>来输入信息。</p>
+<p>记住，只有暂存区的内容会加入快照当中，不在暂存区的修改都会是<code>modified</code>状态。<code>commit</code>命令的本质是创建一个暂存区的快照。</p>
+<h4 id="跳过暂存区">跳过暂存区</h4>
+<p>通过给<code>git commit</code>命令传递<code>-a</code>选项可以使其跳过暂存阶段。该选项会将所有跟踪的改变内容的文件暂存(注意：未跟踪的文件不会被暂存！)</p>
+<h4 id="删除文件">删除文件</h4>
+<p>为了从Git中删除文件，需要删除跟踪着的文件然后<code>commit</code>。<code>git rm</code>会删除跟踪着的文件。工作目录中的对应文件也会被删除。</p>
+<p>如果只是使用<code>rm</code>命令删除，则该改变使得Git进入下面的状态</p>
+<pre><code>$ rm PROJECTS.md
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+ (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+ (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    deleted: PROJECTS.md
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre><p>如果使用<code>git rm</code>命令，则对应的文件会从暂存区中删除</p>
+<pre><code>$ git rm PROJECTS.md
+rm 'PROJECTS.md'
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    deleted: PROJECTS.md
+</code></pre><p>接着<code>commit</code>即可。如果对文件进行了修改(处于<code>modified</code>状态，未加入暂存区)或已经将它加入暂存区(没有<code>commit</code>)，则需要加上<code>-f</code>选项强制删除。</p>
+<p>有时候或许只想从暂存区中删除文件，而希望在硬盘上保留它。也就是说，希望Git不再跟踪该文件，则可以给<code>git rm</code>命令加上<code>--cached</code>选项。</p>
+<h4 id="移动文件">移动文件</h4>
+<p>Git不显式跟踪文件的移动。</p>
+<pre><code>$ git mv README.md README
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+ (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    renamed: README.md -&gt; README
+</code></pre><p>上面的命令和下面的命令是等价的</p>
+<pre><code>$ mv README.md README
+$ git rm README.md
+$ git add README
+</code></pre><ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

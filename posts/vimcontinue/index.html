@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。
+ ^ -&gt; 到本行第一个不是blank字符的位置 g_ -&gt; 到本行最后一个不是blank字符的位置 :e &lt;path/to/file&gt; -&gt; 打开一个文件 :saveas &lt;path/to/file&gt; -&gt; 另存为&lt;path/to/file&gt; :bn和:bp -&gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件 . -&gt; 可以重复上一次的命令 N&lt;command&gt; -&gt; 重复某个命令N次 *和# -&gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词 很多命令可以以下面的形式来干
+&lt;start position&gt;&lt;command&gt;&lt;end position&gt;
+例如0y$意味着：   0 -&gt; 到行头 y -&gt; 拷贝 $ -&gt; 到本行最后一个字符  gU和gu后跟位置(例如w，e，$等)变换大小写 在当前行上，fa可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字 区域选择 &lt;action&gt;a&lt;object&gt;或&lt;action&gt;i&lt;object&gt;   action可以是任何命令，例如d，y，v等 object可以是w(单词),s(句子),p(段落)，或者是特别字符:&quot;、&#39;、)、}、]
+举例来说，字符串(haha (-) (&quot;tfz&quot;)).光标在f位置    vi&rdquo; -&gt; 选择tfz va&rdquo; -&gt; 选择&quot;tfz&quot; vi) -&gt; 选择&quot;tfz&quot; va) -&gt; 选择(&quot;tfz&quot;) v2i) -&gt; 选择haha (-) (&quot;tfz&quot;) v2a) -&gt; 选择(haha (-) (&quot;tfz&quot;))   块操作 &lt;C-v&gt; &lt;move&gt; &lt;motion&gt; [ESC]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/vimcontinue/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。
+ ^ -&gt; 到本行第一个不是blank字符的位置 g_ -&gt; 到本行最后一个不是blank字符的位置 :e &lt;path/to/file&gt; -&gt; 打开一个文件 :saveas &lt;path/to/file&gt; -&gt; 另存为&lt;path/to/file&gt; :bn和:bp -&gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件 . -&gt; 可以重复上一次的命令 N&lt;command&gt; -&gt; 重复某个命令N次 *和# -&gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词 很多命令可以以下面的形式来干
+&lt;start position&gt;&lt;command&gt;&lt;end position&gt;
+例如0y$意味着：   0 -&gt; 到行头 y -&gt; 拷贝 $ -&gt; 到本行最后一个字符  gU和gu后跟位置(例如w，e，$等)变换大小写 在当前行上，fa可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字 区域选择 &lt;action&gt;a&lt;object&gt;或&lt;action&gt;i&lt;object&gt;   action可以是任何命令，例如d，y，v等 object可以是w(单词),s(句子),p(段落)，或者是特别字符:&quot;、&#39;、)、}、]
+举例来说，字符串(haha (-) (&quot;tfz&quot;)).光标在f位置    vi&rdquo; -&gt; 选择tfz va&rdquo; -&gt; 选择&quot;tfz&quot; vi) -&gt; 选择&quot;tfz&quot; va) -&gt; 选择(&quot;tfz&quot;) v2i) -&gt; 选择haha (-) (&quot;tfz&quot;) v2a) -&gt; 选择(haha (-) (&quot;tfz&quot;))   块操作 &lt;C-v&gt; &lt;move&gt; &lt;motion&gt; [ESC]">
+
+<meta itemprop="wordCount" content="116">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。
+ ^ -&gt; 到本行第一个不是blank字符的位置 g_ -&gt; 到本行最后一个不是blank字符的位置 :e &lt;path/to/file&gt; -&gt; 打开一个文件 :saveas &lt;path/to/file&gt; -&gt; 另存为&lt;path/to/file&gt; :bn和:bp -&gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件 . -&gt; 可以重复上一次的命令 N&lt;command&gt; -&gt; 重复某个命令N次 *和# -&gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词 很多命令可以以下面的形式来干
+&lt;start position&gt;&lt;command&gt;&lt;end position&gt;
+例如0y$意味着：   0 -&gt; 到行头 y -&gt; 拷贝 $ -&gt; 到本行最后一个字符  gU和gu后跟位置(例如w，e，$等)变换大小写 在当前行上，fa可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字 区域选择 &lt;action&gt;a&lt;object&gt;或&lt;action&gt;i&lt;object&gt;   action可以是任何命令，例如d，y，v等 object可以是w(单词),s(句子),p(段落)，或者是特别字符:&quot;、&#39;、)、}、]
+举例来说，字符串(haha (-) (&quot;tfz&quot;)).光标在f位置    vi&rdquo; -&gt; 选择tfz va&rdquo; -&gt; 选择&quot;tfz&quot; vi) -&gt; 选择&quot;tfz&quot; va) -&gt; 选择(&quot;tfz&quot;) v2i) -&gt; 选择haha (-) (&quot;tfz&quot;) v2a) -&gt; 选择(haha (-) (&quot;tfz&quot;))   块操作 &lt;C-v&gt; &lt;move&gt; &lt;motion&gt; [ESC]"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/vimcontinue/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/vimcontinue/&amp;text=" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/vimcontinue/&amp;title=" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。</p>
+<ol>
+<li>^ -&gt; 到本行第一个不是blank字符的位置</li>
+<li>g_ -&gt; 到本行最后一个不是blank字符的位置</li>
+<li>:e &lt;path/to/file&gt; -&gt; 打开一个文件</li>
+<li>:saveas &lt;path/to/file&gt; -&gt; 另存为&lt;path/to/file&gt;</li>
+<li>:bn和:bp -&gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件</li>
+<li><code>.</code> -&gt; 可以重复上一次的命令</li>
+<li><code>N&lt;command&gt;</code> -&gt; 重复某个命令N次</li>
+<li>*和# -&gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词</li>
+<li>很多命令可以以下面的形式来干<br>
+<code>&lt;start position&gt;&lt;command&gt;&lt;end position&gt;</code><br>
+例如<code>0y$</code>意味着：</li>
+</ol>
+<ul>
+<li><code>0</code> -&gt; 到行头</li>
+<li><code>y</code> -&gt; 拷贝</li>
+<li><code>$</code> -&gt; 到本行最后一个字符</li>
+</ul>
+<ol start="10">
+<li><code>gU</code>和<code>gu</code>后跟位置(例如w，e，$等)变换大小写</li>
+<li>在当前行上，<code>fa</code>可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字</li>
+<li>区域选择 <code>&lt;action&gt;a&lt;object&gt;</code>或<code>&lt;action&gt;i&lt;object&gt;</code></li>
+</ol>
+<ul>
+<li><code>action</code>可以是任何命令，例如<code>d</code>，<code>y</code>，<code>v</code>等</li>
+<li><code>object</code>可以是<code>w</code>(单词),<code>s</code>(句子),<code>p</code>(段落)，或者是特别字符:<code>&quot;</code>、<code>'</code>、<code>)</code>、<code>}</code>、<code>]</code><br>
+举例来说，字符串<code>(haha (-) (&quot;tfz&quot;))</code>.光标在f位置</li>
+</ul>
+<blockquote>
+<ul>
+<li>vi&rdquo; -&gt; 选择<code>tfz</code></li>
+<li>va&rdquo; -&gt; 选择<code>&quot;tfz&quot;</code></li>
+<li>vi) -&gt; 选择<code>&quot;tfz&quot;</code></li>
+<li>va) -&gt; 选择<code>(&quot;tfz&quot;)</code></li>
+<li>v2i) -&gt; 选择<code>haha (-) (&quot;tfz&quot;)</code></li>
+<li>v2a) -&gt; 选择<code>(haha (-) (&quot;tfz&quot;))</code></li>
+</ul>
+</blockquote>
+<ol start="13">
+<li>块操作 <code>&lt;C-v&gt; &lt;move&gt; &lt;motion&gt; [ESC]</code><br>
+一般都用于插入，举例来说，<code>&lt;C-v&gt; 向下移动 I-- [ESC]</code>为在同一位置前方插入<code>--</code>字符</li>
+<li>Insert模式下按<code>&lt;C-p&gt;</code>或是<code>&lt;C-n&gt;</code>可以自动补全</li>
+<li>宏录制</li>
+</ol>
+<ul>
+<li><code>qa</code>把操作记录在寄存器<code>a</code></li>
+<li><code>@a</code>会replay被录制的宏</li>
+<li><code>@@</code>会replay最新录制的宏<br>
+例如：在一行只有&quot;1&quot;的文本中，键入下面的命令:</li>
+<li>qayyp<!-- raw HTML omitted -->q -&gt;
+<ul>
+<li>qa开始录制</li>
+<li>yyp复制并粘贴当前行</li>
+<li><!-- raw HTML omitted -->增加1</li>
+<li>q停止录制</li>
+</ul>
+</li>
+<li>@a -&gt; 在1下面写下2</li>
+<li>@@ -&gt; 在2下面写下3</li>
+<li>100@@ -&gt; 创建新的100行，并把数据增加到103</li>
+</ul>
+<ol start="16">
+<li>块操作，当目标块被选中后，可以有如下操作：</li>
+</ol>
+<ul>
+<li><code>J</code> -&gt; 把所有的行连接起来变成一行</li>
+<li><code>&lt;</code>或<code>&gt;</code> -&gt; 左右缩进</li>
+<li><code>=</code> -&gt; 自动缩进</li>
+</ul>
+<ol start="17">
+<li>分屏，<code>:split</code>水平分屏，<code>vsplit</code>垂直分屏, <code>&lt;C-w&gt;&lt;direction(可以是hjkl)&gt;</code>切换分屏</li>
+</ol>
+<h2 id="资料来源">资料来源</h2>
+<ol>
+<li><a href="https://coolshell.cn/articles/5426.html">简明vim练级攻略</a></li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
