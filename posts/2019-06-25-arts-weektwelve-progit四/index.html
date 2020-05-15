@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>ARTS Week Twelve ProGit(四) | Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="ARTS Week Twelve ProGit(四)" />
+<meta property="og:description" content="本章介绍Git关于分支的知识，包括基本的分支切换合并。
+Git Branching Branches in a Nutshell 当你进行commit时，Git存储了一个包含指向你快照的指针的提交对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(commit)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。
+假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做blobs),并将checksum赋值给暂存区。
+当你提交(commit)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个commit对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。
+因此，现在你的Git库中包含了五个对象：三个blob(每个分别表示三个文件中的一个的内容)，一个tree包含了目录的内容并且指定了哪个文件名作为哪个blob保存，以及一个commit包含了指向该树的指针以及所有的元数据。
+如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(commit的指针。
+在Git中的一个分支(branch)就是指向这些commit其中之一的指针。默认的分支是master。
+Creating a New Branch 创建一个新的分支其实就是创建了一个新的指针供你移动。git branch &lt;branch_name&gt;即创建了一个新分支，该分支指向当前的commit。
+Git通过一个特殊的HEAD指针知晓当前你在哪个分支上。HEAD指针指向某一个branch指针。默认情况下该指针指向master。注意：使用git branch只是创建分支，而不会切换到该分支，因此git branch不会改变HEAD指针的指向。
+Switching Branches 切换分支可用下面的指令：
+git checkout &lt;branch_name&gt; 该指令把HEAD指针指向&lt;branch_name&gt;代表的分支指针。
+如果在该情况下进行commit，则原来的master分支指针仍指向原来的位置，而切换到的分支指针和HEAD指针则向前移动了。
+如果在此之后，将分支切换回master(git checkout master)，则HEAD指针会指向master，并且目录中的文件会切换回master指向的快照中的文件。
+接下来，如果你进行了改动并再次commit，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。
+一个Git中的分支其实就是commit的40字节SHA-1校验和，因此分支的创建和销毁都很简单。
+git checkout -b &lt;branch_name&gt;可以创建并切换到该分支。
+Basic Branching and Merging Basic Branching 假设你在完成工作，之前已经有几个commits在master分支上了。
+ master | c0 &lt;- c1 &lt;- c2 你决定在#53号事务上工作。你使用了下面的命令
+git checkout -b iss53 于是现在情况变成了
+ master | c0 &lt;- c1 &lt;- c2 | iss53 你完成了一些工作，进行了提交。则iss53分支前进了，如下所示" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/2019-06-25-arts-weektwelve-progit%E5%9B%9B/" />
+
+<meta itemprop="name" content="ARTS Week Twelve ProGit(四)">
+<meta itemprop="description" content="本章介绍Git关于分支的知识，包括基本的分支切换合并。
+Git Branching Branches in a Nutshell 当你进行commit时，Git存储了一个包含指向你快照的指针的提交对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(commit)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。
+假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做blobs),并将checksum赋值给暂存区。
+当你提交(commit)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个commit对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。
+因此，现在你的Git库中包含了五个对象：三个blob(每个分别表示三个文件中的一个的内容)，一个tree包含了目录的内容并且指定了哪个文件名作为哪个blob保存，以及一个commit包含了指向该树的指针以及所有的元数据。
+如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(commit的指针。
+在Git中的一个分支(branch)就是指向这些commit其中之一的指针。默认的分支是master。
+Creating a New Branch 创建一个新的分支其实就是创建了一个新的指针供你移动。git branch &lt;branch_name&gt;即创建了一个新分支，该分支指向当前的commit。
+Git通过一个特殊的HEAD指针知晓当前你在哪个分支上。HEAD指针指向某一个branch指针。默认情况下该指针指向master。注意：使用git branch只是创建分支，而不会切换到该分支，因此git branch不会改变HEAD指针的指向。
+Switching Branches 切换分支可用下面的指令：
+git checkout &lt;branch_name&gt; 该指令把HEAD指针指向&lt;branch_name&gt;代表的分支指针。
+如果在该情况下进行commit，则原来的master分支指针仍指向原来的位置，而切换到的分支指针和HEAD指针则向前移动了。
+如果在此之后，将分支切换回master(git checkout master)，则HEAD指针会指向master，并且目录中的文件会切换回master指向的快照中的文件。
+接下来，如果你进行了改动并再次commit，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。
+一个Git中的分支其实就是commit的40字节SHA-1校验和，因此分支的创建和销毁都很简单。
+git checkout -b &lt;branch_name&gt;可以创建并切换到该分支。
+Basic Branching and Merging Basic Branching 假设你在完成工作，之前已经有几个commits在master分支上了。
+ master | c0 &lt;- c1 &lt;- c2 你决定在#53号事务上工作。你使用了下面的命令
+git checkout -b iss53 于是现在情况变成了
+ master | c0 &lt;- c1 &lt;- c2 | iss53 你完成了一些工作，进行了提交。则iss53分支前进了，如下所示">
+
+<meta itemprop="wordCount" content="238">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ARTS Week Twelve ProGit(四)"/>
+<meta name="twitter:description" content="本章介绍Git关于分支的知识，包括基本的分支切换合并。
+Git Branching Branches in a Nutshell 当你进行commit时，Git存储了一个包含指向你快照的指针的提交对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(commit)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。
+假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做blobs),并将checksum赋值给暂存区。
+当你提交(commit)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个commit对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。
+因此，现在你的Git库中包含了五个对象：三个blob(每个分别表示三个文件中的一个的内容)，一个tree包含了目录的内容并且指定了哪个文件名作为哪个blob保存，以及一个commit包含了指向该树的指针以及所有的元数据。
+如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(commit的指针。
+在Git中的一个分支(branch)就是指向这些commit其中之一的指针。默认的分支是master。
+Creating a New Branch 创建一个新的分支其实就是创建了一个新的指针供你移动。git branch &lt;branch_name&gt;即创建了一个新分支，该分支指向当前的commit。
+Git通过一个特殊的HEAD指针知晓当前你在哪个分支上。HEAD指针指向某一个branch指针。默认情况下该指针指向master。注意：使用git branch只是创建分支，而不会切换到该分支，因此git branch不会改变HEAD指针的指向。
+Switching Branches 切换分支可用下面的指令：
+git checkout &lt;branch_name&gt; 该指令把HEAD指针指向&lt;branch_name&gt;代表的分支指针。
+如果在该情况下进行commit，则原来的master分支指针仍指向原来的位置，而切换到的分支指针和HEAD指针则向前移动了。
+如果在此之后，将分支切换回master(git checkout master)，则HEAD指针会指向master，并且目录中的文件会切换回master指向的快照中的文件。
+接下来，如果你进行了改动并再次commit，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。
+一个Git中的分支其实就是commit的40字节SHA-1校验和，因此分支的创建和销毁都很简单。
+git checkout -b &lt;branch_name&gt;可以创建并切换到该分支。
+Basic Branching and Merging Basic Branching 假设你在完成工作，之前已经有几个commits在master分支上了。
+ master | c0 &lt;- c1 &lt;- c2 你决定在#53号事务上工作。你使用了下面的命令
+git checkout -b iss53 于是现在情况变成了
+ master | c0 &lt;- c1 &lt;- c2 | iss53 你完成了一些工作，进行了提交。则iss53分支前进了，如下所示"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/2019-06-25-arts-weektwelve-progit%E5%9B%9B/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/2019-06-25-arts-weektwelve-progit%E5%9B%9B/&amp;text=ARTS%20Week%20Twelve%20ProGit%28%e5%9b%9b%29" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/2019-06-25-arts-weektwelve-progit%E5%9B%9B/&amp;title=ARTS%20Week%20Twelve%20ProGit%28%e5%9b%9b%29" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">ARTS Week Twelve ProGit(四)</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>本章介绍Git关于分支的知识，包括基本的分支切换合并。</p>
+<h2 id="git-branching">Git Branching</h2>
+<h3 id="branches-in-a-nutshell">Branches in a Nutshell</h3>
+<p>当你进行<code>commit</code>时，Git存储了一个包含指向你快照的指针的<em>提交</em>对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(<code>commit</code>)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。</p>
+<p>假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做<em>blobs</em>),并将checksum赋值给暂存区。</p>
+<p>当你提交(<code>commit</code>)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个<em>commit</em>对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。</p>
+<p>因此，现在你的Git库中包含了五个对象：三个<em>blob</em>(每个分别表示三个文件中的一个的内容)，一个<em>tree</em>包含了目录的内容并且指定了哪个文件名作为哪个<em>blob</em>保存，以及一个<em>commit</em>包含了指向该树的指针以及所有的元数据。</p>
+<p>如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(<em>commit</em>的指针。</p>
+<p>在Git中的一个分支(<strong>branch</strong>)就是指向这些<em>commit</em>其中之一的指针。默认的分支是master。</p>
+<h4 id="creating-a-new-branch">Creating a New Branch</h4>
+<p>创建一个新的分支其实就是创建了一个新的指针供你移动。<code>git branch &lt;branch_name&gt;</code>即创建了一个新分支，该分支指向当前的<code>commit</code>。</p>
+<p>Git通过一个特殊的<strong>HEAD</strong>指针知晓当前你在哪个分支上。<code>HEAD</code>指针指向某一个<code>branch</code>指针。默认情况下该指针指向master。注意：使用<code>git branch</code>只是创建分支，而不会切换到该分支，因此<code>git branch</code>不会改变<code>HEAD</code>指针的指向。</p>
+<h4 id="switching-branches">Switching Branches</h4>
+<p>切换分支可用下面的指令：</p>
+<pre><code>git checkout &lt;branch_name&gt;
+</code></pre><p>该指令把<code>HEAD</code>指针指向<code>&lt;branch_name&gt;</code>代表的分支指针。</p>
+<p>如果在该情况下进行<code>commit</code>，则原来的<code>master</code>分支指针仍指向原来的位置，而切换到的分支指针和<code>HEAD</code>指针则向前移动了。</p>
+<p>如果在此之后，将分支切换回<code>master</code>(<code>git checkout master</code>)，则<code>HEAD</code>指针会指向<code>master</code>，并且目录中的文件会切换回<code>master</code>指向的快照中的文件。</p>
+<p>接下来，如果你进行了改动并再次<code>commit</code>，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。</p>
+<p>一个Git中的分支其实就是<code>commit</code>的40字节SHA-1校验和，因此分支的创建和销毁都很简单。</p>
+<p><code>git checkout -b &lt;branch_name&gt;</code>可以创建并切换到该分支。</p>
+<h3 id="basic-branching-and-merging">Basic Branching and Merging</h3>
+<h4 id="basic-branching">Basic Branching</h4>
+<p>假设你在完成工作，之前已经有几个<code>commits</code>在<code>master</code>分支上了。</p>
+<pre><code>          master
+            |
+c0 &lt;- c1 &lt;- c2
+</code></pre><p>你决定在#53号事务上工作。你使用了下面的命令</p>
+<pre><code>git checkout -b iss53
+</code></pre><p>于是现在情况变成了</p>
+<pre><code>          master
+            |
+c0 &lt;- c1 &lt;- c2
+            |
+          iss53
+</code></pre><p>你完成了一些工作，进行了提交。则<code>iss53</code>分支前进了，如下所示</p>
+<pre><code>          master
+            |
+c0 &lt;- c1 &lt;- c2 &lt;- c3
+                  |
+                iss53
+</code></pre><p>现在，假设你接到信息，需要紧急修复一个bug，则此时可以先从<code>iss53</code>分支切换到<code>master</code>分支。</p>
+<pre><code>git checkout master
+</code></pre><p>注意：如果工作目录或者暂存区中有未提交的改变和正在签出的分支冲突，则Git不会让你切换分支。</p>
+<p>然后，需要创造一个<code>hotfix</code>分支，并且修改bug、提交，则此时如下所示</p>
+<pre><code>          master hotfix
+            |     |
+c0 &lt;- c1 &lt;- c2 &lt;- c4
+             | &lt;- c3               
+                  |
+                iss53
+</code></pre><p>接下去，你可以切换回<code>master</code>分支，然后进行分支合并。</p>
+<pre><code>$ git checkout master
+$ git merge hotfix
+</code></pre><p>这里有个<code>fast-forward</code>模式。在上面的例子中，<code>hotfix</code>就在<code>master</code>之后，因此直接将<code>master</code>指针往后移一步则完成了分支合并。</p>
+<pre><code>                master
+                  ||
+                hotfix
+                  |
+c0 &lt;- c1 &lt;- c2 &lt;- c4
+             | &lt;- c3               
+                  |
+                iss53
+</code></pre><p>现在，由于<code>master</code>和<code>hotfix</code>一样都指向同样的<code>commit</code>，则可以删除<code>hotfix</code></p>
+<pre><code>$ git branch -d hotfix
+</code></pre><p>接着你可以切换回<code>iss53</code>分支继续工作并提交。</p>
+<pre><code>                master
+                  |
+c0 &lt;- c1 &lt;- c2 &lt;- c4
+             | &lt;- c3 &lt;- c5
+                        |
+                      iss53
+</code></pre><p>注意：你在<code>hotfix</code>中完成的工作不会包含在<code>iss53</code>中。你可以把<code>master</code>分支的内容和当前内容合并，也可以在完成<code>iss53</code>的工作中将其合并到主分支中。</p>
+<h4 id="basic-merging">Basic Merging</h4>
+<p>假设你想把<code>iss53</code>分支合并到<code>master</code>分支，则和之前一样，先<code>checkout</code>再<code>merge</code>即可</p>
+<pre><code>$ git checkout master
+$ git merge iss53
+</code></pre><p>和之前的合并不同的是，这是一个<code>recursive</code>的模式。这是因为当前分支的提交不是正在合并进来的提交的直接祖先。在这样的情况下，Git进行一个简单的三路合并，使用两个分支指针指向的快照以及两者的共同祖先。</p>
+<pre><code>         common master(merge into)
+            |     |
+c0 &lt;- c1 &lt;- c2 &lt;- c4
+             | &lt;- c3 &lt;- c5
+                        |
+                      iss53(merge in)
+</code></pre><p>Git会创建一个新的快照，并自动创建一个指向它的提交(<em>commit</em>)。这被称为一个合并提交(<em>merge commit</em>)，并且有两个父亲(因此是特殊的)。</p>
+<pre><code>                           master
+                             |
+c0 &lt;- c1 &lt;- c2 &lt;- c4 &lt;------ c6
+             | &lt;- c3 &lt;- c5 &lt;-|
+                        |
+                      iss53
+</code></pre><p>现在你就可以删除<code>iss53</code>分支了。</p>
+<h4 id="basic-merge-conflicts">Basic Merge Conflicts</h4>
+<p>如果你正在合并的两个分支中的相同文件的相同部分并不一样，则Git不会完整干净的合并它们，而是会发生合并冲突。</p>
+<p>Git不会自动创建新的合并提交，而是会暂停过程。可以通过<code>git status</code>查看在发生合并冲突后哪些文件是<code>unmerged</code>状态的。</p>
+<p>Git会在文件中发生冲突的地方加上标志。</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
+&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;
+=======
+&lt;div id=&quot;footer&quot;&gt;
+please contact us at support@github.com
+&lt;/div&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html
+</code></pre><p>它的意思是<code>HEAD</code>版本的内容在<code>===</code>符号的上方和<code>&lt;&lt;&lt;</code>符号的下方，<code>iss53</code>版本的内容在<code>===</code>的下方而在<code>&gt;&gt;&gt;</code>的上方。</p>
+<p>你可以通过自己手动修改冲突，再运行<code>git add</code>将它们标记为<code>merged</code>。</p>
+<p>还有一种选择是通过合并工具进行合并。命令是<code>git mergetool</code>。</p>
+<p>最后，可以通过运行<code>git commit</code>提交此次合并。默认的消息感觉比较好，也可以自行写消息介绍你合并的过程。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

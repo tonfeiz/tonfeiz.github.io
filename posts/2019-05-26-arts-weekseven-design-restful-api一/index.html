@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Best Practice for Designing a Pragmatic RESTful API
+Key requirements for the API 列举了一些API的需求：
+ 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
+API设计的一大关键是不要把实现细节暴露给API。
+当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
+ GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
+**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
+**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
+ GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-design-restful-api%E4%B8%80/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Best Practice for Designing a Pragmatic RESTful API
+Key requirements for the API 列举了一些API的需求：
+ 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
+API设计的一大关键是不要把实现细节暴露给API。
+当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
+ GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
+**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
+**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
+ GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)">
+
+<meta itemprop="wordCount" content="101">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Best Practice for Designing a Pragmatic RESTful API
+Key requirements for the API 列举了一些API的需求：
+ 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
+API设计的一大关键是不要把实现细节暴露给API。
+当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
+ GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
+**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
+**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
+ GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-design-restful-api%E4%B8%80/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-design-restful-api%E4%B8%80/&amp;text=" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/2019-05-26-arts-weekseven-design-restful-api%E4%B8%80/&amp;title=" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>Best Practice for Designing a Pragmatic RESTful API</p>
+<h2 id="key-requirements-for-the-api">Key requirements for the API</h2>
+<p>列举了一些API的需求：</p>
+<ul>
+<li>应当在有意义的地方使用web标准</li>
+<li>它应当对开发者友好并且可以通过浏览器地址栏探索</li>
+<li>它应当是简单的，符合直觉的</li>
+<li>它应当提供足够的灵活性</li>
+<li>在维持其他需求的同时，它应当是有效的</li>
+</ul>
+<h2 id="use-restful-urls-and-actions">Use RESTful URLS and actions</h2>
+<p>RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。</p>
+<p>API设计的一大关键是不要把实现细节暴露给API。</p>
+<p>当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：</p>
+<ul>
+<li><code>GET /tickets</code> - 获取tickets列表</li>
+<li><code>GET /tickets/12</code> - 获取一个特定的ticket</li>
+<li><code>POST /tickets</code> - 创造一个新的ticket</li>
+<li><code>PUT /tickets/12</code> - 更新#12 ticket</li>
+<li><code>PATCH /tickets/12</code> - 部分更新#12 ticket</li>
+<li><code>DELETE /tickets/12</code> - 删除#12 ticket</li>
+</ul>
+<p>REST的好处在于在单个端点<code>/tickets</code>上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。</p>
+<p>**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。</p>
+<p>**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到<code>/tickets</code>端点：</p>
+<ul>
+<li><code>GET /tickets/12/messages</code> - 获取#12 ticket的消息列表</li>
+<li><code>GET /tickets/12/messages/5</code> - 获取ticket #12的第5条消息</li>
+<li><code>POST /tickets/12/messages</code> - 为ticket #12创建一个新消息</li>
+<li>&hellip;</li>
+</ul>
+<p>如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)</p>
+<p><strong>不能用CRUD操作表达的动作怎么办？</strong></p>
+<p>这是事情变得复杂的地方。有许多方法：</p>
+<ol>
+<li>重新结构化动作使其表现的像是资源的一个域。如果该动作不接收参数则这是可以工作的。例如，激活动作可以被映射为布尔值<code>activated</code>然后通过到资源的PATCH更新</li>
+<li>使用RESTful原则将它作为子资源对待。例如，GitHub的API允许你使用<code>PUT /gists/:id/star</code>对gist打星，并且使用<code>DELETE /gists/:id/star</code>取消打星</li>
+<li>有时候确实不能将动作映射到有意义的RESTful架构。例如，一个多资源的搜索不能有意义的用到一个特定资源的端点。在这种情况下，<code>/search</code>是可以的，虽然它不是一个资源。做从API使用者角度来看是对的事情并及早文档化以避免误解</li>
+</ol>
+<h2 id="ssl-everywhere---all-the-time">SSL everywhere - all the time</h2>
+<p>总是使用SSL，没有例外。今天，web API能够从各个地方被获取。不是所有的地方都是安全的。许多完全不加密通信，使得认证证书被劫持后信息被偷听或身份被冒充。</p>
+<p>总是使用SSL的另一个好处是保证加密过的通信简化了认证</p>
+<p>需要注意的是对API URL的无SSL请求。不要把它们重定向的SSL的版本，而是要抛出一个硬错误！</p>
+<h2 id="documentation">Documentation</h2>
+<p>一个API最多和它的文档一样好。文档应当便于获取并且是公共的。大多数开发者在使用API之前会检查文档。如果文档被隐藏在PDF文件中或者需要登录才能获取，则它们不仅难于找到且难于搜索到</p>
+<p>文档应当展示完整的请求/回应循环的例子。最好请求是可以粘贴的例子——要不是可以粘贴到浏览器的链接，要不是可以粘贴到终端中的curl例子。</p>
+<p>一旦发布了一个公共API，则你就承诺了不会无通知的破坏它。文档必须包含任何过时的东西。更新应当通过博客或是邮件列表发送。</p>
+<h2 id="versioning">Versioning</h2>
+<p>总是将你的API标识上版本号。这样帮助你更快的迭代并且阻止无效的请求到达更新过的端点。它也帮助平滑了主要API版本的转换，你可以继续提供旧API版本一段时间。</p>
+<p>对于版本号应当在URL还是在首部中有不同的观点。学术上来说，它应当在首部中。然而，版本号应当在URL中来确保通过探索资源?(翻译有点问题)</p>
+<p>作者比较喜欢的一种做法是URL有一个主要版本号，而API有一个可通过顾客HTTP请求头选择的基于日期的子版本号。在这种情况下，主版本号提供了API结构的稳定性，子版本号负责较小的变化。</p>
+<p>API永远不可能是完全稳定的。变化是不可避免的。重要的是变化是怎么被管理的。被较好的文档化和声明的多个月的过时安排可以是一个可接受的选择。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

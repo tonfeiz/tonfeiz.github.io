@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+      <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="Tonfeiz&#39;s Blog" />
+      <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="Tonfeiz&#39;s Blog" />
+      
+    
+    
+    <meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/" />
+<meta property="og:updated_time" content="2020-05-15T23:58:29+08:00" />
+<meta itemprop="name" content="Posts">
+<meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content=""/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+
+  <header>
+    <div class="pb3-m pb6-l bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          Posts
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+  <article class="pa3 pa4-ns nested-copy-line-height nested-img">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
+    <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-06-22-arts-weekeleven-pattern-servicemesh/" class="link black dim">
+        ARTS Week Eleven Pattern Service Mesh.md
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      原文是Pattern: Service Mesh
+本文的主要思想是，Service Mesh的诞生其实和TCP/IP网络栈的诞生很相似，都遵循下面的过程：
+发现问题 -&gt; 将解决方案纳入代码 -&gt; 抽取共通问题 -&gt; 将解决方案抽出代码放在外部共同具备的区域
+作者举了TCP/IP中流控的例子来说明这一问题。最开始电脑和电脑之间的通讯没有流控，这时人们发现如果不进行流控，接收消息的机器有可能会收到过量的信息(可能由于该机器在处理其他事务没空接收信息，而另一侧机器不知道这一点一直发送，还有很多情况会导致该现象)。
+为了解决该问题，人们把处理流控的代码和业务代码放在一起。然而很快人们发现，处理流控的代码其实是共通的，所有的机器都需要处理这一点，因此最后，处理流控的代码就被放入网络栈中，而网络栈是所有网络通信的机器必须经过的一层。
+接下来作者引出了分布式架构中的例子。作者举了服务发现和熔断的例子。最开始，为了解决这两个问题，相关代码也被放入业务逻辑中。后来，人们将代码抽取出来，用库的形式调用。然而，用库处理有下面的问题：
+ 需要花时间将库和生态中的组件胶合起来 库通常是在特定的平台下编写的(例如JVM、某种特定语言等) 对库的管理、维护很困难，例如不同版本的库兼容性不同等  最后，诞生了sidecar模式。sidecar模式其实就是对于每个服务，都有一个代理(称作sidecar)和它共同启动。该sidecar就负责处理一些共通的问题，例如上面的服务发现。服务之间均通过sidecar进行互相通信——当然，它们不知道sidecar的存在。
+对所有的服务都启动sidecar，则所有的服务及其sidecar就构成了Service Mesh。这里引用William Morgan的一段话说明Service Mesh：
+ A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-07-06-arts-weekthriteen-leetcode868-binarygap/" class="link black dim">
+        ARTS Week Thirteen Leetcode868 BinaryGap
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Given a positive integer N, find and return the longest distance between two consecutive 1&rsquo;s in the binary representation of N.
+If there aren&rsquo;t two consecutive 1&rsquo;s, return 0.
+Example:
+Input: 22 Output: 2 Explanation: 22 in binary is 0b10110. In the binary representation of 22, there are three ones, and two consecutive pairs of 1's. The first consecutive pair of 1's have distance 2. The second consecutive pair of 1's have distance 1.
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-06-25-arts-weektwelve-progit%E5%9B%9B/" class="link black dim">
+        ARTS Week Twelve ProGit(四)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      本章介绍Git关于分支的知识，包括基本的分支切换合并。
+Git Branching Branches in a Nutshell 当你进行commit时，Git存储了一个包含指向你快照的指针的提交对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(commit)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。
+假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做blobs),并将checksum赋值给暂存区。
+当你提交(commit)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个commit对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。
+因此，现在你的Git库中包含了五个对象：三个blob(每个分别表示三个文件中的一个的内容)，一个tree包含了目录的内容并且指定了哪个文件名作为哪个blob保存，以及一个commit包含了指向该树的指针以及所有的元数据。
+如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(commit的指针。
+在Git中的一个分支(branch)就是指向这些commit其中之一的指针。默认的分支是master。
+Creating a New Branch 创建一个新的分支其实就是创建了一个新的指针供你移动。git branch &lt;branch_name&gt;即创建了一个新分支，该分支指向当前的commit。
+Git通过一个特殊的HEAD指针知晓当前你在哪个分支上。HEAD指针指向某一个branch指针。默认情况下该指针指向master。注意：使用git branch只是创建分支，而不会切换到该分支，因此git branch不会改变HEAD指针的指向。
+Switching Branches 切换分支可用下面的指令：
+git checkout &lt;branch_name&gt; 该指令把HEAD指针指向&lt;branch_name&gt;代表的分支指针。
+如果在该情况下进行commit，则原来的master分支指针仍指向原来的位置，而切换到的分支指针和HEAD指针则向前移动了。
+如果在此之后，将分支切换回master(git checkout master)，则HEAD指针会指向master，并且目录中的文件会切换回master指向的快照中的文件。
+接下来，如果你进行了改动并再次commit，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。
+一个Git中的分支其实就是commit的40字节SHA-1校验和，因此分支的创建和销毁都很简单。
+git checkout -b &lt;branch_name&gt;可以创建并切换到该分支。
+Basic Branching and Merging Basic Branching 假设你在完成工作，之前已经有几个commits在master分支上了。
+ master | c0 &lt;- c1 &lt;- c2 你决定在#53号事务上工作。你使用了下面的命令
+git checkout -b iss53 于是现在情况变成了
+ master | c0 &lt;- c1 &lt;- c2 | iss53 你完成了一些工作，进行了提交。则iss53分支前进了，如下所示
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-06-19-arts-weekeleven-progit%E4%B8%89/" class="link black dim">
+        ARTS WeekEleven ProGit(三)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用。
+git commit --amend: 覆盖上一次的`commit`，主要用于微小的改动的提交 git reset HEAD &lt;file&gt;: 将staged状态的文件改为unstaged git checkout -- &lt;file&gt;: 将modified状态的文件改为上一次快照中的样子，可能丢失东西！ git remote: 展示远程库 git remote -v: 展示远程库及其URL git remote add &lt;remote&gt; URL: 添加远程库并指定本地用名字 git fetch &lt;remote&gt;: 从远程库中获取内容但不合并 git pull &lt;remote&gt;: 从远程库中获取内容并合并 git push &lt;remote&gt; &lt;branch&gt;: 推送内容到远程库 git remote show &lt;remote&gt;: 展示远程库的相关内容 git remote rename &lt;oldname&gt; &lt;newname&gt;: 重命名远程库 git remote remove &lt;remote&gt;: 删除远程库 
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-07-06-ats-weekthirteen-progit%E4%BA%94/" class="link black dim">
+        ATS Week Thirteen ProGit(五)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      本周把有关分支的部分结束。
+Branch Management git branch -v可以显示所有分支以及所有分支的最后一次提交的信息。
+git branch --merged可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。
+git branch --no-merged会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。
+Branching workflows Long-Running Branches 一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。
+可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。
+Topic Branches 另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。
+Remote Branches 远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。
+远程跟踪分支的名字是&lt;remote&gt;/&lt;branch&gt;,例如&lt;origin&gt;/&lt;master&gt;。
+下面还是用例子来说明。例如在你的网络git.ourcompany.com中有一个git server。你从它clone后，Git会自动为你将该server取名为origin，将它的数据拉下来，创造一个指向它的master分支的指针并将其命名为origin/master。此外，Git还会给你本地的master分支。
+假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。
+假设你进行了fetch(git fetch origin),则示意图如下。
+Pushing 可以利用git push &lt;remote&gt; &lt;branch&gt;命令推送自己的代码。例如，你有一个serverfix分支要推送，则命令为git push origin serverfix。
+这里Git将该命令进行了展开。它会把serverfix分支名扩展为refs/heads/serverfix:refs/heads/serverfix。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为git push origin serverfix:serverfix。如果本地分支与远程分支不同也可以，命令为git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;。
+要注意的是如果你git fetch &lt;remote&gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&lt;remote&gt;/&lt;branch&gt;的不可修改的指针而已。你可以利用git merge把该分支合并到自己的分支，也可以利用git checkout -b &lt;local_branch&gt; &lt;remote&gt;/&lt;branch&gt;来获得本地的对应分支。
+Tracking Branches 从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入git pull，Git会自动知道从哪个server fetch以及要合并到哪个分支。
+当你克隆一个库，它会自动创建一个master分支跟踪origin/master。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;。
+可以用git branch的-vv选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。
+要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。
+Deleting Remote Branches 可以通过git push的--delete选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。
+    </div>
+  </div>
+</div>
+</div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://tonfeiz.github.io/posts/2019-06-26-arts-weektwelve-dataplane-controlplane/" class="link black dim">
+        Data Plane &amp; Control Plane
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      这篇文章介绍了数据面和控制面之间的差别。原文是Service mesh data plane vs. control plane
+首先，作者简单介绍了service mesh。在Service mesh中，每个服务有一个sidecar代理。所有的网络流量都通过该代理流到特定地点。服务本身不会知道网络分布，而只知道代理。也就是说，分布式系统网络对服务编写人员来说是不用知道的。
+数据面(data plane) 接下来，作者介绍了数据面(data plane)。数据面其实就是sidecar代理。sidecar代理通常要完成的工作包括：
+ 服务发现：有哪些上游服务实例是可用的？ 健康检查：通过服务发现找到的上游服务实例是健康的吗？它们准备好接收网络流量了吗？这可能包括主动(例如，带外ping某个端点)和被动(例如，连续3个5xx回应表示不健康状态)健康检查。 路由：本地服务给出了一个REST请求，该把这个请求送到哪个上游服务实例？ 负载均衡：当上游服务实例被选定后，请求该送到哪个服务实例？超时时间是多少？熔断设置怎么样？ 认证：对于到来的请求，调用者能通过mTLS或其他机制被秘密的认证吗？ 观测性：对于每个请求，统计数据，日志和分布式跟踪数据应当被生成。  数据面被用于有条件的翻译、转发和观察每个流入和流出的网络包。
+控制面(control plane) 作者指出，控制面将一些独立的无状态sidecar代理整合起来并将它们变为分布式系统。
+大部分人自身就是控制面。人们自己手动写出静态的配置，并将它们部署到所有的代理上。代理使用这些配置并用数据面处理。
+目前出现了高级的控制面。高级的控制面可以包括控制面UI、工作调度器(例如Kubernetes)、服务发现系统(当调度器启动或停止实例则向该系统汇报)和sidecar代理配置API等。
+最终，控制面的目的还是设置将要被数据面执行的政策。
+总结  数据面：与系统中的每个包/请求接触。对服务发现、健康检查、路由、负载均衡、认证和观测性负责 控制面：为运行着的数据面提供政策和配置。不接触系统中的请求/包。控制面将所有的数据面转化为分布式系统。  
+    </div>
+  </div>
+</div>
+</div>
+      
+    </section>
+
+<ul class="pagination">
+    
+    <li class="page-item">
+        <a href="/posts/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+    </li>
+    
+    <li class="page-item">
+    <a href="/posts/page/4/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    </li>
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/posts/">1</a></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/posts/page/2/">2</a></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/posts/page/3/">3</a></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/posts/page/4/">4</a></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active"><a class="page-link" href="/posts/page/5/">5</a></li>
+    
+    
+    <li class="page-item disabled">
+    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    </li>
+    
+    <li class="page-item">
+        <a href="/posts/page/5/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    </li>
+    
+</ul>
+
+</article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Tonfeiz&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.70.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="" />
+<meta property="og:description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
+一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
+./configure -&gt; make -&gt; make install
+其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
+包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
+以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
+apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
+二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
+ update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
+三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-apt/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
+一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
+./configure -&gt; make -&gt; make install
+其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
+包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
+以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
+apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
+二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
+ update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
+三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  ">
+
+<meta itemprop="wordCount" content="43">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
+一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
+./configure -&gt; make -&gt; make install
+其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
+包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
+以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
+apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
+二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
+ update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
+三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  "/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://tonfeiz.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Tonfeiz&#39;s Blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-apt/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-apt/&amp;text=" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/2019-06-02-arts-weekeight-apt/&amp;title=" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1"></h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>这次介绍一下<code>apt</code>(Advanced Package Tool),在基于<code>Debian</code>的Linux操作系统下被广泛使用的包管理器。(注：这里的<code>apt</code>是<code>apt-get</code>与<code>apt-cache</code>的结合，但是影响不大<code>)</code></p>
+<h2 id="一简介">一、简介</h2>
+<p>在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程<br>
+<code>./configure -&gt; make -&gt; make install</code><br>
+其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在<code>Debian</code>下是<code>dpkg</code>和<code>apt</code>，在<code>CentOS</code>下是<code>rpm</code>和<code>yum</code>。</p>
+<p>包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。</p>
+<p>以前，基于<code>Debian</code>的系统使用<code>dpkg</code>命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此<code>apt</code>命令就被发明了。<code>apt</code>命令能自动发现并安装软件依赖，大大简化了软件的管理。</p>
+<p><code>apt</code>所获取的软件包一般从网上获得。<code>Debian</code>工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(<code>/etc/apt/sources.list</code>)中被<code>apt</code>查询(由于国内访问环境不好，一般安装<code>Ubuntu</code>之后的第一步就是更换源为国内源)。</p>
+<h2 id="二用法">二、用法</h2>
+<p>这里参考了<code>man apt</code>页的输出，对<code>apt</code>的关键用法作一个小结。</p>
+<ul>
+<li><code>update</code>: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包</li>
+<li><code>upgrade</code>: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除</li>
+<li><code>full-upgrade</code>: 和<code>upgrade</code>相似，但如果需要更新整个系统则会移除已经安装的包</li>
+<li><code>install</code>,<code>remove</code>,<code>purge</code>: 看名字即可</li>
+<li><code>autoremove</code>: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。</li>
+<li><code>search</code>: 用于搜索想要的软件</li>
+</ul>
+<p>另外，软件默认安装在<code>/usr/share</code>中，可执行文件在<code>/usr/bin</code>中，库文件在<code>/usr/lib</code>中，下载的软件存放在<code>/var/cache/apt/archives</code>中</p>
+<h2 id="三配置文件">三、配置文件</h2>
+<ul>
+<li><code>/etc/apt/sources.list</code>:获取包的位置</li>
+<li><code>/etc/apt/sources.list.d/</code>: 其余的源列表片段</li>
+<li><code>/etc/apt/apt.conf</code>: APT配置文件</li>
+<li><code>/etc/apt/apt.conf.d</code>: APT配置文件列表片段</li>
+<li><code>/etc/apt/preferences.d/</code>:版本偏好目录</li>
+<li><code>/var/cache/apt/archives/</code>:获取的包文件的存储位置</li>
+<li><code>/var/cache/apt/archives/partial/</code>:传输中的包文件的存储位置</li>
+<li><code>/var/lib/apt/lists</code>:每个在<code>sources.list</code>中指定的包资源的状态信息的存储位置</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://tonfeiz.github.io/" >
+    &copy;  Tonfeiz's Blog 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
