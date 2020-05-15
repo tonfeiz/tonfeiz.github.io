@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>ATS Week Thirteen ProGit(五) | Tonfeiz&#39;s Blog</title>
+    <title>ProGit PartV | Tonfeiz&#39;s Blog</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.70.0" />
     
@@ -25,78 +25,23 @@
 
     
     
-    <meta property="og:title" content="ATS Week Thirteen ProGit(五)" />
-<meta property="og:description" content="本周把有关分支的部分结束。
-Branch Management git branch -v可以显示所有分支以及所有分支的最后一次提交的信息。
-git branch --merged可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。
-git branch --no-merged会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。
-Branching workflows Long-Running Branches 一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。
-可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。
-Topic Branches 另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。
-Remote Branches 远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。
-远程跟踪分支的名字是&lt;remote&gt;/&lt;branch&gt;,例如&lt;origin&gt;/&lt;master&gt;。
-下面还是用例子来说明。例如在你的网络git.ourcompany.com中有一个git server。你从它clone后，Git会自动为你将该server取名为origin，将它的数据拉下来，创造一个指向它的master分支的指针并将其命名为origin/master。此外，Git还会给你本地的master分支。
-假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。
-假设你进行了fetch(git fetch origin),则示意图如下。
-Pushing 可以利用git push &lt;remote&gt; &lt;branch&gt;命令推送自己的代码。例如，你有一个serverfix分支要推送，则命令为git push origin serverfix。
-这里Git将该命令进行了展开。它会把serverfix分支名扩展为refs/heads/serverfix:refs/heads/serverfix。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为git push origin serverfix:serverfix。如果本地分支与远程分支不同也可以，命令为git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;。
-要注意的是如果你git fetch &lt;remote&gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&lt;remote&gt;/&lt;branch&gt;的不可修改的指针而已。你可以利用git merge把该分支合并到自己的分支，也可以利用git checkout -b &lt;local_branch&gt; &lt;remote&gt;/&lt;branch&gt;来获得本地的对应分支。
-Tracking Branches 从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入git pull，Git会自动知道从哪个server fetch以及要合并到哪个分支。
-当你克隆一个库，它会自动创建一个master分支跟踪origin/master。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;。
-可以用git branch的-vv选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。
-要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。
-Deleting Remote Branches 可以通过git push的--delete选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。" />
+    <meta property="og:title" content="ProGit PartV" />
+<meta property="og:description" content="本周把有关分支的部分结束" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://tonfeiz.github.io/posts/progit-5/" />
-
-<meta itemprop="name" content="ATS Week Thirteen ProGit(五)">
-<meta itemprop="description" content="本周把有关分支的部分结束。
-Branch Management git branch -v可以显示所有分支以及所有分支的最后一次提交的信息。
-git branch --merged可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。
-git branch --no-merged会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。
-Branching workflows Long-Running Branches 一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。
-可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。
-Topic Branches 另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。
-Remote Branches 远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。
-远程跟踪分支的名字是&lt;remote&gt;/&lt;branch&gt;,例如&lt;origin&gt;/&lt;master&gt;。
-下面还是用例子来说明。例如在你的网络git.ourcompany.com中有一个git server。你从它clone后，Git会自动为你将该server取名为origin，将它的数据拉下来，创造一个指向它的master分支的指针并将其命名为origin/master。此外，Git还会给你本地的master分支。
-假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。
-假设你进行了fetch(git fetch origin),则示意图如下。
-Pushing 可以利用git push &lt;remote&gt; &lt;branch&gt;命令推送自己的代码。例如，你有一个serverfix分支要推送，则命令为git push origin serverfix。
-这里Git将该命令进行了展开。它会把serverfix分支名扩展为refs/heads/serverfix:refs/heads/serverfix。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为git push origin serverfix:serverfix。如果本地分支与远程分支不同也可以，命令为git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;。
-要注意的是如果你git fetch &lt;remote&gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&lt;remote&gt;/&lt;branch&gt;的不可修改的指针而已。你可以利用git merge把该分支合并到自己的分支，也可以利用git checkout -b &lt;local_branch&gt; &lt;remote&gt;/&lt;branch&gt;来获得本地的对应分支。
-Tracking Branches 从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入git pull，Git会自动知道从哪个server fetch以及要合并到哪个分支。
-当你克隆一个库，它会自动创建一个master分支跟踪origin/master。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;。
-可以用git branch的-vv选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。
-要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。
-Deleting Remote Branches 可以通过git push的--delete选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。">
-
+<meta property="article:published_time" content="2019-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-06T00:00:00+00:00" />
+<meta itemprop="name" content="ProGit PartV">
+<meta itemprop="description" content="本周把有关分支的部分结束">
+<meta itemprop="datePublished" content="2019-07-06T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-06T00:00:00&#43;00:00" />
 <meta itemprop="wordCount" content="108">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ATS Week Thirteen ProGit(五)"/>
-<meta name="twitter:description" content="本周把有关分支的部分结束。
-Branch Management git branch -v可以显示所有分支以及所有分支的最后一次提交的信息。
-git branch --merged可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。
-git branch --no-merged会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。
-Branching workflows Long-Running Branches 一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。
-可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。
-Topic Branches 另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。
-Remote Branches 远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。
-远程跟踪分支的名字是&lt;remote&gt;/&lt;branch&gt;,例如&lt;origin&gt;/&lt;master&gt;。
-下面还是用例子来说明。例如在你的网络git.ourcompany.com中有一个git server。你从它clone后，Git会自动为你将该server取名为origin，将它的数据拉下来，创造一个指向它的master分支的指针并将其命名为origin/master。此外，Git还会给你本地的master分支。
-假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。
-假设你进行了fetch(git fetch origin),则示意图如下。
-Pushing 可以利用git push &lt;remote&gt; &lt;branch&gt;命令推送自己的代码。例如，你有一个serverfix分支要推送，则命令为git push origin serverfix。
-这里Git将该命令进行了展开。它会把serverfix分支名扩展为refs/heads/serverfix:refs/heads/serverfix。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为git push origin serverfix:serverfix。如果本地分支与远程分支不同也可以，命令为git push origin &lt;local_branch&gt;:&lt;remote_branch&gt;。
-要注意的是如果你git fetch &lt;remote&gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&lt;remote&gt;/&lt;branch&gt;的不可修改的指针而已。你可以利用git merge把该分支合并到自己的分支，也可以利用git checkout -b &lt;local_branch&gt; &lt;remote&gt;/&lt;branch&gt;来获得本地的对应分支。
-Tracking Branches 从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入git pull，Git会自动知道从哪个server fetch以及要合并到哪个分支。
-当你克隆一个库，它会自动创建一个master分支跟踪origin/master。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;。
-可以用git branch的-vv选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。
-要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。
-Deleting Remote Branches 可以通过git push的--delete选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。"/>
+<meta name="twitter:title" content="ProGit PartV"/>
+<meta name="twitter:description" content="本周把有关分支的部分结束"/>
 
   </head>
 
@@ -165,13 +110,13 @@ Deleting Remote Branches 可以通过git push的--delete选项删除某个远程
 
     
     
-    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/progit-5/&amp;text=ATS%20Week%20Thirteen%20ProGit%28%e4%ba%94%29" class="twitter no-underline" aria-label="share on Twitter">
+    <a href="https://twitter.com/share?url=http://tonfeiz.github.io/posts/progit-5/&amp;text=ProGit%20PartV" class="twitter no-underline" aria-label="share on Twitter">
       <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
 
     </a>
 
     
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/progit-5/&amp;title=ATS%20Week%20Thirteen%20ProGit%28%e4%ba%94%29" class="linkedin no-underline" aria-label="share on LinkedIn">
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://tonfeiz.github.io/posts/progit-5/&amp;title=ProGit%20PartV" class="linkedin no-underline" aria-label="share on LinkedIn">
       <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
 </svg>
@@ -180,10 +125,10 @@ Deleting Remote Branches 可以通过git push的--delete选项删除某个远程
   </div>
 
 
-      <h1 class="f1 athelas mt3 mb1">ATS Week Thirteen ProGit(五)</h1>
+      <h1 class="f1 athelas mt3 mb1">ProGit PartV</h1>
       
       
-      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+      <time class="f6 mv4 dib tracked" datetime="2019-07-06T00:00:00Z">July 6, 2019</time>
 
       
       

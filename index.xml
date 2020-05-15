@@ -6,10 +6,172 @@
     <description>Recent content on Tonfeiz&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://tonfeiz.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode868-Binary Gap</title>
+      <link>http://tonfeiz.github.io/posts/leetcode868-binarygap/</link>
+      <pubDate>Sat, 06 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode868-binarygap/</guid>
+      <description>Given a positive integer N, find and return the longest distance between two consecutive 1&amp;rsquo;s in the binary representation of N.</description>
+    </item>
+    
+    <item>
+      <title>ProGit PartV</title>
+      <link>http://tonfeiz.github.io/posts/progit-5/</link>
+      <pubDate>Sat, 06 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/progit-5/</guid>
+      <description>本周把有关分支的部分结束</description>
+    </item>
+    
+    <item>
+      <title>Envoy Learning PartV</title>
+      <link>http://tonfeiz.github.io/posts/envoylearning-5/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/envoylearning-5/</guid>
+      <description>本次继续阅读Envoy的文档</description>
+    </item>
+    
+    <item>
+      <title>Data Plane &amp; Control Plane</title>
+      <link>http://tonfeiz.github.io/posts/dataplane-controlplane/</link>
+      <pubDate>Wed, 26 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/dataplane-controlplane/</guid>
+      <description>这篇文章介绍了数据面和控制面之间的差别。原文是&lt;a href=&#34;https://blog.envoyproxy.io/service-mesh-data-plane-vs-control-plane-2774e720f7fc&#34;&gt;Service mesh data plane vs. control plane&lt;/a&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode670-Maximum Swap</title>
+      <link>http://tonfeiz.github.io/posts/leetcode670-maximumswap/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode670-maximumswap/</guid>
+      <description>Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.</description>
+    </item>
+    
+    <item>
+      <title>ProGit PartIV</title>
+      <link>http://tonfeiz.github.io/posts/progit-4/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/progit-4/</guid>
+      <description>本章介绍Git关于分支的知识，包括基本的分支切换合并</description>
+    </item>
+    
+    <item>
+      <title>Leetcode605-Can Place Flowers</title>
+      <link>http://tonfeiz.github.io/posts/pattern-servicemesh/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/pattern-servicemesh/</guid>
+      <description>原文是&lt;a href=&#34;https://philcalcado.com/2017/08/03/pattern_service_mesh.html&#34;&gt;Pattern: Service Mesh&lt;/a&gt;</description>
+    </item>
+    
+    <item>
+      <title>Leetcode915-Disjoint Intervals</title>
+      <link>http://tonfeiz.github.io/posts/leetcode915-disjointintervals/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode915-disjointintervals/</guid>
+      <description>Given an array A, partition it into two (contiguous) subarrays left and right so that</description>
+    </item>
+    
+    <item>
+      <title>ProGit PartIII</title>
+      <link>http://tonfeiz.github.io/posts/progit-3/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/progit-3/</guid>
+      <description>由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用</description>
+    </item>
+    
+    <item>
+      <title>Envoy Learning PartIV</title>
+      <link>http://tonfeiz.github.io/posts/envoylearning-4/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/envoylearning-4/</guid>
+      <description>本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下</description>
+    </item>
+    
+    <item>
+      <title>High Performance Server PartII</title>
+      <link>http://tonfeiz.github.io/posts/highperformanceserver-2/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/highperformanceserver-2/</guid>
+      <description>接下去介绍高性能服务器设计的最后两个因素</description>
+    </item>
+    
+    <item>
+      <title>ProGit PartII</title>
+      <link>http://tonfeiz.github.io/posts/progit-2/</link>
+      <pubDate>Wed, 12 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/progit-2/</guid>
+      <description>本章讲述Git的基础知识</description>
+    </item>
+    
+    <item>
+      <title>Leetcode779-Kth Symbol</title>
+      <link>http://tonfeiz.github.io/posts/leetcode779-kthsymbol/</link>
+      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode779-kthsymbol/</guid>
+      <description>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</description>
+    </item>
+    
+    <item>
+      <title>Envoy Learning PartIII</title>
+      <link>http://tonfeiz.github.io/posts/envoylearning-3/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/envoylearning-3/</guid>
+      <description>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问</description>
+    </item>
+    
+    <item>
+      <title>Envoy Learning PartII</title>
+      <link>http://tonfeiz.github.io/posts/envoylearning-2/</link>
+      <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/envoylearning-2/</guid>
+      <description>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分</description>
+    </item>
+    
+    <item>
+      <title>High Performance Server PartI</title>
+      <link>http://tonfeiz.github.io/posts/highperformanceserver-1/</link>
+      <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/highperformanceserver-1/</guid>
+      <description>这篇英文文章讲的是高性能服务器设计的一些要点。 原文链接为&lt;img src=&#34;http://pl.atyp.us/content/tech/servers.html&#34; alt=&#34;High-Performance Server Architecture&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>ProGit PartI</title>
+      <link>http://tonfeiz.github.io/posts/progit-1/</link>
+      <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/progit-1/</guid>
+      <description>git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。</description>
+    </item>
+    
+    <item>
+      <title>Leetcode942-DI String Match</title>
+      <link>http://tonfeiz.github.io/posts/leetcode942-distringmatch/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode942-distringmatch/</guid>
+      <description>Given a string S that only contains &amp;lsquo;I&amp;rsquo; (increase) or &amp;lsquo;D&amp;rsquo; (decrease), let N = S.length.</description>
+    </item>
     
     <item>
       <title>Apt</title>
@@ -17,845 +179,241 @@
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/apt/</guid>
-      <description>这次介绍一下apt(Advanced Package Tool),在基于Debian的Linux操作系统下被广泛使用的包管理器。(注：这里的apt是apt-get与apt-cache的结合，但是影响不大)
-一、简介 在Linux下安装软件的方式有许多种，从源码安装需要经历下面的过程
-./configure -&amp;gt; make -&amp;gt; make install
-其中配置这步需要自己配置相关选项，例如安装位置等等。这样做的好处是一切由自己定制，然而坏处在于，如果每个软件都由自己手动安装，很快就会变的很复杂，而且有时候安装位置不统一也会带来额外的负担，因此就有了一些包管理工具，在Debian下是dpkg和apt，在CentOS下是rpm和yum。
-包管理工具能帮助你快速的下载、安装、卸载、更新所需要的软件。
-以前，基于Debian的系统使用dpkg命令来安装和卸载，然而该命令无法自动发现并下载软件安装的依赖(即一个软件安装可能需要另一个软件存在，若不存在则安装失败)，因此apt命令就被发明了。apt命令能自动发现并安装软件依赖，大大简化了软件的管理。
-apt所获取的软件包一般从网上获得。Debian工程维护了超过25000个软件包的中心库用于下载安装。其他库可通过添加到APT的源列表(/etc/apt/sources.list)中被apt查询(由于国内访问环境不好，一般安装Ubuntu之后的第一步就是更换源为国内源)。
-二、用法 这里参考了man apt页的输出，对apt的关键用法作一个小结。
- update: 用于从设置的源下载包信息。其他的命令基于该信息进行包更新或是搜索和显示可用于安装的有效包 upgrade: 用于更新已经通过源安装在系统中的包。如果需要的话新的依赖包会被下载，但是已经存在的包决不会被移除 full-upgrade: 和upgrade相似，但如果需要更新整个系统则会移除已经安装的包 install,remove,purge: 看名字即可 autoremove: 用于移除之前自动安装的需要的而现在已经不需要的依赖库。 search: 用于搜索想要的软件  另外，软件默认安装在/usr/share中，可执行文件在/usr/bin中，库文件在/usr/lib中，下载的软件存放在/var/cache/apt/archives中
-三、配置文件  /etc/apt/sources.list:获取包的位置 /etc/apt/sources.list.d/: 其余的源列表片段 /etc/apt/apt.conf: APT配置文件 /etc/apt/apt.conf.d: APT配置文件列表片段 /etc/apt/preferences.d/:版本偏好目录 /var/cache/apt/archives/:获取的包文件的存储位置 /var/cache/apt/archives/partial/:传输中的包文件的存储位置 /var/lib/apt/lists:每个在sources.list中指定的包资源的状态信息的存储位置  </description>
+      <description>这次介绍一下&lt;code&gt;apt&lt;/code&gt;(Advanced Package Tool),在基于&lt;code&gt;Debian&lt;/code&gt;的Linux操作系统下被广泛使用的包管理器。(注：这里的&lt;code&gt;apt&lt;/code&gt;是&lt;code&gt;apt-get&lt;/code&gt;与&lt;code&gt;apt-cache&lt;/code&gt;的结合，但是影响不大&lt;code&gt;)&lt;/code&gt;</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/avoidoverengineering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/avoidoverengineering/</guid>
-      <description>商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度。
-以下是一些误解
-1. 工程比商业更聪明 工程师们往往认为自己掌控一切，但事实上商业需求永远技高一筹。在第1000个问题被解决后，它们还能冒出第1001个需求来。
-商业需求是发散的，而不是收敛的
-2. 重用商业功能模块 当商业抛出越来越多的功能，我们有时候会将逻辑组合起来，尽量泛化它们。然而商业需求只会发散而不会收敛，这就使得共享的逻辑变得庞大。反之，我们应该将每个动作和逻辑分离开来，只有很少的共享逻辑。
-在横向分离之前先尝试纵向分裂商业功能。多隔离动作而少组合动作。
-3. 所有的事情都是关于泛型 有些时候工程师会执着于完美的抽象而忽略了真正的问题。其实答案非常简单。
-今天最好的设计是它能怎么样被取消(undesigned)。写的代码要易于删除，而不是易于扩展。
-重复比错误的抽象要好。重复次数多了，抽象就显现出来了。
-4. 臃肿的包裹器 在使用每个外部库之前都写一个包裹器是不对的。这会使得包裹器变得臃肿。另一方面，包裹器往往和底层的库紧密的耦合，底层库变了包裹器也变了。
-现在许多外部库的API已经足够优秀了，因此不要总想着写包裹器。包裹器是一个异常情况，而不是正常情况。
-5. 像使用工具一样使用质量 盲目的应用质量概念（例如将所有变量改成&amp;quot;private final&amp;rdquo;,为所有的类写接口等）并不会使代码奇迹般的变好。
-记住要总是往后退一步然后看看总体的风景。
-有些代码完全符合各种原则和概念，但是从整体来看却很糟糕。
-5.1 三明治层 例如，将一个简洁的，紧密相连的动作划分层10或20层三明治层，每一层都与外界无关。在过去使用继承来完成，即A扩展出B扩展出C&amp;hellip;&amp;hellip;。现在想要完成这件事并且符合SOLID原则，则需要对每个类构建接口，并且把一个类依次注入到下一个类中，明显变得更麻烦了。
-像SOLID这样的概念是由于继承和其他OOP概念的滥用才产生的。大多数工程师不知道这些东西为什么诞生，只是跟随着就用。
-脑海中的概念应当会转换，而不能被盲目的像工具一样使用。
-6. 过度使用综合征 一些过度使用综合征的例子：
- 发现了泛型，于是一个简单的&amp;quot;HelloWorldPrinter&amp;quot;变成了&amp;quot;HelloWorldPrinter&amp;lt;String, Writer&amp;gt;&amp;rdquo; 发现了策略模式，于是每个&amp;quot;if&amp;quot;都是一个策略 发现了怎么写DSL，于是到处使用DSL 发现了Mocks，于是对每个测试的对象都使用mock 元编程太棒了，到处都使用元编程 枚举/扩展方法/Traits等等太棒了，到处都使用它&amp;hellip;  7. &amp;lt;X&amp;gt;-ity &amp;hellip;性。例如可配置性，安全性，扩展性，维护性，伸缩性等等。这些性质当然是好的，但不要对每个性能都担忧会发生意外。仔细的考虑使用场景，再对这些性能作优化。
-8. 内部&amp;quot;发明&amp;rdquo; 内部的库、框架和工具最近很流行，但并不一定是好的。
-一些被错过的事情：
- 对于某个问题领域有很深的了解是很难的，需要很多的技能。 让“发明”持续运行需要很多努力。即使是很小的库的维护也需要诸多时间 和对现有框架作出贡献相比，创造一个&amp;quot;发明&amp;quot;往往需要更多的时间  重用，fork，贡献，重新考虑
-9. 维持现状 一旦一件事情被完成了，每个人都开始基于它构建东西。没人质疑现状。工作着的代码被认为是正确的。每个人都改变自己来适应这个库。
-这样是不对的。一个健康的系统是会搅动、翻腾的。很长时间不提交的代码一定是有问题的。
-重构是每个故事的一部分。没有代码是不可触碰的。
-10. 差的估计 我们经常发现非常优秀的团队或是程序员写出糟糕的代码。这是因为质量需要时间而不仅仅是技术。聪明的程序员往往会高估自己的实力于是只能匆忙写出较差的代码。因此，谨慎估计完成日期。
-差的估计在代码开始写之前就破坏了质量。
-总结 这篇文章主要是关于过度设计的。作者列举了10个过度设计的例子，其中有些由于我还没有接触实际的生产代码还不清楚，但大部分内容还是很有帮助的。
-第1点是文章的核心，我在很多其他地方也见到过类似的内容，即需求是一直变化的，不要妄想自己写出完美的代码。
-第3点对我来说比较重要，因为我之前总想着把变化封装起来，看了第3点之后明白了，一定要适度，过度抽象只会弄巧成拙。
-第9点也点醒了我。之前一直以为较好的库意味着很少对它作改动，每个人都用的舒心，然而其实不是这样的。即便是很好的库也一定会有问题存在，人们不动它可能是因为人们去习惯它。我们应当时刻注意自己写的内容，当很长时间没有翻新时则更要警惕。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/buildblog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/buildblog/</guid>
-      <description>关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章。
-搭建博客的教程网上有很多，随便找一个基本上就能搭建完成。我也是拼拼凑凑搭出来的，现在也还只是个雏形。这里还是做个记录，毕竟别人的经验始终是别人的，自己写出来的才是自己的。
-一、利用github pages托管网站 搭建自己的博客首先得有自己的网站，要有自己的网站首先得有服务器主机来维护它，作为非土豪人士，自己买服务器托管网站这种事是干不出来的。因此，可以使用github pages来托管自己的网站。
-github pages是一个静态站点服务，主要就用来直接从github repo生成网站。因为之前一直也用github，因此一些基本操作也是轻车熟路了，使用它也是基于这个考虑。
-github pages也有一些缺陷，这里简单的列举几点：
- 它是静态站点服务，不支持服务端代码，例如PHP，Ruby或者Python github pages所在的repo最好不要超过1GB 发布的github pages网站不能超过1GB github pages站点的软带宽每个月不超过100GB  对于一般的个人博客网站来说，这些限制应该问题不大。
-接下去说说具体的流程。
- 在github上创建一个repo，这个repo的名字必须是username.github.io,其中username就是你在github上的用户名 选择一个文件夹作为github repo的存放地，例如就在$HOME目录下，在终端下输入下面的命令：
-git clone https://github.com/username/username.github.io 进入上面的文件夹，创建一个index.html文件。命令如下：
-cd username.github.io
-echo &amp;quot;Hello World&amp;quot; &amp;gt; index.html 将改变上传到github端。命令如下：
-git add -all
-git commit -m &amp;quot;Initial commit&amp;quot;
-git push -u origin master  至此，网站就可以查看了。可以在浏览器中输入
-https://username.github.io
-查看自己的网站
-二、利用jkeyll编辑自己的博客 有了github pages托管网站之后，接下去就是要将网站变成博客形式了。虽然之前稍微学过一点前端的知识，但要自己从头搭建还是有些困难。在github pages上发现大力推荐的一个静态网页和博客生成框架jekyll，可以直接把markdown格式的文件转化成网页，因此干脆就入坑jekyll了。
-目前我也只是过了两遍jekyll的教程，具体使用还需要摸索，这里就简单的讲一下基础的内容。如果想要详细了解，还是得去jekyll官网
-jekyll首先需要安装Ruby的运行环境，在Linux Ubuntu环境下是很简单的，输入下面的命令： sudo apt-get install ruby-full build-essential zlib1g-dev 接着设置一下环境变量
-echo &#39;# Install Ruby Gems to ~/gems&#39; &amp;gt;&amp;gt; ~/.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/designrestfulapi-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/designrestfulapi-1/</guid>
-      <description>Best Practice for Designing a Pragmatic RESTful API
-Key requirements for the API 列举了一些API的需求：
- 应当在有意义的地方使用web标准 它应当对开发者友好并且可以通过浏览器地址栏探索 它应当是简单的，符合直觉的 它应当提供足够的灵活性 在维持其他需求的同时，它应当是有效的  Use RESTful URLS and actions RESTful原则是被广泛采用的原则。REST的关键原则是将API分成逻辑资源。这些资源通过HTTP请求来操纵。HTTP中的方法具有特殊的意义(GET,POST,PUT,PATCH,DELETE)。
-API设计的一大关键是不要把实现细节暴露给API。
-当把资源定义好之后，你需要识别出可以对它们应用的动作(actions)以及它们如何映射到自己的API。RESTful原则提供使用HTTP方法来处理CRUD动作的策略。这些HTTP方法被映射为：
- GET /tickets - 获取tickets列表 GET /tickets/12 - 获取一个特定的ticket POST /tickets - 创造一个新的ticket PUT /tickets/12 - 更新#12 ticket PATCH /tickets/12 - 部分更新#12 ticket DELETE /tickets/12 - 删除#12 ticket  REST的好处在于在单个端点/tickets上使用已存在的HTTP方法完成了至关重要的功能。没有方法命名规范需要遵循并且URL结构干净清楚。
-**端点名字应当是单数还是复数？**keep-it-simple规则可以应用在这里。虽然内在逻辑可能是单数，但是工程上考虑需要将URL格式一致并且总是使用复数。
-**如何处理关系？**如果一个关系只能和其他资源共存，RESTful原则提供了有用的指导。例如，一个ticket由许多message组成。这些message可以被映射到/tickets端点：
- GET /tickets/12/messages - 获取#12 ticket的消息列表 GET /tickets/12/messages/5 - 获取ticket #12的第5条消息 POST /tickets/12/messages - 为ticket #12创建一个新消息 &amp;hellip;  如果一个关系能独立于资源存在，那么在资源的输出表达中包括该标识符是有意义的。然后API使用者就不得不到达关系的端点。然而，如果该关系通常和资源一起使用，则API能将关系表达嵌入到API中来避免第二次hit。(这里很难翻译。。)</description>
-    </item>
-    
-    <item>
-      <title></title>
+      <title>Best Practice for Designing a Pragmatic RESTful API Part II</title>
       <link>http://tonfeiz.github.io/posts/designrestfulapi-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/designrestfulapi-2/</guid>
-      <description>Best practices for designing a pragramtic RESTful API PartII
-Result filtering, sorting &amp;amp; searching 资源URL越简洁越好。复杂的结果滤除，排序需求和高级搜索都能在基本URL上通过query参数简单的实现。例如：
-Flitering:每个实现滤除功能的域都使用一个唯一的query参数。例如，当从/tickets端点中请求一列tickets时，你也许只需要那些处于open状态的ticket。这可以通过GET /tickets?state=open实现
-Sorting:和filtering相似的，一个通用的参数sort可以被用来描述排序规则。通过允许排序参数包含一系列逗号分隔的域(每个域伴随一个可能的一元负号来提示递减的排序顺序)为复杂的排序需求预留空间。例如：
- GET /tickets?sort=-priority - 按照递减的优先级获取一列tickets GET /tickets?sort=-priority, create_at - 按照递减的优先级获取一列tickets。在特定的优先级内，较老的tickets放在前面  Searching: 有些时候基本的滤波器不够，因此需要全文搜索。也许你已经使用ElasticSearch或者其他基于Lucene的搜索技术。当全文搜索被用于提取特殊资源类型的资源实例时，它可以作为资源端点的一种query参数在API中被暴露,例如就叫做q。搜索的query应当被直接传送给搜索引擎，API的输出应当和普通的列表结果有相同的格式。
-将上述三者结合起来，我们可以构建这样的query：
- GET /tickets?sort=-update_at - 提取最近更新的tickets GET /tickets?state=close&amp;amp;sort=-update_at - 提取最近关闭的tickets GET /tickets?q=return&amp;amp;state=open&amp;amp;sort=-priority,create_at - 提取提到单词return的最高优先级的open状态的tickets  Aliases for common queries 为了方便API对普通使用者的使用，可以考虑将一系列状况打包到简单可接触的RESTful路径中。例如，最近被关闭的tickets的query可以被打包为GET /tickets/recently_closed
-Limiting which fields are returned by the API API使用者并不总是需要完整的资源表示。选择返回的域的能力使得API使用者最小化网络传输并加速他们自身对API的使用。
-使用fieldsquery参数，该参数包含由逗号分隔的列表指示要包含的域。例如，下面请求将获取仅仅是足够的信息来显示排序的open状态的tickets：
-GET /tickets?fields=id,subject,customer_name,updated_at&amp;amp;state=open&amp;amp;sort=-updated_at
-Updates &amp;amp; creation should return resource representation PUT,POST或者PATCH可能对不是所提供的参数的一部分的底层资源作出修改。(例如：created_at或者updated_at时间戳)。为了防止API使用者不得不在更新表示之后重新使用该API，让API返回被更新的(或是被创建的)表示作为响应的一部分</description>
+      <description>设计RESTful API最佳实践</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/dockerfilereference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/dockerfilereference/</guid>
-      <description>docker build从一个Dockerfile和*环境(context)*中构建一个镜像。构建的环境是一个指定路径(PATH)或URL处的文件集。PATH是本地文件系统的目录，URL是一个Git库的位置。
-build命令是被Docker守护程序执行的，而不是客户端。build过程的第一步就是把整个上下文(递归的)传送给守护程序。最好的做法是从一个空文件夹作为上下文开始并将Dockerfile保持在该目录中。只把需要build Dockerfile的文件加到目录中。
-可以指定repository以及？
-docker build -t shykes/myapp . Docker守护程序一个一个地执行Dockerfile中的指令，在必要时把指令执行的结果commit到新的镜像中。守护程序将自动清理你传送过去的上下文。
-格式 Dockerfile的格式为
-# Comment INSTRUCTION arguments 指令不是大小写敏感的，但传统上均是大写
-Dockerfile必须以FROM指令开头。FROM指令指定了你正在构造的镜像的基本镜像(Base Image)。FROM之前只能是ARG指令，它声明了FROM要使用的参数
-FROM FROM &amp;lt;image&amp;gt; [AS &amp;lt;name&amp;gt;] 或者
-FROM &amp;lt;image&amp;gt;[:&amp;lt;tag&amp;gt;] [AS &amp;lt;name&amp;gt;] 或者
-FROM &amp;lt;image&amp;gt;[@&amp;lt;digest&amp;gt;] [AS &amp;lt;name&amp;gt;] FROM指令初始化一个新的构建阶段并且为接下来的指令设置了基本镜像。
- FROM可以在一个Dockerfile内出现许多次以创建多个镜像或者将一个构建阶段作为另一个构建阶段的依赖。 可以通过添加AS name给一个新的构建阶段命名。 tag或者digest是可选的。如果忽视它们，builder会默认给一个latest标志。  RUN RUN有两种形式：
- RUN &amp;lt;command&amp;gt;(shell形式，命令在一个shell中执行，Linux中默认是/bin/sh -c) RUN [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;](exec形式)
-RUN执行将在当前镜像的顶部新层次上执行任何命令并提交(commit)结果。  分层次的RUN指令和生成的提交(commit)是Docker的核心概念。
-CMD CMD有三种形式：
- CMD [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;](较好的形式) CMD [&amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;](作为ENTRYPOINT的默认参数) CMD command param1 param2
-一个Dockerfile中只能有一个CMD指令。如果有多个则只有最后一个起作用  CMD指令的主要作用是为正在执行的容器提供默认(入口)。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/envoyexampleanalyze/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/envoyexampleanalyze/</guid>
-      <description>最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下。
-目录结构 首先看下目录结构，如下所示
-大体上目录中的文件可以分为四个部分：
- docker compose: docker-compose.yaml docker: Dockerfile-frontenvoy, Dockerfile-service envoy: service-envoy.yaml, front-envoy.yaml source: service.py, start_service.sh  接下去分别看下这四个部分的内容
-docker compose docker compose是用来配置、管理各个服务的。在本例中，docker compose定义了三个服务，分别是front-envoy, service1和service2.
-front-envoy的dockerfile被指定为Dockerfile-frontenvoy，这样启动docker容器时就会去找到该文件并使用它与docker daemon进行交互。它还将当前目录下的front-envoy.yaml挂载到了docker容器中的/etc中。
-front-envoy还有一个重要的点，它将本地端口80映射到了外界端口8000上，这样外界就可以通过端口8000与其进行交互。而front-envoy则应当监听80端口。
-service1和service2是类似的。以service1为例，它指定了dockerfile为Dockerfile-service，并将当前目录下的service-envoy.yaml挂载到docker容器中的/etc目录下。
-此外，service1的网络还被重命名为service1(为了方便后续配置socket address?),其环境变量SERVICE_NAME被设置为1以便后面启动。这里的问题是，expose到底有用吗？
-Docker Docker文件是CLI与docker daemon交流的文件，主要是为docker容器的启动作准备。
-Dockerfile-frontenvoy配置了front-envoy服务所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-dev:latest,然后进行更新并安装curl。值得注意的是最后它执行了/usr/local/bin/envoy命令，这应该就是envoy程序的核心所在。
-Dockerfile-service配置了service所在docker容器的属性。它首先指定了base image为envoyproxy/envoy-alpine-dev:latest,然后更新并安装了python3、bash和curl。它创建了/code目录，将service.py添加到了该目录下，并将执行脚本start_service.sh放到了/usr/local/bin下。最后，它将容器的执行点设置为该脚本。
-source 源文件包含了服务的业务逻辑。
-start_service.sh脚本主要干了两件事，一是启动服务service，二是启动envoy。可见，envoy程序必须和业务程序共同启动。此外，之前设置的环境变量在此处也起到了选择service(cluster?)的作用。
-服务程序service.py用到了falsk等框架，我不太了解，因此不详述。这里要说的，服务程序监听的端口号是8080,这个端口号在service-envoy.yaml中被映射到envoy的端口。
-envoy 最后是envoy的配置文件。这些配置文件在启动envoy程序时被使用。
-在service-envoy中，envoy在80端口上监听，并匹配&amp;rdquo;/service&amp;quot;前缀的URL，匹配到之后把请求转发给8080端口。
-在front-envoy中，envoy在80端口上监听，并分别匹配&amp;rdquo;/service/1&amp;quot;和&amp;rdquo;/service/2&amp;quot;前缀的URL，将请求分别分发给service1的80端口和service2的80端口。</description>
-    </item>
-    
-    <item>
-      <title></title>
+      <title>Envoy Learning PartI</title>
       <link>http://tonfeiz.github.io/posts/envoylearning-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/envoylearning-1/</guid>
-      <description>最近由于公司需要，开始学习一下envoy。envoy的官网教程基本上就是给例子，然而由于缺乏docker、docker-compose等相关知识，在自己搭建envoy过程中遇到了很多问题，因此这里就记录一下学习envoy的过程以及其中所遇到的问题。
-首先，假设不用envoy，直接写一个简单的返回&amp;quot;Hello, World&amp;quot;网页的应用。
-业务逻辑 业务逻辑是用python+flask写的，当然有其他很多方法，利用go等，只是这种方法相对最为简单而已。其代码如下
-from flask import Flask app = Flask(__name__) @app.route(&#39;/&#39;) def hello(): return (&#39;Hello world!\n&#39;) if __name__ == &amp;quot;__main__&amp;quot;: app.run(host=&#39;0.0.0.0&#39;, port=8080, debug=False)  Question: host改成127.0.0.1后，在本机上可以，在docker环境下不行，为什么？  docker容器配置 接下去将上面的业务逻辑放入docker容器中运行。docker的使用方法就不介绍了。直接给出docker文件如下
-FROM envoyproxy/envoy-alpine-dev:latest RUN apk update &amp;amp;&amp;amp; apk add python3 bash curl RUN pip3 install -q Flask==0.11.1 RUN mkdir /code ADD ./service.py /code/service.py ADD ./start_service.sh /usr/local/bin/start_service.sh RUN chmod u+x /usr/local/bin/start_service.sh ENTRYPOINT /usr/local/bin/start_service.sh 这里用的基准镜像是envoy的镜像，因此需要安装python3、flask等。
-这里用脚本的原因是为了方便后面envoy的使用，目前也可以直接用CMD命令代替
-start_service.sh的内容如下
-#!/bin/sh python3 /code/hello_world_service.py docker compose docker compose主要用于管理多个docker运行时实例，虽然目前只有一个实例，但将来必定会扩展为多个，因此从最开始就使用docker compose来管理。</description>
+      <description>最近由于公司需要，开始学习一下envoy。envoy的官网教程基本上就是给例子，然而由于缺乏docker、docker-compose等相关知识，在自己搭建envoy过程中遇到了很多问题，因此这里就记录一下学习envoy的过程以及其中所遇到的问题</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/envoylearning-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/envoylearning-2/</guid>
-      <description>在完成了docker中运行app之后，需要将envoy作为app的代理。其他服务通过envoy与app进行交互。然而，之前使用了相同的端口号，这容易产生混淆，因此想修改两个端口不一致以区分。
-docker compose内容说明 在进一步深入之前，由于对docker compose知识的缺乏，这里去了解了一下其中用到的各个字段，记录如下。
-docker compose中有top-level的key，该key在配置文件中定义了一个区域，例如build,deploy,depends_on,networks等。在该key的下面列出了支持他们作为子主题的选项。因此，一般映射是&amp;lt;key&amp;gt;: &amp;lt;option&amp;gt;: &amp;lt;value&amp;gt;这样的。
-Service configuration reference Service定义(services:)包含了每个为了该服务启动的容器的配置，很像给docker container create传递参数。与此类似的，网络和卷的定义和docker network create和docker volume create很像。
-build 包含在构建时的配置选项。
-build可以被指定为一个包含构建上下文的路径字符串，也可以使用对象的形式指定，例如
-version: &amp;quot;3.7&amp;quot; services: webapp: build: context: ./dir dockerfile: Dockerfile-alternate args: buildno: 1 CONTEXT 可以是一个包含Dockerfile的目录路径，也可以是到一个git repo的url
-DOCKERFILE 可选的Dockerfile
-expose 暴露端口且不向主机发布它们 - 它们将只能由链到的接服务所接触。只有内在的端口可以被指定。
-这里指的是app使用的端口号，而不是docker容器对外暴露的端口号
-networks 要加入的网络
-ALIASES 在网络上该服务的别名。相同网络中的其他容器可以使用服务名或是此别名来连接到服务的其中一个容器。
-由于aliases是网络范围内的，相同的服务可以在不同的网络中使用不同的别名。
-一种通用格式是这样的：
-services: some-service: networks: some-network: aliases: - alias1 - alias3 other-network: aliases: - alias2 ports 暴露端口
-SHORT SYNTAX 指定两个端口号(HOST:CONTAINER),或者只有容器端口(一个短暂的host端口将被选择)
-后面的是容器内部的端口，即app监听端口，前面的是暴露端口，即我们访问docker容器的端口
-ports: - &amp;quot;3000&amp;quot; - &amp;quot;3000-3005&amp;quot; - &amp;quot;8000:8000&amp;quot; - &amp;quot;9090-9091:8080-8081&amp;quot; - &amp;quot;49100:22&amp;quot; - &amp;quot;127.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/envoylearning-3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/envoylearning-3/</guid>
-      <description>上回修改了docker容器以及app实际监听的端口号。现在app在容器内部的8080端口号上监听，而我们访问则通过容器发布的8000端口号访问。接下去终于进入了正题，即使用envoy来代理对该app的访问。
-实现过程 首先小小的修改一下docker-compose.yaml文件。在其中service下面添加一个选项volumes,如下所示
-volumes: - ./service-envoy.yaml:/etc/service-envoy.yaml 这句话的意思是把当前目录下的配置文件service-envoy.yaml挂在到容器中的/etc目录下。
-然后把expose和ports选项改成下面的样子：
-expose: - &amp;quot;80&amp;quot; ports: - &amp;quot;8000:80&amp;quot; 至于为什么要改成这样，在后面马上会提到。
-接下去修改一下启动脚本，其中添加了envoy的启动，如下所示：
-#!/bin/sh python3 /code/hello_world_service.py &amp;amp; envoy -c /etc/service-envoy.yaml 最后，最关键的就是service-envoy.yaml文件了。service-envoy.yaml文件和官网提供的例子很像，其内容如下：
-static_resources: listeners: - address: socket_address: address: 0.0.0.0 port_value: 80 filter_chains: - filters: - name: envoy.http_connection_manager typed_config: &amp;quot;@type&amp;quot;: type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager codec_type: auto stat_prefix: ingress_http route_config: name: local_route virtual_hosts: - name: service domains: - &amp;quot;*&amp;quot; routes: - match: prefix: &amp;quot;/&amp;quot; route: cluster: local_service http_filters: - name: envoy.router typed_config: {} clusters: - name: local_service connect_timeout: 0.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/envoylearning-4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/envoylearning-4/</guid>
-      <description>本周对envoy的介绍文档仔细的阅读了一遍(还没有读完)。在此将笔记记录如下。
-What is Envoy Envoy是一个L7的代理以及通讯总线，被用于大规模现代SOA架构。
-Envoy认为:
-网络对应用应当是透明的。当网络和应用发生了问题，应该可以很简单就定位到问题的源头
-Envoy有下列特性：
-Out of process architecture：Envoy是一个自包含进程，与应用服务一同启动。这有两大好处：
- 与任意应用语言都能工作 由于不是库的形式，Envoy可以快速部署和升级  现代C++11代码: 既有速度又有生产力
-L3/L4过滤架构: Envoy在其核心是一个L3/L4的网络代理。可插入的filter chain机制使过滤器能被写出来用于完成不同的TCP代理任务并插入到主服务器中。
-HTTP过滤架构：Envoy提供一层额外的HTPP过滤层。
-HTTP L7 路由: 在HTTP模式下，Envoy支持一个路由子系统。该系统能基于路径、内容和运行时值等路由和重定向请求。
-多种支持： gRPC,MongDB L7, Dynamo DB L7等
-服务发现和动态配置： Envoy可选的提供了动态配置API层。该层允许Envoy动态的更新：后端cluster中的host,后端clusters,HTTP 路由，监听 sockets等
-健康检查： 构建Envoy网格的建议方式是将服务发现作为最终一致的过程。Envoy包含一个健康检查子系统，能可选的主动检查上游服务cluster的健康情况。
-高级负载均衡:
-Architecture overview Terminoogy Host: 能进行网络通信的一个实体(移动手机上的应用，服务器等)。一台硬件上可能有多个Host
-Downstream: 一个下游host连接到Envoy，发送请求并接收回应
-Upstream: 一个上游host从Envoy接收连接和请求并作出回应
-Listener: 一个Listener是一个命名了的网络位置(例如端口，Unix域socket等)，该位置可以被下游客户端连接。Envoy会暴露一个或多个listener供下游host连接
-Cluster: 一个cluster是逻辑上相似的一组上游host，Envoy连接到这些host。Envoy通过服务发现找到cluster中的成员，通过健康检查判断该成员是否健康，通过负载均衡策略路由请求
-Mesh: 一组协调起来提供一致的网络拓扑的host。在本文档中，&amp;ldquo;Envoy mesh&amp;quot;是指一组分布式系统中组成了消息传递基础的Envoy代理
-Runtime configuration: 带外实时配置系统，与Envoy一同部署
-Thread model Envoy使用单进程多线程架构。单个master线程控制偶尔发生的协调任务，一些worker线程处理监听、过滤和转发任务。一旦一个连接被一个listener接受，该连接的剩余生命就和该worker线程绑定了。这使得Envoy大部分是单线程的(embarrassingly parallel),一小部分更复杂的代码处理worker线程之间的协调。通常Envoy是完全非阻塞的，大部分情况下建议工作线程的数量和硬件线程的数量一致。
-Listeners Envoy配置支持在一个进程中设置任意数量的listener。通常我们建议不管设置的listener有多少，每个机器都设置一个Envoy。
-每个listener都通过一些网络层(L3/L4)过滤器独立的配置。当listener接收到了一个新的连接，配置好的本地连接过滤器堆栈将会被实例化并开始处理一系列的事件。
-Listener也可以配置一些listener过滤器。该过滤器在网络层过滤器之前被使用，可以操纵连接的元数据。通常这是为了影响连接后续怎么被过滤器或者cluster处理。
-Listener也可以通过listener discovery service(LDS)动态的获取。
-Listener filters Listener filters的主要目的是使得以后增加系统集成函数更简单(通过不改变Envoy的核心功能)。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/envoylearning-5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/envoylearning-5/</guid>
-      <description>本次继续阅读Envoy的文档。
-Health checking 主动健康检查可以在每个上游cluster上配置。Envoy支持三种不同类型的健康检查：
- HTTP: Envoy会发送HTTP请求给上游host。默认情况下，如果host是健康的，它会期待收到一个200回应。 L3/L4: Envoy会发送可配置的字节缓冲给上游host。它期待在回应中该字节缓冲被回射(echo)。 Redis: Envoy会发送Redis的PING命令并期待收到PONG回应。  HTTP health checking filter Envoy包括了一个可被安装在配置好的HTTP监听器上的健康检查过滤器。该过滤器有几种操作模式：
- No pass through: 该模式下，健康检查请求不会传送给本地服务。Envoy会根据当前服务器的状态(draining state)发回200或503响应 No pass through, computed from upstream cluster health: 在该模式下，Envoy会根据上游的一个或多个cluster中是否存在指定比例的服务器可用来返回200或503响应。 Pass through: 该模式下，健康检查请求会传送给本地服务。 Pass through with caching: 该模式下，Envoy会传送健康检查请求给本地服务，然后会缓存结果一段时间。  Connection pooling 对于HTTP流量来说，Envoy支持在底层线协议(HTTP/1.1或HTTP/2)之上一层的抽象连接池。使用的过滤器代码不需要知道底层协议是否支持真正的复用。底层实现实际上有下面的高层属性。
-HTTP/1.1 HTTP/1.1连接池在需要时就像上游host获取连接(最大不超过熔断限制)。请求在连接可用时与其绑定。连接可用有几种原因，例如一个连接已经处理完了之前的请求，一个新的连接已经准备好接收请求。
-HTTP/2 HTTP/2连接池对每个上游host获取一个连接。所有的请求都通过该连接复用。如果收到了GOAWAY帧或者连接数达到了最大流限制，连接池会创建一个新的连接并且排空已经存在的连接。
-Load balancing What is Load Balancing? 负载均衡指的是将流量分给一个cluster中的不同host的方法。Envoy提供了不同的负载均衡策略。从高层看，可以把这些策略分为两种：全局负载均衡和分布式负载均衡。
-Distributed Load Balancing 分布式负载均衡指的是让Envoy自己基于上游hosts的位置决定负载如何分给端点。
-Global Load Balancing 全局负载均衡指的是有一个全局的authority决定负载应该怎样在hosts之间分布。对Envoy来说，这可以通过控制面完成。控制面可以通过指定不同的参数(例如优先级、本地权重、端点权重和端点健康等)来分发负载。
-一个简单的例子是控制面基于网络拓扑给hosts设置不同的优先级来确保需要更少的网络跳数的hosts优先被选择。
-Both Distributed and Global 大部分复杂的部署会同时使用两种方法。例如，全局负载均衡可以被用来定义高级路由优先级和权重，而分布式负载均衡可以被用来对系统变化做出反应。
-Supported load balancers 当过滤器需要获取到上游cluster中的某个host的连接，cluster manager会使用负载均衡策略来决定选择哪个host。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/highperformanceserver-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/highperformanceserver-1/</guid>
-      <description>这篇英文文章讲的是高性能服务器设计的一些要点。
-原文链接为Data Copies 数据拷贝可能被掩盖或是伪装。在第三方库中或是驱动中都可能进行许多数据拷贝。一个明显的例子是哈希。
-一种方法是使用缓冲区描述符而不是单纯的缓冲区指针。每个描述符由下列事项组成：
- 一个指针以及缓冲区的长度 一个指针或是偏移值以及长度。指针指向实际填充区域的开始，偏移也是，长度是实际填充的长度 指向其他缓冲区的前向以及后向指针 引用计数  上述方法在某些情况下工作的很好，然而有时候也会让人头疼。这是因为在缓冲区链的前面和后面添加缓冲区是很方便的，但在中间添加缓冲区或是指向部分缓冲区等操作非常麻烦。
-作者不建议使用上述方法。最好的方法是识别出程序中的大对象并分别分配它们以避免拷贝。
-作者最后提醒，不要过分防止数据拷贝。过分防止数据拷贝可能导致代码变得更混乱、复杂。
-Context Switches 当系统在线程间来回切换的时间比它在一个线程内干实际的活所消耗的时间还多时，上下文切换就严重拖慢了系统效率。
-造成上述现象的第一个原因是活跃线程数比处理器数量要多，因此可扩展的系统通常会限制活跃线程的数量。
-通常在前端需要使用select/poll,异步IO,信号或是completion ports等事件驱动机制来使得一个线程处理多个连接。
-最简单的多线程事件驱动服务器维护一个队列，每个请求被一个或多个listeners监听并放入队列，而worker threads从队列中取出任务。然而，这样做也会拖慢系统。上下文切换的第二个原因就是从一个线程到另一个线程传递任务。较好的设计应当是listener能变成worker再变回listener。
-如何限制活跃线程的数量呢？作者提出使用最简单的方法：信号量。活跃线程首先获取信号量再执行工作。
-作者接着提出，可以将对请求的处理分为多个阶段，通过阶段分发函数的返回值确定。例如:
- 请求需要传给下一个阶段(ID或是指针作为返回值) 请求已经被完成(特殊的&amp;quot;请求完成&amp;quot;返回值) 请求被阻塞(特殊的&amp;quot;请求阻塞&amp;quot;返回值)。这和前面的阶段一样，但该请求未被释放，会在其他线程继续
-在上面的模型中，请求的排队在阶段内完成，而不是阶段之间。这避免了将请求压入成功阶段的队列然后进入成功阶段又取出  作者最后对SEDA发表了自己的看法。
- SEDA的批处理将多个请求通过一个阶段处理，作者提出的方法将单个请求通过多个阶段处理 学术研究角度而言，用java完成SEDA是有意义的。实际工程中也许并不好  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/highperformanceserver-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/highperformanceserver-2/</guid>
-      <description>接下去介绍高性能服务器设计的最后两个因素。
-Memory allocation 内存分配是制约服务器性能的一大瓶颈。
-作者提出了三种方法：
- 预分配内存。动态分配内存的好处是不会浪费空间，然而需要消耗时间。如果有些内存分配是必需的，在程序运行前就可以确定的，则可以进行预分配，即便这样会浪费一些内存。 使用look aside列表。其基本思想是对于要释放的对象不立即释放，而是将它加入到一个列表中。这样，，多个私有列表来保持较低的分配开支如果短时间内又需要用到该对象，则不重新分配而是从链表中获取即可。对于look aside列表的使用，显然不能让其无限制变多，因此作者提出采用新旧列表的方法，既避免了过多的锁争用，又能释放无用对象的内存。 在分配内存时会出现锁争用的情况，即使使用了look aside列表也是如此。该情况是内存分配消耗最大的情况。为了避免该情况，可以维护多个私有的look aside列表。例如，可以给每个线程分配一个该列表，这样就避免了锁争用。或者是一个处理器一个列表。必要时也可以用一个共享列表，多个私有列表来保持较低的分配开支  Lock Contention 这一块由于接触的太少，我还看不太懂，暂时就先不翻译了。
-Other Stuff 作者提出了一些其他的问题
- 对于较大或较小的请求你的存储子系统表现如何？序列化或随机化请求呢？read-ahead和write-behind工作情况如何？ 你正在使用的网络协议效率如何？有没有你能设置的参数或者标志能使其工作的更好？有没有像TCP_CORK,MSG_PUSH或是Nagle这样的技巧使其避免较小的信息？ 你的系统支持离散/聚合IO(readv/writev)吗？使用该技术能提高性能并避免使用缓冲区的链的痛苦 页的大小是多少？缓存行的大小是多少？在这些大小上对齐值得吗？系统调用或者上下文切换比起其他东西的开销来说如何？ 你的读/写锁会饥饿吗？你的事件有惊群效应吗？  问题有很多，这些问题都是值得思考的。应当对于不同的平台都了解上面的东西，哪怕只是经验值。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode1022-sumroottoleaf/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode1022-sumroottoleaf/</guid>
-      <description>Given a binary tree, each node has value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit. For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.
-For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.
-Return the sum of these numbers.</description>
-    </item>
-    
-    <item>
-      <title></title>
+      <title>Leetcode605-Can Place Flowers</title>
       <link>http://tonfeiz.github.io/posts/leetcode605-canplaceflowers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/leetcode605-canplaceflowers/</guid>
-      <description>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.
-Given a flowerbed (represented as an array containing 0 and 1, where 0 means empty and 1 means not empty), and a number n, return if n new flowers can be planted in it without violating the no-adjacent-flowers rule.</description>
+      <description>Suppose you have a long flowerbed in which some of the plots are planted and some are not. However, flowers cannot be planted in adjacent plots - they would compete for water and both would die.</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode670-maximumswap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Best Practice for Designing a Pragmatic RESTful API Part I</title>
+      <link>http://tonfeiz.github.io/posts/designrestfulapi-1/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/leetcode670-maximumswap/</guid>
-      <description>Given a non-negative integer, you could swap two digits at most once to get the maximum valued number. Return the maximum valued number you could get.
-Example 1:
-Input: 2736 Output: 7236 Explanation: Swap the number 2 and the number 7. Example 2:
-Input: 9973 Output: 9973 Explanation: No swap.  这题的意思是对给定数字，只能交换一次不同位置的数字，则能得到的最大数字是多少。
-我自己的想法比较复杂。对于一个多位数字，显然把较大的数字放在前面更好。为了找到拿来交换的较大的数字的位置，遍历数组，并且找到递增的最大位置，该位置即为可以拿来交换的最大位置。当然，这样的位置可能有多个，则需要从这些位置中找到最大的、最靠后的位置。
-接下去找可拿来交换的最小位置，该位置一定在0到我们找到的第一个递增的最大位置之间，因此在这两个位置之间再找到比我们之前找到的最大位置数字小的位置，则该位置为能交换的小位置。最后，交换这两个位置的数字即可。
-代码如下：
-class Solution { public: int maximumSwap(int num) { string s = to_string(num); vector&amp;lt;int&amp;gt; vi; for(int i = 0; i &amp;lt; s.</description>
+      <guid>http://tonfeiz.github.io/posts/designrestfulapi-1/</guid>
+      <description>设计RESTful API最佳实践</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode674-lcis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Dockerfile Reference</title>
+      <link>http://tonfeiz.github.io/posts/dockerfilereference/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/leetcode674-lcis/</guid>
-      <description>Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).
- 这题其实就是找数组中的最长连续递增子序列。想法也很简单，设置一个startIndex，当发现序列不是递增时，则子序列的长度是当前的Index减去startIndex，同时将startIndex设置为当前位置(这里注意可能有off-by-one)。遍历整个序列，找到最长的序列即可。
-代码如下：
-func findLengthOfLCIS(nums []int) int { if len(nums) == 0 { return 0 } lengthMax := 1 startIndex := 0 arrayLength := len(nums) for i := 0; i &amp;lt; arrayLength - 1; i++ { if nums[i + 1] &amp;lt;= nums[i] { if i + 1 - startIndex &amp;gt; lengthMax { lengthMax = i + 1 - startIndex } startIndex = i + 1 } } if startIndex !</description>
+      <guid>http://tonfeiz.github.io/posts/dockerfilereference/</guid>
+      <description>Dockfile reference翻译</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode703-kthinstream/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Envoy Example Analyze</title>
+      <link>http://tonfeiz.github.io/posts/envoyexampleanalyze/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/leetcode703-kthinstream/</guid>
-      <description>Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
-Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.</description>
+      <guid>http://tonfeiz.github.io/posts/envoyexampleanalyze/</guid>
+      <description>最近在学习envoy，这里简单学习一下其中的入门例子front-proxy.其目录位于envoy/example/front-proxy下</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode704-binarysearch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode704-binarysearch/</guid>
-      <description>Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.
-You may assume that all elements in nums are unique. n will be in the range [1, 10000]. The value of each element in nums will be in the range [-9999, 9999].
- 这题其实就是一个简单的二分搜索，数组中的元素都是唯一的，且数值也不大，难怪会被分到简单题里
-二分搜索很有名，要实现一个完全正确的二分搜索是很困难的，但这题的要求并不高。基本思想就是每次寻找中间元素并根据中间元素与目标元素的大小判断下一个搜索范围应该在哪一侧
-二分搜索时，左侧和右侧的范围应当界定明确。在下面的代码中，采用的范围是C++中的通用范围，即[left, right)。因此，循环的推出条件就是两者相等。当缩小范围时，要根据上面的关系选择是中间元素还是中间元素的两侧元素</description>
-    </item>
-    
-    <item>
-      <title></title>
+      <title>Leetcode728-Self Divide Numbers</title>
       <link>http://tonfeiz.github.io/posts/leetcode728-selfdividenumbers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/leetcode728-selfdividenumbers/</guid>
-      <description>A self-dividing number is a number that is divisible by every digit it contains.
-For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
-Also, a self-dividing number is not allowed to contain the digit zero.
-Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.</description>
+      <description>A self-dividing number is a number that is divisible by every digit it contains.</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode779-kthsymbol/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Leetcode674-LCIS</title>
+      <link>http://tonfeiz.github.io/posts/leetcode674-lcis/</link>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/leetcode779-kthsymbol/</guid>
-      <description>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.
-Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).
-Examples:
-Input: N = 1, K = 1
-Output: 0
-Input: N = 2, K = 1</description>
+      <guid>http://tonfeiz.github.io/posts/leetcode674-lcis/</guid>
+      <description>Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode856-scoreofparentheses/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode856-scoreofparentheses/</guid>
-      <description>Given a balanced parentheses string S, compute the score of the string based on the following rule:
-() has score 1 AB has score A + B, where A and B are balanced parentheses strings. (A) has score 2 * A, where A is a balanced parentheses string.  Example:
-Input: &amp;quot;()&amp;quot; Output: 1 Input: &amp;quot;(())&amp;quot; Output: 2 Input: &amp;quot;()()&amp;quot; Output: 2 Input: &amp;quot;(()(()))&amp;quot; Output: 6  这是一道mdeium题，题意是对于一个完全匹配的括号串，()表示1,AB表示A+B,(A)表示A*2，其中A、B都是某个括号表达式，求给定括号串的值。
-这道题还是想了有一点时间，最开始是想用栈，但是感觉怎么用都不太对，后面才开始想用递归的方法。
-递归的核心其实就是把问题的规模变小，并且要有一个最终的停止条件。对一个函数f来说，假设其输入是字符串以及起始位置start和end(范围为[start, end))，显然终止条件有:</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode915-disjointintervals/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode915-disjointintervals/</guid>
-      <description>Given an array A, partition it into two (contiguous) subarrays left and right so that:
- Every element in left is less than or equal to every element in right. left and right are non-empty. left has the smallest possible size.  Return the length of left after such a partitioning. It is guaranteed that such a partitioning exists.
-Example 1:
-Input: [5,0,3,8,6] Output: 3 Explanation: left = [5,0,3], right = [8,6]</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode941-validmountainarray/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode941-validmountainarray/</guid>
-      <description>Given an array A of integers, return true if and only if it is a valid mountain array.
-Recall that A is a mountain array if and only if:
- A.length &amp;gt;= 3 There exists some i with 0 &amp;lt; i &amp;lt; A.length - 1 such that:  A[0] &amp;lt; A[1] &amp;lt; ... A[i-1] &amp;lt; A[i] A[i] &amp;gt; A[i+1] &amp;gt; ... &amp;gt; A[B.length - 1]     这是一道简单题，题意就是判断一个数组是否存在且只存在一个山顶，其实就是判断是否数组是先升后降的，并且不存在相等元素。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/leetcode942-distringmatch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/leetcode942-distringmatch/</guid>
-      <description>Given a string S that only contains &amp;ldquo;I&amp;rdquo; (increase) or &amp;ldquo;D&amp;rdquo; (decrease), let N = S.length.
-Return any permutation A of [0, 1, &amp;hellip;, N] such that for all i = 0, &amp;hellip;, N-1:
- If S[i] == &amp;ldquo;I&amp;rdquo;, then A[i] &amp;lt; A[i+1] If S[i] == &amp;ldquo;D&amp;rdquo;, then A[i] &amp;gt; A[i+1]  Example 1:
-Input: &amp;ldquo;IDID&amp;rdquo;
-Output: [0,4,1,3,2]
-Example 2:
-Input: &amp;ldquo;III&amp;rdquo;
-Output: [0,1,2,3]
-Example 3:
-Input: &amp;ldquo;DDI&amp;rdquo;
-Output: [3,2,0,1]</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/progit-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/progit-1/</guid>
-      <description>git可说是目前最常用的版本控制系统之一，虽然之前也曾经学过，但并没有深刻理解其中的原理，因此就下载了Pro Git这本书，争取把git里里外外都搞个通透。
-一、基本信息 版本控制 在日常生活中，我们编辑文件。随着时间的流逝，文件数目越来越多，对文件的修改也越来越多。有时我们修改错误，想要找回上一个版本的东西。有时在不同的场合下，我们想换一个版本使用。这就诞生出了版本控制，即控制我们开发的东西的不同版本，并且具备回退等能力。
-通常由三种版本控制系统：
- 本地控制，即自己手动通过文件名等手段标志出版本信息 中心化版本控制，文件存在一个中心服务器，任何想要文件的人通过服务器获取最新文件并编辑 分布式版本控制，每个机器都把文件以及版本信息复制下来，这样当一个服务器失效，任何一台机器都可顶替服务器的位置  Git的一些基本概念 快照，而不是差别 其他的VCS大多把一个版本一个版本的更迭视为对文件的修改，即他们存下文件，而以后的版本是对文件作出修改。Git则把每个版本视为对当前文件的一个快照。在git中，每次commit或是保存当前工程的状态，git都会记录当前你的所有文件看起来是怎么样的并且保存一个到该快照的引用。对于未修改的文件，git则会有到上一个版本该文件的引用，而不重新保存。
-几乎所有操作都是本地的 由于git在本地电脑上保留了所有的版本控制信息，因此提交等操作不需要依赖于服务器，只需在本地进行即可。其他的VCS在提交、浏览过去版本信息等操作中往往需要和中心服务器取得联络，这就要求必须由互联网，且造成了网络通信的开销。
-三个状态 git中有三个区域：
- 工作区：即放置工作文件的位置，是工程的一个签出版本 暂存区：是包含在Git目录中的一个文件，其中存储了将放入下一个commit中的信息 Git目录区：是Git放置元数据和对象数据库的地方  由此引入了三种状态，在工作区中修改但还没加入暂存区的状态是modified，在暂存区中但还没加入Git目录区(即还没commit)的状态是staged,在Git目录区中的状态是commited
-初次设置 Git有一个叫做git config的工具能设置那些控制Git操作的变量。这些变量存在三个不同的地方：
- /etc/config:包含应用到系统中所有人的值。如果给git config传递--system选项，则它会从这个文件中读写 ~/.gitconfig或~/.config/git/config:该值影响的是当前用户。可以传递--global选项来让Git从中读写。 config文件：该文件在Git目录中(.git/config)，影响的是当前的仓库。通过--local选项即可让Git从中读写  每个层级的值都会覆盖上层的值
-认证身份 首次安装Git后需要配置用户的名字和邮箱，如下所示：
-$ git config --global user.name &amp;quot;${USER_NAME}&amp;quot; $ git config --global user.email ${USER_EMAIL} </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/progit-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/progit-2/</guid>
-      <description>本章讲述Git的基础知识。
-Git基础 获取Git Repo 有两种获取Git Repo的方法
- 将本地未纳入版本控制的目录转变为Git repo 从其他地方克隆Git repo  在已存在的目录中初始化Repo 在已存在的目录中输入 $ git init
-即可。
-该命令会在目录中创建一个.git的子目录，其中包含了所有必要的repo文件。此时，工程中没有任何文件被追踪。
-如果想要开始对已存在的文件进行版本控制，可以输入下面命令
-$ git add *.c $ git add LICENSE $ git commit -m &amp;quot;initial project version&amp;quot; 克隆已存在的Repo git clone可以用来克隆已存在的文件。与其他版本控制系统常用的checkout不同，这里的clone表示Git会把已存在Repo中所有的文件的所有版本都克隆到本地，而不是只拷贝当前版本的文件。
-通过git clone &amp;lt;url&amp;gt;可以克隆repo。例如：
-$ git clone https://github.com/libgit2/libgit2
-创建了一个名叫libgit2的目录，在其中初始化了.git目录，将该库的数据都拉到其中，并签出(checkout)了最新版本的文件。
-记录Repo的变化 每个工作目录中的文件有两个状态：tracked或是untracked。tracked的文件是在上一个快照中的文件；它们可以是未修改的(unmodified)，修改的(modified)和暂存的(staged)。
-几个状态之间的转移图如图所示。
-检查文件状态 git status可用来检查文件的状态。
-例如，假设刚刚clone了一个repo，则此时使用git status命令一般显示如下
-$ git status On branch master Your branch is up-to-date with &#39;origin/master&#39;. nothing to commit, working directory clean 这表明工作目录是干净的，即你所跟踪(track)的文件都没有被修改</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/threerules/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/threerules/</guid>
-      <description>这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则。
-三、使用被证实的稳定的技术 Instagram会观察周围的最具实力的专家们都在使用哪些技术，然后争取使用和他们一致的技术。
-例如，观察周围的这些公司，就会发现它们都在从旧时代的，微缩整体的架构转换到如今的微服务架构。微服务架构更偏向于简化的选择正确的工具。
-二、不要重新发明轮子 云提供商和基础数据库决策以及向DevOps的持续转变正在变得常见。科技应当帮助你建造接下来的事情，而不是让你确保处理用户的下一波浪潮。
-使用已有的东西，不管那是库、社区或是已知的内在知识。
-一、保持简单 每个决策都可能使得代码变得更复杂。因此，要确保每个决策都尽量谨慎以使得程序保持简单、简洁</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/twelvefactor-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/twelvefactor-1/</guid>
-      <description>Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性。
-这些应用程序具备的特点包括：
- 使用声明式方法(declarative formats)来自动化设置，以此最小化新的成员加入工程的时间和花费 与底层的操作系统之间有明确的协议，以此最大化不同执行环境之间的可移植性 适合于部署在现代云平台上，避免了服务器和系统管理员的需要 最小化开发环境(development)和生产环境(production)之间的分歧，为了最大化灵活性使用持续部署 能够在不显著改变工具、架构或者开发实践的基础上自由扩展  上面有一些名词是我暂时还不太理解的，这里做个简单的解释。
- 声明式方法：倾向于直接告诉计算机做什么，而不是告诉计算机怎么做的方法。具体可见declarative programming 持续部署：和持续部署相关的概念还有持续集成和持续交付。持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。持续交付在持续集成的基础上，将集成后的代码部署到更贴近真实运行环境的「类生产环境」（production-like environments）中。比如，我们完成单元测试后，可以把代码部署到连接数据库的 Staging 环境中更多的测试。如果代码没有问题，可以继续手动部署到生产环境中。持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。(引自知乎yumminhuang) 生产环境、开发环境：软件应用开发的几个环境包括：开发环境(development)，集成环境(integration)、测试环境(testing)、QA验证、模拟环境(staging)、生产环境(production)  本是打算一次性把这12个特性都叙述一遍，但发现其中涉及到许多自己不知道的东西，因此决定还是分批来，本周先仔细看3个特性。
-一、基准代码(codebase) 这一特性用一句话说就是，只有一个用版本控制系统跟踪的代码库，但可以有许多部署(deploy)
-在中心化的版本管理系统中，一个codebase就是单个的代码库。在去中心化的版本管理系统中，一个codebase就是共享一个根提交(root commit)的代码库
-需要注意的是，在codebase和app之间永远是一对一的关系，如果有多个codebase，那就不是一个app，而是一个分布式系统，其中的每个组件都应当是一个满足twelve-factor的app。
-然而，一个app可以有多个部署。例如在生产环境中的部署，在每个开发环境上的部署等。
-不同部署的codebase是相同的，但是每个活跃的部署可以是不同的版本。
-二、依赖 这一特性用一句话说就是，显示的声明依赖并隔离它们
-这一章读的还不太懂，可能是自身还缺乏关于微服务方面的知识的原因。
-一个满足这一特性的app绝不会依赖于隐式的系统级别的库。它会使用依赖清单来显式声明自己所依赖的所有依赖项，并且会在执行期间使用依赖隔离工具来防止外界系统的隐式依赖泄漏进来(leak in)。对Ruby来说，依赖清单就是Gemfile，依赖隔离工具就是bundle exec。对Python来说，依赖清单就是pip，依赖隔离工具就是virtualenv。
-这么做的一个优势就是对于新来的开发者来说，他只需要安装语言运行时环境以及依赖管理工具就可以进行app的开发。
-twelve-factor app也不会隐式的依赖任何系统工具，即便这些工具在大部分操作系统上都存在，例如curl。
-三、配置 将配置存在环境中
-一个app的配置是在不同的部署中不同的东西。有些app将这些配置直接硬编码到代码中，这是违反twelve-factor的。配置应该从代码中严格的分离开来。当然对于内在的配置，即在不同部署中相同的配置，可以直接硬编码。
-一种配置方法是使用配置文件。配置文件不应当被放入版本控制系统中，但这一点容易被忽略，而且大多配置文件往往基于特定的语言或是框架。
-twelve-factor app将配置存在环境变量中。注意，使用组合的环境变量会使app失去可扩展性(组合的环境变量存疑)，最好还是将每个环境变量单独使用。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/twelvefactor-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/twelvefactor-2/</guid>
-      <description>Twelve Factor Part Two
-Backing services
-Build, release and run
-processes
-四、支持服务(Backing services) backing services应当被视为附加资源
-backing services是app通过网络使用的服务，并且这些服务被视为它基本操作的一部分。举例来说，数据存储服务(MySQL等)、消息队列系统(RabbitMQ)和缓存系统(Memcached)都属于这种服务。
-backing services包括本地管理的服务和第三方服务。本条的要点就在于，不管哪类服务对app来说都应当没有区别，都被看作附加资源，都可以通过URL或者配置中的locator/credential访问。
-对于app来说，一个backing services应当和另一个同样功能的backing services完成无缝替换——不需要更改任何代码。这就是因为把它们看作附加资源而使其变成松耦合带来的好处
-五、构建、发行和运行 严格的区分构建和运行阶段
-一个codebase通过下面三个阶段被转换为一个部署：
- 构建阶段将代码转换成一批可执行文件。构建阶段获取提供者的依赖并编译二进制文件和资源 发行阶段将构建完成的东西和部署当前的配置结合起来。发行阶段完成的东西随时可以在执行环境中运行 运行阶段在执行环境中运行，启动app的一些进程  twelve-factor app严格的区分上面这三个阶段，这样就不能对运行阶段的代码作任何修改，也可以方便的回滚到上一个发行版本。每个发行版本应该有一个独一无二的ID作为标识。任何发行版本都不应该被改动，想要改动则需要新的发行版本
-运行时可执行文件应当自动在任何场合(如服务器重启，进程崩溃后重启)自动执行。
-六、进程 将app作为一个或多个无状态进程执行
-进程应当是无状态的，不共享任何东西。需要持久化的数据应当被存在一个有状态的backing service中，通常是一个数据库
-进程的内存空间或者文件系统可以被作为一个简短的，单个的事务(transaction)缓存处理。twelve-factor app从不假设在内存或是磁盘上缓存的东西在未来的请求或是工作中会是有效的——有多种情况会导致它们是失效的或被清除。 、
-sticky session将用户的session数据保存在app的进程内存中并期望从相同的访问者来的请求被路由到同样的进程。这是对本准则的违反，不应当被使用。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/twelvefactor-3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/twelvefactor-3/</guid>
-      <description>Twelve Factor Part Three
-Port binding
-Concurrency
-Disposability
-七、端口号绑定 通过绑定端口号导出服务
-应用程序应当是自包含(self-contained)的，并且它不应当依赖运行时服务器的注入。web app通过将HTTP绑定到一个端口号上来将其导出作为服务。
-在本地的开发环境，开发者通过像http://localhost:5000/这样的URL访问自己开发的服务。在部署环境中，则通过公共域名和端口访问。
-通常这通过使用依赖声明将一个web服务器库添加到app中完成，例如Python的Tornado，Java的Jetty。
-注意绑定端口的服务意味着它也可以成为其他app的backing service。
-八、并发 通过进程模型达成横向扩展
-任何计算机程序都表示为一个或多个计算机程序。Web应用使用了许多不同类型的进程执行形式，例如PHP进程作为Apache的子进程存在，Java由JVM提供一个维护大块系统资源的进程，而并发就由线程内在的管理。不管哪种形式，运行着的进程对于app的开发者来说都只具有最小的可见性。
-在twelve-factor app中，进程是一等公民。twelve-factor中的进程从运行守护服务的UNIX进程模型获得强烈的启发。在这种模型下，开发者可通过将每种类型的工作分发一个进程类型来架构自己的app以使它们能处理形色各异的工作负载。
-twelve-factor app无共享、水平可分的特性意味着增强并发是一个简单可信任的操作。进程类型和每种类型的进程数量组成的矩阵则是进程信息。
-twelve-factor app不能被配置为守护进程也不能写PID文件，而应当依赖操作系统的进程管理器来管理输出流，对崩溃进程作出反应或是处理用户的重启和关闭
-九、可弃性(Disposability) 通过快速启动和优雅的关闭来最大化鲁棒性
-disposability意味着app可以被一瞬间开启或关闭。这对于伸缩性、代码或配置改变时的快速部署以及生产环境部署的鲁棒性都很重要。
-进程应当尽量最小化启动时间，最好只需几秒钟。短暂的启动时间意味着更灵活，更鲁棒(进程管理器可以更快的把进程移动到新的物理机上)
-当进程从进程管理器处收到SIGTERM信号时应当优雅的关闭。对于web进程来说，这意味着停止监听端口，让当前的请求结束然后退出。
-对于工作进程来说，这意味着把当前的工作返回到工作队列中。
-进程应当对由底层硬件导致的突然死亡也鲁棒。一个建议的方法是使用鲁棒的后端队列，例如Beanstalked</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/twelvefactor-4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/twelvefactor-4/</guid>
-      <description>Dev/prod parity
-Logs
-Admin processes
-十、开发环境/生产环境相同 保持开发环境、模拟环境和生产环境尽可能相似
-历史上，在开发环境和生产环境之间有三道鸿沟，分别位：
- 时间：开发者可能在需要花费几天甚至几个月才运行的代码上工作 人事：开发者写代码，运维工程师部署它 工具：开发者使用Nginx，SQLite和OSX而实际生产环境可能是Apache，MySQL和Linux  twelve-factor app需要使上面三者尽可能小来便于持续部署。
-以后台服务(backing services)为例，很多语言提供库来简化与其的通信，例如使用适配器使其能适配不同的数据库。有时候开发者会倾向于在本地使用轻量级的数据库而在正式部署时使用重量级的数据库。
-twelve-factor app的开发者拒绝在开发环境和生产环境之间使用不同的后台服务。
-对不同后台服务的适配仍然是有用的，例如在改变后台服务时。但app的所有部署(开发环境，模拟环境和生产环境)都应当具有相同版本的后台服务
-十一、日志 将日志当做事件流对待
-日志提供了运行app的行为事件。它是从所有的进程和后台服务中得到的聚合的、按时间顺序排列的流。
-一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入stdout中。
-在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。
-app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能
-管理进程 将管理进程作为一次性的、不是经常开关的进程
-开发者经常希望有一个一次性的管理进程，例如：
- 运行数据库迁移 运行一个控制台 运行上传到app repo中的一次性脚本  一次性的管理进程应当和app的常规长时运行进程运行在同一个环境下，使用相同的代码库和配置，不需要进行同步措施。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/vimconfigure/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/vimconfigure/</guid>
-      <description>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容。
-vimrc文件 vimrc文件中包含了vim在启动时就会执行的命令。对于我们最喜欢的选项和按键映射，可以放到vimrc中
-vimrc文件的名字叫做.vimrc，对于Unix操作系统和Macintosh操作系统来说，它的路径名一般是~/.vimrc。
-vimrc文件中可以包含所有能在vim中普通模式下&amp;rdquo;:&amp;ldquo;后面执行的命令，最简单的设置选项的指令，其一般格式是
-set &amp;lt;options&amp;gt;
-想要查看有哪些配置可以输入:options查看或是在帮助中查看。
-对于特定的配置，可以输入:help &#39;&amp;lt;option name&amp;gt;&#39;查看。另外，在设置某个选项时在后面加&amp;amp;即可恢复默认设置
-为了使vimrc文件起作用需要退出vim再重新启动
-下面列举一些设置作为例子说明
-set autoindent:自动缩进，使用前一行的缩进作为当前行缩进
-if has(&amp;quot;vms&amp;quot;) set nobackup else set backup endif 使得vim在覆写一个文件时保存有该文件的备份，而在VMS系统上则不用，因为VMS系统自带有这个功能。
-set history=50:在历史记录中保持50个命令和50种搜索模式
-set ruler:允许在右下角显示当前游标的位置
-set showcmd:显示普通模式下输入的命令
-set incsearch:在输入搜索模式下显示和其匹配的内容
-map Q gq:这是一个按键映射，将Q键映射到gq按键上
-filetype plugin indent on  文件类型检测：当开始编辑一个文件时，vim将会通过文件扩展名试图发现文件的类型。文件类型可被用于语法高亮等用途 使用文件类型插件文件(filetype plugin files):不同的文件类型有不同的设置。这些公共的有用选项在vim的文件类型插件中 使用缩进文件：不同类型的文件种类使用不同的缩进  简单的映射 按键映射应该是所有编辑器必备的功能了。在vim中很简单，举例来说，在vimrc文件中添加
-:map &amp;lt;F5&amp;gt; i{&amp;lt;Esc&amp;gt;ea}&amp;lt;Esc&amp;gt; 上面的这个映射解析为
- &amp;lt;F5&amp;gt; 映射按键是F5键 i{ 转换为插入模式并输入{ &amp;lt;Esc&amp;gt; 退出为普通模式 ea}到单词结尾并输入} &amp;lt;Esc&amp;gt;最后转化为普通模式  这样，一般情况下输入一个单词，按F5键即可在其两端加上大括号
-添加插件 vim可通过添加插件来扩展自己的功能。插件其实就是vim在启动时自动加载的vim脚本文件。在plugin文件夹中添加对应文件就可添加插件
-有两种插件：
- 全局插件：对所有文件都有效 文件类型插件：对特定文件类型才有效  全局插件 全局插件在启动时自动加载，它们提供了大部分通用的功能。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/vimcontinue/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/vimcontinue/</guid>
-      <description>上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅。
- ^ -&amp;gt; 到本行第一个不是blank字符的位置 g_ -&amp;gt; 到本行最后一个不是blank字符的位置 :e &amp;lt;path/to/file&amp;gt; -&amp;gt; 打开一个文件 :saveas &amp;lt;path/to/file&amp;gt; -&amp;gt; 另存为&amp;lt;path/to/file&amp;gt; :bn和:bp -&amp;gt; 同时打开多个文件时，使用这两个命令切换上一个和下一个文件 . -&amp;gt; 可以重复上一次的命令 N&amp;lt;command&amp;gt; -&amp;gt; 重复某个命令N次 *和# -&amp;gt; 匹配光标当前所在的单词，移动光标到下一个或上一个匹配单词 很多命令可以以下面的形式来干
-&amp;lt;start position&amp;gt;&amp;lt;command&amp;gt;&amp;lt;end position&amp;gt;
-例如0y$意味着：   0 -&amp;gt; 到行头 y -&amp;gt; 拷贝 $ -&amp;gt; 到本行最后一个字符  gU和gu后跟位置(例如w，e，$等)变换大小写 在当前行上，fa可以到下一个字符为a的位置处，a可变。ta可以到a前的第一个字符，a可变。这两者前可加数字 区域选择 &amp;lt;action&amp;gt;a&amp;lt;object&amp;gt;或&amp;lt;action&amp;gt;i&amp;lt;object&amp;gt;   action可以是任何命令，例如d，y，v等 object可以是w(单词),s(句子),p(段落)，或者是特别字符:&amp;quot;、&#39;、)、}、]
-举例来说，字符串(haha (-) (&amp;quot;tfz&amp;quot;)).光标在f位置    vi&amp;rdquo; -&amp;gt; 选择tfz va&amp;rdquo; -&amp;gt; 选择&amp;quot;tfz&amp;quot; vi) -&amp;gt; 选择&amp;quot;tfz&amp;quot; va) -&amp;gt; 选择(&amp;quot;tfz&amp;quot;) v2i) -&amp;gt; 选择haha (-) (&amp;quot;tfz&amp;quot;) v2a) -&amp;gt; 选择(haha (-) (&amp;quot;tfz&amp;quot;))   块操作 &amp;lt;C-v&amp;gt; &amp;lt;move&amp;gt; &amp;lt;motion&amp;gt; [ESC]</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/vimeditcomputerprogrom/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tonfeiz.github.io/posts/vimeditcomputerprogrom/</guid>
-      <description>vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置。
-一、编译 在vim内部可以编译程序并且跳转到出错的位置。
-在vim中输入以下命令，程序“make”将会被执行，结果会被捕获。
-:make {arguments} 在vim中会显示出错信息。此时按下&amp;lt;Enter&amp;gt;键，vim会显示对应的文件并跳转到出错的位置。
-下面是一些常用命令：
- :cnext将跳转到下个出错位置，:cprevious将跳转到前个出错位置 :cc将显示完整的出错信息 :clist将显示完整的出错列表。 :clist!将显示所有的出错列表，包含链接错误等等 :cfirst将跳到第一个出错位置，clast将跳到最后一个出错位置 :cc 3将跳到第3个出错位置  可以通过设置makeprg选项指定要运行的编译器,通过斜杠指定传递的参数，例如
-:set makeprg=nmake\ -f\ project.mak
-二、C风格的文本缩进 对于C或者C风格的程序例如Java或者C++，可以通过设置cindent选项来控制缩进。一般来说四个空格是合适的。
-set cindent shiftwidth=4
-可以通过=操作符来对齐缩进。最简单的命令是==，该命令会将当前行的缩进对齐。=操作符可以在可视化模式下使用。一个很有用的命令是=a{，这个命令会将当前{}所在的区域全部缩进对齐。</description>
-    </item>
-    
-    <item>
-      <title></title>
+      <title>Vim Tricks</title>
       <link>http://tonfeiz.github.io/posts/vimtricks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/vimtricks/</guid>
-      <description>这篇文章介绍了一些vim中的小技巧。
-替换单词 替换命令可以将一个单词替换为另一个单词，例如:%s/four/4/g
-然而，对于thirtyfour来说显然不用替换，此时可以使用&amp;rdquo;\&amp;lt;&amp;quot;标志，转化为:%s/\&amp;lt;four/4/g
-显然，对于fourteen来说，也是不对。可以使用&amp;rdquo;\&amp;gt;&amp;quot;标志，则转化为::%s/\&amp;lt;four\&amp;gt;/4/g
-如果正在编程，可能希望替换注释中的“four”，这可以使用:%s/\&amp;lt;four\&amp;gt;4/gc
-将&amp;quot;Last, First&amp;quot;转化为&amp;quot;First Last&amp;rdquo; 假设你有许多单词，其形式为
-Doe, John Smith, Peter 你想将它们变为
-John Doe Peter Smith 这可以通过一个命令完成：:%s/\([^,]*\),\(.*\)/\2 \1/
-解释如下：
-The first part between \( \) matches &amp;quot;Last&amp;quot;	\( \) match anything but a comma	[^,] any number of times	* matches &amp;quot;, &amp;quot; literally	, The second part between \( \) matches &amp;quot;First&amp;quot;	\( \) any character	. any number of times	* &amp;ldquo;\2&amp;quot;和&amp;rdquo;\1&amp;quot;叫做backreferences，可以指代前面用&amp;rdquo;\( \)&amp;ldquo;包围的文本
-逆转行的顺序 命令为:global/^/m 0</description>
+      <description>这篇文章介绍了一些vim中的小技巧</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://tonfeiz.github.io/posts/vimtutor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Three Rules</title>
+      <link>http://tonfeiz.github.io/posts/threerules/</link>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/vimtutor/</guid>
-      <description>虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这。
-一  使用h，j，k，l作为vim中光标的移动键(比上下左右要有效率的多)。 使用:q!(quit!)强制退出当前正在编辑的文件 使用x删除当前光标停留处的文字 使用i(insert)在当前光标位置处插入内容 使用A(Append)在当前最后一行处添加内容  二  使用dw(delete word)来删除当前光标处的一个单词 使用d$删除当前位置到行末的所有内容 许多改变文本的命令都由一个operator和motion组成，例如d代表删除operator，而motion可以有如下选择：  w：直到下一个单词的起始位置，不包括该起始位置 e: 直到当前单词的结束位置，包括该结束位置 $: 直到当前行的结尾，包括最后一个单词
-如果只按上述motion则可以让光标按motion移动   在motion前面可以使用数字进行对多个motion的操作 使用0到一行的起始位置处 使用dd删除一整行数据 使用u来撤销上一个操作，U来修复一整行的操作，CTRL-R来撤销撤销操作  三  使用p(put或paste)来放置vim寄存器中的文本数据(可通过dd，d，yy等操作得到) 使用r(replace)来替换当前光标处的文本 使用c(change)+motion来改变文版，注意按c之后会进入插入模式  四  使用CTRL-G命令显示当前文件名以及总行数、当前行数 使用G(Go)到当前文件底端，gg到当前文件顶端,[number]G到[number]行 使用/[text]搜索和[text]一样的文本，n是前进，N是后退 使用%来匹配各种括号 使用:s(substitute)来替进行各种替换  五  使用:!来执行外部的shell命令，例如:!ls就可以列举目录 使用:w(write) FILENAME来将当前已经写完的内容写入某个文件 使用v(visual)进入可视化模式，选择部分内容并利用:w来将这些内容写入某个文件 使用:r(read) FILENAME来将目标文件的内容读入当前正在编辑的文件中(不一定是文件内容，某个命令的输出也可以，感觉和管道或是重定向很像)  六  使用o来在当前行下面插入一行，使用O来在当前行上面插入一行 使用a来在当前光标的下一个位置插入文本 使用R来批量替换文本 使用y来复制，p来粘贴。  总结 对我来说，这个教程比较有用的是2.3,4.4和5.5。以后还要多多练习，对这些基本操作更加熟练</description>
+      <guid>http://tonfeiz.github.io/posts/threerules/</guid>
+      <description>这篇文章讲述了Instagram构建可伸缩云应用架构的三个原则</description>
     </item>
     
     <item>
-      <title></title>
+      <title>Avoid OverEnginerring</title>
+      <link>http://tonfeiz.github.io/posts/avoidoverengineering/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/avoidoverengineering/</guid>
+      <description>商业需求是在不断变化的，因此过度设计往往得不偿失。注意：下面的一些内容不是不要做，而是要适当，不要过度</description>
+    </item>
+    
+    <item>
+      <title>Vim Edit Computer Program</title>
+      <link>http://tonfeiz.github.io/posts/vimeditcomputerprogrom/</link>
+      <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/vimeditcomputerprogrom/</guid>
+      <description>vim有许多辅助编写计算机程序的命令，可以编译一个进程并直接跳到报错的位置</description>
+    </item>
+    
+    <item>
+      <title>Leetcode856-Score Of Parenthess</title>
+      <link>http://tonfeiz.github.io/posts/leetcode856-scoreofparentheses/</link>
+      <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode856-scoreofparentheses/</guid>
+      <description>Given a balanced parentheses string S, compute the score of the string based on the following rule</description>
+    </item>
+    
+    <item>
+      <title>Vim Vundle</title>
       <link>http://tonfeiz.github.io/posts/vimvundle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
       <guid>http://tonfeiz.github.io/posts/vimvundle/</guid>
-      <description>vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器。
-Vundle是vim bundle的缩写。它能自动跟踪.vimrc中的插件，安装、更新、卸载插件。Vundle自动管理插件的运行时目录并会在安装和更新后自动重新生成帮助tag。
-Vundle的安装设置  首先输入git clone https://github.com/VundleVim/Vundle.vim.git ~/vim/bundle/Vundle.vim 将下列内容保存到~/.vimrc中  set nocompatible &amp;quot; be iMproved, required filetype off &amp;quot; required &amp;quot; set the runtime path to include Vundle and initialize set rtp+=~/.vim/bundle/Vundle.vim call vundle#begin() &amp;quot; alternatively, pass a path where Vundle should install plugins &amp;quot;call vundle#begin(&#39;~/some/path/here&#39;) &amp;quot; let Vundle manage Vundle, required Plugin &#39;VundleVim/Vundle.vim&#39; &amp;quot; The following are examples of different formats supported. &amp;quot; Keep Plugin commands between vundle#begin/end. &amp;quot; plugin on GitHub repo Plugin &#39;tpope/vim-fugitive&#39; &amp;quot; plugin from http://vim-scripts.</description>
+      <description>vim有非常之多的插件，因此需要一个插件管理器来管理这些插件。而Vundle就是这一利器</description>
     </item>
     
     <item>
-      <title>ARTS Week Eleven Pattern Service Mesh.md</title>
-      <link>http://tonfeiz.github.io/posts/pattern-servicemesh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Leetcode703-Kth In Stream</title>
+      <link>http://tonfeiz.github.io/posts/leetcode703-kthinstream/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/pattern-servicemesh/</guid>
-      <description>原文是Pattern: Service Mesh
-本文的主要思想是，Service Mesh的诞生其实和TCP/IP网络栈的诞生很相似，都遵循下面的过程：
-发现问题 -&amp;gt; 将解决方案纳入代码 -&amp;gt; 抽取共通问题 -&amp;gt; 将解决方案抽出代码放在外部共同具备的区域
-作者举了TCP/IP中流控的例子来说明这一问题。最开始电脑和电脑之间的通讯没有流控，这时人们发现如果不进行流控，接收消息的机器有可能会收到过量的信息(可能由于该机器在处理其他事务没空接收信息，而另一侧机器不知道这一点一直发送，还有很多情况会导致该现象)。
-为了解决该问题，人们把处理流控的代码和业务代码放在一起。然而很快人们发现，处理流控的代码其实是共通的，所有的机器都需要处理这一点，因此最后，处理流控的代码就被放入网络栈中，而网络栈是所有网络通信的机器必须经过的一层。
-接下来作者引出了分布式架构中的例子。作者举了服务发现和熔断的例子。最开始，为了解决这两个问题，相关代码也被放入业务逻辑中。后来，人们将代码抽取出来，用库的形式调用。然而，用库处理有下面的问题：
- 需要花时间将库和生态中的组件胶合起来 库通常是在特定的平台下编写的(例如JVM、某种特定语言等) 对库的管理、维护很困难，例如不同版本的库兼容性不同等  最后，诞生了sidecar模式。sidecar模式其实就是对于每个服务，都有一个代理(称作sidecar)和它共同启动。该sidecar就负责处理一些共通的问题，例如上面的服务发现。服务之间均通过sidecar进行互相通信——当然，它们不知道sidecar的存在。
-对所有的服务都启动sidecar，则所有的服务及其sidecar就构成了Service Mesh。这里引用William Morgan的一段话说明Service Mesh：
- A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.</description>
+      <guid>http://tonfeiz.github.io/posts/leetcode703-kthinstream/</guid>
+      <description>Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.</description>
     </item>
     
     <item>
-      <title>ARTS Week Thirteen Leetcode868 BinaryGap</title>
-      <link>http://tonfeiz.github.io/posts/leetcode868-binarygap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Twelve Factor PartIV</title>
+      <link>http://tonfeiz.github.io/posts/twelvefactor-4/</link>
+      <pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/leetcode868-binarygap/</guid>
-      <description>Given a positive integer N, find and return the longest distance between two consecutive 1&amp;rsquo;s in the binary representation of N.
-If there aren&amp;rsquo;t two consecutive 1&amp;rsquo;s, return 0.
-Example:
-Input: 22 Output: 2 Explanation: 22 in binary is 0b10110. In the binary representation of 22, there are three ones, and two consecutive pairs of 1&#39;s. The first consecutive pair of 1&#39;s have distance 2. The second consecutive pair of 1&#39;s have distance 1.</description>
+      <guid>http://tonfeiz.github.io/posts/twelvefactor-4/</guid>
+      <description>Dev/prod parity; Logs; Admin processes</description>
     </item>
     
     <item>
-      <title>ARTS Week Twelve ProGit(四)</title>
-      <link>http://tonfeiz.github.io/posts/progit-4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Vim Configure</title>
+      <link>http://tonfeiz.github.io/posts/vimconfigure/</link>
+      <pubDate>Wed, 24 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/progit-4/</guid>
-      <description>本章介绍Git关于分支的知识，包括基本的分支切换合并。
-Git Branching Branches in a Nutshell 当你进行commit时，Git存储了一个包含指向你快照的指针的提交对象。该对象还包含作者的名字，邮箱地址，你输入的信息，以及指向提交(commit)或是在该提交之前的提交(它的父亲)的指针。对于初始提交来说，没有父亲，对于普通提交来说，只有一个父亲，对于从两个或多个分支合并的提交来说，则有多个父亲。
-假设你有三个文件放在一个目录中，你暂存并提交了它们。暂存文件会为每个文件计算一个checksum，在该Git库中保存该版本的文件(Git将它们叫做blobs),并将checksum赋值给暂存区。
-当你提交(commit)时，Git对每个子目录(在这个例子中，只有根工程目录)进行checksum并且将它们作为树形对象存放在Git库中。然后Git创建一个commit对象，该对象有元数据和指向根工程树的指针，所以需要时它可以重新创建快照。
-因此，现在你的Git库中包含了五个对象：三个blob(每个分别表示三个文件中的一个的内容)，一个tree包含了目录的内容并且指定了哪个文件名作为哪个blob保存，以及一个commit包含了指向该树的指针以及所有的元数据。
-如果你进行了修改并且再次提交，则此次提交会包含指向之前一次提交(commit的指针。
-在Git中的一个分支(branch)就是指向这些commit其中之一的指针。默认的分支是master。
-Creating a New Branch 创建一个新的分支其实就是创建了一个新的指针供你移动。git branch &amp;lt;branch_name&amp;gt;即创建了一个新分支，该分支指向当前的commit。
-Git通过一个特殊的HEAD指针知晓当前你在哪个分支上。HEAD指针指向某一个branch指针。默认情况下该指针指向master。注意：使用git branch只是创建分支，而不会切换到该分支，因此git branch不会改变HEAD指针的指向。
-Switching Branches 切换分支可用下面的指令：
-git checkout &amp;lt;branch_name&amp;gt; 该指令把HEAD指针指向&amp;lt;branch_name&amp;gt;代表的分支指针。
-如果在该情况下进行commit，则原来的master分支指针仍指向原来的位置，而切换到的分支指针和HEAD指针则向前移动了。
-如果在此之后，将分支切换回master(git checkout master)，则HEAD指针会指向master，并且目录中的文件会切换回master指向的快照中的文件。
-接下来，如果你进行了改动并再次commit，则你的工程历史就分叉了。你创建了一个分支，切换到该分支然而完成了一些工作。然后你切换回原分支，又完成了一些工作。接下去你可以在分支间自由切换并在必要时合并这些分支。
-一个Git中的分支其实就是commit的40字节SHA-1校验和，因此分支的创建和销毁都很简单。
-git checkout -b &amp;lt;branch_name&amp;gt;可以创建并切换到该分支。
-Basic Branching and Merging Basic Branching 假设你在完成工作，之前已经有几个commits在master分支上了。
- master | c0 &amp;lt;- c1 &amp;lt;- c2 你决定在#53号事务上工作。你使用了下面的命令
-git checkout -b iss53 于是现在情况变成了
- master | c0 &amp;lt;- c1 &amp;lt;- c2 | iss53 你完成了一些工作，进行了提交。则iss53分支前进了，如下所示</description>
+      <guid>http://tonfeiz.github.io/posts/vimconfigure/</guid>
+      <description>vim中的配置是十分重要的内容，不同的用户可以根据自己的喜好将vim配置成自己喜爱的样式。本次就根据vim的帮助文档介绍以下vim配置方面的内容</description>
     </item>
     
     <item>
-      <title>ARTS WeekEleven ProGit(三)</title>
-      <link>http://tonfeiz.github.io/posts/progit-3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Leetcode1022-Sum Root To Leaf</title>
+      <link>http://tonfeiz.github.io/posts/leetcode1022-sumroottoleaf/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/progit-3/</guid>
-      <description>由于之前已经写过了，然而不小心丢失了，因此这里就列一下Git基础中剩余的各个命令及其作用。
-git commit --amend: 覆盖上一次的`commit`，主要用于微小的改动的提交 git reset HEAD &amp;lt;file&amp;gt;: 将staged状态的文件改为unstaged git checkout -- &amp;lt;file&amp;gt;: 将modified状态的文件改为上一次快照中的样子，可能丢失东西！ git remote: 展示远程库 git remote -v: 展示远程库及其URL git remote add &amp;lt;remote&amp;gt; URL: 添加远程库并指定本地用名字 git fetch &amp;lt;remote&amp;gt;: 从远程库中获取内容但不合并 git pull &amp;lt;remote&amp;gt;: 从远程库中获取内容并合并 git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;: 推送内容到远程库 git remote show &amp;lt;remote&amp;gt;: 展示远程库的相关内容 git remote rename &amp;lt;oldname&amp;gt; &amp;lt;newname&amp;gt;: 重命名远程库 git remote remove &amp;lt;remote&amp;gt;: 删除远程库 </description>
+      <guid>http://tonfeiz.github.io/posts/leetcode1022-sumroottoleaf/</guid>
+      <description>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&amp;gt; 1 -&amp;gt; 1 -&amp;gt; 0 -&amp;gt; 1, then this could represent 01101 in binary, which is 13.</description>
     </item>
     
     <item>
-      <title>ATS Week Thirteen ProGit(五)</title>
-      <link>http://tonfeiz.github.io/posts/progit-5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Twelve Factor PartIII</title>
+      <link>http://tonfeiz.github.io/posts/twelvefactor-3/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/progit-5/</guid>
-      <description>本周把有关分支的部分结束。
-Branch Management git branch -v可以显示所有分支以及所有分支的最后一次提交的信息。
-git branch --merged可以显示当前分支和已经合并到当前分支的分支。已经合并到当前分支的分支则可以安全的删除。
-git branch --no-merged会显示当前分支和还没合并的分支。删除还没合并的分支会报错，除非强制删除。
-Branching workflows Long-Running Branches 一种工作流是维护一个稳定的master分支，开出其他分支用于开发或测试。当其他分支经测试稳定之后，再将该分支并入稳定的分支中。
-可以开出多个分支，每一个分支表示不同的稳定性。当一个分支的稳定性达到一定程度则将它并入另一分支即可。
-Topic Branches 另一种很常见的工作流是主题相关工作流。当你工作在master上时，对于要修复的bug、要添加的特性等都可以新开一个分支，在该分支上进行与这些内容相关的工作，当工作完成后则合并入master分支即可。
-Remote Branches 远程跟踪分支是指向远程分支状态的指针。它们是不能自主移动的本地指针。只有在你从远程分支中fetch或是pull（与远程分支取得联系）时，它们才会与远程分支进行同步。
-远程跟踪分支的名字是&amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;,例如&amp;lt;origin&amp;gt;/&amp;lt;master&amp;gt;。
-下面还是用例子来说明。例如在你的网络git.ourcompany.com中有一个git server。你从它clone后，Git会自动为你将该server取名为origin，将它的数据拉下来，创造一个指向它的master分支的指针并将其命名为origin/master。此外，Git还会给你本地的master分支。
-假如你在本地做了一些工作，同时其他人远程提交了一些工作，则此时你们进程不同。但由于你没有与远程主机联系，因此你并不知情。
-假设你进行了fetch(git fetch origin),则示意图如下。
-Pushing 可以利用git push &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;命令推送自己的代码。例如，你有一个serverfix分支要推送，则命令为git push origin serverfix。
-这里Git将该命令进行了展开。它会把serverfix分支名扩展为refs/heads/serverfix:refs/heads/serverfix。它的意思是“推送我的本地serverfix分支以更新远程的serverfix分支”。在命令中也可以简写为git push origin serverfix:serverfix。如果本地分支与远程分支不同也可以，命令为git push origin &amp;lt;local_branch&amp;gt;:&amp;lt;remote_branch&amp;gt;。
-要注意的是如果你git fetch &amp;lt;remote&amp;gt;获得新的远程跟踪分支，你不能获得在本地获得可编辑的分支的拷贝，你只是有一个&amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;的不可修改的指针而已。你可以利用git merge把该分支合并到自己的分支，也可以利用git checkout -b &amp;lt;local_branch&amp;gt; &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;来获得本地的对应分支。
-Tracking Branches 从远程跟踪分支签出一个本地分支会自动创建一个“跟踪分支”（tracking branch）。跟踪分支是和远程分支有直接关系的本地分支。如果你在一个跟踪分支中并且输入git pull，Git会自动知道从哪个server fetch以及要合并到哪个分支。
-当你克隆一个库，它会自动创建一个master分支跟踪origin/master。然而，你也可以设置其他的跟踪分支——跟踪其他remote的分支，或者不跟踪master的分支。一个简单的例子是刚刚看到的git checkout -b &amp;lt;branch&amp;gt; &amp;lt;remote&amp;gt;/&amp;lt;branch&amp;gt;。
-可以用git branch的-vv选项来看所有的分支分别跟踪的是哪个远程分支以及你的本地分支是落后还是超前。
-要注意的是，落后和超前的数字是从你上次从各个server处fetch时开始算起的。该命令不会与远程server取得联系。
-Deleting Remote Branches 可以通过git push的--delete选项删除某个远程分支。这其实只是在远程删除了某个指针。真正的删除会在某个时候垃圾回收时进行。因此短时间内的恢复是很容易的。</description>
+      <guid>http://tonfeiz.github.io/posts/twelvefactor-3/</guid>
+      <description>Port binding; Concurrency; Disposability</description>
     </item>
     
     <item>
-      <title>Data Plane &amp; Control Plane</title>
-      <link>http://tonfeiz.github.io/posts/dataplane-controlplane/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Vim进阶</title>
+      <link>http://tonfeiz.github.io/posts/vimcontinue/</link>
+      <pubDate>Tue, 16 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://tonfeiz.github.io/posts/dataplane-controlplane/</guid>
-      <description>这篇文章介绍了数据面和控制面之间的差别。原文是Service mesh data plane vs. control plane
-首先，作者简单介绍了service mesh。在Service mesh中，每个服务有一个sidecar代理。所有的网络流量都通过该代理流到特定地点。服务本身不会知道网络分布，而只知道代理。也就是说，分布式系统网络对服务编写人员来说是不用知道的。
-数据面(data plane) 接下来，作者介绍了数据面(data plane)。数据面其实就是sidecar代理。sidecar代理通常要完成的工作包括：
- 服务发现：有哪些上游服务实例是可用的？ 健康检查：通过服务发现找到的上游服务实例是健康的吗？它们准备好接收网络流量了吗？这可能包括主动(例如，带外ping某个端点)和被动(例如，连续3个5xx回应表示不健康状态)健康检查。 路由：本地服务给出了一个REST请求，该把这个请求送到哪个上游服务实例？ 负载均衡：当上游服务实例被选定后，请求该送到哪个服务实例？超时时间是多少？熔断设置怎么样？ 认证：对于到来的请求，调用者能通过mTLS或其他机制被秘密的认证吗？ 观测性：对于每个请求，统计数据，日志和分布式跟踪数据应当被生成。  数据面被用于有条件的翻译、转发和观察每个流入和流出的网络包。
-控制面(control plane) 作者指出，控制面将一些独立的无状态sidecar代理整合起来并将它们变为分布式系统。
-大部分人自身就是控制面。人们自己手动写出静态的配置，并将它们部署到所有的代理上。代理使用这些配置并用数据面处理。
-目前出现了高级的控制面。高级的控制面可以包括控制面UI、工作调度器(例如Kubernetes)、服务发现系统(当调度器启动或停止实例则向该系统汇报)和sidecar代理配置API等。
-最终，控制面的目的还是设置将要被数据面执行的政策。
-总结  数据面：与系统中的每个包/请求接触。对服务发现、健康检查、路由、负载均衡、认证和观测性负责 控制面：为运行着的数据面提供政策和配置。不接触系统中的请求/包。控制面将所有的数据面转化为分布式系统。  </description>
+      <guid>http://tonfeiz.github.io/posts/vimcontinue/</guid>
+      <description>上周开了vim的坑，因此决心干脆尽量把vim的大部分常用内容都记录下来，便于以后翻阅</description>
+    </item>
+    
+    <item>
+      <title>Leetcode704-Binary Search</title>
+      <link>http://tonfeiz.github.io/posts/leetcode704-binarysearch/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode704-binarysearch/</guid>
+      <description>Given a sorted (in ascending order) integer array nums of n elements and a target value, write a function to search target in nums. If target exists, then return its index, otherwise return -1.</description>
+    </item>
+    
+    <item>
+      <title>Twelve Factor PartII</title>
+      <link>http://tonfeiz.github.io/posts/twelvefactor-2/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/twelvefactor-2/</guid>
+      <description>Backing services; Build, release and run; processes</description>
+    </item>
+    
+    <item>
+      <title>Vim Tutor</title>
+      <link>http://tonfeiz.github.io/posts/vimtutor/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/vimtutor/</guid>
+      <description>虽然一直在使用vim编辑器，但其实一直没有练习过。借着ARTS中T的名头，就稍微学习一下vimtutor并将其中的总结放在这</description>
+    </item>
+    
+    <item>
+      <title>Build blog using Github Page and Jekyll</title>
+      <link>http://tonfeiz.github.io/posts/buildblog/</link>
+      <pubDate>Fri, 12 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/buildblog/</guid>
+      <description>关于写博客，其实早就想写了。写博客的好处也从各种渠道都听说过，奈何实在是懒。现在由于看到了ARTS，觉得挺有用的，也想养成长期主动学习的习惯，因此就把博客搞起来，作为这个计划的集合地，当然其它想写的时候也会随便写一些文章</description>
+    </item>
+    
+    <item>
+      <title>Twelve Factor PartI</title>
+      <link>http://tonfeiz.github.io/posts/twelvefactor-1/</link>
+      <pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/twelvefactor-1/</guid>
+      <description>Twelve-Factor指的是构建Saas的应用程序应当满足的12个特性</description>
+    </item>
+    
+    <item>
+      <title>Leetcode941-Valid Mountain Array</title>
+      <link>http://tonfeiz.github.io/posts/leetcode941-validmountainarray/</link>
+      <pubDate>Wed, 10 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://tonfeiz.github.io/posts/leetcode941-validmountainarray/</guid>
+      <description>Given an array &lt;code&gt;A&lt;/code&gt; of integers, return &lt;code&gt;true&lt;/code&gt; if and only if it is a &lt;em&gt;valid mountain array&lt;/em&gt;.</description>
     </item>
     
   </channel>
