@@ -62,6 +62,16 @@
       
 
       
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
       
 
 
@@ -154,7 +164,7 @@ Admin processes</p>
 <p>一个twelve factor app从不关心输出流的路由或是存储。它不应当写日志文件或者管理它们。每个运行的进程都只是将事件流写入<code>stdout</code>中。</p>
 <p>在开发环境中，开发者通过终端的流观察app的行为。在模拟或生产环境中，每个进程的流将被执行环境捕捉，并被路由到一个或多个最终目的地来作为长期文件。这些文件对于app是不可见并不可配置的，完全由执行环境来管理。</p>
 <p>app的事件流还可以被送到日志索引和分析系统，例如Splunk，或是一个通用目的的存储系统例如Hadoop/Hive。这些系统能提供更多的功能</p>
-<h2 id="管理进程">管理进程</h2>
+<h2 id="十二管理进程">十二、管理进程</h2>
 <p>将管理进程作为一次性的、不是经常开关的进程</p>
 <p>开发者经常希望有一个一次性的管理进程，例如：</p>
 <ul>
