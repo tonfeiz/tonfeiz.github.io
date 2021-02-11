@@ -27,4 +27,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@latest
         with:
           github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./public
+          publish_dir: .
+          publish_branch: gh-pages
