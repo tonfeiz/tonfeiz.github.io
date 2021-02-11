@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Hugo
-        use: peaceiris/actions-hugo@latest
+        uses: peaceiris/actions-hugo@latest
         with:
           hugo-version: 'latest'
 
