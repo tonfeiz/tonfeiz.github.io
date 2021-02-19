@@ -1,1 +1,2 @@
 User-agent: *
+Sitemap: http://tonfei.github.io/sitemap.xml
