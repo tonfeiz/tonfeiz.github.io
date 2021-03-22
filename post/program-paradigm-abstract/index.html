@@ -49,7 +49,7 @@
 <meta itemprop="description" content="0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin">
 <meta itemprop="datePublished" content="2021-03-22T10:52:21+08:00" />
 <meta itemprop="dateModified" content="2021-03-22T10:52:21+08:00" />
-<meta itemprop="wordCount" content="6384">
+<meta itemprop="wordCount" content="6380">
 
 
 
@@ -730,7 +730,7 @@
 </div><p>在这里，相等性比较的==操作符被更为抽象的Cmp模板所代替。</p>
 <h3 id="42-声明式编程">4.2 声明式编程</h3>
 <p>让我们再仔细看看上面这段代码。</p>
-<p>我们知道，搜索的本质其实就是**遍历容器，比较元素。**在上面的代码中，我们用Cmp函数抽象了“比较元素”这一操作，但是对于“遍历容器”却没有处理。</p>
+<p>我们知道，搜索的本质其实就是<strong>遍历容器，比较元素</strong>。在上面的代码中，我们用Cmp函数抽象了“比较元素”这一操作，但是对于“遍历容器”却没有处理。</p>
 <p>通常，遍历这个操作有两种方法：迭代和递归。迭代更偏向于一种<strong>指令式</strong>的方案，我们利用for、while告诉计算机从容器的起始开始往前走，每经过一个元素就进行对应的操作，直到结束——无论是通过break还是return。而递归则更偏向于是一种<strong>声明式</strong>的方案，我们每一次都让计算机调用下一个函数，并且只有在递归的结束条件才关心要做什么。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
