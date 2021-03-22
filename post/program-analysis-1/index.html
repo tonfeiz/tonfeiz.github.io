@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>静态程序分析入门（一）——简介 - Deff Chou&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Tonfeiz" /><meta name="description" content="1. 简介 静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序" /><meta name="keywords" content="program analysis" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://tonfei.github.io/post/program-analysis-1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="静态程序分析入门（一）——简介" />
+<meta property="og:description" content="1. 简介 静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfei.github.io/post/program-analysis-1/" />
+<meta property="article:published_time" content="2021-03-22T10:52:21+08:00" />
+<meta property="article:modified_time" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="name" content="静态程序分析入门（一）——简介">
+<meta itemprop="description" content="1. 简介 静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序">
+<meta itemprop="datePublished" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="dateModified" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="wordCount" content="1208">
+
+
+
+<meta itemprop="keywords" content="program analysis," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="静态程序分析入门（一）——简介"/>
+<meta name="twitter:description" content="1. 简介 静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Deff Chou&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Deff Chou&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">静态程序分析入门（一）——简介</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-03-22 </span>
+        <div class="post-category">
+            <a href="/categories/programming/"> programming </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-简介">1. 简介</a></li>
+        <li><a href="#2-动机">2. 动机</a></li>
+        <li><a href="#3-方法">3. 方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1-简介">1. 简介</h2>
+<p>静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序分析的结果进行优化。</p>
+<p>程序分析是一件很有趣的事情，正如《Static Program Analysis》（下文简称SPA）前言中所说的：</p>
+<blockquote>
+<p>For anyone interested in programming, what can be more fun than writing programs that analyze programs?</p>
+</blockquote>
+<h2 id="2-动机">2. 动机</h2>
+<p>当前程序分析的资料其实并不算少，想学习的同学轻松就可以根据这些资料学习到其中的数学原理和方法。作为一名初学者，我也是遵循着这样的学习路线。其中包括：</p>
+<ol>
+<li>
+<p><a href="https://cs.au.dk/~amoeller/spa/">Static Program Analysis</a>.</p>
+<p>比较理论的介绍了静态程序分析的原理，私以为如果打算精通程序分析，完全读懂这一lecture是基础中的基础</p>
+</li>
+<li>
+<p><a href="https://pascal-group.bitbucket.io/teaching.html">NJU Static Program Analysis</a></p>
+<p>南京大学的程序分析课程，对于入门者极其友好，有大量的例子和step-by-step的教学，重点讲了Pointer Analysis</p>
+</li>
+<li>
+<p><a href="https://xiongyingfei.github.io/SA/2020/main.htm">PKU Software Analysis</a></p>
+<p>北京大学的软件分析课程，涉及内容较广，包括软件缺陷定位、符号执行等。不过光看课件会比较吃力，可以配合<a href="https://liveclass.org.cn/cloudCourse/#/courseDetail/8mI06L2eRqk8GcsW">视频</a>学习</p>
+</li>
+</ol>
+<p>其余还包括CMU的<a href="https://cmu-program-analysis.github.io/2021/">课程</a>， <a href="https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/ementa/">DC888</a>等，由于精力有限，我没有看完，但粗略浏览后质量都是比较高的。</p>
+<p>这些都是非常优质的课程，我也从中受益匪浅。然而，或许是本人水平有限的缘故，看起这些资料来总觉得有点吃力。此外，这些资料中的大部分通常都只是给出了程序分析做了什么、怎么做的，却很少提到为什么会变成这么做。</p>
+<p>出于这些原因，我决定写一些程序分析的博客。一方面是作为我学习的记录，加深自己的理解；另一方面也试图从具体到抽象，以更简单、直观的方式阐述程序分析。</p>
+<h2 id="3-方法">3. 方法</h2>
+<p>大多数程序分析的资料都是先介绍一些程序分析中用到的基础概念，例如控制流图（Control Flow Graph）。然后举一些程序分析的例子，例如活跃变量分析（Liveness Variable Analysis），从中引出数据流分析的算法，再到介绍格（Lattice）理论等。再往下一直介绍到过程间分析（Inter Procedural Analysis）、指针分析（Pointer Analysis）等。</p>
+<p>这些资料提供了程序分析的<strong>知识</strong>，但要真正掌握这些知识，必须还要实践，否则过眼即忘。例如我本人看了许多遍SPA，先不说仍然有很多看不懂的地方，即使是看懂的地方过不了多久也会忘记。因此，学习程序分析时去<strong>实现</strong>这些算法是很重要的。</p>
+<p>除此之外，如同上面提到过的，很多资料没有提供<strong>为什么</strong>。为什么要用控制流图来表示程序呢？为什么会诞生WorkList  Algorithm呢？这一点准确来说是程序分析的<strong>演化</strong>，而演化过程中往往蕴含着比算法本身还要重要的东西。</p>
+<p>基于以上两点，我决定采用这样一种方法来学习程序分析：设定一门语言，从最简单的语法特性开始，慢慢扩充它，同时对这个语言试验不同的分析算法。从无条件直行到函数调用、指针，从符号分析到可达性分析等。</p>
+<p>由于我对于程序语言理论（Programming Language Theory，简称PLT）缺乏足够的了解，加上这一系列的主要目的是学习程序分析，因此语言语法的设计会非常简陋，并且实现的前端将完全依赖于输入的准确性。</p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/program-analysis/">program analysis</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/tonfeiz" class="iconfont icon-github" title="github"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Tonfeiz</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
