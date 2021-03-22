@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>program paradigm on Deff Chou&#39;s Blog</title>
+    <link>http://tonfei.github.io/tags/program-paradigm/</link>
+    <description>Recent content in program paradigm on Deff Chou&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Mar 2021 10:52:21 +0800</lastBuildDate><atom:link href="http://tonfei.github.io/tags/program-paradigm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编程范式和抽象</title>
+      <link>http://tonfei.github.io/post/program-paradigm-abstract/</link>
+      <pubDate>Mon, 22 Mar 2021 10:52:21 +0800</pubDate>
+      
+      <guid>http://tonfei.github.io/post/program-paradigm-abstract/</guid>
+      <description>0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin</description>
+    </item>
+    
+  </channel>
+</rss>

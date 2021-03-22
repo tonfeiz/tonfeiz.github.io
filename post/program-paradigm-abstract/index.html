@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>编程范式和抽象 - Deff Chou&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Tonfeiz" /><meta name="description" content="0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin" /><meta name="keywords" content="program paradigm" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.80.0 with theme even" />
+
+
+<link rel="canonical" href="http://tonfei.github.io/post/program-paradigm-abstract/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="编程范式和抽象" />
+<meta property="og:description" content="0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tonfei.github.io/post/program-paradigm-abstract/" />
+<meta property="article:published_time" content="2021-03-22T10:52:21+08:00" />
+<meta property="article:modified_time" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="name" content="编程范式和抽象">
+<meta itemprop="description" content="0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin">
+<meta itemprop="datePublished" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="dateModified" content="2021-03-22T10:52:21+08:00" />
+<meta itemprop="wordCount" content="6384">
+
+
+
+<meta itemprop="keywords" content="program paradigm," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编程范式和抽象"/>
+<meta name="twitter:description" content="0. 引言 我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义： 编程范式（Programmin"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Deff Chou&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Deff Chou&#39;s Blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">编程范式和抽象</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-03-22 </span>
+        <div class="post-category">
+            <a href="/categories/programming/"> programming </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#0-引言">0. 引言</a></li>
+        <li><a href="#1-走一步再走一步-面向过程">1. 走一步，再走一步—— 面向过程</a></li>
+        <li><a href="#2-谁还没个对象面向对象">2. 谁还没个对象——面向对象</a></li>
+        <li><a href="#3-我不是针对谁我是说在座的各位泛型">3. 我不是针对谁，我是说在座的各位——泛型</a>
+          <ul>
+            <li><a href="#31-类型与抽象">3.1 类型与抽象</a></li>
+            <li><a href="#32-例子搜索">3.2 例子——搜索</a></li>
+            <li><a href="#33-c的泛型">3.3 C的泛型</a></li>
+            <li><a href="#34-c的泛型">3.4 C++的泛型</a></li>
+            <li><a href="#35-java的泛型">3.5 Java的泛型</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-世间万物皆系于公式之上函数式">4. 世间万物皆系于公式之上——函数式</a>
+          <ul>
+            <li><a href="#41-简单示例">4.1 简单示例</a></li>
+            <li><a href="#42-声明式编程">4.2 声明式编程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="0-引言">0. 引言</h2>
+<p>我们大多数程序员都知道编程范式，知道面向过程、面向对象（OOP）。大多数人也知道编程范式的下面这个定义：</p>
+<blockquote>
+<p>编程范式（Programming paradigm）指的是编程的一种<strong>风格</strong>（Style）。</p>
+</blockquote>
+<p>或者是Wikipedia上的定义（说实话，这个定义并<strong>不准</strong>——我查到的大多数资料都强调编程范式和语言<strong>无关</strong>）：</p>
+<blockquote>
+<p>编程范式是一种基于语言的特征来对它们进行分类的方法。</p>
+</blockquote>
+<p>问题是，为什么要有不同的编程范式？为什么现在C++、Java等语言都开始支持越来越多的编程范式？</p>
+<p>由于编程范式涵盖许多的方面，在一篇文章里面完整回答上述问题是非常困难的。相对的，这篇文章试图从<strong>抽象</strong>（Abstraction）这个角度来看待多种编程范式的出现。</p>
+<p>在软件工程的世界中，抽象是一个非常重要的概念。良好的抽象能帮助程序员写出易维护、清晰简洁的代码。个人认为，对于抽象比较好的定义是：</p>
+<blockquote>
+<p>抽象是一种能让你在关注某一概念的同时可以放心地忽略其中一些细节的能力——在不同的层次处理不同的细节。</p>
+<p>——《代码大全》</p>
+</blockquote>
+<blockquote>
+<p><strong>模块化与抽象</strong></p>
+<p>模块化是软件工程里的另一个重要概念，它与抽象这一概念息息相关。实现了良好模块化的代码往往其抽象程度也恰当好处，使得模块之间的调用不用关注具体的细节，并且对一个模块的改动不会轻易影响到另外一个模块。</p>
+</blockquote>
+<h2 id="1-走一步再走一步-面向过程">1. 走一步，再走一步—— 面向过程</h2>
+<p>我们先来看看Wikipedia上对面向过程编程的定义：</p>
+<blockquote>
+<p>面向过程是一种基于<strong>过程调用</strong>概念(Concept of the procedure call)，并继承自<strong>结构化编程</strong>（Structured programming）的编程范式。</p>
+</blockquote>
+<p>结构化编程涉及到的内容比较广泛，这里不详细介绍了，简单来说就是通过<strong>选择</strong>(Selection, 即if/then/else)，<strong>重复</strong>(Repetition,即while/for)和<strong>块结构</strong>(block structure，即{}围成的块)来构造结构化控制流的编程方式。现在大多数主流编程语言都有结构化编程的支持。</p>
+<p>而面向过程的核心其实是过程调用。最经典的面向过程在C语言中实现。在C语言中，函数就是一个过程。当你调用一个函数的时候，你就是在进行面向过程的编程。</p>
+<p>在进行面向过程的编程时，我们将要完成的任务分解成一个个子任务，每一个子任务就是一个过程。我们依次进行过程调用，直到最终完成。</p>
+<p>举个例子，假设有个箱子在坐标(0, 0)，我们只能前后左右移动它，一次只能移动一步，现在我们希望它移动到(2, 2)，怎么做？</p>
+<p>不面向过程的代码是这样的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Box</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Box</span><span class="p">;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Box</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ 
+    <span class="n">b</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">b</span><span class="p">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+ 
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就这个例子来说，它干的还可以。但是这样的写法把所有的细节都放在一个函数里，而我们写代码、看代码的时候需要关注的不再是任务背后的概念（箱子往上移动，再往右移动），而是实现任务的细节（修改箱子的坐标）。</p>
+<p>我们来看面向过程的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">Box</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Box</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">move_from_0_0_to_2_2</span><span class="p">(</span><span class="n">Box</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">front</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">front</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">right</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">right</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">front</span><span class="p">(</span><span class="n">Box</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">right</span><span class="p">(</span><span class="n">Box</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize_box</span><span class="p">(</span><span class="n">Box</span> <span class="o">*</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">b</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Box</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">initialize_box</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">move_from_0_0_to_2_2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里把整个任务分成两个过程：初始化和移动。接着把移动分为两个过程：向前走一步，再走一步。然后向右走一步，再向右走一步，即达到目标。</p>
+<p>这就是面向过程的思想：<strong>一步一步完成各个子过程，直到完成总体任务</strong>。</p>
+<blockquote>
+<p><strong>名字的重要性</strong></p>
+<p>从上面的例子中可以看出名字的作用。在编程中名字的重要性已经被强调了很多次，《代码大全》甚至手把手教我们如何命名。为什么名字如此重要？因为每个名字代表了一个概念的抽象，使我们可以忽略名字后面的细节。一个坏名字破坏了这种抽象，使我们不得不关注实现细节——甚至在看细节的时候也会受到坏名字的影响。</p>
+</blockquote>
+<p>那么，从抽象的角度看，面向过程表现的如何呢？</p>
+<p>要回答这个问题，我们先要知道一个著名的公式（虽然可能时至今日已经不太准确了）：</p>
+<blockquote>
+<p><strong>Algorithms + Data Structures = Programs</strong></p>
+</blockquote>
+<p>Algorithms，算法，其实就是解决一个问题的过程。而面向过程的编程范式所干的事情，就是把一个大算法分解为一个个小算法。当分解为这些小算法之后，我们只需要关心这些小算法各自是怎么实现的。从这个角度上看，面向过程实现了<strong>算法的抽象</strong>——我们在大算法中不再关心整个算法的细节，而是关心小算法背后的概念，然后把这些算法组合起来完成总体的任务。</p>
+<p>然而，面向过程没有解决的是另一个部分——数据结构。</p>
+<p>我们考虑子过程之间的接口。由于面向过程忽视数据结构，因此各个子过程之间传递的数据结构通常是个简单的结构体。当我们拿到一个结构体，我们必须知道这个结构体里包含了哪些数据，然后再针对这些数据进行操作(也就是说，<strong>接口其实由数据构成，而不是数据背后的概念</strong>）。比如上面的Box，当我们拿到Box，其实我们关心的是Box能怎么移动，然而实现时却需要取出坐标，然后再对坐标进行操作。</p>
+<p>更具体的说，面向过程的编程范式不包含**封装(****Encapsulation)**这一特性。不能进行封装也就意味着很难做到良好的数据隐藏，</p>
+<p>在这样的背景下，面向对象的编程范式就出现了。</p>
+<h2 id="2-谁还没个对象面向对象">2. 谁还没个对象——面向对象</h2>
+<p>在如今这个没有对象就会被阴阳怪气的时代，相信大家都面向对象都不陌生。面向对象的编程范式主张把程序的基本单元从过程变为对象，而有些编程语言（Java）更是干的十分彻底，把一切都变为了对象。</p>
+<p>从抽象的角度看，面向对象是对面向过程的改进。大家都知道封装、继承、多态是面向对象的三大特性，而这三者都和抽象息息相关。</p>
+<p>封装的实现需要两个条件：</p>
+<ul>
+<li>访问控制，也就是控制对象里的数据是否能被外部访问</li>
+<li>方法，也就是表明这个对象能进行什么操作</li>
+</ul>
+<p>这样，我们同时实现了对数据结构和过程的抽象。我们拿到一个对象时，我们关心的是对象背后的概念——这通过调用方法来实现，而这个对象里面有哪些数据，是怎么实现的，我们并不关心。</p>
+<p>我们还是举面向过程中的例子来实现代码，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Box</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="nf">Box</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="o">}</span>
+     
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">front</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">right</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MoveBox</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Box</span> <span class="n">box</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Box</span><span class="o">();</span>
+        <span class="n">move_from_0_0_to_2_2</span><span class="o">(</span><span class="n">Box</span> <span class="n">box</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">move_from_0_0_to_2_2</span><span class="o">(</span><span class="n">Box</span> <span class="n">box</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">box</span><span class="o">.</span><span class="na">front</span><span class="o">();</span>
+        <span class="n">box</span><span class="o">.</span><span class="na">front</span><span class="o">();</span>
+        <span class="n">box</span><span class="o">.</span><span class="na">right</span><span class="o">();</span>
+        <span class="n">box</span><span class="o">.</span><span class="na">right</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看上去这个实现和面向过程中的实现差不多，无非就是函数换了个地方而已，但思想上却很不一样。</p>
+<p>假设Box是已经写好的结构体/类，我们在写move_from_0_0_to_2_2这个方法。我们很自然就会想到要分为两个过程，先向前，再向右。</p>
+<ul>
+<li>在面向过程里，为了达到这两个目的，我们会先去查看Box包含了哪些数据，然后再区分两个过程，对这些数据进行处理。</li>
+<li>在面向对象里，为了达到这两个目的，我们会去查看Box包含了哪些方法，然后可以的话调用这些方法进行处理。</li>
+</ul>
+<p>显然，一个需要关心数据，而另一个不需要。</p>
+<p>有的同学会觉得，在面向过程的范式里，针对一个结构体定义一堆过程不就可以达到同样的效果吗？确实如此，但问题在于：即使定义了一堆过程，也没法保证使用结构体的人只使用你定义的过程，毕竟结构体不包含封装，数据都是公开的。最重要的是，由于数据是公开的，它<strong>隐式地鼓励了程序员在收到结构体作为参数时自由地对其中的参数进行修改</strong>——毕竟大多数程序员都不喜欢束缚，喜欢自由<img src="http://wiki.baidu.com/s/en_GB/7502/7a8091df24c6bfeaa11c484430bfb697cb099610/_/images/icons/emoticons/smile.png" alt="(smile)">。</p>
+<p>再后来，人们发现仅仅用对象来表示概念还不够。我有Box，我还有Car，还有Cat，这些都能移动，我总不能给每种对象都写一遍一样的代码吧（注意，这里有点<strong>泛型</strong>的意思）？咋办呢？于是就诞生了<strong>虚基类（C++）/接口（Java）<strong>的概念</strong>。</strong></p>
+<p>不管是虚基类还是接口，其实表达的都是某个概念，而具备了这个概念的对象就可以执行某些动作。</p>
+<p>例如Box可以有Moveable的接口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Moveable</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">front</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">right</span><span class="o">();</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Box</span> <span class="kd">implements</span> <span class="n">Moveable</span> <span class="o">{</span>
+      <span class="o">...</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Move</span> <span class="o">{</span>
+   <span class="o">...</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">move_from_0_0_to_2_2</span><span class="o">(</span><span class="n">Moveable</span> <span class="n">moveable</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>OK，这样，我们终于不再关心对象的细节，而是关心于对象背后的概念。</p>
+<blockquote>
+<p><strong>多态与泛型</strong></p>
+<p>继承和多态其实是<strong>面向对象的泛型</strong>。我们写一个接收基类参数的方法，然后往里传入子类，这样，这个方法就能接收继承了基类的各个子类，从而使得这个方法更为通用——而这就是泛型的本质。</p>
+</blockquote>
+<h2 id="3-我不是针对谁我是说在座的各位泛型">3. 我不是针对谁，我是说在座的各位——泛型</h2>
+<p>面向对象用对象同时抽象了数据结构与算法，看上去一切都很美妙。然而果真如此吗？很遗憾，面向对象没有抽象掉的是它赖以生存的东西——类型。</p>
+<h3 id="31-类型与抽象">3.1 类型与抽象</h3>
+<p>每一门编程语言中都必定包含着一套类型系统，因为编程世界中的数据其实是由两部分组成：<strong>结构 &amp; 类型</strong>。而我们之前抽象掉了数据结构，却忽略了类型。</p>
+<p>本质上，类型的存在本身就是一种抽象，它抽象的是底层的内存布局。当我们说int类型，我们知道它是个整数，至于具体是4个字节还是8个字节，交给编译器去关心就行了。</p>
+<p>从这个角度看，类型无疑是对我们有帮助的。然而一切事物都是具有两面性的，它也带来了问题，那就是当我们编写一个算法时，我们不得不关心我们要处理的数据其类型是什么。如果我们要写一个对任何类型通用的算法（即所谓泛型算法），我们怎么抽象掉类型，而只关心算法本身的逻辑流程？</p>
+<p>先举个简单的概念上的例子，比如上面的Box。假设Box里面装的是个惊喜礼物Suprise，到达终点后会拆开。但是里面具体是什么是不确定的，可能是口红，可能是包。如果用面向对象的方法，我们必须要给每个概念找到一个对应的类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">Suprise</span> <span class="o">{</span>
+<span class="o">}</span>
+ 
+<span class="kd">class</span> <span class="nc">Lipstick</span> <span class="kd">implements</span> <span class="n">Suprise</span> <span class="o">{</span>
+<span class="o">}</span>
+ 
+ 
+<span class="kd">class</span> <span class="nc">Money</span> <span class="kd">implements</span> <span class="n">Suprise</span> <span class="o">{</span>
+<span class="o">}</span>
+ 
+<span class="kd">class</span> <span class="nc">Box</span> <span class="o">{</span>
+    <span class="o">....</span>
+    <span class="kd">private</span> <span class="n">Suprise</span> <span class="n">suprise</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSuprise</span><span class="o">(</span><span class="n">Suprise</span> <span class="n">suprise</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">suprise</span> <span class="o">=</span> <span class="n">suprise</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">Suprise</span> <span class="nf">getSuprise</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">suprise</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样写的问题在于，我们设置和获取的都是个接口Suprise，问题是这个Suprise是啥呢？即使取出了，我们也不知道。</p>
+<blockquote>
+<p><strong>RTTI、类型转换与泛型</strong></p>
+<p><strong>RTTI, 即RunTime Type Information</strong>，指的是在运行时获取对象的类型信息，反射就是RTTI的一种。</p>
+<p><strong>类型转换</strong>指的是对象的类型在编译器的允许之下可以进行改变。静态类型语言(C++、Java等)通常需要显式进行类型转换，动态类型语言(Python、JS等)则可以自动进行</p>
+<p>类型转换其实就是一种<strong>低层次的泛型</strong>，它配合RTTI可以一定程度上缓解泛型算法的问题，但这样的解法往往引入额外的复杂性，因此并不优雅。</p>
+</blockquote>
+<h3 id="32-例子搜索">3.2 例子——搜索</h3>
+<p>接下去，我们用泛型中最经典的搜索来举个例子，下面是伪代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">bool search(Array array, Target target) {
+    for (element in array) {
+        if (element equals target) {
+            return true;
+        }
+    }
+    return false;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>我们希望，这个算法可以对所有类型都有效，也就是Target不管是啥类型，这个算法都可以正常运行。</p>
+<p>怎么办呢？如果Target是int类型，那么C语言的实现很简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">bool</span> <span class="nf">search</span><span class="p">(</span><span class="kt">int</span><span class="p">[]</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可是对于double、char等类型该怎么办呢？更别说还有自建的类型。每种类型都实现一次方法显然是很ugly的，也不易于维护。</p>
+<p>为了解决这个问题，不同的语言采取了不同的方法。</p>
+<h3 id="33-c的泛型">3.3 C的泛型</h3>
+<p>C语言最重要的设计理念之一就是程序员具有控制底层行为的权利，因此C语言的泛型并没有往上层抽象，而是往下走。</p>
+<p>对于C语言来说，一切类型都不过是内存布局，一块内存又可以用void *来表示，所以void *就是C泛型的主旋律。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">bool</span> <span class="nf">search</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arr_size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">element_size</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">memcmp</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">array</span> <span class="o">+</span> <span class="n">element_size</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">element_size</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面这段代码对于基本类型来说是没问题的，然而如果要比较的是个结构体，其中又包含指针，这段代码就变成了比较指针而不是指针所指向的内容了。要彻底解决这个问题，会涉及到函数式的一点内容，后面我们再看。</p>
+<p>C语言的泛型十分难用，一方面这是因为函数调用方需要知道很多信息，从而造成了负担。另一方面，C语言的泛型都是直接在内存上进行操作，非常危险，一旦错了一个字节就会崩溃。</p>
+<h3 id="34-c的泛型">3.4 C++的泛型</h3>
+<p>C++利用模板template实现了泛型。</p>
+<p>在C++中，一个模板指的是一份生成代码的蓝图。当我们定义了一个模板，并且使用该模板时，编译器在编译代码时会依据我们使用模板时传入的类型来生成一份代码。如果在模板代码中错误使用了模板参数，那就会在编译时报错。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Iter</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Element</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">search</span><span class="p">(</span><span class="n">Iter</span> <span class="n">begin</span><span class="p">,</span> <span class="n">Iter</span> <span class="n">end</span><span class="p">,</span> <span class="n">Element</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Iter</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">iter</span> <span class="o">!=</span> <span class="n">end</span><span class="p">;</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">iter</span> <span class="o">==</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在其中：</p>
+<ul>
+<li>Iter指的是迭代器的概念</li>
+<li>Element指的是容器中元素的概念</li>
+</ul>
+<p>这段代码和伪代码的实现几乎一样，这是因为伪代码中的类型全部用模板类型抽象了。当我们在写泛型算法的时候，对于要用到的抽象类型直接用模板类型代替，然后专注于算法本身的逻辑（即伪代码）就可以了。</p>
+<h3 id="35-java的泛型">3.5 Java的泛型</h3>
+<p>Java的泛型是被人诟病的伪泛型。它其实是依赖<strong>类型擦除</strong>实现的泛型，其实也就是上面说的类型转换。</p>
+<p>Java的泛型Search实现和C++很像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Search</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">begin</span><span class="o">,</span>  <span class="n">T</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">begin</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">T</span> <span class="n">element</span> <span class="o">=</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">target</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们关注下其中对象的相等性比较。在C++的泛型中，我们用==来表示“相等”这一概念。如果我们实际传入的类型没有实现==，那么代码会报错。如果实现了==，那么代码不会报错。</p>
+<p>而在Java的泛型中，这段代码之所以会编译通过是因为Object对象帮我们实现了默认的equals方法，而T类型会被擦除成Object类型。</p>
+<p>假如我们现在不想用==符号和equals方法来比较对象的相等性，想统一用一个叫做isSameAs的方法来比较。在C++的泛型里，我们直接修改==即可。然而在Java里，由于Object没有这个方法，所以代码是永远无法通过编译的——即使我们的对象类型实现了该方法并传入也不行。</p>
+<h2 id="4-世间万物皆系于公式之上函数式">4. 世间万物皆系于公式之上——函数式</h2>
+<p>OK，现在我们已经到达了抽象的一个比较高的高度，我们先进行个简单的梳理：</p>
+<ol>
+<li>首先，我们发现所有细节都堆积在一个地方，所以用面向过程抽象了完成任务的各个步骤，也就是子过程（函数）</li>
+<li>接着，我们发现过程之间通信的接口暴露了数据，使得我们不得不关注它们，所以用面向对象抽象了数据</li>
+<li>然后，我们发现每个对象都必须要有个类型，在写某个方法时必须要关注类型，所以用泛型抽象了类型</li>
+</ol>
+<p>在使用泛型来对数据进行抽象之后，由于数据的类型和结构都已经转化为数据对应的概念，因此对数据的抽象已经很难继续了。然而对过程（也就是算法），还可以进行更高层次的抽象，那就是函数式编程。</p>
+<h3 id="41-简单示例">4.1 简单示例</h3>
+<p>我们回到泛型中C语言的例子。C语言的search函数其实是有问题的，因为用memcmp比较只比较了内存的内容，而没有比较内存中可能存在的指针指向的内容，因此我们需要传给函数一个比较函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">bool</span> <span class="nf">search</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">arr_size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">element_size</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">target</span><span class="err">，</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="o">*</span><span class="n">cmp</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">cmp</span><span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">array</span> <span class="o">+</span> <span class="n">element_size</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">element_size</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而调用这个函数时，我们就需要自定义一个比较函数传给它。</p>
+<p>这就是函数式编程的一个基本概念：函数可以当作参数来传递和返回。</p>
+<p>函数式编程和泛型结合可以非常使我们写出抽象程度很高的代码。例如C++中的search版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Iter</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Element</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Cmp</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">search</span><span class="p">(</span><span class="n">Iter</span> <span class="n">begin</span><span class="p">,</span> <span class="n">Iter</span> <span class="n">end</span><span class="p">,</span> <span class="n">Element</span> <span class="n">target</span><span class="p">,</span> <span class="n">Cmp</span> <span class="n">cmp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">Iter</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">begin</span><span class="p">;</span> <span class="n">iter</span> <span class="o">!=</span> <span class="n">end</span><span class="p">;</span> <span class="n">iter</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cmp</span><span class="p">(</span><span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这里，相等性比较的==操作符被更为抽象的Cmp模板所代替。</p>
+<h3 id="42-声明式编程">4.2 声明式编程</h3>
+<p>让我们再仔细看看上面这段代码。</p>
+<p>我们知道，搜索的本质其实就是**遍历容器，比较元素。**在上面的代码中，我们用Cmp函数抽象了“比较元素”这一操作，但是对于“遍历容器”却没有处理。</p>
+<p>通常，遍历这个操作有两种方法：迭代和递归。迭代更偏向于一种<strong>指令式</strong>的方案，我们利用for、while告诉计算机从容器的起始开始往前走，每经过一个元素就进行对应的操作，直到结束——无论是通过break还是return。而递归则更偏向于是一种<strong>声明式</strong>的方案，我们每一次都让计算机调用下一个函数，并且只有在递归的结束条件才关心要做什么。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Iter</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Element</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Cmp</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">search</span><span class="p">(</span><span class="n">Iter</span> <span class="n">begin</span><span class="p">,</span> <span class="n">Iter</span> <span class="n">end</span><span class="p">,</span> <span class="n">Element</span> <span class="n">target</span><span class="p">,</span> <span class="n">Cmp</span> <span class="n">cmp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">begin</span> <span class="o">==</span> <span class="n">end</span> <span class="o">?</span> <span class="nb">false</span> <span class="o">:</span> <span class="p">(</span><span class="n">cmp</span><span class="p">(</span><span class="o">*</span><span class="n">begin</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="n">search</span><span class="p">(</span><span class="o">++</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cmp</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>让我们用形式化的数学公式来表示上面这个过程：</p>
+<p><img src="../../images/post/program-paradigm-abstract/search-formula.png" alt=""></p>
+<p>在有了这个公式之后，我们使用一些纯函数式语言写起代码来就会非常顺手，比如用Scheme(伪代码）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-lisp" data-lang="lisp"><span class="p">(</span><span class="nv">define</span> <span class="p">(</span><span class="nf">search</span> <span class="nv">begin</span> <span class="nv">end</span> <span class="nv">element</span> <span class="nv">cmp</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">=</span>  <span class="nv">begin</span> <span class="nv">end</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">((</span><span class="nv">cmp</span> <span class="nv">*begin</span> <span class="nv">target</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">(</span><span class="nv">else</span> <span class="p">(</span><span class="nf">search</span> <span class="p">(</span><span class="nf">+</span> <span class="nv">begin</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">end</span> <span class="nv">element</span> <span class="nv">cmp</span><span class="p">))))</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/program-paradigm/">program paradigm</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/program-analysis-1/">
+            <span class="next-text nav-default">静态程序分析入门（一）——简介</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/tonfeiz" class="iconfont icon-github" title="github"></a>
+  <a href="http://tonfei.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Tonfeiz</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
