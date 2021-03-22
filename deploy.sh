@@ -8,6 +8,7 @@ hugo
 
 git checkout gh-pages
 
+ls | grep -E -v "public|themes" | xargs rm -r 
 cp -r public/* .
 rm -r public
 
