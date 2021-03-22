@@ -8,6 +8,7 @@ hugo
 
 git checkout gh-pages
 
+ls | grep -v public | xargs rm -r 
 cp -r public/* .
 rm -r public
 
