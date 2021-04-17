@@ -36,13 +36,6 @@
   </url>
   
   <url>
-    <loc>http://tonfei.github.io/tags/program-paradigm/</loc>
-    <lastmod>2021-03-22T10:52:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://tonfei.github.io/categories/programming/</loc>
     <lastmod>2021-03-22T10:52:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -57,15 +50,22 @@
   </url>
   
   <url>
-    <loc>http://tonfei.github.io/post/program-paradigm-abstract/</loc>
+    <loc>http://tonfei.github.io/post/program-analysis-1/</loc>
     <lastmod>2021-03-22T10:52:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://tonfei.github.io/post/program-analysis-1/</loc>
-    <lastmod>2021-03-22T10:52:21+08:00</lastmod>
+    <loc>http://tonfei.github.io/tags/program-paradigm/</loc>
+    <lastmod>2021-03-22T10:51:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://tonfei.github.io/post/program-paradigm-abstract/</loc>
+    <lastmod>2021-03-22T10:51:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

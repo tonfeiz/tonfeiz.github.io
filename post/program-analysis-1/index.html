@@ -49,7 +49,7 @@
 <meta itemprop="description" content="1. 简介 静态程序分析（下文简称程序分析）是在不运行程序的情况下得出程序的某种属性的艺术。它有许多作用，最常见的就是在编译器的优化过程中利用程序">
 <meta itemprop="datePublished" content="2021-03-22T10:52:21+08:00" />
 <meta itemprop="dateModified" content="2021-03-22T10:52:21+08:00" />
-<meta itemprop="wordCount" content="1208">
+<meta itemprop="wordCount" content="1273">
 
 
 
@@ -183,14 +183,14 @@
 <p>北京大学的软件分析课程，涉及内容较广，包括软件缺陷定位、符号执行等。不过光看课件会比较吃力，可以配合<a href="https://liveclass.org.cn/cloudCourse/#/courseDetail/8mI06L2eRqk8GcsW">视频</a>学习</p>
 </li>
 </ol>
-<p>其余还包括CMU的<a href="https://cmu-program-analysis.github.io/2021/">课程</a>， <a href="https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/ementa/">DC888</a>等，由于精力有限，我没有看完，但粗略浏览后质量都是比较高的。</p>
+<p>其余还包括CMU的<a href="https://cmu-program-analysis.github.io/2021/">课程</a>， <a href="https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/ementa/">DC888</a>等，由于精力有限，我没有看完，但粗略浏览后质量都是比较高的。其中CMU课程的叙述方式对我的学习方式启发比较大。</p>
 <p>这些都是非常优质的课程，我也从中受益匪浅。然而，或许是本人水平有限的缘故，看起这些资料来总觉得有点吃力。此外，这些资料中的大部分通常都只是给出了程序分析做了什么、怎么做的，却很少提到为什么会变成这么做。</p>
 <p>出于这些原因，我决定写一些程序分析的博客。一方面是作为我学习的记录，加深自己的理解；另一方面也试图从具体到抽象，以更简单、直观的方式阐述程序分析。</p>
 <h2 id="3-方法">3. 方法</h2>
 <p>大多数程序分析的资料都是先介绍一些程序分析中用到的基础概念，例如控制流图（Control Flow Graph）。然后举一些程序分析的例子，例如活跃变量分析（Liveness Variable Analysis），从中引出数据流分析的算法，再到介绍格（Lattice）理论等。再往下一直介绍到过程间分析（Inter Procedural Analysis）、指针分析（Pointer Analysis）等。</p>
 <p>这些资料提供了程序分析的<strong>知识</strong>，但要真正掌握这些知识，必须还要实践，否则过眼即忘。例如我本人看了许多遍SPA，先不说仍然有很多看不懂的地方，即使是看懂的地方过不了多久也会忘记。因此，学习程序分析时去<strong>实现</strong>这些算法是很重要的。</p>
 <p>除此之外，如同上面提到过的，很多资料没有提供<strong>为什么</strong>。为什么要用控制流图来表示程序呢？为什么会诞生WorkList  Algorithm呢？这一点准确来说是程序分析的<strong>演化</strong>，而演化过程中往往蕴含着比算法本身还要重要的东西。</p>
-<p>基于以上两点，我决定采用这样一种方法来学习程序分析：设定一门语言，从最简单的语法特性开始，慢慢扩充它，同时对这个语言试验不同的分析算法。从无条件直行到函数调用、指针，从符号分析到可达性分析等。</p>
+<p>基于以上两点，我决定采用这样一种方法来学习程序分析：设定一门语言，从最简单的语法特性开始，慢慢扩充它，同时对这个语言试验不同的分析算法。从无条件直行到函数调用、指针，从符号分析到可达性分析等。出于方便起见，给这门语言起个名字叫做PAT(Program Analysis Teaching)。</p>
 <p>由于我对于程序语言理论（Programming Language Theory，简称PLT）缺乏足够的了解，加上这一系列的主要目的是学习程序分析，因此语言语法的设计会非常简陋，并且实现的前端将完全依赖于输入的准确性。</p>
 
     </div>
@@ -201,12 +201,12 @@
           <a href="/tags/program-analysis/">program analysis</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/program-paradigm-abstract/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">编程范式和抽象</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
         
+        <a class="next" href="/post/program-paradigm-abstract/">
+            <span class="next-text nav-default">编程范式和抽象</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
