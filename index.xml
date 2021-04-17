@@ -6,7 +6,7 @@
     <description>Recent content on Deff Chou&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Mar 2021 10:52:21 +0800</lastBuildDate><atom:link href="http://tonfei.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 10:52:21 +0800</lastBuildDate><atom:link href="http://tonfei.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://tonfei.github.io/about/</link>
@@ -16,6 +16,15 @@
       <description>I&amp;rsquo;m Deff Chou.
 Currently I&amp;rsquo;m interested in compilers, program analysis and programming languages.
 Contact Info: deffchou@outlook.com</description>
+    </item>
+    
+    <item>
+      <title>静态程序分析入门（二）——直行代码符号分析</title>
+      <link>http://tonfei.github.io/post/program-analysis-2/</link>
+      <pubDate>Thu, 15 Apr 2021 10:52:21 +0800</pubDate>
+      
+      <guid>http://tonfei.github.io/post/program-analysis-2/</guid>
+      <description>1. 简介 在这篇文章中，我们会对无条件直行的语言进行一种很简单的程序分析——符号分析。 2. 语言 我们假设初始的PAT语言具有下列特性： 所有数据的类型</description>
     </item>
     
     <item>
