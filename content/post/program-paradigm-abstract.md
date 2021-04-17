@@ -1,7 +1,7 @@
 ---
 title: "编程范式和抽象"
-date: 2021-03-22T10:52:21+08:00
-lastmod: 2021-03-22T10:52:21+08:00
+date: 2021-03-22T10:51:21+08:00
+lastmod: 2021-03-22T10:51:21+08:00
 draft: false
 keywords: [program paradigm]
 description: ""
